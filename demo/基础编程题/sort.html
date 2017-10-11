@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sort</title>
+</head>
+<body>
+	<script>
+	// var arr = [3,5,2,4,1]
+	// var sort = function(array) {
+	// 	for(var i = 0; i < array.length; i++){   
+	// 		for(var j = 0; j < array.length - 1; j++){
+	// 			if (array[j] <= array[j + 1]) {
+
+	// 			} else {
+	// 				change(array, j, j + 1)
+	// 			}
+	// 		}
+	// 	}
+	// 	return array
+	// }
+	// var change = function(array, a, b) {
+	// 	var temp = array[a]
+	// 	array[a] = array[b]
+	// 	array[b] = temp
+	// }
+	var sort = function(array) {
+		for(var i = 0; i < array.length; i++) {
+			for(var j = 0; j < array.length - 1 -i; j++) {
+				if (array[j] <= array[j + 1]) {
+				} else {
+					change(array, j, j + 1)
+				}
+			}
+		}
+		return array
+	}
+	var change = function(array, a, b) {
+		var tem = array[a]
+		array[a] = array[b]
+		array[b] = tem
+	}
+
+	//选择算法
+	function selectionSort(myArray){
+
+	    var len = myArray.length,
+	        min;
+
+	    for (i=0; i < len; i++){
+
+	        // 将当前位置设为最小值
+	        min = i;
+
+	        // 检查数组其余部分是否更小
+	        for (j=i+1; j < len; j++){
+	            if (myArray[j] < myArray[min]){
+	                min = j;
+	            }
+	        }
+
+	        // 如果当前位置不是最小值，将其换为最小值
+	        if (i != min){
+	            swap(myArray, i, min);
+	        }
+	    }
+
+	    return myArray;
+	}
+
+
+
+	var sort1 = function(array) {
+		var min
+		for(var i = 0; i < array.length; i++){
+			min = i
+			for(var j = i + 1; j < array.length; j++){
+				if (array[min] > array[j]) {
+					min = j
+				}
+			}
+			if (i != min) {
+				change(array, i, min)
+			}
+		}
+		return array
+	}
+	var change = function(array, a, b) {
+		var tem = array[a]
+		array[a] = array[b]
+		array[b] = tem
+	}
+
+
+	</script>
+</body>
+</html>

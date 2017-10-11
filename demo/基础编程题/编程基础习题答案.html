@@ -1,0 +1,2196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	//公用函数
+	//log函数
+	var log = function() {
+	  console.log.apply(console,arguments)
+	}
+	//测试函数
+	var ensure = function(condition, message) {
+		if (!condition) {
+			console.log(message)
+		}	
+	}
+	//增强的测试函数
+	var ensureEqual = function(a, b, message) {
+		if (a != b) {
+			log(`*** 测试失败， ${a}不等于 ${b} ， ${message}`)
+		}
+	}
+
+
+
+//1
+//求数组的和
+var sum = function(arr) {
+	var s = 0
+	for(var i = 0; i < arr.length; i++) {
+		var a = arr[i]
+		s = s + a
+	}
+	return s
+}
+
+var testSum = function() {
+	ensure(sum([1,2,3]) === 6,"test1错误")
+	ensure(sum([1,2,3]) === 7,"test2错误")
+}
+testSum()
+
+
+
+
+
+
+
+//2
+//参数是一个只包含数字的array
+//求array的乘积
+//for空格
+var product = function(array) {
+	var s = 1
+	for(var i = 0; i < array.length; i++) {
+		var a = array[i]
+		s = s * a
+	}
+	return s
+}
+//测试函数
+var testProduct = function() {
+	ensure(product([1,2,3]) === 6,"product错误")
+}
+testProduct()
+
+
+//3
+//返回一个数的绝对值
+var abs = function(n) {
+	if (n < 0) {
+		return -n 
+	} else {
+		return n
+	}
+}
+var testAbs = function() {
+	ensure(abs(-10) === 10,"absc错误")
+	ensure(abs(10) === 10,"absc错误")
+}
+testAbs()
+
+//4
+//参数是一个值包含数字的array
+//求array中所有数字的平均值
+var ensure = function(condition, message) {
+	if (!condition) {
+		console.log(message)
+	}	
+}
+var sum = function(arr) {
+	var s = 0
+	for(var i = 0; i < arr.length; i++) {
+		var a = arr[i]
+		s = s + a
+	}
+	return s
+}
+var average = function(arr) {
+	var sumAll = sum(arr)
+	var ave = sumAll / arr.length
+	return ave
+}
+//测试
+var testAve = function() {
+	ensure(average([3,4,5])===4,"average1 false")
+	ensure(average([3,6,6])===5,"average2 false")
+	ensure(average([3,0,3])===2,"average3 false")
+}
+testAve()
+
+//4
+//参数是一个值包含数字的array
+//求array中最小的数字
+var ensure = function(condition, message) {
+	if (!condition) {
+		console.log(message)
+	}	
+}
+var min = function(arr) {
+	var min = arr[0]
+	for(var i = 0; i < arr.length; i++) {
+		var n = arr[i]
+		if (min > n) {
+			min = n
+		} else {
+			min = min 
+		}
+	}
+	return min 
+}
+
+var testmin = function() {
+	ensure(min([3,4,5])===3,"min1 false")
+	ensure(min([3,2,5])===2,"min2 false")
+	ensure(min([3,4,0])===0,"min3 false")
+	ensure(min([-1,4,0])===-1,"min4 false")
+}
+testmin()
+
+//5
+/*
+参数是一个数字n
+返回以下序列的结果
+1 - 2 + 3 - 4 + 5 。。。 n 
+ */
+var ensure = function(condition, message) {
+	if (!condition) {
+		console.log(message)
+	}	
+}
+var sum1 = function(n) {
+	var sum = 0
+	for(var i = 0;i < n + 1;i++) {
+		if (i % 2 == 0) {
+			sum = sum - i
+		} else {
+			sum = sum + i
+		}
+	}
+	return sum
+}
+var testensure = function() {
+	ensure(sum1(5)===3,"sum1 false")
+	ensure(sum1(5)===6,"sum2 false")
+}
+testensure()
+
+//6
+/*
+参数是一个数字n
+返回以下序列的结果
+1 + 2 - 3 + 4 - 5 。。。 n 
+ */
+var ensure = function(condition, message) {
+	if (!condition) {
+		console.log(message)
+	}	
+}
+var sum2 = function(n) {
+	var sum = 1
+	for(var i = 2; i < n + 1; i++) {
+		if (i % 2 == 0) {
+			sum += i
+		}else {
+			sum -=i
+		}
+		log("sum",sum)
+	}
+	return sum
+
+}
+var testensure = function() {
+	ensure(sum2(5)===-1,"sum21 false")
+	ensure(sum2(5)===6,"sum22 false")
+}
+testensure()
+
+//作业7
+/*
+实现fac函数
+接受参数n
+返回n的阶乘，1*2*3*4*5...*n
+ */
+var ensure = function(condition, message) {
+	if (!condition) {
+		console.log(message)
+	}	
+}
+var fac = function(n) {
+	var a = 1
+	for(var i = 1; i < n + 1; i++) {
+		a *= i
+		log("a",a)
+	}
+	return a
+}
+var testensure = function() {
+	ensure(fac(5)===120,"fac false")
+	ensure(fac(5)===6,"fac false")
+}
+testensure()
+
+
+/*
+注意 下面几题中的参数op是operator(操作符)的缩写
+
+作业8
+实现apply函数
+参数如下
+op是string类型，值是"+" "-" "*" "/"其中之一
+a，b分别是2个数字
+根据op对a，b运算并返回结果(加减乘除)
+ */
+var ensure = function(condition, message) {
+	if (!condition) {
+		console.log(message)
+	}	
+}
+var apply = function(op, a, b) {
+	if (op == "+") {
+		return a + b
+	} else if (op == "-") {
+		return a - b
+	} else if (op == "*") {
+		return a * b
+	} else if (op == "/") {
+		return a / b
+	}
+}
+var testensure = function() {
+	ensure(apply("+", 4, 5)===9,"apply false") 
+	ensure(apply("+", 4, 5)===10,"apply false")
+}
+testensure()
+
+
+
+/*
+作业9
+实现applyList函数
+op是string类型，值是"+" "-" "*" "/"其中之一
+oprands是一个只包含数字的list
+根据op对oprands中的元素进行运算并返回结果
+例如，下面的调用返回-4
+var n = applyList("-",[3, 4, 2, 1])
+log(n)
+结果是4，用第一个数字减去所有的数字
+ */
+var ensure = function(condition, message) {
+	if (!condition) {
+		console.log(message)
+	}	
+}
+
+var applyList = function(op, oprands) {
+	var a = oprands[0]
+
+	if (op == "+") {
+		for(var i = 1; i < oprands.length; i++) {
+					var m = oprands[i]
+					a += m
+		}
+	}
+
+	if (op == "-") {
+		for(var i = 1; i < oprands.length; i++) {
+					var m = oprands[i]
+					a -= m
+		}
+	}
+
+	if (op == "*") {
+		for(var i = 1; i < oprands.length; i++) {
+					var m = oprands[i]
+					a *= m
+		}
+	}
+
+	if (op == "/") {
+		for(var i = 1; i < oprands.length; i++) {
+					var m = oprands[i]
+					a /= m
+		}
+	}
+
+		return a
+}
+
+var testensure = function() {
+	ensure(applyList("+",[3, 4, 2, 1])===-4,"applyList1 false")
+	ensure(applyList("+",[3, 4, 2, 1])===10,"applyList2 false")
+	ensure(applyList("-",[3, 4, 2, 1])===-4,"applyList3 false")
+	ensure(applyList("-",[3, 4, 2, 1])===-2,"applyList4 false")
+	ensure(applyList("*",[3, 4, 2, 1])===24,"applyList5 false")
+	ensure(applyList("*",[3, 4, 2, 1])===-2,"applyList6 false")
+	ensure(applyList("/",[12, 3, 2, 1])===2,"applyList7 false")
+	ensure(applyList("/",[12, 3, 2, 1])===-2,"applyList8 false")
+}
+
+testensure()
+
+
+/*
+作业10
+实现applyCompare函数
+参数如下
+expression是一个array，包含3个元素
+第一个元素是op，值是"<"">""=="其中之一
+剩下两个元素分别是2个数字
+根据op对数字运算并返回结果（结果为true或者false）
+ */
+
+var ensure = function(condition, message) {
+	if (!condition) {
+		console.log(message)
+	}	
+}
+
+var applyCompare = function(expression) {
+	var a = expression[0]
+	var b = expression[1]
+	var c = expression[2]
+	if (a == ">") {
+		return b > c
+	}
+	if (a == "<") {
+		return b < c
+	}
+	if (a == "==") {
+		return b == c
+	}
+}
+
+var testensure = function() {
+	ensure(applyCompare([">", 3, 2]),"applyCompare1 false")
+	ensure(applyCompare([">", 3, 4]),"applyCompare2 false")
+	ensure(applyCompare(["<", 3, 4]),"applyCompare3 false")
+	ensure(applyCompare(["<", 3, 2]),"applyCompare4 false")
+	ensure(applyCompare(["==", 3, 3]),"applyCompare5 false")
+	ensure(applyCompare(["==", 3, 4]),"applyCompare6 false")
+}
+
+testensure()
+
+
+/*
+作业11
+实现applyOps函数
+参数如下
+expression是一个array
+expression中第一个元素是上面几题的op，其中'+-*\/'就调用作业9的函数，"><=="调用作业10的函数
+根据expression运算并返回结果
+ */
+var applyOps = function(expression) {
+	var op = expression[0]
+	if (op == "+"|| op == "-"|| op == "*"|| op == "/") {
+		
+	}
+}	
+
+//作业5
+//string的花式操作
+//
+//用到的知识
+//1 用下标引用字符串
+//2 字符串的切片
+//3 循环
+//4 选择
+//
+//注意，提示在文件最末尾
+//=====
+//
+//请以之前上课中的string相关内容作为参考
+//
+//资料
+//===
+//String函数可以把数字转化为字符串
+//例如String(1)就能得到“1”
+//
+//include函数可以检查一个字符串是否包含另一个字符串
+//例如"good".include(o)返回true
+//
+//
+//作业1
+var addString = function(s ,n) {
+	var ss = String(s)
+	var m = ''
+	for(var i = 0; i < n; i++) {
+		m += ss
+	}
+	return m
+}
+
+
+
+var zfill = function(n, width) {
+	/*
+	n是int类型
+	width是int类型
+	把n的位数变成width这么长，并在右对齐，不足部分用0补充，具体请看测试，注意返回的是string类型
+	 */
+	/*
+	var f
+	var stringN = String(n)
+	var stringNum = String(n).length
+	if(stringNum > width) {
+		f = stringN
+		return f
+	}
+	else if(stringNum < width) {
+		var add = width - stringNum
+		var a = addString(0, add)
+		f = a + stringN
+		return f
+		log("zero",a)
+		log("final",f)	
+	}		
+	else {
+		f = stringN
+		return f		
+	}
+	 */
+	var char = String(n)
+	var len = width - char.length
+	var f = addString(0, len) + char
+	return f
+}
+
+
+var test_zfill = function() {
+	ensure(zfill(1, 4) === "0001","zfill 测试1")
+	ensure(zfill(23, 4) === "0023","zfill 测试2")
+	ensure(zfill(12345, 4) === "12345","zfill 测试3")
+	ensure(zfill(169, 5) === "00169","zfill 测试4")
+	ensure(zfill(169, 5) === "0169","zfill 测试5")
+}
+
+test_zfill()
+
+//作业2
+//注意，这是一个新的知识点，叫默认参数
+//fillchar这个参数如果你不提供，它的值默认是" "
+var addString = function(s ,n) {
+	var ss = String(s)
+	var m = ''
+	for(var i = 0; i < n; i++) {
+		m += ss
+	}
+	return m
+}
+var ljust = function(s, width, fillchar=" ") {
+	/*
+	s是string
+	width是int
+	fillchar是长度为1的字符串，默认为空格" "
+	如果s长度小于width，则在末尾用fillchar填充并返回
+	否则，原样返回，不做额外处理
+	 */
+	// var stringNum = s.length
+	// var f
+	// if(stringNum > width){
+	// 	f = s
+	// 	return f
+	// }
+	// else if(stringNum < width){
+	// 	f = s + addString(fillchar, width - stringNum)
+	// 	return f
+	// }
+	// else{
+	// 	f = s
+	// 	return f
+	// }
+	var l = s.length
+	var len = width - l
+	var f = s + addString(fillchar, len)
+	return f
+
+	
+}
+
+var test_ljust = function() {
+	ensure(ljust("gua", 5) === "gua  ","ljust 测试1")
+	ensure(ljust("guagua", 5) === "guagua","ljust 测试2")
+	ensure(ljust("gua", 5, "*") === "gua**","ljust 测试3")
+	ensure(ljust("gua", 5, "*") === "ua**","ljust 测试4")
+}
+test_ljust()
+
+
+
+//作业3
+
+var addString = function(s ,n) {
+	var ss = String(s)
+	var m = ''
+	for(var i = 0; i < n; i++) {
+		m += ss
+	}
+	return m
+}
+var rjust = function(s, width, fillchar=' ') {
+	/*
+	s是string
+	width是int
+	fillchar是长度为1的字符串，默认为空格" "
+	如果s长度小于width，则在开头用fillchar填充并返回
+	返回string类型
+	 */
+	// var stringNum = s.length
+	// var f
+	// if(stringNum > width){
+	// 	f = s
+	// 	return f
+	// }
+	// else if(stringNum < width){
+	// 	f = addString(fillchar, width - stringNum) + s
+	// 	return f
+	// }
+	// else{
+	// 	f = s
+	// 	return f
+	// }
+	var l = s.length
+	var len = width - l
+	return addString(fillchar, len) + s
+
+}
+
+var test_rjust = function() {
+	ensure(rjust("gua", 5) === "  gua","rjust 测试1")
+	ensure(rjust("guagua", 5) === "guagua","rjust 测试2")
+	ensure(rjust("gua", 5, "*") === "**gua","rjust 测试3")
+	ensure(rjust("gua", 5, "*") === "*gua","rjust 测试4")
+}
+test_rjust()
+
+//作业4
+var addString = function(s ,n) {
+	var ss = String(s)
+	var m = ''
+	for(var i = 0; i < n; i++) {
+		m += ss
+	}
+	return m
+}
+var center = function(s, width, fillchar=" ") {
+	/*
+	s是string
+	width是int
+	fillchar是长度为1的字符串，默认为空格" "
+
+	如果s长度小于width，则在两边用fillchar填充并返回
+	如果s.length和width互为奇偶，则无法平均分配两边的fillchar
+	这种情况下，让左边的fillchar数量小于右边的
+	返回string类型
+	 */
+	// var addAll = width - s.length
+	// log("addAll",addAll)
+	// if(addAll < 0) {
+	// 	return s
+	// }else {
+	// 	var leftNum = Math.floor((addAll / 2))
+	// 	var rightNum = Math.ceil((addAll / 2))
+	// 	var addLeft = addString(fillchar, leftNum)
+	// 	var addRight = addString(fillchar, rightNum)
+	// 	var f = addLeft + s + addRight
+	// 	log("leftNum",leftNum)
+	// 	log("rightNum",rightNum)
+	// 	return f
+
+	// }
+	var left = Math.floor((width - s.length) / 2)
+	var right = Math.ceil((width - s.length) / 2)
+	var leftStr = addString(fillchar, left)
+	var rightStr = addString(fillchar, right)
+	var f = leftStr + s + rightStr
+	return f
+}
+var test_center = function() {
+	ensure(center("gua", 5) === " gua ","center 测试1")
+	ensure(center("gua", 5,"*") === "*gua*","center 测试2")
+	ensure(center("gw", 5) === " gw  ","center 测试3")
+	ensure(center("gua", 6) === " gua  ","center 测试4")
+	ensure(center("gua", 6) === "gua  ","center 测试5")
+}
+test_center()
+
+//作业5
+var is_space = function(s) {
+	/*
+	s是string
+	检查s中是否只包含空格
+	返回bool，如果s中包含的只有空格则返回true，否则返回false
+	 */
+	var t = 0
+	if(s.length ===0) {
+		return false
+	}else {
+		for(var i = 0; i < s.length; i++) {
+			if(s[i] !== " ") {
+				t--
+			}
+		}
+		if(t < 0){
+			return false
+		}else {
+			return true
+		}		
+	}
+
+
+
+
+
+}
+var test_is_space = function() {
+	// ensure(is_space("  ") == true, "is_space 测试1")
+	// ensure(is_space("   ") == true," is_space 测试2")
+	// ensure(is_space('') == false, "is_space 测试3")
+	ensure(is_space("gua")  == false, "is_space 测试4")
+	// ensure(is_space(" gua")  == false, "is_space 测试5")
+}
+test_is_space()
+
+
+//作业6
+var is_digit = function(s) {
+	/*
+	s是字符串
+	检查s中是否包含数字
+	返回bool，如果s中只有数字返回true
+	 */
+	// var t = 0
+	var num = "1234567890"
+	// if(s.length === 0) {
+	// 	return false
+	// }else {
+	// 	for(var i = 0; i < s.length; i++) {
+	// 		var n = s[i]
+	// 		if(!num.includes(n)) {
+	// 			t--
+	// 		}	
+	// 	}
+	// 	if(t < 0) {
+	// 		return false
+	// 	}else {
+	// 		return true
+	// 	}
+	// }
+	for(var i = 0; i < s.length; i++) {
+		var char = s[i]
+		if (char != num) {
+			return false
+		} 
+	}
+	return true
+
+}
+var test_is_digit = function() {
+	ensure(is_digit("123") == true, "is_digit 测试1")
+	ensure(is_digit("0") == true," is_digit 测试2")
+	ensure(is_digit('  ') == false, "is_digit 测试3")
+	ensure(is_digit("1a1") == false, "is_digit 测试4")
+	ensure(is_digit("gua") == false, "is_digit 测试5")
+	ensure(is_digit("g11") == false, "is_digit 测试6")
+	ensure(is_digit("") == false, "is_digit 测试7")
+}
+test_is_digit()
+
+
+//作业7 ok
+var strip_left = function(s) {
+	/*
+	s是string
+	返回一个“删除了字符串开始的所有空格”的字符串
+	返回string
+	 */
+	// var m = 0
+	// for(var i = 0; i < s.length; i++) {
+	// 	var n = s[i]
+	// 	if(n == " ") {
+	// 		m++
+	// 	}else {
+	// 		break
+	// 	}
+	// }
+	// var f = s.slice(m)
+	// return f
+	var index = 0
+    for (var i = 0; i < s.length; i++) {
+        var char = s[i]
+        if (char != ' ') {
+            index = i
+            break
+        }
+        //全是空格的情况
+        index = s.length
+    }
+    return s.slice(index)
+}
+var test_strip_left = function() {
+	ensure(strip_left("  gua") === "gua", "strip_left 测试1")
+	ensure(strip_left(" gua  ") === "gua  "," strip_left 测试2")
+	ensure(strip_left('') ==='', "strip_left 测试3")
+	ensure(strip_left("    ") === '', "strip_left 测试4")
+}
+test_strip_left()
+
+
+//作业8
+var strip_right = function(s) {
+	/*
+	s是string
+	返回一个“删除了字符串右边的所有空格”的字符串
+	返回string
+	 */
+	var index = 0
+	var res = s.split("").reverse().join("")
+	for(var i = 0; i < s.length; i++) {
+		var n = res[i]
+		if(n == " ") {
+			index++
+		}else {
+			break
+		}
+	}
+	var f = res.slice(index).split("").reverse().join("")
+	return f
+}
+var test_strip_right = function() {
+    ensure(strip_right('  gua') === '  gua', 'strip_right 测试 1')
+    ensure(strip_right(' gua  ') === ' gua', 'strip_right 测试 2')
+    ensure(strip_right('') === '', 'strip_right 测试 3')
+    ensure(strip_right('    ') === '', 'strip_right 测试 4')
+     ensure(strip_right('   ') === '', 'strip_right 测试 5')
+}
+test_strip_right()
+
+
+//9
+var strip = function(s) {
+    /*
+    s 是 string
+    返回一个「删除了字符串首尾的所有空格」的字符串
+
+    返回 string
+    */
+    var a = strip_left(s)
+    var b = strip_right(a)
+
+    return b
+}
+
+// 测试函数
+var test_strip = function() {
+    ensure(strip('  gua') === 'gua', 'strip 测试 1')
+    ensure(strip(' gua  ') === 'gua', 'strip 测试 2')
+    ensure(strip('') === '', 'strip 测试 3')
+    ensure(strip('    ') === '', 'strip 测试 4')
+    ensure(strip('    ') === '', 'strip 测试 5')
+}
+test_strip()
+
+
+//10
+//将 s 中的 old 字符串替换为 newString 字符串
+var replace = function(s, old, new) {
+	 /*
+    3 个参数 s old new 都是字符串
+    返回一个「将 s 中的 old 字符串替换为 new 字符串」的字符串
+    假设 old 存在并且只出现一次
+
+    返回 string
+    */
+   
+   
+}
+
+var test_replace = function() {
+    ensure(replace('hello, world', 'world', 'gua') === 'hello, gua', 'replace 测试 1')
+    ensure(replace('hello', 'world', 'gua') === 'hello', 'replace 测试 2')
+    ensure(replace('hello', 'll', 'gua') === 'heguao', 'replace 测试 3')
+}
+test_replace()
+
+//1
+var find = function(s1, s2) {
+    /*
+    s1 s2 都是 string
+    但 s2 的长度是 1
+
+    返回 s2 在 s1 中的下标, 从 0 开始, 如果不存在则返回 -1
+    */
+    var index = -1 
+    for(var i = 0; i < s1.length; i++) {
+    	var a = s1[i]
+    	if (a === s2) {
+    		index = i
+    		break
+    	}
+    }
+    return index
+}
+var testSum = function() {
+	ensure(find("asdfgs", "s") == 1,"find函数出错1")
+	ensure(find("asdfg", "v") == -1,"find函数出错2")
+}
+testSum()
+
+
+
+
+
+//2
+var lowercase = function(s) {
+	/*
+	s是字符串
+	s字符串中全部都是大写，转成小写
+	 */
+	var upperCase = "QWERTYUIOPASDFGHJKLZXCVBNM"
+	var lowerCase = "qwertyuiopasdfghjklzxcvbnm"
+	var f = ""
+	for(var i = 0; i < s.length; i++) {
+		var a = s[i]
+		var index = find(upperCase, a)
+		f = f + lowerCase[index]
+	}
+	return f
+}
+var testlowercase = function() {
+	ensure(lowercase("WPDIV") == "wpdiv","lowercase函数出错1")
+	ensure(lowercase("WPDIV") == "wpdv","lowercase函数出错2")
+}
+testlowercase()
+
+
+//3
+var uppercase = function(s) {
+	/*
+	s是字符串
+	s字符串中全小写，转成大写
+	 */
+	var upperCase = "QWERTYUIOPASDFGHJKLZXCVBNM"
+	var lowerCase = "qwertyuiopasdfghjklzxcvbnm"
+	var f = ""
+	for(var i = 0; i < s.length; i++) {
+		var a = s[i]
+		var index = find(lowerCase, a)
+		f = f + upperCase[index]
+	}
+	return f
+}
+var testuppercase = function() {
+	ensure(uppercase("wpdiv") == "WPDIV","uppercase函数出错1")
+	ensure(uppercase("wpdv") == "WPDIVa","uppercase函数出错2")
+}
+testuppercase()	
+
+//3
+var lowercase1  = function(s) {
+	/*
+	s是字符串
+	s字符串含大写字母 转小写
+	 */
+	//方法1
+	// var f = ''
+	// var a = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+	// for(var i = 0; i < s.length;i ++) {
+	// 	var n = s[i]
+	// 	var index = find(a, n)
+	// 	if (index > 26) {
+	// 		f = f + a[index - 26]
+	// 	} else {
+	// 		f = f + a[index]
+	// 	}
+	// }
+	// log("f:", f)
+	// return f
+	// 
+	//方法2
+	var upperCase = "QWERTYUIOPASDFGHJKLZXCVBNM"
+	var lowerCase = "qwertyuiopasdfghjklzxcvbnm"
+	var f = ''
+	for(var i = 0; i < s.length; i++){
+		var n = s[i]
+		var index = find(upperCase, n)
+		if (index > -1) {
+			f = f + lowerCase[index]
+		} else {
+			f = f + n
+		}
+	}
+	return f
+}
+var testlowercase1 = function() {
+	ensure(lowercase1("wpdFFFiv") == "wpdfffiv","lowercase1函数出错1")
+	ensure(lowercase1("wpdFFFiv") == "wpdfffi","lowercase1函数出错2")
+}
+testlowercase1()		
+
+//4
+var uppercase1  = function(s) { 	
+	/*
+	s是字符串
+	s字符串含小写字母 转大写
+	 */
+	var upperCase = "QWERTYUIOPASDFGHJKLZXCVBNM"
+	var lowerCase = "qwertyuiopasdfghjklzxcvbnm"
+	var f = ''
+	for(var i = 0; i < s.length; i++){
+		var n = s[i]
+		var index = find(lowerCase, n)
+		if (index > -1) {
+			f = f + upperCase[index]
+		} else {
+			f = f + n
+		}
+	}
+	return f		
+}
+
+var testuppercase1 = function() {
+	ensure(uppercase1("wpdFFFiv") == "WPDFFFIV","uppercase1函数出错1")
+	ensure(uppercase1("wpdFFFiv") == "WPDFFFIv","uppercase1函数出错2")
+}
+testuppercase1()		
+
+//5
+var shiftedChar = function(char, n) {
+    /*
+    返回字符 char 右偏移 1 位后的字符
+    */
+	   
+}
+
+
+
+//
+var startsWith = function(s1, s2) {
+	//s1 是否以 s2 开头
+	var index = s2.length  	
+	if (s2 == s1.slice(0, index)) {
+		return true
+	} else {
+		return false
+	}
+
+
+}
+var teststartsWith = function() {
+	ensure(startsWith("ABCDECDFC", "ABCD") == true, "startsWith函数出错1")
+	ensure(startsWith("ABCDECDFC", "ABCDF") == false, "startsWith函数出错2")
+}
+teststartsWith()		
+
+
+
+
+//
+var find = function(s1, s2) {
+    /*
+    s1 s2 都是 string
+    但 s2 的长度是 1
+
+    返回 s2 在 s1 中的下标, 从 0 开始, 如果不存在则返回 -1
+    */
+    var index = -1 
+    for(var i = 0; i < s1.length; i++) {
+    	var a = s1[i]
+    	if (a === s2) {
+    		index = i
+    		break
+    	}
+    }
+    return index
+}	
+var findAllIn = function(s1, s2) {
+    /*
+    s1 是一个字符串
+    s2 是一个长度为 1 的字符串
+    返回参数 s2 在 s1 中出现的所有下标组成的 array
+    如果 s2 没有在 s1 中出现, 返回空数组 []
+    */
+	var q = []
+	var f = 0
+	for(var i = 0; i < s1.length; i++) {
+		var n = s1[i]
+		if (s2 == n) {
+			f = i
+			q.push(f)
+		}
+	}   
+	return q
+}
+var testfindAllIn = function() {
+	ensure(findAllIn("ABCDECDFC", "C") == [2, 5, 8], "findAllIn函数出错1")
+	ensure(findAllIn("ABCDECDFC", "C") == [2, 5], "findAllIn函数出错2")
+}
+testfindAllIn()		
+
+
+
+//
+var findAllString = function(s1, s2) {
+	/*
+	返回 s2（长度不定） 在 s1 中出现的所有下标组成的array, 不存在返回空数组
+	 */
+	//返回的是[2,5,8]的代码
+	
+}	
+var testfindAllString = function() {
+	ensure(findAllString("ABCDECDFCDE", "CD") == [2,3,5,6,8,9], "findAllString函数出错1")
+}
+testfindAllString()
+
+
+
+//
+var endsWith = function(s1, s2) {
+    /*
+    s1 是一个字符串
+    s2 是一个字符串
+    检查 s1 是否以 s2 结尾, 返回 true 或者 false
+    */
+	var index = s1.length -( s2.length  )
+	if (s1.slice(index) == s2) {
+		log("index:", index)
+		log("s1剪切：", s1.slice(index))			
+		return true
+	} else {
+		log("index:", index)
+		log("s1剪切：", s1.slice(index))	
+		return false
+	}	   
+	   
+}	
+var testendsWith = function() {
+	ensure(endsWith("ABCDECDDE", "DE") == true, "endsWith函数出错1")
+	ensure(endsWith("ABCDECDDE", "DE") == false, "endsWith函数出错2")
+	ensure(endsWith("ABCDECDDEf", "DEf") == true, "endsWith函数出错2")
+
+}
+testendsWith()
+
+
+//
+var _top = function(students) {
+/*
+    students 是 array
+    里面的每个元素都是如下格式的 object
+    {
+        'name': 'gua',
+        'sex': '男',
+        'score': 127,
+    }
+    返回 score 最高的那个元素(object)
+
+    新学到的：
+    如何保存最大的i值？
+	本来我是没有加1代码的，那么会导致i=1和i=2，而我只想i=2,
+	我就加了个i1值，它只会保存最大的i值
+
+*/	
+		var i1 = 0      //1
+	for(var i = 0; i < students.length; i++) {
+		var score = students[i].score
+		var maxScore = students[0].score
+		if (maxScore < score) {
+			maxScore = score
+			i1 = i  //1
+		}
+	}   
+	log("推出去：",students[i1])
+	return students[i1]
+}	
+var test_top = function() {
+	var a = {
+		name:'rjj',
+		sex:'male',
+		score:'127'
+	},
+		b = {
+		name:'we',
+		sex:'male',
+		score:'128'
+	},
+		c = {
+		name:'wewe',
+		sex:'male',
+		score:'130'
+	}
+	ensure(_top([a, b, c]) == c, "_top函数出错1")
+	ensure(_top([a, b, c]) == a, "_top函数出错2")
+}
+test_top()	
+
+
+//
+var formated_weekday = function(day) {
+	/*
+	day 是代表星期的数字, 从周一到周日分别是 1 2 3 4 5 6 7返回 ‘星期一’ ‘星期二’ 这样的描述字符串
+	 */
+	// var str = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
+	// log("结果：", str[ day-1 ])
+	// return str[day-1]
+	
+
+	var weekdayMap = {
+		"1":"星期一",
+		"2":"星期二",
+		"3":"星期三",
+		"4":"星期四",	
+		"5":"星期五",	
+		"6":"星期六",	
+		"7":"星期日",	
+	}
+	var key = String(day)
+	return weekdayMap[key]
+}	
+var testformated_weekday = function() {
+	ensure(formated_weekday(2) == "星期二","formated_weekday函数错误1")
+	ensure(formated_weekday(2) == "星期三","formated_weekday函数错误2")
+}
+testformated_weekday()	
+
+
+
+//
+
+var discount = function(price, grade) {
+	/*
+		price为消费金额（int），grade为折扣条件（字符串），返回对应折扣后的价格， grade参数不给则没有折扣
+
+		新学到的:
+		如果出现对应，而且对应路径多，那么可以用两个array来代替多个if路径
+	*/
+	// var i1 
+	// var a = ["小学生", "初中学生", "高中学生", "大学生", "研究学生",""]
+	// for(var i = 0; i < a.length; i++) {
+	// 	if (a[i] == grade) {
+	// 		log("i:", i)
+	// 		i1 = i
+	// 	}
+	// }
+	// var grades = [0.5, 0.6, 0.7, 0.8, 0.9, 1]
+	// var discount = grades[i1]
+	// log("discount:", discount)
+	// return price * discount
+	
+	// var grades = [
+	// 	"小学生",
+	// 	"初中学生",
+	// 	"高中学生",
+	// 	"大学生",
+	// 	"研究学生",
+	// ]
+	// if (grades.includes(grade)) {
+	// 	var priceMap = {
+	// 	"小学生":0.5,
+	// 	"初中学生":0.5,
+	// 	"高中学生":0.5,
+	// 	"大学生":0.5,
+	// 	"研究学生":0.5,
+	// 	}
+	// 	return price * priceMap[grade]
+	// } else {
+	// 	return price
+	// }
+	
+
+	var dis = valueForKey()
+	return price * dis
+}
+var testdiscount = function() {
+	ensure(discount(100, "小学生") == 50,"discount函数错误1")
+	ensure(discount(100, "小学生") == 60,"discount函数错误2")
+	ensure(discount(100, "") == 100,"discount函数错误3")
+	ensure(discount(100) == 10,"discount函数错误4")
+}
+testdiscount()	
+
+//
+var join = function(delimiter, array) {
+    /*
+    delimiter 是 string
+    array 是包含 string 的 array
+
+    把 array 中的元素用 delimiter 连接成一个字符串并返回
+    具体请看测试
+    */
+	// var a = ''
+	// for(var i = 0; i < array.length; i++) {
+	// 	var n = array[i]
+	// 	var s = delimiter + n
+
+	// 	a = a + s
+	// }   
+	// var b = a.slice(1)
+
+	// return b
+
+	// var s = array[0]
+	// for(var i = 1; i < array.length; i++) {
+	// 	var m = delimiter + array[i]
+	// 	s = s + m
+	// }
+	// return s
+	
+	var s = ''
+	for(var i = 0; i < array.length; i++) {
+		var n = array[i]
+		s = s + n + delimiter
+		log("s:",s)
+	}
+	return s.slice(0, 2*(array.length) - 1)
+}
+var testjoin = function() {
+	ensure(join("*", [1,2,3]) == "1*2*3","join函数错误1")
+}
+testjoin()	
+
+
+
+//
+var split = function(s, delimiter=' ') {
+    /*
+    s 是 string
+    delimiter 是 string, 默认为空格 ' '
+
+    以 delimiter 为分隔符号, 返回一个 array
+    例如
+    split('1 2 3') 返回 ['1', '2', '3']
+    split('a=b&c=d', '&') 返回 ['a=b', 'c=d']
+    注意, 测试 array 是否相等得自己写一个函数用循环来跑
+    */
+    var f = []
+    var index = 0
+    var space = delimiter.length
+    for(var i = 0; i < s.length; i++) {
+    	var n = s.slice(i, i + space)
+    	if (n === delimiter) {
+    		f.push(s.slice(index, i))
+    		index =  i + space
+    	}
+    }
+    f.push(s.slice(index))
+    return f
+}
+var testsplit = function() {
+	ensure(split("1*2*3*4*5", "*") == ["1", "2","3","4","5"],"split函数错误1")
+}
+testsplit()	
+
+//
+var split = function(s, delimiter=' ') {
+    /*
+    s 是 string
+    delimiter 是 string, 默认为空格 ' '
+
+    以 delimiter 为分隔符号, 返回一个 array
+    例如
+    split('1 2 3') 返回 ['1', '2', '3']
+    split('a=b&c=d', '&') 返回 ['a=b', 'c=d']
+    注意, 测试 array 是否相等得自己写一个函数用循环来跑
+    */
+    var f = []
+    var index = 0
+    var space = delimiter.length
+    for(var i = 0; i < s.length; i++) {
+    	var n = s.slice(i, i + space)
+    	if (n === delimiter) {
+    		f.push(s.slice(index, i))
+    		index =  i + space
+    	}
+    }
+    f.push(s.slice(index))
+    return f
+}
+var join = function(delimiter, array) {	
+	var s = ''
+	for(var i = 0; i < array.length; i++) {
+		var n = array[i]
+		s = s + n + delimiter
+		log("s:",s)
+	}
+	return s.slice(0, 2*(array.length) - 1)
+}
+var replaceAll = function(s, old, newString) {
+    /*
+    s old newString 都是 string
+    返回一个「将 s 中出现的所有 old 字符串替换为 new 字符串」的字符串
+    */
+    var a = split(s, old)
+    var b = join(newString, a)
+    return b
+}
+var testreplaceAll = function() {
+	ensure(replaceAll("1#2#3", "#", ".") == "1.2.3","replaceAll函数错误1")
+	ensure(replaceAll("1#2#3", "#", ".") == "1.2.","replaceAll函数错误2")
+}
+testreplaceAll()	
+
+
+
+//
+var str1 = function(n) {
+    /*
+    n 是 int
+    返回这样规律的字符串, 特殊情况不考虑
+    n       返回值
+    1       '1'
+    2       '121'
+    3       '12321'
+    */
+   	var f = ''
+   	var f1 = ''
+   	var a = parseInt(n)
+   	for(var i = 1; i < a + 1; i++) {
+   		f = f + i
+   		f1 = i + f1
+   	}
+   	var f2 = f + f1.slice(1)
+   	return f2
+}
+var teststr1 = function() {
+	ensure(str1(2) === "121","str1函数错误1")
+	ensure(str1(2) === "123","str1函数错误2")
+	ensure(str1(1) === "1","str1函数错误3")
+}
+teststr1()	
+
+
+//
+var str2 = function(n) {
+    /*
+    n 是 int
+    返回这样规律的字符串, 特殊情况不考虑
+    n       返回值
+    1       'A'
+    2       'ABA'
+    3       'ABCBA'
+    */
+	var Str = "0ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	var f = ''
+	var f1 = ''
+	var a = parseInt(n)
+	for(var i = 1; i < a + 1; i++) {
+		f = f + Str[i]
+		f1 = Str[i] + f1
+	}
+	var f2 = f + f1.slice(1)
+	return f2
+}
+var teststr2 = function() {
+	ensure(str2(3) === "ABCBA","str2函数错误1")
+	ensure(str2(2) === "ABA","str2函数错误2")
+	ensure(str2(1) === "A","str2函数错误3")
+	ensure(str2(5) === "ABCDEDCBA","str2函数错误3")
+}
+teststr2()
+
+//加法表
+var addline = function(int) {
+	var q = ''
+	for(var i = 1; i < int + 1; i++){
+		var m = i
+		q = q + `${int} + ${m} = ${int + m}  ` 
+	}
+	return q
+}
+var addTable = function(a) {
+    /*
+    返回这样格式的加法口诀表(没写全, 但是要返回完整的)
+    注意, 这只是我输入的内容
+    实际上你普通 log 出来是不会有回车的
+    [
+        '1 + 1 = 2',
+        '2 + 1 = 3  2 + 2 = 4',
+        '3 + 1 = 4  3 + 2 = 5  3 + 3 = 6',
+    ]
+    */
+   	var arr = []
+   	for(var i = 1; i < a + 1; i++) {
+   		var f = addline(i)
+   		arr.push(f)
+   	}
+   	return arr 
+}
+addTable(9)
+
+
+//加法表2
+var line = function(int) {
+	var f = ''
+	for(var i = 1; i < int + 1; i++){
+		//i代表的是一行有多少个式子
+		f = f + `${int} + ${i} = ${int + i}    `
+	}
+	return f
+}
+var addTable1 = function(a) {
+	var arr = []
+	for(var i = 1; i < a + 1; i++) {
+		//i代表的是行数
+		var f = line(i)
+		arr.push(f)
+	}
+	return arr
+}
+
+//
+var range1 = function(start, end) {
+	/*
+	参数start和end都是int，假设start为1,end 为 5, 返回[1, 2, 3, 4]
+	 */
+	var arr = []
+	for(var i = start; i < end; i++) {
+		var n = i
+		arr.push(n)
+	}
+	return arr	
+}
+//下面测试是错的
+var testrange1 = function() {
+	ensure(range1(1, 5) == [1, 2, 3, 4],"range1函数错误1")
+	ensure(range1(2, 6) ===[2, 3, 4, 5],"range1函数错误2")
+}
+testrange1()
+
+
+//
+var range1 = function(start, end) {
+	/*
+	参数start和end都是int，假设start为1,end 为 5, 返回[1, 2, 3, 4]
+	 */
+	var arr = []
+	for(var i = start; i < end; i++) {
+		var n = i
+		arr.push(n)
+	}
+	return arr	
+}
+var range2 = function(start, end, step) {
+	/*
+	参数start、end、step都是int，
+	step大于0，假设start为1,end 为 5, step=1，返回[1, 2, 3, 4]；
+	假设 start=0, end=6, step=2 返回[0, 2, 4]
+	 */
+	var f = range1(start, end)
+	var f1 = []
+	var a = 0
+	for(var i = 0; i < f.length; i + step) {
+		log(i)
+	}
+	return f1
+
+}
+var range2 = function(start, end, step) {
+	/*
+	参数start、end、step都是int，
+	step大于0，假设start为1,end 为 5, step=1，返回[1, 2, 3, 4]；
+	假设 start=0, end=6, step=2 返回[0, 2, 4]
+	 */
+	var arr = []
+	 for(var i = start; i < end; i = i + step) {
+	 	var n = i
+	 	arr.push(n)
+	 }
+	return arr
+}
+
+//
+var range2 = function(start, end, step) {
+	/*
+	参数start、end、step都是int，
+	step大于0，假设start为1,end 为 5, step=1，返回[1, 2, 3, 4]；
+	假设 start=0, end=6, step=2 返回[0, 2, 4]
+	 */
+	var arr = []
+	 for(var i = start; i < end; i = i + step) {
+	 	var n = i
+	 	arr.push(n)
+	 }
+	return arr
+}
+var rerange2 = function(start, end, step) {
+	/*
+	参数start、end、step都是int，
+	step大于0，假设start为1,end 为 5, step=1，返回[1, 2, 3, 4]；
+	假设 start=0, end=6, step=2 返回[0, 2, 4]
+	 */
+	var arr = []
+	 for(var i = start; i < end; i = i + step) {
+	 	var n = i
+	 	arr.unshift(n)
+	 }
+	return arr
+}
+
+
+var range3 = function(start, end, step) {
+	/*
+	假设 start=1, end=5, step=1 返回数据如下[1, 2, 3, 4]
+	假设 start=6, end=0, step=-1 返回数据如下[6, 5, 4, 3, 2, 1]
+	使用 while 循环，返回一个 array
+	 */
+
+	if (step > 0) {
+		var f = range2(start, end, step)
+	} else {
+		var f = rerange2(end + 1 , start + 1, -step)
+	}
+	return f
+}
+
+
+//
+var random01 = function() {
+    /*
+    js 标准数学库有一个随机数函数
+    Math.random()
+    它返回 0 - 1 之间的小数
+    用它实现本函数, 返回 0 或 1
+    取0的条件是0.xxxxxx小数点后第一位是偶数
+    取1的条件是0.xxxxxx小数点后第一位是奇数
+    */
+    return Math.floor(Math.random()*10) % 2
+}
+
+//
+var random01 = function() {
+    /*
+    js 标准数学库有一个随机数函数
+    Math.random()
+    它返回 0 - 1 之间的小数
+    用它实现本函数, 返回 0 或 1
+    取0的条件是0.xxxxxx小数点后第一位是偶数
+    取1的条件是0.xxxxxx小数点后第一位是奇数
+    */
+    return Math.floor(Math.random()*10) % 2
+}
+var randomLine01 = function(n) {
+    /*
+    返回一个只包含了 0 1 的随机 array, 长度为 n
+    假设 n 为 5, 返回的数据格式如下(这是格式范例, 真实数据是随机的)
+    [0, 0, 1, 0, 1]
+    */
+    var arr = []
+    var a = n
+    for(var i= 0; i < a; i ++) {
+    	var n = random01()
+    	arr.push(n)
+    }
+    return arr
+}
+
+//
+var random01 = function() {
+    /*
+    js 标准数学库有一个随机数函数
+    Math.random()
+    它返回 0 - 1 之间的小数
+    用它实现本函数, 返回 0 或 1
+    取0的条件是0.xxxxxx小数点后第一位是偶数
+    取1的条件是0.xxxxxx小数点后第一位是奇数
+    */
+    return Math.floor(Math.random()*10) % 2
+}
+var randomLine01 = function(n) {
+    /*
+    返回一个只包含了 0 1 的随机 array, 长度为 n
+    假设 n 为 5, 返回的数据格式如下(这是格式范例, 真实数据是随机的)
+    [0, 0, 1, 0, 1]
+    */
+    var arr = []
+    var a = n
+    for(var i= 0; i < a; i ++) {
+    	var n = random01()
+    	arr.push(n)
+    }
+    return arr
+}
+var randomSquare01 = function(n) {
+    /*
+    返回以下格式的数据
+    假设 n 为 3, 返回的数据格式如下(这是格式范例, 真实数据是随机的)
+    注意, 这只是一个 array, 并不是它显示的样子
+    注意, 这是一个 array 不是 string
+    [
+        [0, 0, 1],
+        [1, 0, 1],
+        [0, 0, 0],
+    ]
+    返回, 包含了 n 个『只包含 n 个「随机 0 1」的 array』的 array
+    */
+    var arr1 = []
+
+    for(var i = 0; i < n; i++) {
+    	var m = randomLine01(n)
+    	arr1.push(m)
+    }
+    return arr1
+}
+
+//
+var random09 = function() {
+    /*
+    js 标准数学库有一个随机数函数
+    Math.random()
+    它返回 0 - 1 之间的小数
+    用它实现本函数, 返回 0 或 1
+    取0的条件是0.xxxxxx小数点后第一位是偶数
+    取1的条件是0.xxxxxx小数点后第一位是奇数
+    */
+    var n = Math.floor(Math.random()*10) % 2
+	if (n > 0) {
+		n = 9
+	}
+	return n
+}
+
+var randomLine09 = function(n) {
+    /*
+    返回一个只包含了 0 9 的随机 array, 长度为 n
+    假设 n 为 5, 返回的数据格式如下(这是格式范例, 真实数据是随机的)
+    [0, 0, 9, 0, 9]
+    */
+  	var arr = []
+    var a = n
+    for(var i= 0; i < a; i ++) {
+    	var n = random09(a)
+    	arr.push(n)
+    }
+    return arr
+}
+
+
+//
+var markedLine = function(array) {
+    /*
+    array 是一个只包含了 0 9 的 array
+    返回一个标记过的 array
+    注意, 使用一个新数组来存储结果, 不要直接修改老数组
+    复制数组用 array.slice(0) 实现
+
+    标记规则如下
+    对于下面这样的 array
+
+    [0, 0, 0, 9, 0]  //arr1
+    [0, 0, 9, 0, 9]  // arr
+    [0, 9, 0, 9, 0]  //arr2
+    标记后是这样
+    [0, 1, 9, 2, 9]
+
+    规则是, 0 会被设置为左右两边 9 的数量
+    */
+   	var arr = array
+   	var arrf = arr.slice(0)
+   	var arr1 = arr.slice(0, arr.length - 1)
+   	var arr2 = arr.slice(1, arr.length)
+   	arr1.unshift(0)
+   	arr2.push(0)
+
+   	for(var i = 0; i < arr.length; i++) {
+   		var n = arr[i]
+   		if (n !== arr1[i] && n === 0) {
+   			arrf[i]++
+   		}
+   		if (n !== arr2[i] && n === 0) {
+   			arrf[i]++
+   		}   		
+   	}
+   	// for(var i = 0; i < arr.length; i++) {
+   	// 	var n = arr[i]
+   	// 	if (n !== arr2[i] && n === 0) {
+   	// 		arrf[i]++
+   	// 	}
+   	// } 
+   	return arrf
+}
+
+
+
+//扫雷游戏逻辑答案
+//
+var clonedSquare = function(array) {
+    var s = []
+    for (var i = 0; i < array.length; i++) {
+        var line = []
+        for (var j = 0; j < array[i].length; j++) {
+            line.push(array[i][j])
+        }
+        s.push(line)
+    }
+    return s
+}
+var plus1 = function(array, x, y ) {
+	var n = array.length
+	if (x >= 0 && x < n && y >= 0 && y < n) {
+		if (array[x][y] !== 9) {
+			array[x][y] += 1
+		}
+	}
+}
+var markAround = function(array, x ,y ) {
+	if (array[x][y] === 9) {
+		plus1(array, x - 1, y - 1)
+		plus1(array, x - 1, y)
+		plus1(array, x - 1, y + 1)
+
+		plus1(array, x, y - 1)
+		plus1(array, x, y + 1)
+
+		plus1(array, x + 1 , y - 1)
+		plus1(array, x + 1 , y)
+		plus1(array, x + 1 , y + 1)
+		
+
+	}
+}
+var markedSquare = function(array) {
+    /*
+    array 是一个「包含了『只包含了 0 9 的 array』的 array」
+    返回一个标记过的 array
+    ** 注意, 使用一个新数组来存储结果, 不要直接修改老数组
+
+    范例如下, 这是 array
+    [
+        [0, 9, 0, 0],
+        [0, 0, 9, 0],
+        [9, 0, 9, 0],
+        [0, 9, 0, 0],
+    ]
+
+    这是标记后的结果
+    [
+        [1, 9, 2, 1],
+        [2, 4, 9, 2],
+        [9, 4, 9, 2],
+        [2, 9, 2, 1],
+    ]
+
+    规则是, 0 会被设置为四周 8 个元素中 9 的数量
+    */
+   	var square = clonedSquare(array)
+   	for(var i = 0; i < square.length; i++) {
+   		var line = square[i]
+   		for(var j = 0; j < line.length; j++) {
+   			markAround(square, i, j)
+   		}
+   	}
+   	return square
+}
+
+
+
+//扫雷
+var clonedSquare = function(array) {
+	var arr = []
+	for(var i = 0; i < array.length; i++) {
+		var line = array[i]
+		arr.push(line)
+	}
+	return arr
+}
+var plus1 = function(array, x, y) {
+	var n = array.length
+	if (x >= 0 && x < n && y >= 0 && y < n) {
+		if (array[x][y] !== 9) {
+			array[x][y] += 1
+		}
+	}
+}
+var markAround = function(array, x, y ) {
+	/*
+	###
+	#9#
+	###
+	 */
+	if(array[x][y] === 9){
+		plus1(array, x - 1 , y - 1)
+		plus1(array, x - 1 , y)
+		plus1(array, x - 1 , y + 1)
+		plus1(array, x , y - 1)
+		plus1(array, x , y + 1)
+		plus1(array, x + 1 , y - 1)
+		plus1(array, x + 1 , y)
+		plus1(array, x + 1 , y + 1)
+	}
+}
+var markedSquare = function(array) {
+	var square = clonedSquare(array)
+	for(var i = 0; i < square.length; i++) {
+		var line = square[i]
+		for(var j = 0; j < line.length; j++) {
+			markAround(array, i, j)
+	}
+	return square
+}
+
+//
+var unique = function(a) {
+    /*
+    a 是一个 array
+    返回一个 array, 包含了 a 中所有元素, 且不包含重复元素
+    例如 a 是 [1, 2, 3, 1, 3, 5]
+    返回 [1, 2, 3, 5]
+    */
+   	var arr = []
+   	for(var i = 0; i < a.length; i++) {
+   		var n = a[i]
+   		if (!arr.includes(n)) {
+   			arr.push(n)
+   		}
+   	}
+   	return arr
+}
+var testunique = function() {
+	ensure(unique([1, 2, 3, 1, 3, 5]) == [1, 2, 3, 5],"unique函数错误1")
+	ensure(unique([1, 2, 3, 1, 3, 5]) == [1, 2, 3],"unique函数错误1")
+}
+testunique()
+
+
+//
+//
+var unique = function(a) {
+    /*
+    a 是一个 array
+    返回一个 array, 包含了 a 中所有元素, 且不包含重复元素
+    例如 a 是 [1, 2, 3, 1, 3, 5]
+    返回 [1, 2, 3, 5]
+    */
+   	var arr = []
+   	for(var i = 0; i < a.length; i++) {
+   		var n = a[i]
+   		if (!arr.includes(n)) {
+   			arr.push(n)
+   		}
+   	}
+   	return arr
+}
+var intersection = function(a, b) {
+    /*
+    a b 都是 array
+
+    返回一个 array, 里面的元素是同时出现在 a b 中的元素
+    这个 array 中不包含重复元素
+    */
+  	var m = unique(a)
+  	var arrf = []
+  	for(var i = 0; i < b.length; i++) {
+  		var n = b[i]
+  		if (m.includes(n)) {
+  			arrf.push(n)
+  		}
+  	}
+  	return arrf 
+}
+
+//
+var unique = function(a) {
+    /*
+    a 是一个 array
+    返回一个 array, 包含了 a 中所有元素, 且不包含重复元素
+    例如 a 是 [1, 2, 3, 1, 3, 5]
+    返回 [1, 2, 3, 5]
+    */
+   	var arr = []
+   	for(var i = 0; i < a.length; i++) {
+   		var n = a[i]
+   		if (!arr.includes(n)) {
+   			arr.push(n)
+   		}
+   	}
+   	return arr
+}
+var union = function(a, b) {
+    /*
+    a b 都是 array
+
+    返回一个 array, 里面的元素是所有出现在 a b 中的元素
+    这个 array 中不包含重复元素
+    */
+   	var m = unique(a)
+   	var n = unique(b)
+   	var arrf = []
+   	for(var i = 0; i < m.length; i++) {
+   		var x = m[i]
+   		arrf.push(x)
+   	}
+   	for(var i = 0; i < n.length; i++) {
+   		var v = n[i]
+   		log("v:", v)
+   		if (!arrf.includes(v)) {
+   			arrf.push(v)
+   		}
+   	}
+   	return arrf   	
+}
+
+//
+var unique = function(a) {
+    /*
+    a 是一个 array
+    返回一个 array, 包含了 a 中所有元素, 且不包含重复元素
+    例如 a 是 [1, 2, 3, 1, 3, 5]
+    返回 [1, 2, 3, 5]
+    */
+   	var arr = []
+   	for(var i = 0; i < a.length; i++) {
+   		var n = a[i]
+   		if (!arr.includes(n)) {
+   			arr.push(n)
+   		}
+   	}
+   	return arr
+}
+var difference = function(a, b) {
+    /*/
+    a b 都是 array
+
+    返回一个 array, 里面的元素是
+    所有在 a 中有 b 中没有的元素
+    这个 array 中不包含重复元素
+    /*/
+    var l = []
+    for(var i = 0; i < a.length; i++) {
+    	var n = a[i]
+    	if (!b.includes(n)) {
+    		l.push(n)
+    	}
+    }
+    return unique(l)
+}
+
+//
+var unique = function(a) {
+    /*
+    a 是一个 array
+    返回一个 array, 包含了 a 中所有元素, 且不包含重复元素
+    例如 a 是 [1, 2, 3, 1, 3, 5]
+    返回 [1, 2, 3, 5]
+    */
+   	var arr = []
+   	for(var i = 0; i < a.length; i++) {
+   		var n = a[i]
+   		if (!arr.includes(n)) {
+   			arr.push(n)
+   		}
+   	}
+   	return arr
+}
+var difference = function(a, b) {
+    /*/
+    a b 都是 array
+
+    返回一个 array, 里面的元素是
+    所有在 a 中有 b 中没有的元素
+    这个 array 中不包含重复元素
+    /*/
+    var l = []
+    for(var i = 0; i < a.length; i++) {
+    	var n = a[i]
+    	if (!b.includes(n)) {
+    		l.push(n)
+    	}
+    }
+    return unique(l)
+}
+var differenceAll = function(a, b) {
+    /*/
+    a b 都是 array
+
+    返回一个 array, 里面的元素是
+    所有在 a b 中的非公共元素
+    这个 array 中不包含重复元素
+    /*/
+    var c = difference(a, b)
+    var d = difference(b, a)
+    for(var i = 0; i < d.length; i ++){
+    	var n = d[i]
+    	c.push(n)
+    }
+    return unique(c)
+}
+
+//
+var isSubset = function(a, b) {
+    /*/
+    a b 都是 array
+
+    检查是否 a 中的每个元素都在 b 中出现
+    返回 bool
+    /*/
+    var c = difference(a, b)
+    if (c.length === 0) {
+    	return true
+    } else {
+    	return false
+    }
+}   
+
+
+//
+var isPrime = function(n) {
+    /*
+    n 是 int
+    判断 n 是否是素数(质数)
+    */
+    // 质数的定义是 只能被 1 和自身整除的数字
+    // 所以最简单的算法是从 2 到 n 检查是否能被整除
+    for(var i = 2; i < n ; i++) {
+    	var m = i 
+    	if (n % m === 0) {
+    		return false
+    	}
+    }
+    return true
+}
+
+
+//
+var primeNumbers = function() {
+    /*
+    返回 100 内的素数列表
+    */
+   	var arr = []
+   	for(var i = 1; i < 100; i++) {
+   		if (isPrime(i)) {
+   			arr.push(i)
+   		}
+   	}
+   	return arr
+}
+
+
+//
+var split = function(s, delimiter=' ') {
+    /*
+    s 是 string
+    delimiter 是 string, 默认为空格 ' '
+
+    以 delimiter 为分隔符号, 返回一个 array
+    例如
+    split('1 2 3') 返回 ['1', '2', '3']
+    split('a=b&c=d', '&') 返回 ['a=b', 'c=d']
+    注意, 测试 array 是否相等得自己写一个函数用循环来跑
+    */		
+    var f = []
+    var index = 0
+    var space = delimiter.length
+    for(var i = 0; i < s.length; i++) {
+    	var n = s.slice(i, i + space)
+    	if (n === delimiter) {
+    		f.push(s.slice(index, i))
+    		index =  i + space
+    	}
+    }
+    f.push(s.slice(index))
+    return f
+}
+
+
+var capString = function(str) {
+    /*
+    给定一个英文句子 str（一个只有字母的字符串）
+    例子如下, 单词之间有空格隔开
+    'thank you very much' 
+    返回「将句中所有单词变为有且只有首字母大写的形式」的 string
+    'Thank You Very Much' 
+    */
+    var arr = split(str)
+    var arrs = []
+    var f = ''
+    for(var i = 0; i < arr.length; i++) {
+    	var n = arr[i]
+    	var m = uppercase(n.slice(0, 1)) + n.slice(1)
+    	arrs.push(m)
+    }
+    for(var i = 0; i < arrs.length; i++) {
+    	f = f + arrs[i] + " "
+    }
+    return f.slice(0, f.length - 1)
+}
+
+
+
+//
+var letterCount = function(str) {
+    /*
+    给定一个只包含字母的字符串，返回单个字母出现的次数
+    返回值为包含数组的数组，格式如下（对数组中数组的顺序不做要求）
+
+    // 可以使用 Object.keys 函数
+    var obj = {
+      foo: 1,
+      bar: 2,
+    }
+    Object.keys(obj)
+    ["foo", "bar"]
+
+    参数 "hello"
+    返回值 [['h', 1], ['e', 1], ['l', 2], ['o', 1]]
+
+
+    新学到：
+    1. 对var来说，放在遍历之外表示只赋值一次，放在遍历之内表示赋值遍历次数
+    2. 对一个obj={a:1,b:2}来说，有var n = "m" 如果我想把字符串m放进obj，并赋值为3，变成obj={a:1,b:2,m:3},不应该写obj.n = 3，应该写成obj[n] = 3
+    3. 向对象添加元素，应该用obj[key]不应该用obj.key
+    */
+   	var obj = {}
+   	for(var i = 0; i < str.length; i++) {
+
+   		var n = str[i]
+    	var m = Object.keys(obj)
+   		if (m.includes(n)) {
+
+   			// obj.n ++
+   			obj[n] +=1
+   		} else {
+
+   			// obj.n = 1
+   			obj[n] = 1
+   		}
+   	}
+
+   	var keys = Object.keys(obj)
+   	var arr2 = []
+   	for(var i = 0; i < keys.length; i++) {
+   		var arr1 = []
+   		var v = keys[i]
+   		arr1.push(v, obj[v])
+   		arr2.push(arr1)
+   	}
+   	return arr2
+}
+
+
+//
+var queryFromObject = function(param) {
+	//注意, 使用 Object.keys 函数
+    // kvs 意思是 keyvalues
+    // 参数是个object{‘foo’: 1,’bar’: ‘far’,} 返回’foo=1&bar=far’
+    var obj = param
+    var str = ""
+    var keys = Object.keys(obj)
+    for(var i = 0; i < keys.length; i++) {
+    	var n = keys[i]
+    	var m = obj[n]
+    	str = str + n + "=" + m +"&" 
+    }
+    return str.slice(0, str.length - 1)
+}
+
+//
+var argsFromQuery = function(queryString) {
+	//参数是string’foo=1&bar=far’，返回object{‘foo’: 1,’bar’: ‘far’,}	
+	var a = split(queryString, "&")
+	var obj = {}
+	for(var i = 0; i < a.length; i++) {
+		var n = a[i]
+		var m = split(n, "=")
+		var v = m[0]
+		var w = m[1]
+		obj[v] = w
+	}
+	return obj
+}
+</script>
+</body>
+</html>
