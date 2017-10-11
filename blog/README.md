@@ -128,6 +128,9 @@
 1. 图片只用sm.ms的markdown格式
 ![例子](https://i.loli.net/2017/10/11/59de1afbc635c.bmp)
 
+[![工作区 1_005.bmp](https://i.loli.net/2017/10/11/59de1afbc635c.bmp)](https://i.loli.net/2017/10/11/59de1afbc635c.bmp)
+
+
 2. 必须换行
 
 
