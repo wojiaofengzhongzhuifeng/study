@@ -1,0 +1,7 @@
+
+# 修改/home/raojiajun/文档/study
+cd /home/raojiajun/文档/study
+git add .
+git commit -m $1
+git pull 
+git push
