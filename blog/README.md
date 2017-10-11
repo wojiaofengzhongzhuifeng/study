@@ -125,13 +125,8 @@
 ---
 ---
 ---
-1. `[![选区_003.bmp](https://i.loli.net/2017/10/03/59d3aa1d2a87d.bmp)](https://i.loli.net/2017/10/03/59d3aa1d2a87d.bmp)
-`
-[![选区_003.bmp](https://i.loli.net/2017/10/03/59d3aa1d2a87d.bmp)](https://i.loli.net/2017/10/03/59d3aa1d2a87d.bmp)
-
-2. `![选区_003.bmp](https://i.loli.net/2017/10/04/59d42ed754337.bmp)`
-![选区_003.bmp](https://i.loli.net/2017/10/04/59d42ed754337.bmp)
-
+1. 图片只用sm.ms的markdown格式
+![例子](https://i.loli.net/2017/10/11/59de1afbc635c.bmp)
 
 2. 必须换行
 
