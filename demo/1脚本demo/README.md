@@ -1,9 +1,9 @@
-### 自动创建前端必要目录（demo.sh 和 Node.js）
+## 自动创建前端必要目录（demo.sh 和 Node.js）
 
 
-### 自动更新文件到gitHub上
+## 快速更新文件至 gitHub
 
-	1. `cd ~/local/`将 sc 文件放在里面，并且 `pwd` 。
+	1. `cd ~/local/` 将 sc 文件放在里面，并且 `pwd` 。
 
 	4. `gedit ~/.bashrc` 添加 `export PATH="把这段文字换成local的绝对路径哈哈:$PATH"`
 
