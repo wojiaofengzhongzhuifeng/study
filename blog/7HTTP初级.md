@@ -1,7 +1,8 @@
 ## HTTP请求与响应的过程
 
-1. 命令行输入`curl -X POST -d "1234567890" -s -v -H "Frank: xxx" -- "https://www.baidu.com/s?wd=hello&rsv_spt=1#5"`
-注意点：
+1.  命令行输入`curl -X POST -d "1234567890" -s -v -H "Frank: xxx" -- "https://www.baidu.com/s?wd=hello&rsv_spt=1#5"`
+
+    注意点：
 
     - `curl`命令的作用是发送一个请求内容，你也可以用其他方式发送请求，例如在回车输入`www.baidu.com`
 
@@ -19,7 +20,7 @@
 
       `#5` 锚点
 
-2. 命令行中，请求内容为
+2.  命令行中，请求内容为
 
 ![请求内容](https://i.loli.net/2017/10/11/59de1afbc635c.bmp)
 
