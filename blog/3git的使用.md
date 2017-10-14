@@ -32,8 +32,8 @@
 
 输入 yes 回车……问你话你就答，别傻在那
 14. 然后如果你看到 Permission denied (publickey).
- 就说明你失败了，请回到第 1 步重来，是的，回到第 1 步重来；如果你看到 Hi FrankFang! You've successfully authenticated, but GitHub does not provide shell access.
- 就说明你成功了！
+     就说明你失败了，请回到第 1 步重来，是的，回到第 1 步重来；如果你看到 Hi FrankFang! You've successfully authenticated, but GitHub does not provide shell access.
+     就说明你成功了！
 
 ### 使用前的配置
 
@@ -54,14 +54,14 @@ git config --global core.editor "vim"
 
 2. 在目录内添加你想上传的文件。
 
-1. 在你想要上传的目录下 `git add .`。（这里的意思是将本路径下的所所有文件放到暂存区）
+3. 在你想要上传的目录下 `git add .`。（这里的意思是将本路径下的所所有文件放到暂存区）
 
-1. 在你想要上传的目录下 `git commit -m "这里写你干了啥"`。
+4. 在你想要上传的目录下 `git commit -m "这里写你干了啥"`。
 
 5. 打开GitHub，点击 new repository ，并且只需输入仓库名字（不能使中文）后点击create repository。
 
 6. 在跳转的页面中[![提示](http://upload-images.jianshu.io/upload_images/5529438-faf048b439e66f5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](https://i.loli.net/2017/10/02/59d201445106f.png)
-在命令行输入红色框的提示。
+   在命令行输入红色框的提示。
 
 7. 刷新即可。
 
@@ -69,7 +69,7 @@ git config --global core.editor "vim"
 
 ### GitHub使用方法二
 1. 打开GitHub，点击 new repository ，一共修改五处
-[![修改5处](http://upload-images.jianshu.io/upload_images/5529438-9349f470abb068d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](https://i.loli.net/2017/10/02/59d202f61b150.png)
+   [![修改5处](http://upload-images.jianshu.io/upload_images/5529438-9349f470abb068d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](https://i.loli.net/2017/10/02/59d202f61b150.png)
 
 点击create repository。
 
@@ -91,3 +91,15 @@ git push
 ```
 
 
+
+
+
+### 细节
+
+1. `git add .`和`git add *`有什么区别？
+
+   `git add .`指的是添加当前目录下所有文件到暂存区。
+
+   `git add *`指的是添加当前目录下所有文件到暂存区，除去以点开头的文件。
+
+   ​
