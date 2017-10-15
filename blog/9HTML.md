@@ -4,9 +4,9 @@
 
 ## HTML知识点汇总
 
-- [如何根据页面内容输入HTML代码？](#如何根据页面内容输入HTML代码？)
-- [理解HTML](#理解HTML)
-- [1111](#test)
+- [如何根据页面内容输入HTML代码？](#how to code HTML)
+- [理解HTML](#understand HTML)
+- [HTML使用经验](#HTML use experience)
 
 
 
@@ -32,7 +32,7 @@
 
 
 
-## 如何根据页面内容输入HTML代码？
+## how to code HTML
 
 方法：
 
@@ -58,7 +58,7 @@
 
 
 
-## 理解HTML
+## understand HTML
 
 HTML是一门**标记语言**，你写的是标签而不是代码。
 
@@ -72,7 +72,7 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
 
 
 
-## 常见HTML标签使用经验
+## HTML use experience
 
 1. `span`和`div`只有他们没有固定意义，因此没有固定样式。往往要加class。
 
@@ -80,6 +80,3 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
 
    ​
 
-## test
-
-1. ​
