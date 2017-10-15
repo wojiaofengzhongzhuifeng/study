@@ -4,11 +4,10 @@
 
 ## HTML知识点汇总
 
-- [test](#how to code HTML)
-- [test2](#understand HTML)
-- [test3](#HTML use experience)
-
-
+- [how to code HTML](#how to code HTML)
+- [understand HTML](#understand HTML)
+- [HTML use experience](#HTML use experience)
+- [Recommended Minimum](#recommended-minimum)
 
 
 
