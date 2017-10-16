@@ -4,10 +4,10 @@
 
 ## content
 
-- [how to code HTML](#how-to-code-html)
+- [如何写HTML代码](#how-to-code-html)
 - [理解HTML](#understand-html)
-- [HTML use experience](#html-use-experience)
-- [tesy test](#usual-html-elements)
+- [HTML标签使用经验](#html-use-experience)
+- [标签是block的情况](#usual-html-elements-with-block-style)
 
 
 
@@ -79,7 +79,7 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
 
    ​
 
-## usual HTML elements
+## usual HTML elements with block style
 
 div
 
