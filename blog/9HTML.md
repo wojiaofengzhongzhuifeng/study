@@ -4,15 +4,10 @@
 
 ## HTML知识点汇总
 
-[Recommended Minimum](#recommended-minimum)
-
-[how to code HTML](#how to code HTML)
-
-[理解HTML](#理解HTML)
-
-[HTML use experience](#HTML use experience)
-
-[tesy test](#usualHTMLelements)
+- [how to code HTML](#how-to-code-html)
+- [理解HTML](#understand-html)
+- [HTML use experience](#html-use-experience)
+- [tesy test](#usual-html-elements)
 
 
 
@@ -62,7 +57,7 @@
 
 
 
-## 理解HTML
+## understand HTML
 
 HTML是一门**标记语言**，你写的是标签而不是代码。
 
@@ -84,7 +79,7 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
 
    ​
 
-## usualHTMLelements
+## usual HTML elements
 
 div
 
