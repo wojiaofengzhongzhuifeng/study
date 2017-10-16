@@ -42,25 +42,19 @@
 
 (没写完，要积累)
 
-方法：
+1. 如何划分div区
 
-1. 直接看有什么内容
-2. 看内容之上是谁
-3. 如果没有之上，那就想想它是什么
+   原则：万物皆div，div只有两种方式
 
+   ![](https://i.loli.net/2017/10/16/59e49b342fdf8.bmp)
 
+   错误的划分例子：
 
-例子：
+   ![](https://i.loli.net/2017/10/16/59e49a1deb669.bmp)
 
-如果我想完成简历的HTML部分。这个简历的效果图如下：http://rscardwp.px-lab.com/
+   正确的划分例子：
 
-![](https://i.loli.net/2017/10/15/59e3076c1ae06.bmp)
-
-
-
-![](https://i.loli.net/2017/10/15/59e3076c7a5d7.bmp)
-
-
+   ![](https://i.loli.net/2017/10/16/59e49a1e391ed.bmp)
 
 **[⬆ back to top](#html目录)**
 
@@ -73,6 +67,10 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
 意思是你只能通过HTML来告诉别人**内容是什么，却不能告诉别人内容长的什么样子**。
 
 至于`<p>`标签的默认样式是block，那只是浏览器的css管的，并不是HTML管的。
+
+**[⬆ back to top](#html目录)**
+
+
 
 
 
@@ -96,6 +94,10 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
 3. `hr`表示水平分割线
 
 
+**[⬆ back to top](#html目录)**
+
+
+
 
 
 
@@ -103,7 +105,7 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
 
 `div`，`ul`，`h1`，`form`，`p`
 
-
+**[⬆ back to top](#html目录)**
 
 
 
@@ -113,12 +115,18 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
 2. `br` ，`hr`，`img`，`input`，`link`，`meta`
 
 
+**[⬆ back to top](#html目录)**
+
+
+
 
 
 
 ## 可以在head存在的标签 
 
 `title`，`meta`，`link`，`script`，`style`，`base`，`noscript`
+
+**[⬆ back to top](#html目录)**
 
 
 
@@ -131,6 +139,10 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
    例如，要根据`input`元素的`type`属性来看这个元素在浏览器上面到底显示的是按钮（当type=button）还是文本框（当type=text）
 
 2. `input`，`img`，`textarea`，`video`
+
+
+**[⬆ back to top](#html目录)**
+
 
 
 
@@ -160,8 +172,10 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
 
       `<meta name="heywords" content="饶家俊，前端">`
 
-   ​
+   **[⬆ back to top](#html目录)**
 
    ​
 
-## 测试1?
+   ​
+
+## 
