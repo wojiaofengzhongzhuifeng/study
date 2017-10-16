@@ -20,7 +20,7 @@ var server = http.createServer(function(request, response){
   /******** 从这里开始看，上面不要看 ************/
 if(path=="/"){
     
-    response.setHeader('Content-Type', 'text/html; charset=utf-8')
+    response.setHeader('Content-Type', 'text/html')
     response.write('<!DOCTYPE>\n<html>'  + 
     '<head><link rel="stylesheet" href="/style.css">' +
     //'<meta charset="utf-8"'+
