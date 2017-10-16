@@ -12,6 +12,8 @@
 
 [HTML use experience](#HTML use experience)
 
+[usual HTML elements](#usual HTML elements)
+
 
 
 
@@ -81,4 +83,16 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
 2. `dl dt dd`通常用来展示键-值对列表
 
    ​
+
+## usual HTML elements
+
+div
+
+ul
+
+h1
+
+form
+
+p
 
