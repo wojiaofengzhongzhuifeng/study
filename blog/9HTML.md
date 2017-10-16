@@ -4,10 +4,10 @@
 
 ## content
 
-- [如何写HTML代码](#how-to-code-html)
-- [理解HTML](#understand-html)
-- [HTML标签使用经验](#html-use-experience)
-- [标签是block的情况](#usual-html-elements-with-block-style)
+- [如何写HTML代码](#如何写HTML代码)
+- [理解HTML](#理解HTML)
+- [HTML标签使用经验](#HTML标签使用经验)
+- [标签是block的情况](#标签是block的情况)
 - [测试1](#测试1)
 - ​
 
@@ -33,7 +33,7 @@
 
 
 
-## how to code HTML
+## 如何写HTML代码
 
 方法：
 
@@ -59,7 +59,7 @@
 
 
 
-## understand HTML
+## 理解HTML
 
 HTML是一门**标记语言**，你写的是标签而不是代码。
 
@@ -73,7 +73,7 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
 
 
 
-## HTML use experience
+## HTML标签使用经验
 
 1. `span`和`div`只有他们没有固定意义，因此没有固定样式。往往要加class。
 
@@ -81,7 +81,7 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
 
    ​
 
-## usual HTML elements with block style
+## 标签是block的情况
 
 div
 
