@@ -72,7 +72,7 @@
 9. 有关消息报头（键值对）的知识看后面的，这里不好写。
 ```
 
-3. 在命令行中，响应内容**（这条响应内容就是响应的上面的请求内容）**为
+3. 在命令行中，响应内容**(这条响应内容就是响应的上面的请求内容)**为
 
 ![响应内容](http://upload-images.jianshu.io/upload_images/5529438-4df42610e8d6ad1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
