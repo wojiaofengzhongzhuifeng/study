@@ -31,6 +31,13 @@
 2. download 表示强制下载a标签的href，正常的下载应该是在响应内容的第二部分（键值对）写Content-type：啥的
 ---
 3. href
-
+3. yyy可以填#nihao，那么点击a标签，浏览器的左上角会对准id=nihao的标签，注意：这不发起请求。
+3. yyy可以填?name=1&age=2，发起请求，请求内容的第一部分的路径发生变化。
+3. yyy可以填javascript:;，名字是javascript伪协议，效果是点击a标签没有任何变化。
+3. yyy可以填#，跳转到页面最上面。
+3. yyy可以不填，刷新页面。
+3. yyy可以填qq.com
+3. yyy可以填http://qq.com
+3. yyy可以填//qq.com
 ```
 
