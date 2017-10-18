@@ -42,3 +42,20 @@
 3. 理解href的作用，要与HTTP请求内容一起学习。
 ```
 
+
+
+
+
+## form
+
+```
+<form action="xxx" method="yyy" target="zzz"></form>
+
+1. xxx填一个地址，作用是把 form 标签 post 请求的第四部分传给这个地址。
+---
+2. yyy可以是POST，那么会把你写的内容或者勾选的东西放在请求内容的第四部分中。
+2. yyy可以是GET，那么？？？？？？？
+---
+3. zzz与a标签的
+```
+
