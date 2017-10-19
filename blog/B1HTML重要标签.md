@@ -179,6 +179,7 @@ a标签的href与HTTP请求内容联系：
 2. name对应请求内容第四部分的键值对的键，value对应请求内容第四部分键值对的值。
 3. 如果是选择框，没有选到，则在第四部分不会出现该name。
 4. 下拉列表的name在select中，value在option中。
+5. iframe有src，a有href，form有action，都表示相同东西（？？？存疑）
 
 
 
