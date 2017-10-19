@@ -91,6 +91,7 @@ a标签的href与HTTP请求内容联系：
 ---
 2. yyy影响的是请求内容的第四部分（POST请求），对应键值对的键。
 2. 如果<input type=checkbox name="fruit" value="apple">，那么如果勾选了，那么请求内容的第四部分中会有fruit=apple，没有勾选，则直接不显示该值。
+2. 基本name是必须的。
 ---
 3. zzz影响的是请求内容的第四部分（POST请求），对应键值对的值。
 3. 如果与type=button合用，表示按钮上面的字。<input type="button" value="按钮">
