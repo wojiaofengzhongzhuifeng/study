@@ -33,14 +33,22 @@
 3. href
 3. yyy可以填#nihao，那么点击a标签，浏览器的左上角会对准id=nihao的标签，注意：这不发起请求。
 3. yyy可以填?name=1&age=2，发起请求，请求内容的第一部分的路径发生变化。
-3. yyy可以填javascript:;，名字是javascript伪协议，效果是点击a标签没有任何变化。
-3. yyy可以填#，跳转到页面最上面。
-3. yyy可以不填，刷新页面。
+3. yyy可以填javascript:;，学名叫javascript伪协议，效果是点击a标签没有任何变化。
+3. yyy可以填#，不发起请求，跳转到页面最上面。
+3. yyy可以不填，发起请求，刷新页面。
 3. yyy可以填qq.com，发起请求，请求内容的第一部分的路径发生变化。
 3. yyy可以填http://qq.com，发起请求，请求内容的第二部分的host发生变化。
 3. yyy可以填//qq.com，发起请求，请求内容的第二部分的host发生变化。
 3. 理解href的作用，要与HTTP请求内容一起学习。
 ```
+
+a标签的href与HTTP请求内容联系：
+
+1. href是`http://www.baidu.com`和`//baidu.com（用HTTP打开）`，只有他们是改变了请求内容的第二部分的host。
+2. 其他发起请求的，都是改变了请求内容的第一部分的路径。并且~~href就等于路径（存疑）~~
+3. href的作用是改变请求内容的第一部分路径或者第二部分的host
+
+
 
 
 
@@ -51,11 +59,49 @@
 ```
 <form action="xxx" method="yyy" target="zzz"></form>
 
-1. xxx填一个地址，作用是把 form 标签 post 请求的第四部分传给这个地址。
+1. xxx填一个地址，作用和a标签的href相同（改变请求内容），只不过在这里是把form的内容提交到action路径的文件中。
 ---
-2. yyy可以是POST，那么会把你写的内容或者勾选的东西放在请求内容的第四部分中。
-2. yyy可以是GET，那么？？？？？？？
+2. yyy可以是POST，那么会通过input的name和value（value可以是默认的也可以是自己输入的）组合起来放在请求内容的第四部分中。
+2. yyy可以是GET，那么会通过input的name和value（value可以是默认的也可以是自己输入的）组合起来放在了请求内容的第一部分的路径
 ---
-3. zzz与a标签的
+3. zzz与a标签的target相同。
 ```
+
+
+
+
+
+## input
+
+```
+<input type="xxx" name="yyy" value="zzz">
+
+1. xxx可以是submit，用于表单的提交。
+1. xxx可以是text，你可以在里面输入单行文字。
+1. xxx可以是password，输入密码。
+1. xxx可以是checkbox
+1. xxx可以是radio
+---
+2. yyy影响的是请求内容的第四部分（POST请求），表示键值对的key。
+2. 如果与type=checkbox合用，那么如果勾选了，请求内容的第四部分应该有yyy=on，没有勾选，则没有该值
+---
+3. 如果与type=button使用，表示按钮上面的字。
+3. zzz可以是yes，那么如果与type=checkbox合用，如果勾选了，请求内容的第四部分应该有yyy=yes，没有勾选，则没有该值
+
+```
+
+
+
+
+
+
+
+## button
+
+```
+<button></button>
+1. 只需注意：如果一个form中没有<input type="submit">且该button没有写type="button",那么这个button标签会升级成提交按钮。
+```
+
+
 
