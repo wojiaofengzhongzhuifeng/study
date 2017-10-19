@@ -179,3 +179,67 @@ a标签的href与HTTP请求内容联系：
 2. name对应请求内容第四部分的键值对的键，value对应请求内容第四部分键值对的值。
 3. 如果是选择框，没有选到，则在第四部分不会出现该name。
 4. 下拉列表的name在selection中，value在option中。
+
+
+
+
+
+
+
+
+
+## table及其相关标签
+
+```
+    <table border=1>
+        <colgroup>
+            <!-- 由他控制一列的宽度 -->
+            <col width=100>
+            <col width=200>
+            <col width=50> 
+            <col width=100>
+        </colgroup>
+        <thead>
+            <!-- table row 一行 -->
+            <tr>
+                <!-- table head表头 -->
+                <th>姓名</th>
+                <th>语文</th>
+                <th>数学</th>
+                <th>英语</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <!-- table data数据 -->
+                <td>张三</td>
+                <td>94</td>    
+                <td>92</td>
+                <td>94</td>         
+            </tr>
+            <tr>
+                <!-- table data数据 -->
+                <td>李四</td>
+                <td>92</td>  
+                <td>90</td>
+                <td>80</td>    
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <!-- table data数据 -->
+                <th>平均分</th>
+                <td>93</td>
+                <td>91</td>
+                <td>87</td>
+            </tr> 
+        </tfoot>
+    </table>
+```
+
+总结：
+
+1. 区分tr，td，th（th显示为粗体）
+2. 一个tr中可以同时有th和td
