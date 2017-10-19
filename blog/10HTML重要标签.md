@@ -56,13 +56,19 @@ a标签的href与HTTP请求内容联系：
 
 ## form
 
+在讨论之前，我们先把请求内容的第四部分：如下图：
+
+![127.0.0.1:8080-users - Google Chrome_033.bmp](https://i.loli.net/2017/10/19/59e8264a7ae58.bmp)
+
+
+
 ```
 <form action="xxx" method="yyy" target="zzz"></form>
 
 1. xxx填一个地址，作用和a标签的href相同（改变请求内容），只不过在这里是把form的内容提交到action路径的文件中。
 ---
-2. yyy可以是POST，那么会通过input的name和value（value可以是默认的也可以是自己输入的）组合起来放在请求内容的第四部分中。
-2. yyy可以是GET，那么会通过input的name和value（value可以是默认的也可以是自己输入的）组合起来放在了请求内容的第一部分的路径
+2. yyy可以是POST，那么会通过input的name(对应键)和value（value可以是默认的也可以是自己输入的）组合起来放在请求内容的第四部分中。
+2. yyy可以是GET，那么会通过input的name（对应键）和value（value可以是默认的也可以是自己输入的）组合起来放在了请求内容的第一部分的路径
 ---
 3. zzz与a标签的target相同。
 ```
@@ -79,13 +85,15 @@ a标签的href与HTTP请求内容联系：
 1. xxx可以是submit，用于表单的提交。
 1. xxx可以是text，你可以在里面输入单行文字。
 1. xxx可以是password，输入密码。
-1. xxx可以是checkbox
-1. xxx可以是radio
+1. xxx可以是checkbox，复选框
+1. xxx可以是radio，单选框
+1.  
 ---
-2. yyy影响的是请求内容的第四部分（POST请求），表示键值对的key。
+2. yyy影响的是请求内容的第四部分（POST请求），对应键。
 2. 如果与type=checkbox合用，那么如果勾选了，请求内容的第四部分应该有yyy=on，没有勾选，则没有该值
 ---
-3. 如果与type=button使用，表示按钮上面的字。
+3. zzz影响的是请求内容的第四部分（POST请求），对应值。
+3. 如果与type=button合用，表示按钮上面的字。
 3. zzz可以是yes，那么如果与type=checkbox合用，如果勾选了，请求内容的第四部分应该有yyy=yes，没有勾选，则没有该值
 
 ```
@@ -104,4 +112,26 @@ a标签的href与HTTP请求内容联系：
 ```
 
 
+
+## select与option构成的下拉列表
+
+```
+<select name="分组" multiple>      <!-- 可以多选，按着ctrl再选 -->
+	<option value="1">第一组</option>
+	<option value="2">第二组</option>
+	<option value="3" disabled>第三组</option>	  <!-- 不能选 -->
+	<option value="4" selected>第四组</option>   <!-- 默认 -->
+	<option value="5">第五组</option>
+</select>
+```
+
+
+
+## 标签汇总练习题
+
+完成一个表单，要求把信息提交到users服务器中。
+
+```
+
+```
 
