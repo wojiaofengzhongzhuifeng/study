@@ -95,7 +95,7 @@ a标签的href与HTTP请求内容联系：
 3. zzz影响的是请求内容的第四部分（POST请求），对应键值对的值。
 3. 如果与type=button合用，表示按钮上面的字。<input type="button" value="按钮">
 3. zzz可以是yes，那么如果与type=checkbox合用，如果勾选了，请求内容的第四部分应该有yyy=yes，没有勾选，则没有该值(看上面的例子)
-
+3. 只有当type=checkbox和radio时，才写value
 ```
 
 
