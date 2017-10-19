@@ -6,11 +6,11 @@
 
 - [如何写HTML代码](#如何写html代码)
 - [理解HTML](#理解html)
-- [HTML标签使用经验](#html标签使用经验)
-- [标签是block的情况](#标签是block的情况)
-- [空元素是什么意思？常见的空元素是什么？](#空元素是什么意思常见的空元素是什么)
-- [可以在head存在的标签](#可以在head存在的标签)
-- [可替换元素是什么？常见的可替换元素是什么？ ](#可替换元素是什么常见的可替换元素是什么 )
+- [HTML标签经验](#html标签使用经验)
+- [标签是block](#标签是block的情况)
+- [空元素](#空元素是什么意思常见的空元素是什么)
+- [head存在的标签](#可以在head存在的标签)
+- [可替换元素是什么？ ](#可替换元素是什么常见的可替换元素是什么 )
 - [Meta标签](#meta标签)
 - [测试1](#测试%3f)
 - [测试1](#测试1)
@@ -81,6 +81,10 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
 2. `dl>(dt+dd)*n`通常用来展示键-值对列表，如：
 
    ```
+   dl:dictionary list
+   dt:dictionary title
+   dd：dictionary data
+
    <dl>
      <dt>姓名</dt>
      <dd>饶家俊</dd>
@@ -93,7 +97,6 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
 
 3. `hr`表示水平分割线
 
-4. ​
 
 
 **[⬆ back to top](#html目录)**
@@ -238,3 +241,34 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
 1. IE内核：ie浏览器
 2. Mozilla：firefox
 3. WebKit：Safari、Chrome
+
+
+
+
+
+## 全局属性
+
+可以用于html所有标签的的属性。以下是全局属性：
+
+1. accesskey：根据浏览器和操作系统和accesskey的值来为html元素设置快捷键。
+2. class
+3. contenteditable：是否可编辑
+4. contextmenu：（？？？）
+5. data-xxx：xxx是自己定义的，注意xxx不能有**大写**
+6. dir：文字方向
+7. draggable：能否被拖拽。
+8. dropzone：？？
+9. hidden：隐藏这个标签
+10. id
+11. lang：？？？
+12. spellcheck：是否检查错误
+13. style：`<a style="color:red;">这是style</a>`
+14. tabindex：是否可以获得焦点（？？？）
+15. title：（？？？）
+
+
+
+
+
+## display
+
