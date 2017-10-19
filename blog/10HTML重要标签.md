@@ -65,10 +65,10 @@ a标签的href与HTTP请求内容联系：
 ```
 <form action="xxx" method="yyy" target="zzz"></form>
 
-1. xxx填一个地址，作用和a标签的href相同（改变请求内容），只不过在这里是把form的内容提交到action路径的文件中。
+1. xxx填一个地址，作用和a标签的href相同（改变请求内容第一部分的路径），只不过在这里是把form的内容提交到action路径的文件中。
 ---
 2. yyy可以是POST，那么会通过input的name(对应键)和value（value可以是默认的也可以是自己输入的）组合起来放在请求内容的第四部分中。
-2. yyy可以是GET，那么会通过input的name（对应键）和value（value可以是默认的也可以是自己输入的）组合起来放在了请求内容的第一部分的路径
+2. yyy可以是GET，那么会通过input的name（对应键）和value（value可以是默认的也可以是自己输入的）组合起来放在了请求内容的第一部分的路径（这个基本不会有）
 ---
 3. zzz与a标签的target相同。
 ```
@@ -85,16 +85,16 @@ a标签的href与HTTP请求内容联系：
 1. xxx可以是submit，用于表单的提交。
 1. xxx可以是text，你可以在里面输入单行文字。
 1. xxx可以是password，输入密码。
-1. xxx可以是checkbox，复选框
-1. xxx可以是radio，单选框
+1. xxx可以是checkbox，复选框。
+1. xxx可以是radio，单选框。
 1.  
 ---
-2. yyy影响的是请求内容的第四部分（POST请求），对应键。
-2. 如果与type=checkbox合用，那么如果勾选了，请求内容的第四部分应该有yyy=on，没有勾选，则没有该值
+2. yyy影响的是请求内容的第四部分（POST请求），对应键值对的键。
+2. 如果<input type=checkbox name="fruit" value="apple">，那么如果勾选了，那么请求内容的第四部分中会有fruit=apple，没有勾选，则直接不显示该值。
 ---
-3. zzz影响的是请求内容的第四部分（POST请求），对应值。
-3. 如果与type=button合用，表示按钮上面的字。
-3. zzz可以是yes，那么如果与type=checkbox合用，如果勾选了，请求内容的第四部分应该有yyy=yes，没有勾选，则没有该值
+3. zzz影响的是请求内容的第四部分（POST请求），对应键值对的值。
+3. 如果与type=button合用，表示按钮上面的字。<input type="button" value="按钮">
+3. zzz可以是yes，那么如果与type=checkbox合用，如果勾选了，请求内容的第四部分应该有yyy=yes，没有勾选，则没有该值(看上面的例子)
 
 ```
 
@@ -108,7 +108,7 @@ a标签的href与HTTP请求内容联系：
 
 ```
 <button></button>
-1. 只需注意：如果一个form中没有<input type="submit">且该button没有写type="button",那么这个button标签会升级成提交按钮。
+1. 只需注意：如果一个form中没有<input type="submit">且该button没有写type="button"（两个条件）,那么这个button标签会升级成提交按钮。
 ```
 
 
@@ -132,7 +132,7 @@ a标签的href与HTTP请求内容联系：
 ## textarea
 
 ```
-<textarea name="xxx" id="" cols="30" rows="10"></textarea>
+<textarea name="xxx" cols="30" rows="10"></textarea>
 ```
 
 
@@ -178,3 +178,4 @@ a标签的href与HTTP请求内容联系：
 1. 对于input标签，都要写name和value，除了`<input type="submit">`
 2. name对应请求内容第四部分的键值对的键，value对应请求内容第四部分键值对的值。
 3. 如果是选择框，没有选到，则在第四部分不会出现该name。
+4. 下拉列表的name在selection中，value在option中。
