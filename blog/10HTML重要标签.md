@@ -125,6 +125,18 @@ a标签的href与HTTP请求内容联系：
 </select>
 ```
 
+ 
+
+
+
+## textarea
+
+```
+<textarea name="xxx" id="" cols="30" rows="10"></textarea>
+```
+
+
+
 
 
 ## 标签汇总练习题
@@ -132,6 +144,37 @@ a标签的href与HTTP请求内容联系：
 完成一个表单，要求把信息提交到users服务器中。
 
 ```
+    <form action="users" method="POST">
+        <input type="text" name="username" placeholder="enter your account number">
+        <input type="password" name="userpassword" placeholder="enter your password">
 
+        favourite fruit
+        <label><input type="checkbox" name="fruit" value="apple">apple</label>
+        <label><input type="checkbox" name="fruit" value="watermelon">watermelon</label>
+        <label><input type="checkbox" name="fruit" value="Sydney">Sydney</label>
+
+        Are you man
+        <label><input type="radio" name="man" value="yes">yes</label>
+        <label><input type="radio" name="man" value="no">no</label>
+        
+        Self introduction
+        <textarea name="resume" style="resize:none;width:100px;height:100px" cols="30" rows="10"></textarea>
+        
+        <select name="group" multiple>
+            <option value="1">第一组</option>
+            <option value="2" disabled>第二组</option>
+            <option value="3">第三组</option>
+            <option value="4" selected>第四组</option>
+        </select>
+        <!-- 提交按钮可以是 -->
+        <!-- <input type="submit" value="提交"> -->
+        <!-- 也可以是 -->
+        <button>submit</button>
+    </form>
 ```
 
+总结：
+
+1. 对于input标签，都要写name和value，除了`<input type="submit">`
+2. name对应请求内容第四部分的键值对的键，value对应请求内容第四部分键值对的值。
+3. 如果是选择框，没有选到，则在第四部分不会出现该name。
