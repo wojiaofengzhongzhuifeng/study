@@ -84,3 +84,5 @@ div.son2 {
 1. padding的作用：
    - 如果两个border重合，那么移动内容。
    - 如果两个border不重合，那么移动border。
+2. margin的作用：
+   - 就是两个border的距离。
