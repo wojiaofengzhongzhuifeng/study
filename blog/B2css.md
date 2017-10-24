@@ -96,4 +96,24 @@ div.son2 {
 
 
 
-##  jdskajdksladjskadjsakljdskljdasjdkslajdsakdsadjsjkdadsadadsdsadsdsasajdkslajdkslajdksla
+##  css文件开头必写
+
+```
+.clearfix::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+a{
+    color: inherit;
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+```
+
