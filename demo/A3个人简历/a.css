@@ -145,16 +145,17 @@ footer.media {
 .media a {
     display: inline-block;
     vertical-align: center;
-    border: 1px solid black;
     border-radius: 50%;
     margin:20px 20px;
     width:40px;
     height:40px;
+    line-height: 40px;
     
 }
 .media a:hover{
     background: #cf5d5f;
 }
+
 
 
 
