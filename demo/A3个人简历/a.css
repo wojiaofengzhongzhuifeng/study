@@ -74,11 +74,9 @@ a.logo{
 }
 .banner .mask{
     height: 515px;
-    border: 1px solid black;
     background: rgba(0, 0, 0, 0.8);
 }
 .userCard{
-    border:1px solid black;
     max-width: 940px;
     margin: 0 auto;
     background: #ffffff;
@@ -113,7 +111,7 @@ div.userCard div.picture{
     padding: 50px;
 }
 hr {
-    width: 473px;
+    width: 450px;
     margin-top: 24px;
     margin-bottom: 30px;
     color: #dedede;
@@ -125,6 +123,31 @@ h1 {
 .userCard dl dd, .userCard dl dt {
     float: left;
     /* width: 15%; */
+}
+dt {
+    width: 30%;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 7px 0;
+}
+dd {
+    width: 70%;
+    font-size: 15px;
+    line-height: 32px;
+    color: #9da0a7;
+}
+footer.media {
+    background: #F75764;
+    text-align: center;
+    font-size: 26px;
+}
+.icon{
+    padding:20px 20px;
+}
+.media a {
+    width: 66px;
+    display: inline-block;
+    height: 66px;
 }
 
 
