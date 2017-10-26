@@ -48,9 +48,12 @@ a.logo{
     float: left;
 }
 .topNavBar nav ul li a{
-    border-bottom:3px solid #F75764;
+    border-bottom:3px solid transparent;
     padding-bottom: 5px;
     display: block;
+}
+.topNavBar nav ul li a:hover{
+    border-bottom:3px solid #F75764;
 }
 .topNavBar{
     padding-top: 24px;
