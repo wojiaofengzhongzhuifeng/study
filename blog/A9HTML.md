@@ -108,7 +108,7 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
 
 ## 标签是block的情况
 
-~~`div`，`h1`~~，`form`，~~`p`~~，`ul和ol和li`，`dl和dt和dd`
+`form`，~~`p`~~，`ul和ol和li`，`dl和dt和dd`
 
 **[⬆ back to top](#html目录)**
 

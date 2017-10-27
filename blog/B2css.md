@@ -15,6 +15,12 @@
 
 
 
+## 写CSS经验
+
+1. 先把自己的样式搞定(font-size和color),再考虑布局.
+2. 布局从内到外.
+3. ​
+
 ## margin和padding的理解
 
 练习用html代码：
@@ -153,8 +159,26 @@ dsadsadsa
 
 
 
-## 两种字垂直对齐
+## 两个元素垂直对齐
 
 1. 情景: 两个元素不能垂直对齐
 2. 方法:给小的元素一个height和line-height,它们的值都是大的元素的height.
 3. 例子:http://js.jirengu.com/bomopukuni/1/edit?html,css,output
+
+
+
+
+
+## 给padding没有反应
+
+1. 情景:给一个元素padding没有反应.
+2. 方法:给这个元素添加一个套,在添加padding.
+3. 例子:暂时没有
+
+
+
+
+
+
+
+## 边框
