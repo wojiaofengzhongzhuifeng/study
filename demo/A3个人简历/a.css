@@ -3,163 +3,147 @@
     display: block;
     clear: both;
 }
+body{
+    background: rgb(239, 239, 239);
+}
 a{
     color: inherit;
     text-decoration: none;
 }
-
 li{
     list-style: none;
 }
 *{
     margin: 0;
     padding: 0;
-    /* border:1px solid black */
 }
-body{
-    background: #efefef;
-    /* color: white; */
+span.rs {
+    font-size: 22px;
+    color: #e6686a;
+}
+span.card {
+    font-size: 21px;
+    color: #9a9da2;
 
 }
-span.rs{
-    color: #F75764;
-    font-size: 24px;
-    font-weight: bold;
-}
-span.card{
-    color: #999B7D;
-    font-size: 24px;
-    font-weight: bold;
-}
-.topNavBar nav ul li{
-    float: left;
+div.nav a {
     font-size: 12px;
-    color: #999B7D;
     font-weight: bold;
-    padding:0 17px;
-}
+    color: rgb(183, 183, 183);
+    float: left;
+    margin: 0 18px;
+    padding-bottom: 5px;
+    border-bottom: 3px solid transparent;
 
-.topNavBar nav{
-    float: right;
-    padding-top: 6px;
-    padding-bottom: 6px;
 }
-a.logo{
+div.nav a:hover {
+    border-bottom: 3px solid #e06567;
+}
+div.nav {
+    float: right;
+    padding: 6px 0;
+}
+div.nav-ct>a{
     float: left;
 }
-.topNavBar nav ul li a{
-    border-bottom:3px solid transparent;
-    padding-bottom: 5px;
-    display: block;
-}
-.topNavBar nav ul li a:hover{
-    border-bottom:3px solid #F75764;
-}
-.topNavBar{
-    padding-top: 24px;
-    padding-bottom: 24px;
-
+.nav-ct {
+    padding: 20px;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%
+    /* height: 50px; */
+    /* line-height: 50px; */
+    width: 100%;
 }
-.banner{
-    height:515px;
-}
-.topNavBar-ct{
-    padding-left: 20px;
-    padding-right: 1px;
-}
-.banner{
-    background-position:center center;
+.background-img {
+    height: 515px;
+    background-position: center center;
     background-size: cover;
 }
-.banner .mask{
+.mask {
     height: 515px;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0,0,0,0.6);
 }
-.userCard{
+.nav-ct1 {
+    padding-right: 20px;
+}
+div.card {
     max-width: 940px;
     margin: 0 auto;
     background: #ffffff;
 }
-.userCard .welcome{
-    background: #F75764;
-    color: #ffffff;
-}
-.userCard .welcome {
-    padding: 6px 16px;
-    font-weight: bold;
+span.welcome {
+    display: inline-block;
+    /* height: 30px; */
+    padding: 6px 14px;
+    background: #e06567;
+    color: white;
     position: relative;
-    display: inline-block;
 }
-.triangle{
-    border: 10px solid transparent;
+span.triangle {
+    border: 7px solid transparent;
+    display: block;
     width: 0;
-    border-left-color: #F75764;
-    border-top-width: 0;
-    display: inline-block;
+    border-top-color: #e06567;
+    border-left-color: #e06567;
     position: absolute;
-    top: 26px;
-    left: 10px;
-}
-div.userCard div.picture,div.userCard div.text{
-    float: left;
-}
-div.userCard div.picture{
-    margin-right: 65px;
-}
-.pictureAndText.clearfix {
-    padding: 50px;
-}
-hr {
-    width: 450px;
-    margin-top: 24px;
-    margin-bottom: 30px;
-    color: #dedede;
-    /* border: 2px solid black; */
+    top: 22px;
+    left: 6px;
 }
 h1 {
-    margin-top: 30px;
+    padding-top: 30px;
 }
-.userCard dl dd, .userCard dl dt {
+hr {
+    margin: 25px 0;
+}
+dl dt {
     float: left;
-    /* width: 15%; */
-}
-dt {
-    width: 30%;
-    font-size: 12px;
+    width: 200px;
     font-weight: bold;
-    padding: 7px 0;
+    /* font-size: 12px; */
+    margin: 9px 0;
 }
-dd {
-    width: 70%;
-    font-size: 15px;
-    line-height: 32px;
-    color: #9da0a7;
+dl dd {
+    float: left;
+    /* padding: 3px 0; */
+    line-height: 26px;
+    height: 26px;
+    color: rgb(157, 160, 167);
+    width: 100px;
+    margin: 9px 0;
 }
-footer.media {
-    background: #F75764;
+
+.text {
+    float: left;
+}
+
+img.avatar {
+    float: left;
+}
+.img-text-ct {
+    padding: 50px;
+}
+.text {
+    float: left;
+    padding-left: 67px;
+    width: 470px;
+}
+.footer {
     text-align: center;
-    font-size: 26px;
+    border: 1px solid;
+    background: rgb(230, 104, 106);
+    color: white;
+    font-size: 27px;
+    padding: 11px 0
 }
-
-.media a {
+.footer a {
+    margin: 0 40px;
+    width: 40px;
+    height: 40px;
+    width: 40px;
+    height: 40px;
     display: inline-block;
-    vertical-align: center;
-    border-radius: 50%;
-    margin:20px 20px;
-    width:40px;
-    height:40px;
     line-height: 40px;
-    
 }
-.media a:hover{
-    background: #cf5d5f;
+.footer a:hover{
+    border-radius: 50%;
+    background: rgba(0,0,0,0.6)
 }
-
-
-
-
-
