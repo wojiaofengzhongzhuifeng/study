@@ -145,10 +145,16 @@ dsadsadsa
 
 4. 对font-size的理解：
 
-   `http://js.jirengu.com/yeyuzohuju/1/edit?html,css,output`40px指的是字母的最高到最低的距离为40px
+   http://js.jirengu.com/yeyuzohuju/1/edit?html,css,output40px指的是字母的最高到最低的距离为40px
 
 
 
 
 
-http://js.jirengu.com/bomopukuni/1/edit?html,css,output
+
+
+## 两种字垂直对齐
+
+1. 情景: 两个元素不能垂直对齐
+2. 方法:给小的元素一个height和line-height,它们的值都是大的元素的height.
+3. 例子:http://js.jirengu.com/bomopukuni/1/edit?html,css,output
