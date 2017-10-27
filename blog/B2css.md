@@ -173,7 +173,7 @@ dsadsadsa
 
 1. 情景:给一个元素padding没有反应.
 2. 方法:给这个元素添加一个套,在添加padding.
-3. 例子:[https://wojiaofengzhongzhuifeng.github.io/study/](https://wojiaofengzhongzhuifeng.github.io/study/)[demo](https://github.com/wojiaofengzhongzhuifeng/study/tree/master/demo)/[test](https://github.com/wojiaofengzhongzhuifeng/study/tree/master/demo/test)/test1-padding添加无效/
+3. 例子:[https://wojiaofengzhongzhuifeng.github.io/study/](https://wojiaofengzhongzhuifeng.github.io/study/[demo](https://github.com/wojiaofengzhongzhuifeng/study/tree/master/demo)/[test](https://github.com/wojiaofengzhongzhuifeng/study/tree/master/demo/test)/test1/)
 
 
 
