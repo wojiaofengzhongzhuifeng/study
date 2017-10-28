@@ -147,3 +147,52 @@ img.avatar {
     border-radius: 50%;
     background: rgba(0,0,0,0.6)
 }
+.download-ct {
+    width: 208px;
+    margin: 20px auto;
+}
+a.download {
+    border: 1px solid black;
+    /* width: 350px; */
+    display: inline-block;
+    padding: 15px 60px;
+    /* margin: 0 auto; */
+}
+p.abstract {
+    border: 1px solid black;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    /* margin: 10px; */
+}
+.abstrct-ct {
+    padding: 10px;
+    /* margin: -3px; */
+}
+.skill-section {
+    max-width: 800px;
+    border: 1px solid black;
+    margin: 10px auto;
+}
+.skill-section h2 {
+    text-align: center;
+}
+.gap-ct{
+    border:1px solid black;
+    height:3px;
+    background: black;
+    width:300px;
+    position: relative;
+}
+.gap{
+    border:1px solid transparent;
+    height:3px;
+    background:white;
+    width:200px;
+    position: absolute;
+  }
+
+  div.skill-section li {
+    float: left;
+    padding: 10px 8px;
+}

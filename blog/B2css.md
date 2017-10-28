@@ -17,9 +17,10 @@
 
 ## 写CSS经验
 
-1. 先把自己的样式搞定(font-size和color),再考虑布局.
-2. 布局从内到外.
-3. ​
+1. 先在vscode写上html,然后直接在chrome编辑,编辑完成后粘贴给vscode.
+2. 先把自己的样式搞定(font-size和color),再考虑布局.
+3. 布局从内到外.
+4. ​
 
 ## margin和padding的理解
 
@@ -173,12 +174,25 @@ dsadsadsa
 
 1. 情景:给一个元素padding没有反应.
 2. 方法:给这个元素添加一个套,再添加padding.
-3. 例子:https://wojiaofengzhongzhuifeng.github.io/study/[demo](https://github.com/wojiaofengzhongzhuifeng/study/tree/master/demo)/[test](https://github.com/wojiaofengzhongzhuifeng/study/tree/master/demo/test)/test1/
+3. 例子:https://wojiaofengzhongzhuifeng.github.io/study/demo/test/test1/
 
 
 
 
 
 
+## 边框抖动	
 
-## 边框
+1. 情景:如鼠标悬浮时会出现border,但是后面的元素会抖动.
+2. 方法:先给`:hover`添加border,然后给元素添加一个transparent的border.
+3. 例子:http://js.jirengu.com/xuferuxize/1/edit?html,css,output
+
+
+
+
+
+## height和width无效
+
+1. 情景:给元素添加width和height没有效果.
+2. 方法:给该元素添加`dispaly:inline-block`
+
