@@ -18,9 +18,7 @@
 ## 写CSS经验
 
 1. 先在vscode写上html,然后直接在chrome编辑,编辑完成后粘贴给vscode.
-2. 先把自己的样式搞定(font-size和color),再考虑布局.
-3. 布局从内到外.
-4. ​
+2. 把页面划分成div,先把div里面的布局弄好,然后再考虑各个div之间的布局.
 
 ## margin和padding的理解
 
