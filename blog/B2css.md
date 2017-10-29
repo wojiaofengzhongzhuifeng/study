@@ -201,4 +201,6 @@ dsadsadsa
 
 
 
-## dsjakldsadjskadsadsadsadsa
+## 令两个字和四个字的宽度相同
+
+http://js.jirengu.com/visacewosi/1/edit?html,css,output
