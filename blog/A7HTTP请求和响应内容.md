@@ -36,17 +36,15 @@
 ```
 1 请求方法 路径 协议版本
 
-2 Content-Type: application/x-www-form-urlencoded
+2 accept: text/html(请求必须)
 
-2 Host: www.baidu.com
+2 Host: www.baidu.com(请求必须)
 
-2 User-Agent: curl/7.54.0
+2 Content-Type: application/x-www-form-urlencoded(请求的POST必须)
+
+2 Content-length: 10(请求的POST必须)
 
 2 key1: value1
-
-2 key2: value2
-
-2 key3: value1
 
 3 这里是回车，目的是区分第2部分和第4部分
 
@@ -63,13 +61,13 @@
 
 5. User-Agent就是你是通过什么方式发送的请求，像上面的就是通过 curl 命令行
 
-6. 当然，你也可以自己创建键值对，在curl的时候写 -H "Frank: xxx" ，请求内容就会加上Frank: xxx
+6. accept表示想要什么格式的文件
 
 7. 对于 POST 请求，你可以在curl的时候写 -d "1234567890"，这样，请求内容的第4部分就会有1234567890发送给server
 
 8. 如果请求内容出现Content-Length，你应该要知道它的意思是client发送给server的数据长度
 
-9. 有关消息报头（键值对）的知识看后面的，这里不好写。
+9. 当然，你也可以自己创建键值对，在curl的时候写 -H "Frank: xxx" ，请求内容就会加上Frank: xxx
 ```
 
 3. 在命令行中，响应内容**(这条响应内容就是响应的上面的请求内容)**为
@@ -85,8 +83,6 @@
 2 Content-Length: 17931
 
 2 Content-Type: text/html
-
-2 key1: value1
 
 2 key1: value1
 
