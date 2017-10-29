@@ -204,3 +204,11 @@ dsadsadsa
 ## 令两个字和四个字的宽度相同
 
 http://js.jirengu.com/visacewosi/1/edit?html,css,output
+
+
+
+
+
+## 设置div的高度,且div中的文字是垂直居中
+
+http://js.jirengu.com/kepotibiko/1/edit?html,css,output
