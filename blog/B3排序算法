@@ -1,24 +1,3 @@
-## 找出一个数组中最小的数####
-
-1. 要重复操作的时候,就用for循环
-
-   ```
-   var minNum = function(array){
-   	var a = array;
-   	var min = a[0];
-   	for(var i = 1; i <= a.length - 1; i++) {
-   		if (min > a[i]) {
-   			min = a[i]
-   		}
-   	}
-   	return min
-   }
-   ```
-
-
-   //for(var i = xxx; i <= yyy; i++){这里是重复做的事情}
-   //1. 我们先找到重复次数,然后再找到重复的起始点,就能把xxx和yyy写对.
-
 
 
 ## 冒泡排序
@@ -66,4 +45,40 @@
 
    ​
 
-##  
+##  选择排序
+
+1. 流程图
+
+   ![选择排序流程图.png](https://i.loli.net/2017/11/03/59fbd0b5d69f5.png)
+
+2. js代码
+
+   ```
+   var selectSort = function(array){
+       var a = array
+       //j = 下标
+       for(var j = 0; j < a.length - 1; j++){
+           //jump = 跳跃数
+           for(var jump = 1; jump < a.length; jump++) {
+               if (a[j] > a[j + jump]){
+                   var tem = a[j]
+                   a[j] = a[j + jump]
+                   a[j + jump] = tem
+               }
+           }
+       }
+       return array
+   }
+   ```
+
+   ​
+
+
+
+
+
+## 插入排序
+
+
+
+##
