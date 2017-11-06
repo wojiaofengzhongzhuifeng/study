@@ -79,6 +79,27 @@
 
 ## 插入排序
 
+1. 流程图
+
+   ![插入排序.png](https://ooo.0o0.ooo/2017/11/06/5a007bdb9067d.png)
+
+2. 代码
+
+   ```
+   var insertSort = function(array){
+       for(var i = 1; i < array.length; i++){
+           var value = array[i]
+           for(var j = i - 1; j > -1 && array[j] > value; j--){
+               array[j + 1] = array[j]
+           }
+           array[j + 1] = value
+       }
+       return array
+   }
+   ```
+
+   ​
+
 
 
 ## 算法的特征
@@ -140,4 +161,4 @@
 
    ​
 
-##
+##  
