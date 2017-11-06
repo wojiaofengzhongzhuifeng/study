@@ -89,5 +89,55 @@
 4. 有限性:
 5. 可行性: 
 
+
+
+
+
+
+
+## 计数排序
+
+1. 流程图
+
+   ![计数排序.png](https://ooo.0o0.ooo/2017/11/06/5a0079363ea6d.png)
+
+2. 代码
+
+   ```
+   var countSort = function(array) {
+       var hash = {}
+       var newarr = []
+       for(var i = 0; i < array.length; i++){
+           var num = array[i]
+           if (hash[num] != undefined){
+               hash[num] ++
+           } else {
+               hash[num] = 1
+           }
+       }
+       var max = getArrMax(array)
+       for(var j = 0; j < max; j++){
+           if (hash[j] == undefined){
+               //什么也不做
+           } else {
+               for(var count = 0; count < hash[j]; count++){
+                   newarr.push(j)
+               }
+           }
+       }
+       return newarr
+   }
+   var getArrMax = function(array){
+       var max = array[0]
+       for (var i = 1; i < array.length; i++){
+           if (array[i] > max){
+               max = array[i]
+           }
+       }
+       return max
+   }
+   ```
+
+   ​
+
 ##
-### ##
