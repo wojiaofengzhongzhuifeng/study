@@ -161,4 +161,75 @@
 
    ​
 
-##  #####
+## 桶排序
+```
+function bucketSort(array, step) {
+    var result = [],
+        bucket = [],
+        bucketCount,
+        l = array.length,
+        i,
+        j,
+        k,
+        s,
+        max = array[0],
+        min = array[0],
+        temp;
+    i = 1
+    while(i < l){
+        if (array[i] > max) {
+            max = array[i]
+        }
+        if (array[i] < min) {
+            min = array[i];
+        }
+        i++ 
+    }
+    min = min - 1;
+    bucketCount = Math.ceil((max - min) / step); // 需要桶的数量
+
+    i = 1
+    while(i < l){
+        temp = array[i];
+        var j = 0
+        j = 0
+        while(j < bucketCount){
+            if (temp > (min + step * j) && temp <= (min + step * (j + 1))) { // 判断放入哪个桶
+                if (!bucket[j]) {
+                    bucket[j] = [];
+                }
+                // 通过插入排序将数字插入到桶中的合适位置
+                s = bucket[j].length;
+                if (s > 0) {
+                    k = s - 1
+                    while(k >=0){
+                        if (bucket[j][k] > temp) {
+                            bucket[j][k + 1] = bucket[j][k];
+                        } else {
+                            break;
+                        }
+                        k--                        
+                    }
+                    bucket[j][k + 1] = temp;
+                } else {
+                    bucket[j].push(temp);
+                }
+            }
+            j++
+        }
+        i++
+    }
+
+    i = 0
+    while(i < bucketCount){// 循环取出桶中数据
+        if (bucket[i]) {
+            k = bucket[i].length;
+            for (j = 0; j < k; j++) {
+                result.push(bucket[i][j]);
+            }
+        }
+        i++
+    }
+    return result;
+}
+```
