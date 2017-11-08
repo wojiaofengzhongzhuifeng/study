@@ -1,0 +1,15 @@
+.wrapper{
+    display: inline-block;
+}
+main{
+    text-align: center;
+}
+main .wrapper div kbd {
+    border: 1px solid black;
+    width: 5em;
+    height: 5em;
+    display: inline-block;
+    margin: 5px;
+    text-align: center;
+    line-height: 5em;
+}
