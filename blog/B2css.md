@@ -212,3 +212,11 @@ http://js.jirengu.com/visacewosi/1/edit?html,css,output
 ## 设置div的高度,且div中的文字是垂直居中
 
 http://js.jirengu.com/kepotibiko/1/edit?html,css,output
+
+
+
+
+
+## 居中方法
+
+![居中方法 (1).png](https://i.loli.net/2017/11/08/5a02ba7cac436.png)
