@@ -99,7 +99,7 @@ letter = {
 
 //取出储存在localStorage的hash
 //为什么要'null'?
-hashInLocalStorage = JSON.parse(localStorage.getItem('ddd') || "null")
+hashInLocalStorage = JSON.parse(localStorage.getItem('aaa') || "null")
 if(hashInLocalStorage){
     hash = hashInLocalStorage
 }
@@ -116,8 +116,9 @@ while(index < key['length']){ // 0,1,2表示第一行,第二行,第三行
         buttonAdd = document.createElement('button')
         buttonDel = document.createElement('button')
         webImg = document.createElement('img')
-        webSrc = hash[key[index][index2]].split('').reverse().join('').slice(4).split('').reverse().join('');
-        webIcon =  'http://www.'+ webSrc +'.com/favicon.ico'
+        webSrc = hash[key[index][index2]].split('').reverse().join('').slice(4).split('').reverse().join('');        
+        if(webSrc == null){webSrc = ''}
+        webIcon =  'http://www.'+ webSrc +'.com/favicon.ico'        
         webImg.setAttribute('src', webIcon)
         buttonAdd.textContent = 'E'  
         buttonDel.textContent = 'D'
@@ -132,9 +133,10 @@ while(index < key['length']){ // 0,1,2表示第一行,第二行,第三行
         buttonAdd.onclick = function(yyyyy){
             addWebKey = yyyyy.target.id
             addWebSite = prompt("给我一个网站")
+
             hash[addWebKey] = addWebSite
             //只要hash变化,就把hash存储在localStorage的ddd桶中
-            localStorage.setItem('ddd', JSON.stringify(hash))
+            localStorage.setItem('aaa', JSON.stringify(hash))
         }
         buttonDel.onclick = function(zzzzzz){
             delWebKey = zzzzzz.target.id
