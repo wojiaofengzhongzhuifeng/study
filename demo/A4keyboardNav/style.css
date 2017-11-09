@@ -38,9 +38,7 @@ main .wrapper div kbd:hover {
     bottom: 0;
     left: 0;
 }
-.wrapper div kbd:hover {
-    
-}
+
 header {
     text-align: center;
     padding: 50px 0;

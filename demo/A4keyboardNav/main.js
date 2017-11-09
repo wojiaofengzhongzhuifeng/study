@@ -74,7 +74,6 @@ while(index < key['length']){ // 0,1,2表示第一行,第二行,第三行
         divRow.appendChild(kbd1)
         kbd1.appendChild(buttonAdd)
         kbd1.appendChild(buttonDel)
-        
         //给添加按钮绑定监听事件,允许用户自定义网站
         buttonAdd.onclick = function(yyyyy){
             console.log(yyyyy)
@@ -89,6 +88,8 @@ while(index < key['length']){ // 0,1,2表示第一行,第二行,第三行
             hash[delWebKey] = ''
         }            
         index2 = index2 + 1
+        //给kbd
+        
     }
     index = index + 1
 }
