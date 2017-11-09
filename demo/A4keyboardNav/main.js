@@ -117,7 +117,7 @@ while(index < key['length']){ // 0,1,2表示第一行,第二行,第三行
         buttonAdd.textContent = '添加'  
         buttonDel.textContent = '删除'
         buttonAdd.id = key[index][index2]
-        buttonDel.id = key[index][index2]
+        buttonDel.id = key[index][index2] +'Del'
         kbd1.textContent = key[index][index2]
         divRow.appendChild(kbd1)
         kbd1.appendChild(buttonAdd)
@@ -146,12 +146,13 @@ document.onkeydown = function(xxxxxxxx){
     //新窗口打开,如果我想打开新窗口并且让当前窗口还是键盘导航怎么办?
     window.open("https://" + hash[pressKey], '_blank')
 }
+
 index3 = 1
 while(index3 < hash['length']){
     if(hash[letter[index3]] != ''){
-        letter[index3]
-        // document.querySelectorAll(letter[index3]).textContent = '修改'
-        console.log(letter[index3])
+        var ids = '#' + letter[index3]   //b-z,hash中有网站的字母
+        console.log(ids)
+        document.querySelectorAll(ids).textContent = '喂喂喂'
     }
     index3 = index3 + 1
 }   
