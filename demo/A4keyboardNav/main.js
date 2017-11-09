@@ -117,10 +117,9 @@ while(index < key['length']){ // 0,1,2表示第一行,第二行,第三行
         buttonDel = document.createElement('button')
         webImg = document.createElement('img')
         webSrc = hash[key[index][index2]].split('').reverse().join('').slice(4).split('').reverse().join('');
-        console.log(hash[key[index][index2]])
         // console.log(webSrc)
-        // webIcon =  'http://www.'+ webSrc +'.com/favicon.ico'
-        // webImg.setAttribute('src', webIcon)
+        webIcon =  'http://www.'+ webSrc +'.com/favicon.ico'
+        webImg.setAttribute('src', webIcon)
         buttonAdd.textContent = 'E'  
         buttonDel.textContent = 'D'
         buttonAdd.id = key[index][index2]
@@ -132,7 +131,6 @@ while(index < key['length']){ // 0,1,2表示第一行,第二行,第三行
         kbd1.appendChild(webImg)
         //给添加按钮绑定监听事件,允许用户自定义网站
         buttonAdd.onclick = function(yyyyy){
-            console.log(yyyyy)
             addWebKey = yyyyy.target.id
             addWebSite = prompt("给我一个网站")
             hash[addWebKey] = addWebSite
