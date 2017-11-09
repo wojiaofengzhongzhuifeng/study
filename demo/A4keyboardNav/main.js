@@ -88,8 +88,6 @@ while(index < key['length']){ // 0,1,2表示第一行,第二行,第三行
             hash[delWebKey] = ''
         }               
         index2 = index2 + 1
-        
-
     }
     index = index + 1
 }
@@ -105,10 +103,10 @@ document.onkeydown = function(xxxxxxxx){
 var index3 = 0
 while(index3 < hash.length){
     if (hash[index3]){
-        
     }
     index3 = index3 + 1
 }
+
 
 
 
