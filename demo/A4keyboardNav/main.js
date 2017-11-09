@@ -86,10 +86,10 @@ while(index < key['length']){ // 0,1,2表示第一行,第二行,第三行
         buttonDel.onclick = function(zzzzzz){
             delWebKey = zzzzzz.target.id
             hash[delWebKey] = ''
-        }            
+        }               
         index2 = index2 + 1
-        //给kbd
         
+
     }
     index = index + 1
 }

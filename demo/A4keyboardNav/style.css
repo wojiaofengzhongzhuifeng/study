@@ -25,15 +25,18 @@ main .wrapper div kbd:hover {
     box-shadow: inset 0px 0px 7px 1px rgba(0,0,0,0.38);
     border: 2px solid rgba(0,0,0,0.38);
 }
+main .wrapper div kbd:hover button{
+    display: inline-block;
+}
 .wrapper div kbd button:nth-child(1) {
-    /* display: none; */
+    display: none;
     position: absolute;
     top: 0;
     left: 0;
 }
 
 .wrapper div kbd button:nth-child(2) {
-    /* display: none; */
+    display: none;
     position: absolute;
     bottom: 0;
     left: 0;
