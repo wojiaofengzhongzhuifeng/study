@@ -42,30 +42,30 @@ key = {
 hash = {
     'a': 'amazon.com',
     'b': 'baidu.com',
-    'c': 'douban.com',
-    'd': 'ifeng.com',
-    'e': 'ganji.com',
-    'f': 'meituan.com',
-    'g': 'zhihu.com',
-    'h': 'amazon.com',
-    'i': 'baidu.com',
-    'j': 'douban.com',
-    'k': 'ifeng.com',
-    'l': 'ganji.com',
+    'c': '',
+    'd': 'douyu.com',
+    'e': '',
+    'f': '',
+    'g': 'google.com',
+    'h': 'huaban.com',
+    'i': '',
+    'j': '',
+    'k': '',
+    'l': '',
     'm': 'meituan.com',
-    'n': 'zhihu.com',
-    'o': 'amazon.com',
-    'p': 'baidu.com',
-    'q': 'douban.com',
-    'r': 'ifeng.com',
-    's': 'ganji.com',
-    't': 'meituan.com',
-    'u': 'zhihu.com',
-    'v': 'amazon.com',
-    'w': 'baidu.com',
-    'x': 'douban.com',
-    'y': 'ifeng.com',
-    'z': 'ganji.com',
+    'n': '',
+    'o': '',
+    'p': '',
+    'q': '',
+    'r': '',
+    's': '',
+    't': 'taobao.com',
+    'u': '',
+    'v': 'v2ex.com',
+    'w': 'weibo.com',
+    'x': '',
+    'y': '',
+    'z': 'zhihu',
     'length': 27,
 }
 letter = {
@@ -96,9 +96,10 @@ letter = {
     '25': 'y',
     '26': 'z',
 }
+
 //取出储存在localStorage的hash
 //为什么要'null'?
-hashInLocalStorage = JSON.parse(localStorage.getItem('rrr') || "null")
+hashInLocalStorage = JSON.parse(localStorage.getItem('ddd') || "null")
 if(hashInLocalStorage){
     hash = hashInLocalStorage
 }
@@ -114,27 +115,38 @@ while(index < key['length']){ // 0,1,2表示第一行,第二行,第三行
         kbd1 = document.createElement('kbd')
         buttonAdd = document.createElement('button')
         buttonDel = document.createElement('button')
-        buttonAdd.textContent = '添加'  
-        buttonDel.textContent = '删除'
+        webImg = document.createElement('img')
+        webSrc = hash[key[index][index2]].split('').reverse().join('').slice(4).split('').reverse().join('');
+        console.log(hash[key[index][index2]])
+        // console.log(webSrc)
+        // webIcon =  'http://www.'+ webSrc +'.com/favicon.ico'
+        // webImg.setAttribute('src', webIcon)
+        buttonAdd.textContent = 'E'  
+        buttonDel.textContent = 'D'
         buttonAdd.id = key[index][index2]
         buttonDel.id = key[index][index2] +'Del'
         kbd1.textContent = key[index][index2]
         divRow.appendChild(kbd1)
         kbd1.appendChild(buttonAdd)
         kbd1.appendChild(buttonDel)
+        kbd1.appendChild(webImg)
         //给添加按钮绑定监听事件,允许用户自定义网站
         buttonAdd.onclick = function(yyyyy){
             console.log(yyyyy)
             addWebKey = yyyyy.target.id
             addWebSite = prompt("给我一个网站")
             hash[addWebKey] = addWebSite
-            //只要hash变化,就把hash存储在localStorage的rrr桶中
-            localStorage.setItem('rrr', JSON.stringify(hash))
+            //只要hash变化,就把hash存储在localStorage的ddd桶中
+            localStorage.setItem('ddd', JSON.stringify(hash))
         }
         buttonDel.onclick = function(zzzzzz){
             delWebKey = zzzzzz.target.id
             hash[delWebKey] = ''
-        }            
+        }  
+        
+       
+
+
         index2 = index2 + 1
     }
     index = index + 1
@@ -146,16 +158,7 @@ document.onkeydown = function(xxxxxxxx){
     //新窗口打开,如果我想打开新窗口并且让当前窗口还是键盘导航怎么办?
     window.open("https://" + hash[pressKey], '_blank')
 }
-
-index3 = 1
-while(index3 < hash['length']){
-    if(hash[letter[index3]] != ''){
-        var ids = '#' + letter[index3]   //b-z,hash中有网站的字母
-        console.log(ids)
-        document.querySelectorAll(ids).textContent = '喂喂喂'
-    }
-    index3 = index3 + 1
-}   
+  
 
 
 
