@@ -46,26 +46,48 @@ hash = {
     'f': 'ifeng.com',
     'g': 'ganji.com',
     'm': 'meituan.com',
-    'z': 'zhihu.com'
+    'z': 'zhihu.com',
+}
+//取出储存在localStorage的hash
+//为什么要'null'?
+hashInLocalStorage = JSON.parse(localStorage.getItem('zzz') || "null")
+if(hashInLocalStorage){
+    hash = hashInLocalStorage
 }
 //用js和数据结构生成html
 //index表示组数
 index = 0
-while(index < key['length']){
-    div1 = document.createElement("div")
-    main.appendChild(div1)
+while(index < key['length']){ // 0,1,2表示第一行,第二行,第三行
+    divRow = document.createElement("div")
+    main.appendChild(divRow)
     //index2表示一组中的字母个数
     index2 = 0
     while(index2 < key[index]['length']){
         kbd1 = document.createElement('kbd')
-        button1 = document.createElement('button')
-        button1.textContent = '添加'  
-        button2 = document.createElement('button')
-        button2.textContent = '删除'     
+        buttonAdd = document.createElement('button')
+        buttonDel = document.createElement('button')
+        buttonAdd.textContent = '添加'  
+        buttonDel.textContent = '删除'
+        buttonAdd.id = key[index][index2]
+        buttonDel.id = key[index][index2]
         kbd1.textContent = key[index][index2]
-        div1.appendChild(kbd1)
-        kbd1.appendChild(button1)
-        kbd1.appendChild(button2)
+        divRow.appendChild(kbd1)
+        kbd1.appendChild(buttonAdd)
+        kbd1.appendChild(buttonDel)
+        
+        //给添加按钮绑定监听事件,允许用户自定义网站
+        buttonAdd.onclick = function(yyyyy){
+            console.log(yyyyy)
+            addWebKey = yyyyy.target.id
+            addWebSite = prompt("给我一个网站")
+            hash[addWebKey] = addWebSite
+            //只要hash变化,就把hash存储在localStorage的zzz桶中
+            localStorage.setItem('zzz', JSON.stringify(hash))
+        }
+        buttonDel.onclick = function(zzzzzz){
+            delWebKey = zzzzzz.target.id
+            hash[delWebKey] = ''
+        }            
         index2 = index2 + 1
     }
     index = index + 1
@@ -77,6 +99,12 @@ document.onkeydown = function(xxxxxxxx){
     //新窗口打开,如果我想打开新窗口并且让当前窗口还是键盘导航怎么办?
     window.open("https://" + hash[pressKey], '_blank')
 }
+
+
+
+
+
+
 
 
 
