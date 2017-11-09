@@ -100,7 +100,14 @@ document.onkeydown = function(xxxxxxxx){
     window.open("https://" + hash[pressKey], '_blank')
 }
 
-
+//
+var index3 = 0
+while(index3 < hash.length){
+    if (hash[index3]){
+        
+    }
+    index3 = index3 + 1
+}
 
 
 
