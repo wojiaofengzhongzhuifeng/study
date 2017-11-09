@@ -42,15 +42,63 @@ key = {
 hash = {
     'a': 'amazon.com',
     'b': 'baidu.com',
-    'd': 'douban.com',
-    'f': 'ifeng.com',
-    'g': 'ganji.com',
+    'c': 'douban.com',
+    'd': 'ifeng.com',
+    'e': 'ganji.com',
+    'f': 'meituan.com',
+    'g': 'zhihu.com',
+    'h': 'amazon.com',
+    'i': 'baidu.com',
+    'j': 'douban.com',
+    'k': 'ifeng.com',
+    'l': 'ganji.com',
     'm': 'meituan.com',
-    'z': 'zhihu.com',
+    'n': 'zhihu.com',
+    'o': 'amazon.com',
+    'p': 'baidu.com',
+    'q': 'douban.com',
+    'r': 'ifeng.com',
+    's': 'ganji.com',
+    't': 'meituan.com',
+    'u': 'zhihu.com',
+    'v': 'amazon.com',
+    'w': 'baidu.com',
+    'x': 'douban.com',
+    'y': 'ifeng.com',
+    'z': 'ganji.com',
+    'length': 27,
+}
+letter = {
+    '1': 'a',
+    '2': 'b',
+    '3': 'c',
+    '4': 'd',
+    '5': 'e',
+    '6': 'f',
+    '7': 'g',
+    '8': 'h',
+    '9': 'i',
+    '10': 'j',
+    '11': 'k',
+    '12': 'l',
+    '13': 'm',
+    '14': 'n',
+    '15': 'o',
+    '16': 'p',
+    '17': 'q',
+    '18': 'r',
+    '19': 's',
+    '20': 't',
+    '21': 'u',
+    '22': 'v',
+    '23': 'w',
+    '24': 'x',
+    '25': 'y',
+    '26': 'z',
 }
 //取出储存在localStorage的hash
 //为什么要'null'?
-hashInLocalStorage = JSON.parse(localStorage.getItem('zzz') || "null")
+hashInLocalStorage = JSON.parse(localStorage.getItem('rrr') || "null")
 if(hashInLocalStorage){
     hash = hashInLocalStorage
 }
@@ -80,13 +128,13 @@ while(index < key['length']){ // 0,1,2表示第一行,第二行,第三行
             addWebKey = yyyyy.target.id
             addWebSite = prompt("给我一个网站")
             hash[addWebKey] = addWebSite
-            //只要hash变化,就把hash存储在localStorage的zzz桶中
-            localStorage.setItem('zzz', JSON.stringify(hash))
+            //只要hash变化,就把hash存储在localStorage的rrr桶中
+            localStorage.setItem('rrr', JSON.stringify(hash))
         }
         buttonDel.onclick = function(zzzzzz){
             delWebKey = zzzzzz.target.id
             hash[delWebKey] = ''
-        }               
+        }            
         index2 = index2 + 1
     }
     index = index + 1
@@ -98,14 +146,18 @@ document.onkeydown = function(xxxxxxxx){
     //新窗口打开,如果我想打开新窗口并且让当前窗口还是键盘导航怎么办?
     window.open("https://" + hash[pressKey], '_blank')
 }
-
-//
-var index3 = 0
-while(index3 < hash.length){
-    if (hash[index3]){
+index3 = 1
+while(index3 < hash['length']){
+    if(hash[letter[index3]] != ''){
+        letter[index3]
+        // document.querySelectorAll(letter[index3]).textContent = '修改'
+        console.log(letter[index3])
     }
     index3 = index3 + 1
-}
+}   
+
+
+
 
 
 
