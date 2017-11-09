@@ -117,7 +117,6 @@ while(index < key['length']){ // 0,1,2表示第一行,第二行,第三行
         buttonDel = document.createElement('button')
         webImg = document.createElement('img')
         webSrc = hash[key[index][index2]].split('').reverse().join('').slice(4).split('').reverse().join('');
-        // console.log(webSrc)
         webIcon =  'http://www.'+ webSrc +'.com/favicon.ico'
         webImg.setAttribute('src', webIcon)
         buttonAdd.textContent = 'E'  
