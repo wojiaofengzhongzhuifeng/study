@@ -95,6 +95,7 @@ letter = {
     '24': 'x',
     '25': 'y',
     '26': 'z',
+    'length': '27'
 }
 
 //取出储存在localStorage的hash
@@ -123,7 +124,7 @@ while(index < key['length']){ // 0,1,2表示第一行,第二行,第三行
         buttonAdd.textContent = 'E'  
         buttonDel.textContent = 'D'
         buttonAdd.id = key[index][index2]
-        buttonDel.id = key[index][index2] +'Del'
+        buttonDel.id = key[index][index2]
         kbd1.textContent = key[index][index2]
         divRow.appendChild(kbd1)
         kbd1.appendChild(buttonAdd)
@@ -133,19 +134,15 @@ while(index < key['length']){ // 0,1,2表示第一行,第二行,第三行
         buttonAdd.onclick = function(yyyyy){
             addWebKey = yyyyy.target.id
             addWebSite = prompt("给我一个网站")
-
             hash[addWebKey] = addWebSite
             //只要hash变化,就把hash存储在localStorage的ddd桶中
             localStorage.setItem('aaa', JSON.stringify(hash))
         }
         buttonDel.onclick = function(zzzzzz){
             delWebKey = zzzzzz.target.id
-            hash[delWebKey] = ''
+            console.log(hash[delWebKey])
+            hash[delWebKey] = ' '
         }  
-        
-       
-
-
         index2 = index2 + 1
     }
     index = index + 1
@@ -157,6 +154,13 @@ document.onkeydown = function(xxxxxxxx){
     //新窗口打开,如果我想打开新窗口并且让当前窗口还是键盘导航怎么办?
     window.open("https://" + hash[pressKey], '_blank')
 }
+
+//遍历hash,如果有网站,就给它添加icon
+// for(var i = 0; i < hash['length'];i++){
+//     if(hash[letter[i]] !== ''){
+//         console.log(hash[letter[i]])
+//     }
+// }
   
 
 
