@@ -167,44 +167,22 @@
                 var row = keyPress[index]//row['2'] = third group
                 for(var index2 = 0;index2 < row['length']; index2++){//index2 = (0-10) (0-9) (0-7)
                     var kbd = document.createElement('kbd')//取名
-                    var button = document.createElement('button')
-                    button.textContent = 'E'
-                    button.id = row[index2]
-                    //添加用户自定义网站的功能
-                    //思路
-                    //1. 知道你点击了
-                    //2. 弹出框,你可以输入你自定义网站
-                    //3. 将hash和(点击的按钮所在kbd的字母)重新设置网站地址
-                    button.onclick = function(yyyy){
-                        var newSite = prompt('给我一个网站')
-                        var changeKey = yyyy.target.id
-                        if(newSite == ''){
-                            alert('请输入网站')
-                            yyyy.target.previousSibling.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
-                            hash[changeKey] = ''
-                            localStorage.setItem('zzz', JSON.stringify(hash))
-                        } else {
-                            hash[changeKey] = newSite
-                            yyyy.target.previousSibling.src = 'http://'+hash[changeKey]+'/favicon.ico'
-                            localStorage.setItem('zzz', JSON.stringify(hash))
-                        }
-                    }
+
+
+                    //添加button
+                    var button = creatBtn(row[index2])
+
+
                     var span = document.createElement('span')
                     span.textContent = row[index2]
+
+
+
+
                     //添加用户自定义网站,键盘显示icon功能
-                    var img = document.createElement('img')
-                    if(hash[row[index2]] == ''){
-                        iconSrc = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
-                    }
-                    else if(hash[row[index2]] != undefined){  //正常或者为''
-                        iconSrc = 'http://'+ hash[row[index2]]+'/favicon.ico'
-                    } else{
-                        iconSrc = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
-                    }
-                    img.src = iconSrc
-                    img.onerror = function(aaaa){
-                        aaaa.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
-                    }
+                    var img = getImg(hash[row[index2]])
+
+
                     kbd.appendChild(span)
                     kbd.appendChild(img)
                     kbd.appendChild(button)
@@ -227,6 +205,58 @@
                     alert('你还没有自定义网站')
                 }
             }
+        }
+
+
+        //
+        function creatBtn(id){
+            //??
+            var button = tagAndAtt('button', {textContent: 'e', id: id})
+            //添加用户自定义网站的功能
+            //思路
+            //1. 知道你点击了
+            //2. 弹出框,你可以输入你自定义网站
+            //3. 将hash和(点击的按钮所在kbd的字母)重新设置网站地址
+            button.onclick = function(yyyy){
+                var newSite = prompt('给我一个网站')
+                var changeKey = yyyy.target.id
+                if(newSite == ''){
+                    alert('请输入网站')
+                    yyyy.target.previousSibling.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
+                    hash[changeKey] = ''
+                    localStorage.setItem('zzz', JSON.stringify(hash))
+                } else {
+                    hash[changeKey] = newSite
+                    yyyy.target.previousSibling.src = 'http://'+hash[changeKey]+'/favicon.ico'
+                    localStorage.setItem('zzz', JSON.stringify(hash))
+                }
+            }  
+            return button                     
+        }
+
+        function getImg(domain){
+            var img = document.createElement('img')
+            if(domain == ''){
+                iconSrc = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
+            }
+            else if(domain != undefined){  //正常或者为''
+                iconSrc = 'http://'+ domain+'/favicon.ico'
+            } else{
+                iconSrc = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
+            }
+            img.src = iconSrc
+            img.onerror = function(aaaa){
+                aaaa.target.src = '//i.loli.net/2017/11/10/5a05afbc5e183.png'
+            }  
+            return img                     
+        }
+
+        function tagAndAtt(tagName, attributes){
+            var element = document.createElement(tagName)
+            for(var key in attributes){
+                element[key] = attributes[key]
+            }
+            return element
         }
     </script>
 </body>
