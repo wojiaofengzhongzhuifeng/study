@@ -221,6 +221,16 @@ http://js.jirengu.com/kepotibiko/1/edit?html,css,output
 
 ![居中方法 (2).png](https://i.loli.net/2017/11/08/5a02c0d1b4aa0.png)
 
+目前使用居中:
+
+1. 水平居中: 看目标元素是`display: inline-block`,加目标元素的父元素是`text-align:center`实现水平居中.
+
+2. 垂直居中:给目标元素的父元素`display: flex;justify-content: center;align-items: center;`如果父元素的高度不够,可以添加`height:100vh`
+
+   ​            
+
+   ​            
+
 
 
 ## 纯css控制元素显示 
