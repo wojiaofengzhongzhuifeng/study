@@ -2,6 +2,6 @@
 
 1. 个人简历：https://wojiaofengzhongzhuifeng.github.io/study/demo/A3个人简历/
 2. 阴阳图: https://wojiaofengzhongzhuifeng.github.io/study/demo/protice/yinyang.html
-3. 键盘导航: https://wojiaofengzhongzhuifeng.github.io/study/demo/**A4nav**1/
+3. 键盘导航: https://wojiaofengzhongzhuifeng.github.io/study/demo/A4nav1/
 
 
