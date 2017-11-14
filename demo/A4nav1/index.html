@@ -73,16 +73,27 @@
         kbd:hover button{
             display: inline-block;
         }
+        header{
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #search{
+            display:inline-block;
+            padding-top:10px;
+        }
     </style>
 </head>
 <body>
     <header>
-        <!-- https://www.baidu.com/s?wd=%E5%BE%AE%E5%8D%9A -->
-        <form action="">
-            <input type="text">
-            <button>google</button>
-            <button>百度</button>
-        </form>
+        <div id="search">
+            <form action="">
+                    <input type="text" id='input'>
+                    <button id='google'>google</button>
+                    <button id='baidu'>百度</button>
+            </form>
+        </div>
 
     </header>
     <main>
@@ -90,32 +101,44 @@
     </main>
     <footer></footer>
     <script>
-
-
-
-
-
-
-        
-
-
         //初始化
         var hashA = init()
         var keyPress = hashA['keyPress']
         var hash = hashA['hash']
 
-
-
-
-
-
         //创建键盘
         creatKeyPress(keyPress, hash)
 
+        //键入按键,则打开相应网站
+            openSite(hash)
 
+    
+        //在input输入文本框,跳转到相应的搜索引擎
+        input.onkeypress = function(zzz){
+            console.log('仅仅在input输入')
+            zzz.stopPropagation()
+            baidu.onclick = function(){
+                window.open('http://www.baidu.com/s?wd='+input.value,'')
+            }
+            google.onclick = function(){
+                window.open('http://www.google.com/search?q='+input.value,'')
+            }
+        }
 
-        //键入按键,打开网站
-        openSite(hash)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         //公用函数
 
