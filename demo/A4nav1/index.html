@@ -38,7 +38,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 60vh;
         }
         body{
             /* 背景图居中+自适应 */
@@ -78,10 +78,30 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 40vh;
         }
         #search{
             display:inline-block;
             padding-top:10px;
+        }
+        #google {
+            border: 0;
+            font-size: 16px;
+            background: rgba(255,255,255,0.5);
+            padding-top: 6px;
+        }
+        #baidu{
+            border: 0;
+            font-size: 16px;
+            background: rgba(255,255,255,0.5);
+        }
+        #input{
+            border: none;
+            background: none;
+            border-bottom: 3px solid black;
+            margin-right: 30px;
+                outline:medium;
+
         }
     </style>
 </head>
@@ -89,9 +109,10 @@
     <header>
         <div id="search">
             <form action="">
-                    <input type="text" id='input'>
-                    <button id='google'>google</button>
-                    <button id='baidu'>百度</button>
+                <span>搜索:</span>
+                <input type="text" id='input'>
+                <button id='google'>Google</button>
+                <button id='baidu'>百度</button>
             </form>
         </div>
 
@@ -110,7 +131,7 @@
         creatKeyPress(keyPress, hash)
 
         //键入按键,则打开相应网站
-            openSite(hash)
+        openSite(hash)
 
     
         //在input输入文本框,跳转到相应的搜索引擎
