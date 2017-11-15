@@ -6,69 +6,119 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        *{
+            margin: 0;
+            padding: 0
+        }
         #canvas{
             background: green;
+        }
+        #tool{
+            position: absolute;
+            bottom:20px ;
+            left: 0;
+
+        }
+        #tool-ct{
+            position: relative
         }
     </style>
 </head>
 <body>
-    <canvas id="canvas" width='500' height='500'></canvas>
+    <canvas id="canvas" width='500' height='500'>
+    </canvas>
+    <div id="tool-ct">
+        <div id="tool">
+            <button id="erase">橡皮</button>
+            <button id='pen'>画笔</button>
+        </div>
+    </div>
+
+
+
+
     <script>
         //这两句固定
         var canvas  = document.getElementById('canvas')
         var context = canvas.getContext('2d')
 
+        //
+        var width = document.documentElement.clientWidth 
+        var height = document.documentElement.clientHeight
+        var usErase = false
+        var usPen = true
 
-  
+
+        //实时获取用户的视口宽度和高度,让canvas铺满全整个视口
+        window.onload = function(){
+            getViewWidHei()
+        }
+        getViewWidHei()
+
+
+
+
+        erase.onclick = function(){
+            usErase = true
+        }
+        pen.onclick = function(){
+            usErase = false
+        }
 
 
 
         //模拟用户涂鸦过程
         //1. 要监听用户在 canvas 中鼠标是否点击,表示画图开始
         //drwa是状态锁
-        var draw = false;
+        var usingTool = false;
         canvas.onmousedown = function(aaa){
-            draw = true;
-            console.log('画图开始')
+            usingTool = true;
             var x = aaa.clientX-5
             var y = aaa.clientY-5
-            //这里我不明白
-            //我写的是
-            //var firstPoint = {'x': x,'y': y},然后在onmousemove这个函数就用不了了了
             firstPoint = {
                 'x': x,
                 'y': y
             }
-            drawCircle(x,y)
+            if(usErase){
+                usingErase(x,y)
+            } else {
+                drawCircle(x,y)
+            }
             
         }
 
 
         //2. 要监听用户在 canvas 中鼠标是否移动,表示持续画图
         canvas.onmousemove = function(aaa){
-            if(draw){
-                // console.log('画图持续')
+            if(usingTool){ 
                 var x = aaa.clientX-5
                 var y = aaa.clientY-5
                 var secondPoint = {
                     'x': x,
                     'y': y
                 }
-                drawCircle(x,y)
-                drawLine(firstPoint.x, firstPoint.y, secondPoint.x, secondPoint.y)
-                firstPoint = secondPoint
+                if(usErase){
+                    usingErase(x,y)
+                    firstPoint = secondPoint
+                } else {
+                    drawCircle(x,y)
+                    drawLine(firstPoint.x, firstPoint.y, secondPoint.x, secondPoint.y)
+                    firstPoint = secondPoint
+                }
             }
+
         }
 
         //3. 要监听用户在 canvas 中鼠标是否释放,表示结束画图
         canvas.onmouseup = function(){
-            draw = false
-            // console.log('画图结束')
+            usingTool = false
         }
 
 
+
+
+        //封装函数
         //给定两个坐标,可以画线
-        //注意
         function drawLine(x1,y1,x2,y2){
             context.beginPath();
             context.strokeStyle = "blue"
@@ -78,7 +128,7 @@
             context.closePath();
             context.stroke();
         }
-        // 先画一个圆
+        //画圆
         function drawCircle (x,y){
             context.beginPath();
             context.fillStyle = "blue"
@@ -86,6 +136,16 @@
             context.closePath();
             context.fill();   
         }
+
+        function usingErase(x,y){
+            context.clearRect(x, y, 20,20)
+        }
+
+        function getViewWidHei(){
+            canvas.width = width
+            canvas.height = height
+        }
+
     </script>    
 </body>
 </html>
