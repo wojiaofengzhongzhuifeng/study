@@ -1,0 +1,22 @@
+1. 代码:
+
+   ```
+   canvas.addEventListener('mousedown', function(){
+       console.log(11)
+   },false) 
+   //
+   canvas.onmousedown = function(){
+       console.log(222)
+   }
+   ```
+
+   1. 前者叫添加事件监听(不确定呀),其中mousedown是从https://developer.mozilla.org/zh-CN/docs/Web/Events#找到的
+   2. 后者叫事件处理函数,其中onmousedown是从https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers找到的
+
+2. 事件监听要注意的
+
+   1. 在什么地方(前面代码的canvas)
+   2. 监听什么事情(前面代码的onmousedown)
+
+3. 如果做一件事情需要在某某状态下,那么加状态锁
+

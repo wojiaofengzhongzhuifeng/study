@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas{
+            background: green;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width='500' height='500'></canvas>
+    <script>
+        //这两句固定
+        var canvas  = document.getElementById('canvas')
+        var context = canvas.getContext('2d')
+
+
+  
+
+
+
+        //模拟用户涂鸦过程
+        //1. 要监听用户在 canvas 中鼠标是否点击,表示画图开始
+        //drwa是状态锁
+        var draw = false;
+        canvas.onmousedown = function(aaa){
+            draw = true;
+            console.log('画图开始')
+            var x = aaa.clientX-5
+            var y = aaa.clientY-5
+            //这里我不明白
+            //我写的是
+            //var firstPoint = {'x': x,'y': y},然后在onmousemove这个函数就用不了了了
+            firstPoint = {
+                'x': x,
+                'y': y
+            }
+            drawCircle(x,y)
+            
+        }
+
+
+        //2. 要监听用户在 canvas 中鼠标是否移动,表示持续画图
+        canvas.onmousemove = function(aaa){
+            if(draw){
+                // console.log('画图持续')
+                var x = aaa.clientX-5
+                var y = aaa.clientY-5
+                var secondPoint = {
+                    'x': x,
+                    'y': y
+                }
+                drawCircle(x,y)
+                drawLine(firstPoint.x, firstPoint.y, secondPoint.x, secondPoint.y)
+                firstPoint = secondPoint
+            }
+        }
+
+        //3. 要监听用户在 canvas 中鼠标是否释放,表示结束画图
+        canvas.onmouseup = function(){
+            draw = false
+            // console.log('画图结束')
+        }
+
+
+        //给定两个坐标,可以画线
+        //注意
+        function drawLine(x1,y1,x2,y2){
+            context.beginPath();
+            context.strokeStyle = "blue"
+            context.lineWidth=10;
+            context.moveTo(x1,y1);
+            context.lineTo(x2,y2);
+            context.closePath();
+            context.stroke();
+        }
+        // 先画一个圆
+        function drawCircle (x,y){
+            context.beginPath();
+            context.fillStyle = "blue"
+            context.arc(x,y,4,0,Math.PI*2,true);
+            context.closePath();
+            context.fill();   
+        }
+    </script>    
+</body>
+</html>
