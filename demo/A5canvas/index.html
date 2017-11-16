@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0
+        }
+        #canvas{
+            background: green;
+        }
+
+        #tool-nav{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+        div#eraseStyle {
+            display: none;
+            position: fixed;
+            top: 50px;
+            left:50px;
+            border: 1px solid black;
+        }
+        div#eraseStyle div {
+            border: 1px solid black;
+            margin: 10px;
+        }
+        div#eraseStyle .erase1 {
+            height: 10px;   
+            width: 10px;
+            border: 1px solid black;
+            margin: 10px;
+        }
+        div#eraseStyle .erase2 {
+            height: 15px;   
+            width: 15px;
+            border: 1px solid black;
+            margin: 10px;
+        }
+        div#eraseStyle .erase3 {
+            height: 20px;   
+            width: 20px;
+            border: 1px solid black;
+            margin: 10px;
+        }
+        div#eraseStyle .erase4 {
+            height: 30px;   
+            width: 30px;
+            border: 1px solid black;
+            margin: 10px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width='500' height='500'>
+    </canvas>
+    <div id="tool-nav">
+        <button id="erase">橡皮</button>
+        <button id='pen'>画笔</button>
+        <button id='canvasBg'>canvas颜色</button>
+    </div>
+    <div id="eraseStyle">
+        <p>橡皮</p>
+        <div  class='erase1'></div>
+        <div  class='erase2'></div>
+        <div  class='erase3'></div>
+        <div  class='erase4'></div>
+
+    </div>
+
+
+
+
+    <script>
+        //这两句固定
+        var canvas  = document.getElementById('canvas')
+        var context = canvas.getContext('2d')
+
+        var eraseStyle  = document.getElementById('eraseStyle')
+
+        
+
+        //实时获取用户的视口宽度和高度,让canvas铺满全整个视口
+        window.onload = function(){
+            getViewWidHei()
+        }
+
+        changeCanvas()
+        
+
+        window.onresize = function(e){
+            getViewWidHei()
+        }
+
+
+
+        //改变使用的工具
+        var usErase = false
+        erase.onclick = function(){
+            usErase = true
+            eraseStyle.style = 'display: inline-block'
+        }
+
+
+        pen.onclick = function(){
+            usErase = false
+        }
+
+
+
+
+        //给erase按钮添加功能
+        eraseStyle.addEventListener("click", function(event){
+            console.log(event.target.className.height)
+        })
+
+        //模拟用户涂鸦过程
+        function changeCanvas(){
+            var usingTool = false;
+            canvas.onmousedown = function(aaa){
+                usingTool = true;
+                var x = aaa.clientX-5
+                var y = aaa.clientY-5
+                firstPoint = {
+                    'x': x,
+                    'y': y
+                }
+                if(usErase){
+                    usingErase(x,y)
+                } else {
+                    drawCircle(x,y)
+                }
+                
+            }
+
+            canvas.onmousemove = function(aaa){
+                if(usingTool){ 
+                    var x = aaa.clientX-5
+                    var y = aaa.clientY-5
+                    var secondPoint = {
+                        'x': x,
+                        'y': y
+                    }
+                    if(usErase){
+                        usingErase(x,y)
+                        firstPoint = secondPoint
+                    } else {
+                        drawCircle(x,y)
+                        drawLine(firstPoint.x, firstPoint.y, secondPoint.x, secondPoint.y)
+                        firstPoint = secondPoint
+                    }
+                }
+            }
+
+            canvas.onmouseup = function(){
+                console.log(1)
+                usingTool = false
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //封装函数
+        //给定两个坐标,可以画线
+        function drawLine(x1,y1,x2,y2){
+            context.beginPath();
+            context.strokeStyle = "blue"
+            context.lineWidth=10;
+            context.moveTo(x1,y1);
+            context.lineTo(x2,y2);
+            context.closePath();
+            context.stroke();
+
+
+        }
+        //画圆
+        function drawCircle (x,y){
+            context.beginPath();
+            context.fillStyle = "blue"
+            context.arc(x,y,4,0,Math.PI*2,true);
+            context.closePath();
+            context.fill();
+        }
+
+        function usingErase(x,y){
+            context.clearRect(x, y, 20,20)
+        }
+
+        function getViewWidHei(){
+            var width = document.documentElement.clientWidth 
+            var height = document.documentElement.clientHeight
+            canvas.width = width
+            canvas.height = height
+        }
+
+
+
+    </script>    
+</body>
+</html>
