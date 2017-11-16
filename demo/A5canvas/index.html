@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        .clearfix::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
         *{
             margin: 0;
             padding: 0
@@ -54,12 +59,113 @@
             border: 1px solid black;
             margin: 10px;
         }
+        .active{
+            border: 1px solid black;
+            position: fixed;
+        }
+        #penColorStyle{
+            display: none;
+            position: fixed;
+            top: 100px;
+            right: 50px;
+            height: 200px;
+            width: 200px;
+            border:1px solid black;
+            text-align: center;
+        }
+        #penColorStyle > div {
+            display: inline-block;
+            margin-left: 8px;
+        }
+        #penColorStyle > div div {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            float: left;
+            margin: 13px;
+        }
+        #penColorStyle .black{
+            background: black;
+        }
+        #penColorStyle .white{
+            background: white;
+        }
+        #penColorStyle .red{
+            background: red;
+        }
+        #penColorStyle .green{
+            background: green;
+        }
+        #penColorStyle .yellow{
+            background: yellow;
+        }
+        #penColorStyle .gray{
+            background: gray;
+        }
+        #penColorStyle .pink{
+            background: pink;
+        }
+        #penColorStyle .orange{
+            background: orange;
+        }
 
+        #penColorStyle .purple{
+            background: purple;
+        }
 
+        #canvasColorStyle{
+            position: fixed;
+            top: 400px;
+            right: 50px;
+            height: 200px;
+            width: 200px;
+            border:1px solid black;
+            text-align: center;
+            display: none;
+        }
+        #canvasColorStyle > div {
+            display: inline-block;
+            margin-left: 8px;
+        }
+        #canvasColorStyle > div div {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            float: left;
+            margin: 13px;
+        }
+        #canvasColorStyle .black{
+            background: black;
+        }
+        #canvasColorStyle .white{
+            background: white;
+        }
+        #canvasColorStyle .red{
+            background: red;
+        }
+        #canvasColorStyle .green{
+            background: green;
+        }
+        #canvasColorStyle .yellow{
+            background: yellow;
+        }
+        #canvasColorStyle .gray{
+            background: gray;
+        }
+        #canvasColorStyle .pink{
+            background: pink;
+        }
+        #canvasColorStyle .orange{
+            background: orange;
+        }
+
+        #canvasColorStyle .purple{
+            background: purple;
+        }
 
     </style>
 </head>
-<body>
+<body id='body'>
     <canvas id="canvas" width='500' height='500'>
     </canvas>
     <div id="tool-nav">
@@ -69,12 +175,42 @@
     </div>
     <div id="eraseStyle">
         <p>橡皮</p>
-        <div  class='erase1'></div>
-        <div  class='erase2'></div>
-        <div  class='erase3'></div>
-        <div  class='erase4'></div>
-
+        <div  class='erase1' size='10'></div>
+        <div  class='erase2' size='15'></div>
+        <div  class='erase3' size='20'></div>
+        <div  class='erase4' size='30'></div>
     </div>
+    <div id="penColorStyle">
+        <p>画笔颜色</p>
+        <div class='clearfix'>
+            <div class="black"></div>
+            <div class="white"></div>
+            <div class="red"></div>
+            <div class="green"></div>
+            <div class="yellow"></div>
+            <div class="gray"></div>
+            <div class="pink"></div>
+            <div class="orange"></div>
+            <div class='purple'></div>
+        </div>
+    </div>
+
+
+    <div id="canvasColorStyle">
+            <p>画布颜色</p>
+            <div class='clearfix'>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="red"></div>
+                <div class="green"></div>
+                <div class="yellow"></div>
+                <div class="gray"></div>
+                <div class="pink"></div>
+                <div class="orange"></div>
+                <div class='purple'></div>
+            </div>
+        </div>
+    
 
 
 
@@ -86,7 +222,7 @@
 
         var eraseStyle  = document.getElementById('eraseStyle')
 
-        
+        var currentPenColor = 'black'
 
         //实时获取用户的视口宽度和高度,让canvas铺满全整个视口
         window.onload = function(){
@@ -102,12 +238,7 @@
 
 
 
-        //改变使用的工具
-        var usErase = false
-        erase.onclick = function(){
-            usErase = true
-            eraseStyle.style = 'display: inline-block'
-        }
+
 
 
         pen.onclick = function(){
@@ -115,12 +246,91 @@
         }
 
 
+        //给橡皮差btn按钮添加功能
+        var usErase = false
+        var showEraseboard = false;
+        erase.onclick = function(){
+            showEraseboard = !showEraseboard;
+            newEraseSize = 20
+            usErase = true
+            if(showEraseboard){
+                eraseStyle.style = 'display: inline-block'
+            } else {
+                eraseStyle.style = 'display: none'
+            }
+        }
 
-
-        //给erase按钮添加功能
+        //给橡皮差控制台添加功能
         eraseStyle.addEventListener("click", function(event){
-            console.log(event.target.className.height)
+            newEraseSize = event.target.getAttribute('size')
+            event.target.parentNode.style = 'none'
         })
+
+        //给画笔按钮添加功能
+        var showPenboard = false; 
+        pen.addEventListener('click', function(){
+            showPenboard = !showPenboard
+            if(showPenboard){
+                penColorStyle.style.display = 'inline-block'
+            } else {
+                penColorStyle.style.display = 'none'
+            }
+        })
+
+        //给画笔控制台添加功能
+        penColorStyle.addEventListener("click",function(e){
+            var target = e.target
+            if(target.tagName == 'DIV' ){
+                currentPenColor = target.className
+            }
+            target.parentNode.parentNode.style.display = "none"
+        })
+
+
+
+
+
+        //给canvas颜色btn添加功能
+        var showcanvasBgboard = false
+        canvasBg.addEventListener('click',function(){
+            showcanvasBgboard = !showcanvasBgboard
+            if(showcanvasBgboard){
+                canvasColorStyle.style.display = "inline-block"
+            } else {
+                canvasColorStyle.style.display = "none"
+            }
+        })
+
+
+
+
+        //给canvasBg控制台添加功能
+        canvasColorStyle.addEventListener("click",function(e){
+            var target = e.target
+            if(target.tagName == 'DIV' ){
+                canvasColorStyle = target.className
+            }
+            target.parentNode.parentNode.style.display = "none"
+            canvas.style.background = canvasColorStyle
+
+        })
+
+
+        // penColorStyle.addEventListener("click",function(e){
+        //     var target = e.target
+        //     if(target.tagName == 'DIV' ){
+        //         currentPenColor = target.className
+        //     }
+        //     target.parentNode.parentNode.style.display = "none"
+        // })
+
+
+
+
+
+
+
+
 
         //模拟用户涂鸦过程
         function changeCanvas(){
@@ -135,6 +345,8 @@
                 }
                 if(usErase){
                     usingErase(x,y)
+                    // followErase()
+                 
                 } else {
                     drawCircle(x,y)
                 }
@@ -151,20 +363,20 @@
                     }
                     if(usErase){
                         usingErase(x,y)
-                        firstPoint = secondPoint
+                        // followErase()
                     } else {
                         drawCircle(x,y)
                         drawLine(firstPoint.x, firstPoint.y, secondPoint.x, secondPoint.y)
-                        firstPoint = secondPoint
                     }
+                    firstPoint = secondPoint
+
                 }
+
             }
 
             canvas.onmouseup = function(){
-                console.log(1)
                 usingTool = false
             }
-
         }
 
 
@@ -187,7 +399,7 @@
         //给定两个坐标,可以画线
         function drawLine(x1,y1,x2,y2){
             context.beginPath();
-            context.strokeStyle = "blue"
+            context.strokeStyle = currentPenColor
             context.lineWidth=10;
             context.moveTo(x1,y1);
             context.lineTo(x2,y2);
@@ -199,15 +411,27 @@
         //画圆
         function drawCircle (x,y){
             context.beginPath();
-            context.fillStyle = "blue"
+                context.fillStyle = currentPenColor
             context.arc(x,y,4,0,Math.PI*2,true);
             context.closePath();
             context.fill();
         }
-
+        //橡皮差
         function usingErase(x,y){
-            context.clearRect(x, y, 20,20)
+            context.clearRect(x, y, newEraseSize,newEraseSize)  
+            //followErase(x,y,newEraseSize,newEraseSize)
         }
+
+        // function followErase (x,y,width,height){
+        //     div1 = document.createElement('div')
+        //     div1.className = 'active'
+        //     div1.style.height = height + 'px'
+        //     div1.style.width = width + 'px'
+        //     div1.style.left = x + 'px'
+        //     div1.style.top = y + 'px'
+        //     body.appendChild(div1)
+        // }
+
 
         function getViewWidHei(){
             var width = document.documentElement.clientWidth 
