@@ -22,6 +22,14 @@
 
 4. 这么多宽度和高度,我怎么选?
 
+5. btn有个取反的套路,如果你想在一个键设置两个功能时用\
+
+6. 我想实现resize窗口,画的东西存在,通过搜索,发现使用`getImageData`和`putImageData`,然后我做了一个demo,来验证我的猜想http://js.jirengu.com/hajegejugo/1/edit?html,js,output,猜想是:如果canvas修改了,那么就应该用`getImageData`来保存进度,如果检测到resize了,就重新获取width和height最后使用`putImageData`把之前的进度放到新的窗口中
+
+7. 当我写画笔颜色的控制台时,我应该用html生成还是用js生成?
+
+8. 刷新会闪屏,怎么办
+
 
 
 
