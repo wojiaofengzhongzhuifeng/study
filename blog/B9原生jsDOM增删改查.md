@@ -3,9 +3,23 @@
 1. 约定
    1. xxx表示现在节点
 2. 增
-   1. 如果xxx想添加css,: `xxx.style.属性名 = 属性值`
-   2. 如果xxx想添加class: `xxx.className = class的名字`
-   3. 如果xxx想添加id: `xxx.id = id的名字`
+   1. 如果xxx想添加css样式,: `xxx.style.样式名 = 值`
+
+   2. 如果xxx想添加HTML中的css属性: `xxx.属性名 = 值` 
+
+   3. 1和2的区别:
+
+      想象你正在创建一个`<div id='xxx'></div>`
+
+      第一个是添加css样式`xxx.style.width = 100px`相当于`<div style="width:100px" id="xxx">`
+
+      第二个是添加HTML属性`xxx.width = 100px` ,相当于`<div width='100px' id="xxx"></div>`
+
+   4. 如果xxx想添加HTML中的id属性: `xxx.className = class的名字`
+
+   5. 如果xxx想添加HTML中的id属性: `xxx.id = id的名字`
+
+   6. 如果xxx想添加HTML的文本内容: `xxx.textContext = "画笔"`
 3. 删
 4. 改
 5. 查
