@@ -1,4 +1,4 @@
-预览: canvas预览: https://wojiaofengzhongzhuifeng.github.io/study/demo/A5canvasDE/
+预览: canvas预览: https://wojiaofengzhongzhuifeng.github.io/study/demo/A5canvas/
 
 ## canvas思路
 
