@@ -70,16 +70,16 @@ function ListenUser(){
 
 
 //移动端测试
-yyy.ontouchstart = function(e){
-console.log("开始摸")
-console.log(e) 
-}
-yyy.ontouchmove = function(){
-console.log("边摸边动")
-}
-yyy.ontouchend = function(){
-console.log("摸完了")
-}
+// yyy.ontouchstart = function(e){
+// console.log("开始摸")
+// console.log(e) 
+// }
+// yyy.ontouchmove = function(){
+// console.log("边摸边动")
+// }
+// yyy.ontouchend = function(){
+// console.log("摸完了")
+// }
 
     yyy.onmousedown = function(eee){
         var x = eee.clientX

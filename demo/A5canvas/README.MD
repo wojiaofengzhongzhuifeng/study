@@ -1,4 +1,4 @@
-预览: canvas预览: https://wojiaofengzhongzhuifeng.github.io/study/demo/A5canvas/
+预览: canvas预览: https://wojiaofengzhongzhuifeng.github.io/study/demo/A5canvasDE/
 
 ## canvas思路
 
@@ -39,13 +39,13 @@
 
 11. 添加功能: 总共两个btn,其中一个btn的名字叫橡皮差,另一个的名字叫画笔,并且在使用橡皮差的时候,不能出现画笔btn
 
-12. 一个功能对应一个btn
+   1. 一个功能对应一个btn
    2. js控制逻辑,css控制样式,如果想js控制样式,那么用js控制class即可
    3. 先写只显示画笔的css,再写只显示橡皮差的css,并且让这两个css的class有所不同.用js控制class,执行相应代码即可,注意css文件的选择器`.action.xxx`在html是这样显示的`<div class="action x"></div>`
 
-13. 添加功能: 在移动端使用
+12. 添加功能: 在移动端使用
 
-14. 停止移动端的页面缩放,记住就好,html文件: `meta:vp`+tab
+   1. 停止移动端的页面缩放,记住就好,html文件: `meta:vp`+tab
    2. 鼠标事件在移动端用不了,所以用if(){}来分别走PC端和移动端,并且查mdn移动端的事件是`ontouchstart`,`ontouchmove`,`ontouchend`,所以console.log一下测试能不能用.
 
 
