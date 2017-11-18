@@ -13,11 +13,10 @@ ListenUser()
 
 
 
+
+
+
 //封装函数
-//简便log
-function log(sth){
-    return console.log(sth)
-}
 //画圈
 function drawCircle(x,y,radius){
     context.beginPath()
@@ -61,8 +60,26 @@ function ListenUser(){
     //add eraser-btn
     var usingEraser = false
     eraser.onclick = function(){
-        usingEraser = !usingEraser
+        usingEraser = true
+        action.className = "action x"
     }
+    brush.onclick = function(){
+        usingEraser = false
+        action.className = "action"
+    }
+
+
+//移动端测试
+yyy.ontouchstart = function(e){
+console.log("开始摸")
+console.log(e) 
+}
+yyy.ontouchmove = function(){
+console.log("边摸边动")
+}
+yyy.ontouchend = function(){
+console.log("摸完了")
+}
 
     yyy.onmousedown = function(eee){
         var x = eee.clientX
@@ -80,7 +97,7 @@ function ListenUser(){
 
     yyy.onmousemove = function(eee){
         if(usingTool){
-            //以下代码是点击canvas的时候运行的
+            //以下代码是点击yyy的时候运行的
             var x = eee.clientX
             var y = eee.clientY
             var secondPoint = {
@@ -95,10 +112,13 @@ function ListenUser(){
             }
             firstPoint = secondPoint
         } else {
-            //以下代码是没有点击canvas,什么也不做
+            //以下代码是没有点击yyy,什么也不做
         }
     }
     yyy.onmouseup = function(){
         usingTool = false
     }
+
 }
+
+
