@@ -1,4 +1,6 @@
-canvas思路:
+预览: canvas预览: https://wojiaofengzhongzhuifeng.github.io/study/demo/A5canvasDE/
+
+## canvas思路
 
 1. 画圆形
 
@@ -43,11 +45,11 @@ canvas思路:
 
 12. 添加功能: 在移动端使用
 
-   1. 停止移动端的页面缩放
+   1. 停止移动端的页面缩放,记住就好,html文件: `meta:vp`+tab
+   2. 鼠标事件在移动端用不了,所以用if(){}来分别走PC端和移动端,并且查mdn移动端的事件是`ontouchstart`,`ontouchmove`,`ontouchend`,所以console.log一下测试能不能用.
 
 
-
-canvas问题: 
+## canvas问题
 
 1. 代码
 
@@ -70,3 +72,9 @@ canvas问题:
    如果一个变量在n个函数使用,就应该放在全局变量中
 
    如果一个变量在一个函数使用,就应该放在那个函数中
+
+2. 移动端开发中,为什么`yyy.ontouchstart = function(e){console.log("开始摸")}`不起作用?
+
+3. 为什么我的`document.body.ontouchstar`在移动端和pc端都是undefined?
+
+4. 为什么我的`'ontouchstart' in document.body`在移动端是false
