@@ -1,7 +1,8 @@
 var yyy = document.getElementById("xxx")
 var context = yyy.getContext("2d")
-
-
+var penColor = 'black';
+var penWidth = 5;
+var radius = 2;
 //初始化
 init()
 
@@ -9,6 +10,50 @@ init()
 
 //监听用户
 ListenUser()
+
+
+//改变颜色
+black.onclick = function(){
+    //为什么这样写不能换颜色?
+    penColor= 'red'
+    black.classList.add('active')
+    red.classList.remove('active')
+    yellow.classList.remove('active')
+    green.classList.remove('active')
+}
+red.onclick = function(){
+    black.classList.remove('active')
+    red.classList.add('active')
+    yellow.classList.remove('active')
+    green.classList.remove('active')
+}
+yellow.onclick = function(){
+    black.classList.remove('active')
+    red.classList.remove('active')
+    yellow.classList.add('active')
+    green.classList.remove('active')
+}
+green.onclick = function(){
+    black.classList.remove('active')
+    red.classList.remove('active')
+    yellow.classList.remove('active')
+    green.classList.add('active')
+}
+
+//改变粗细
+thin.onclick = function(){
+    penWidth = 2.5
+    radius = 1
+}
+normal.onclick = function(){
+    penWidth = 5
+    radius = 2
+}
+thick.onclick = function(){
+    penWidth = 10
+    radius = 5
+}
+
 
 
 
@@ -20,15 +65,16 @@ ListenUser()
 //画圈
 function drawCircle(x,y,radius){
     context.beginPath()
-    context.fillstyle = "black"
-    context.arc(x,y,radius,0,360)
+    context.fillstyle = penColor
+    context.arc(x,y,radius,0,Math.PI*2)
     context.fill()
 }
 
 //画线
 function drawLine(x1,y1,x2,y2){
     context.beginPath()
-    context.lineWidth = "5"
+    context.strokestyle = penColor
+    context.lineWidth = penWidth
     context.moveTo(x1,y1);
     context.lineTo(x2,y2);
     context.stroke()
@@ -57,21 +103,21 @@ function ListenUser(){
     }
     var usingTool = false
 
-    //add eraser-btn
     var usingEraser = false
     eraser.onclick = function(){
         usingEraser = true
-        action.className = "action x"
+        eraser.classList.add('active')
+        brush.classList.remove('active')
     }
     brush.onclick = function(){
         usingEraser = false
-        action.className = "action"
+        brush.classList.add('active')
+        eraser.classList.remove('active')
     }
 
     //特性检测
     if('ontouchstart' in document.body){
         yyy.ontouchstart = function(eee){
-            console.log(eee)
             var x = eee['touches']['0']['clientX']
             var y = eee['touches']['0']['clientY']
             firstPoint.x = x
@@ -81,7 +127,7 @@ function ListenUser(){
                 //这里的usingTool本来是paint
                 context.clearRect(x,y,10,10)
             } else {
-                drawCircle(x,y,2)
+                drawCircle(x,y,radius)
             }
         }
         yyy.ontouchmove = function(eee){
@@ -96,7 +142,7 @@ function ListenUser(){
                 if(usingEraser){
                     context.clearRect(x,y,10,10)
                 } else {
-                    drawCircle(x,y,2)
+                    drawCircle(x,y,radius)
                     drawLine(firstPoint.x,firstPoint.y, secondPoint.x,secondPoint.y)
                 }
                 firstPoint = secondPoint
@@ -118,7 +164,7 @@ function ListenUser(){
                 //这里的usingTool本来是paint
                 context.clearRect(x,y,10,10)
             } else {
-                drawCircle(x,y,2)
+                drawCircle(x,y,radius)
             }
         }
 
@@ -134,7 +180,7 @@ function ListenUser(){
                 if(usingEraser){
                     context.clearRect(x,y,10,10)
                 } else {
-                    drawCircle(x,y,2)
+                    drawCircle(x,y,radius)
                     drawLine(firstPoint.x,firstPoint.y, secondPoint.x,secondPoint.y)
                 }
                 firstPoint = secondPoint

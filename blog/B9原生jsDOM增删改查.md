@@ -15,11 +15,13 @@
 
       第二个是添加HTML属性`xxx.width = 100px` ,相当于`<div width='100px' id="xxx"></div>`
 
-   4. 如果xxx想添加HTML中的id属性: `xxx.className = class的名字`
+   4. 如果xxx想添加HTML中的class属性: `xxx.className = 'class的名字'`
 
    5. 如果xxx想添加HTML中的id属性: `xxx.id = id的名字`
 
    6. 如果xxx想添加HTML的文本内容: `xxx.textContext = "画笔"`
+
+   7. 如果xxx想追加HTML的class名字: xxx.classList.add("active")
 3. 删
 4. 改
 5. 查
