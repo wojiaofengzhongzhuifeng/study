@@ -68,56 +68,88 @@ function ListenUser(){
         action.className = "action"
     }
 
-
-//移动端测试
-// yyy.ontouchstart = function(e){
-// console.log("开始摸")
-// console.log(e) 
-// }
-// yyy.ontouchmove = function(){
-// console.log("边摸边动")
-// }
-// yyy.ontouchend = function(){
-// console.log("摸完了")
-// }
-
-    yyy.onmousedown = function(eee){
-        var x = eee.clientX
-        var y = eee.clientY
-        firstPoint.x = x
-        firstPoint.y = y   
-        usingTool = true
-        if(usingEraser){
-            //这里的usingTool本来是paint
-            context.clearRect(x,y,10,10)
-        } else {
-            drawCircle(x,y,1)
-        }
-    }
-
-    yyy.onmousemove = function(eee){
-        if(usingTool){
-            //以下代码是点击yyy的时候运行的
-            var x = eee.clientX
-            var y = eee.clientY
-            var secondPoint = {
-                x: x,
-                y: y
-            }
+    //特性检测
+    if('ontouchstart' in document.body){
+        yyy.ontouchstart = function(eee){
+            console.log(eee)
+            var x = eee['touches']['0']['clientX']
+            var y = eee['touches']['0']['clientY']
+            firstPoint.x = x
+            firstPoint.y = y   
+            usingTool = true
             if(usingEraser){
+                //这里的usingTool本来是paint
                 context.clearRect(x,y,10,10)
             } else {
-                drawCircle(x,y,1)
-                drawLine(firstPoint.x,firstPoint.y, secondPoint.x,secondPoint.y)
+                drawCircle(x,y,2)
             }
-            firstPoint = secondPoint
-        } else {
-            //以下代码是没有点击yyy,什么也不做
+        }
+        yyy.ontouchmove = function(eee){
+            if(usingTool){
+                //以下代码是点击yyy的时候运行的
+                var x = eee['touches']['0']['clientX']
+                var y = eee['touches']['0']['clientY']
+                var secondPoint = {
+                    x: x,
+                    y: y
+                }
+                if(usingEraser){
+                    context.clearRect(x,y,10,10)
+                } else {
+                    drawCircle(x,y,2)
+                    drawLine(firstPoint.x,firstPoint.y, secondPoint.x,secondPoint.y)
+                }
+                firstPoint = secondPoint
+            } else {
+                //以下代码是没有点击yyy,什么也不做
+            }
+        }
+        yyy.ontouchend = function(){
+            usingTool = false
+        }
+    }else {
+        yyy.onmousedown = function(eee){
+            var x = eee.clientX
+            var y = eee.clientY
+            firstPoint.x = x
+            firstPoint.y = y   
+            usingTool = true
+            if(usingEraser){
+                //这里的usingTool本来是paint
+                context.clearRect(x,y,10,10)
+            } else {
+                drawCircle(x,y,2)
+            }
+        }
+
+        yyy.onmousemove = function(eee){
+            if(usingTool){
+                //以下代码是点击yyy的时候运行的
+                var x = eee.clientX
+                var y = eee.clientY
+                var secondPoint = {
+                    x: x,
+                    y: y
+                }
+                if(usingEraser){
+                    context.clearRect(x,y,10,10)
+                } else {
+                    drawCircle(x,y,2)
+                    drawLine(firstPoint.x,firstPoint.y, secondPoint.x,secondPoint.y)
+                }
+                firstPoint = secondPoint
+            } else {
+                //以下代码是没有点击yyy,什么也不做
+            }
+        }
+        yyy.onmouseup = function(){
+            usingTool = false
         }
     }
-    yyy.onmouseup = function(){
-        usingTool = false
-    }
+
+
+
+    
 
 }
 
