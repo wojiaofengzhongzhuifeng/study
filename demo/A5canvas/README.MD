@@ -1,4 +1,4 @@
-预览: canvas预览: https://wojiaofengzhongzhuifeng.github.io/study/demo/A5canvasDE/
+预览: canvas预览: https://wojiaofengzhongzhuifeng.github.io/study/demo/A5canvas/
 
 ## canvas思路
 
@@ -39,33 +39,14 @@
 
 11. 添加功能: 总共两个btn,其中一个btn的名字叫橡皮差,另一个的名字叫画笔,并且在使用橡皮差的时候,不能出现画笔btn
 
-12. 一个功能对应一个btn
+   1. 一个功能对应一个btn
+   2. js控制逻辑,css控制样式,如果想js控制样式,那么用js控制class即可
+   3. 先写只显示画笔的css,再写只显示橡皮差的css,并且让这两个css的class有所不同.用js控制class,执行相应代码即可,注意css文件的选择器`.action.xxx`在html是这样显示的`<div class="action x"></div>`
 
-13. js控制逻辑,css控制样式,如果想js控制样式,那么用js控制class即可
+12. 添加功能: 在移动端使用
 
-   先写只显示画笔的css,再写只显示橡皮差的css,并且让这两个css的class有所不同.用js控制class,执行相应代码即可,注意css文件的选择器`.action.xxx`在html是这样显示的`<div class="action x"></div>`
-
-14. 添加功能: 在移动端使用
-
-15. 停止移动端的页面缩放,记住就好,html文件: `meta:vp`+tab
-
-16. 鼠标事件在移动端用不了,所以用if(){}来分别走PC端和移动端,并且查mdn移动端的事件是`ontouchstart`,`ontouchmove`,`ontouchend`,所以console.log一下测试能不能用.
-
-17. 在上一步,我的电脑有个坑,在chrome使用移动端的时候,控制台还是pc端的,所以上一步的touch事件不能用,我移动端用火狐代替chrome
-
-18. 成功使用touch事件,现在的问题是if(){}中的判断语句应该写什么?
-
-19. 使用**特性检测**!在pc端`'ontouchstart' in document.body;`返回false;在移动端,`'ontouchstart' in document.body;`返回true,		
-
-20. 把mouse的代码复制一份给touch,发现运行不了,这时候的下意识就应该**打印出touch的eee** .然后在eee这个对象把坐标找到
-
-21. 给铅笔,橡皮差添加icon:
-
-22. 当点击铅笔的时候,铅笔icon变大,与13步相同.
-
-23. 添加功能: 铅笔颜色
-
-   1. 有个问题,关于添加画笔的颜色,我是在全局变量中加一个`var penColor = "black"`然后在后面分别设置    `context.fillstyle = penColor`和  `context.strokestyle = penColor`,最后如果点击redbtn,那么令`penColor = 'red'`为什么不行?
+   1. 停止移动端的页面缩放,记住就好,html文件: `meta:vp`+tab
+   2. 鼠标事件在移动端用不了,所以用if(){}来分别走PC端和移动端,并且查mdn移动端的事件是`ontouchstart`,`ontouchmove`,`ontouchend`,所以console.log一下测试能不能用.
 
 
 ## canvas问题
