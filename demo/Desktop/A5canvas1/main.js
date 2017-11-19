@@ -7,7 +7,7 @@ var pageWidth = document.documentElement.clientWidth
 var pageHeight = document.documentElement.clientHeight
 var lastImg
 var cPushArray = new Array();
-var cStep = -1;
+var cStep = 0;
 //初始化
 init()
 
@@ -24,7 +24,6 @@ black.onclick = function(){
     red.classList.remove('active')
     yellow.classList.remove('active')
     green.classList.remove('active')
-    colors.classList.remove('active')
 }
 red.onclick = function(){
     penColor = "red"
@@ -32,7 +31,6 @@ red.onclick = function(){
     red.classList.add('active')
     yellow.classList.remove('active')
     green.classList.remove('active')
-    colors.classList.remove('active')
 }
 yellow.onclick = function(){
     penColor = "yellow"
@@ -40,7 +38,6 @@ yellow.onclick = function(){
     red.classList.remove('active')
     yellow.classList.add('active')
     green.classList.remove('active')
-    colors.classList.remove('active')
 }
 green.onclick = function(){
     penColor = "green"
@@ -54,17 +51,14 @@ green.onclick = function(){
 thin.onclick = function(){
     penWidth = 2.5
     radius = 1
-    sizes.classList.remove("active")
 }
 normal.onclick = function(){
     penWidth = 5
     radius = 2
-    sizes.classList.remove("active")
 }
 thick.onclick = function(){
     penWidth = 10
     radius = 5
-    sizes.classList.remove("active")
 }
 
 
@@ -77,24 +71,18 @@ clear.onclick = function(){
 //添加下载功能
 download.onclick = function(){
     var imgUrl = yyy.toDataURL()
-    download.classList.add('active')
-    setTimeout(function(){
-        download.classList.remove('active')
-    },0.5)
     var a1 = document.createElement("a")
     document.body.appendChild(a1)
     a1.href = imgUrl
     a1.download = '我的涂鸦'
     a1.target = "_blank"
     a1.click()
-
 }
 
 //添加撤回功能
 cPush()
 undo.onclick = function(){
     cUndo()
-
 }
 
 
@@ -187,9 +175,7 @@ function ListenUser(){
     brush.onclick = function(){
         usingEraser = false
         brush.classList.add('active')
-        colors.classList.add('active')
         eraser.classList.remove('active')
-        sizes.classList.add("active")
     }
 
     //特性检测
