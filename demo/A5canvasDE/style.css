@@ -1,5 +1,5 @@
-li{
-    list-style: none;
+#xxx{
+    background: green;
 }
 *{
     margin: 0;
@@ -7,83 +7,21 @@ li{
 }
 .action{
     position: fixed;
-    top: 0;
+    bottom: 0;
     left:0;
 }
 
-
-/* 普通状态 */
-.action svg{
-    width:1.5em;
-    height:1.5em;
-    margin:15px;
-    transition: all 0.3s
+/* 显示画笔 */
+.action.x > .eraser{
+    display: none;
 }
-
-
-
-/* 激活状态 */
-.action svg.active{
-    color:red;
-    transform: scale(1.2)
+.action.x > .brush{
+    display: inline-block;
 }
-
-.action ol.colors{
-    padding: 0 5px; 
-    position: fixed;
-    top: 50px;
-    left: 14px;
-    text-align: center;
+/* 显示橡皮差 */
+.action > .eraser{
+    display: inline-block;
 }
-
-.action ol.colors li {
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    margin: 10px 0;
-    box-shadow: 0 0 3px rgba(0,0,0,0.4);
-    transition: all 0.3s;
+.action > .brush{
+    display: none;
 }
-.action ol.colors li.black {
-    background: black;
-}
-.action ol.colors li.red {
-    background: red;
-}
-.action ol.colors li.yellow {
-    background: yellow;
-}
-.action ol.colors li.green {
-    background: green;
-}
-
-.action ol.colors li.active {
-    transform: scale(1.5)    
-}
-
-
-
-.action .sizes{
-    position: fixed;
-    top: 20px;
-    right:20px;
-    height: 50px;
-    width:15px;
-}
-.action .sizes li{
-    padding:10px 0
-}
-.action .sizes li.thin{
-    border-top: 10px solid black;
-    border-radius: 5px;
-}
-.action .sizes li.normal{
-    border-top: 12px solid black;
-    border-radius: 6px;
-}
-.action .sizes li.thick{
-    border-top: 15px solid black;
-    border-radius: 8px;
-}
-
-
