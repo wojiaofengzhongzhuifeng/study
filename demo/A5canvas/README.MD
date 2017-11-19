@@ -42,27 +42,30 @@
 12. 一个功能对应一个btn
 
 13. js控制逻辑,css控制样式,如果想js控制样式,那么用js控制class即可
-   3. 先写只显示画笔的css,再写只显示橡皮差的css,并且让这两个css的class有所不同.用js控制class,执行相应代码即可,注意css文件的选择器`.action.xxx`在html是这样显示的`<div class="action x"></div>`
+14. 先写只显示画笔的css,再写只显示橡皮差的css,并且让这两个css的class有所不同.用js控制class,执行相应代码即可,注意css文件的选择器`.action.xxx`在html是这样显示的`<div class="action x"></div>`
 
-14. 添加功能: 在移动端使用
+15. 添加功能: 在移动端使用
 
-15. 停止移动端的页面缩放,记住就好,html文件: `meta:vp`+tab
+16. 停止移动端的页面缩放,记住就好,html文件: `meta:vp`+tab
 
-16. 鼠标事件在移动端用不了,所以用if(){}来分别走PC端和移动端,并且查mdn移动端的事件是`ontouchstart`,`ontouchmove`,`ontouchend`,所以console.log一下测试能不能用.
+17. 鼠标事件在移动端用不了,所以用if(){}来分别走PC端和移动端,并且查mdn移动端的事件是`ontouchstart`,`ontouchmove`,`ontouchend`,所以console.log一下测试能不能用.
 
-17. 使用特性检测,来确定使用touch还是mouse事件,特性检测方法: `'ontouchstart' in document.body`在移动端返回true,在pc端返回false;
+18. 使用特性检测,来确定使用touch还是mouse事件,特性检测方法: `'ontouchstart' in document.body`在移动端返回true,在pc端返回false;
 
-18. 添加铅笔和橡皮差的icon
+19. 添加铅笔和橡皮差的icon
 
-19. 添加功能: 铅笔的颜色,颜色的btn是通过css变化的,与13步相似
+20. 添加功能: 铅笔的颜色,颜色的btn是通过css变化的,与13步相似
 
-20. 添加功能: 铅笔的粗细
+21. 添加功能: 铅笔的粗细
 
-21. 添加功能: 撤回
+22. 添加功能: 撤回
 
-22. 添加功能: 正常隐藏铅笔的颜色,当点击铅笔icon的时候才显示
+23. 添加功能: 正常隐藏铅笔的颜色,当点击铅笔icon的时候才显示
 
-   1. ​
+   1. 在css文件中找到四个颜色的容器,把他设置为`display: none`
+   2. 复制`display:none`的选择器,在最后面加`.active`
+   3. 给这个选择器一个id,方便js找到
+   4. 用js添加一个class为`active`
 
 
 ## canvas问题
