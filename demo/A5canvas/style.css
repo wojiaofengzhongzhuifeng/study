@@ -5,6 +5,12 @@ li{
     margin: 0;
     padding:0;
 }
+
+#xxx{
+    position: fixed;
+    top: 0;
+    left:0;
+}
 .action{
     position: fixed;
     top: 0;

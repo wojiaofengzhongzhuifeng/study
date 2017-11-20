@@ -62,7 +62,7 @@
 
 23. 添加功能: 正常隐藏铅笔的颜色,当点击铅笔icon的时候才显示
 
-24. 在css文件中找到四个颜色的容器,把他设置为`display: none`
+   1. 在css文件中找到四个颜色的容器,把他设置为`display: none`
    2. 复制`display:none`的选择器,在最后面加`.active`
    3. 给这个选择器一个id,方便js找到
    4. 用js添加一个class为`active`
@@ -98,7 +98,3 @@
 
 4. 为什么我的`'ontouchstart' in document.body`在移动端是false
 
-
-
-
-##
