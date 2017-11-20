@@ -5,8 +5,11 @@ li{
     margin: 0;
     padding:0;
 }
-
 body{
+    overflow: hidden;
+}
+#xxx{
+    display: block;
     position: fixed;
     top: 0;
     left:0;
