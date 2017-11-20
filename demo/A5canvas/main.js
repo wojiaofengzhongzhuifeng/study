@@ -48,6 +48,7 @@ green.onclick = function(){
     red.classList.remove('active')
     yellow.classList.remove('active')
     green.classList.add('active')
+    colors.classList.remove('active')    
 }
 
 //改变粗细
