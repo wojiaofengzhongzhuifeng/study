@@ -8,6 +8,7 @@ var pageHeight = document.documentElement.clientHeight
 var lastImg
 var cPushArray = new Array();
 var cStep = -1;
+var eraserWidth = 10;
 //初始化
 init()
 
@@ -81,7 +82,7 @@ download.onclick = function(){
     download.classList.add('active')
     setTimeout(function(){
         download.classList.remove('active')
-    },0.5)
+    },500)
     var a1 = document.createElement("a")
     document.body.appendChild(a1)
     a1.href = imgUrl
@@ -95,7 +96,26 @@ download.onclick = function(){
 cPush()
 undo.onclick = function(){
     cUndo()
+}
 
+//添加橡皮大小
+erasesthin.onclick = function(){
+    console.log(1)
+    eraserWidth = 10;
+    erasesSizes.classList.remove("active")
+}
+erasesnormal.onclick = function(){
+    console.log(1)
+    eraserWidth = 20;
+    erasesSizes.classList.remove("active")
+    
+}
+
+erasesthick.onclick = function(){
+    console.log(1)
+    eraserWidth = 30;
+    erasesSizes.classList.remove("active")
+    
 }
 
 
@@ -135,12 +155,13 @@ function addBackground(){
     context.fill()
 }
 
-//
+//保存进度
 function cPush() {
     cStep++;
     if (cStep < cPushArray.length) { cPushArray.length = cStep; }
     cPushArray.push(yyy.toDataURL());
 }
+//载入进度
 function cUndo() {
     if (cStep > 0) {
         cStep--;
@@ -149,6 +170,9 @@ function cUndo() {
         canvasPic.onload = function () { context.drawImage(canvasPic, 0, 0); }
     }
 }
+
+
+
 
 
 
@@ -166,6 +190,7 @@ function init(){
     //当适应屏幕后,给canvas添加白色背景
     addBackground()
     window.onresize = function(){
+        console.log(1)
         autoFillScreen()
         addBackground()
     }
@@ -184,6 +209,7 @@ function ListenUser(){
         usingEraser = true
         eraser.classList.add('active')
         brush.classList.remove('active')
+        erasesSizes.classList.add("active")
     }
     brush.onclick = function(){
         usingEraser = false
@@ -203,7 +229,7 @@ function ListenUser(){
             usingTool = true
             if(usingEraser){
                 //这里的usingTool本来是paint
-                context.clearRect(x,y,10,10)
+                context.clearRect(x,y,eraserWidth,eraserWidth)
             } else {
                 drawCircle(x,y,radius)
             }
@@ -218,7 +244,7 @@ function ListenUser(){
                     y: y
                 }
                 if(usingEraser){
-                    context.clearRect(x,y,10,10)
+                    context.clearRect(x,y,eraserWidth,eraserWidth)
                 } else {
                     drawCircle(x,y,radius)
                     drawLine(firstPoint.x,firstPoint.y, secondPoint.x,secondPoint.y)
@@ -241,7 +267,7 @@ function ListenUser(){
             usingTool = true
             if(usingEraser){
                 //这里的usingTool本来是paint
-                context.clearRect(x,y,10,10)
+                context.clearRect(x,y,eraserWidth,eraserWidth)
             } else {
                 drawCircle(x,y,radius)
             }
@@ -258,7 +284,7 @@ function ListenUser(){
                     y: y
                 }
                 if(usingEraser){
-                    context.clearRect(x,y,10,10)
+                    context.clearRect(x,y,eraserWidth,eraserWidth)
                 } else {
                     drawCircle(x,y,radius)
                     drawLine(firstPoint.x,firstPoint.y, secondPoint.x,secondPoint.y)
