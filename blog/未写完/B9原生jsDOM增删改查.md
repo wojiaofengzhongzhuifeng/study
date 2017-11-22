@@ -26,3 +26,19 @@
 4. 改
 5. 查
    1. 寻找父节点: `xxx.parentNode()`
+
+
+
+
+
+目前用到的api
+
+1. document.createElement()
+2. document.appendChild()
+3. div.textContent = xxx
+4. div.src = 'xxx'
+5. div.id = 'ssss'
+6. div.className = 'ssss'
+7. 事件监听onerror onclick  onkeypress
+8. xxx.nextSibling
+9. 事件监听的所有信息
