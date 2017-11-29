@@ -21,7 +21,7 @@
 
    在`elements`，选中你想要查看的元素，点击3点 -> moretool ->animation
 
-4. 绝对居中（使用绝对定位法，有父div和子div）方法一
+4. 绝对居中（使用绝对定位法，有父div和子div）方法一，以前的可以作废了
 
    居中元素的height和width都已知，给父元素加`position: relative`，给居中元素加
 
