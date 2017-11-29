@@ -19,7 +19,7 @@
 
    在`elements`，选中你想要查看的元素，点击3点 -> moretool ->animation
 
-3. 绝对居中（使用绝对定位法，有父div和子div）方法一
+3. 绝对居中（使用绝对定位法）
 
    居中元素的height和width都已知，给父元素加`position: relative`，给居中元素加
 
@@ -32,50 +32,4 @@
    margin: auto;
    ```
 
-4. 添加一个动画过程
-
-   1. 设立关键帧
-   2. 在元素的css加`animation: 动画名 秒数 
-
-5. 优化动画loading动画代码，通过伪类
-
-6. 在vscode中，将两行合并成一行，快捷方法是什么？
-
-7. 看了css之后，以后应该怎么写css
-
-   1. 选择器的第一个，用`div.test`代替`.test`，之后的用`.test`
-   2. 不同部分之间使用空格隔开
-
-8. 如何让一个div充满全屏
-
-   ```
-   position: fixed;top: 0;left:0;width:100%;height:100%;
-   ```
-
-9. 绝对居中（使用绝对定位法，有父div和子div，但子div的position已经确定了）方法二
-
-   对父div
-
-   ```
-   display: flex;justify-content: center;align-items:center;
-   ```
-
-10. 符合**触发某事件，某元素的css从一个状态变成另一个状态**，就是套路
-
-    ```
-    开始的css：xxxx
-    当发生事件（如点击鼠标）时
-    变成的css：yyyy
-    ```
-
-    方法如下：
-
-    1. 写好开始的css：xxxxx
-    2. 开始的css的选择器后面紧接着`.active`，写变化的css
-    3. 用js控制class名
-
-11. js给div**追加**class
-
-    ​
-
-    ​
+    
