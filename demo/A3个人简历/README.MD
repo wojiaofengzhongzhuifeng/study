@@ -21,4 +21,15 @@
 
 3. 绝对居中（使用绝对定位法）
 
-   居中元素的height和width都已知，
+   居中元素的height和width都已知，给父元素加`position: relative`，给居中元素加
+
+   ```
+   position: absolute;
+   top: 0;
+   left:0;
+   right: 0;
+   bottom: 0;
+   margin: auto;
+   ```
+
+    
