@@ -7,14 +7,17 @@ li{ list-style: none; }
 
 span.rs { font-size: 22px; color: #e6686a; }
 span.card { font-size: 21px; color: #9a9da2; }
-div.nav a { font-size: 12px; font-weight: bold; color: rgb(183, 183, 183); float: left; margin: 0 18px; padding-bottom: 5px; border-bottom: 3px solid transparent; margin-top: 8px;}
+div.nav a { font-size: 12px; font-weight: bold; color: inherit; float: left; margin: 0 18px; padding-bottom: 5px; border-bottom: 3px solid transparent; margin-top: 8px;}
 div.nav a:hover { border-bottom: 3px solid #e06567; }
 div.nav { float: right; padding: 6px 0; }
 div.nav-ct>a{ float: left;}
-.nav-ct { padding: 20px; position: fixed; /* height: 50px; */ /* line-height: 50px; */ width: 100%; transition: all 0.3s;z-index: 1; }
+div.nav-ct .rs-ct{ display: inline-block;padding-top:5px; }
+div.nav-ct .rs-ct.active{padding-top:9px;}
+.nav-ct { padding: 20px; position: fixed; /* height: 50px; */ /* line-height: 50px; */ width: 100%; transition: all 0.3s;z-index: 1;color: gray; }
 .background-img { height: 515px; background-position: center center; background-size: cover; }
 .mask { height: 515px; background: rgba(0,0,0,0.6); }
 .nav-ct1 { padding-right: 20px; }
+/* .nav-ct1>a { margin-top: 10px; display: inline-block; } */
 div.card { max-width: 940px; margin: 0 auto; background: #ffffff; box-shadow: 0px 1px 4px 1px rgba(0,0,0,0.75); }
 span.welcome { display: inline-block; /* height: 30px; */ padding: 6px 14px; background: #e06567; color: white; position: relative; }
 span.triangle { border: 7px solid transparent; display: block; width: 0; border-top-color: #e06567; border-left-color: #e06567; position: absolute; top: 22px; left: 6px; }
@@ -71,8 +74,9 @@ div.welcome.active{display: none}
 
 /* 添加sticky navbar动画 */
 div.nav-ct.active{
-    /*  */
+    /*  */          
     background:white;
     box-shadow: 0 0 5px rgba(0,0,0,0.4);
     padding: 10px 20px 10px 20px; 
+    color: black;
 }

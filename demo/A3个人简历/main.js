@@ -7,8 +7,10 @@ window.onscroll = function(x){
     var scrollHeight = window.scrollY
     if(scrollHeight === 0){
         navCt1.classList.remove("active")
+        rsAndCard.classList.remove("active")
     } else {
         navCt1.classList.add("active")
+        rsAndCard.classList.add("active")
     }
 }
 
