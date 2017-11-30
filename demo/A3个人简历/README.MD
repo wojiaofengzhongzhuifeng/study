@@ -158,4 +158,4 @@
 
 34. `a.nextSibling is not a function`说明nextSibling不是函数,在js文件中把()去掉
 
-35. ​
+35. ##
