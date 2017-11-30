@@ -7,11 +7,11 @@ li{ list-style: none; }
 
 span.rs { font-size: 22px; color: #e6686a; }
 span.card { font-size: 21px; color: #9a9da2; }
-div.nav a { font-size: 12px; font-weight: bold; color: rgb(183, 183, 183); float: left; margin: 0 18px; padding-bottom: 5px; border-bottom: 3px solid transparent; }
+div.nav a { font-size: 12px; font-weight: bold; color: rgb(183, 183, 183); float: left; margin: 0 18px; padding-bottom: 5px; border-bottom: 3px solid transparent; margin-top: 8px;}
 div.nav a:hover { border-bottom: 3px solid #e06567; }
 div.nav { float: right; padding: 6px 0; }
-div.nav-ct>a{ float: left; }
-.nav-ct { padding: 20px; position: fixed; /* height: 50px; */ /* line-height: 50px; */ width: 100%; }
+div.nav-ct>a{ float: left;}
+.nav-ct { padding: 20px; position: fixed; /* height: 50px; */ /* line-height: 50px; */ width: 100%; transition: all 0.3s;z-index: 1; }
 .background-img { height: 515px; background-position: center center; background-size: cover; }
 .mask { height: 515px; background: rgba(0,0,0,0.6); }
 .nav-ct1 { padding-right: 20px; }
@@ -67,3 +67,12 @@ img.third { top: 312px; left: 648px; }
 /* 加载动画 */
 div.welcome{border:1px solid black;display: block;position: fixed;top:0;left:0;width:100%;height:100%;background:gray;z-index: 1;display: flex;justify-content: center;align-items:center;}
 div.welcome.active{display: none}
+
+
+/* 添加sticky navbar动画 */
+div.nav-ct.active{
+    /*  */
+    background:white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.4);
+    padding: 10px 20px 10px 20px; 
+}
