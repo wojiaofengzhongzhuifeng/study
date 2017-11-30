@@ -14,3 +14,16 @@ window.onscroll = function(x){
     }
 }
 
+var atags = document.getElementsByClassName("menuTigger")
+console.log(atags)
+for(var i = 0;i < atags.length;i++){
+    atags[i].onmouseenter = function(x){ 
+        var a = x.currentTarget
+        var ul = a.nextSibling()
+        console.log(ul)
+         
+    }
+    atags[i].onmouseleave = function(){
+        console.log(11221)
+    }
+}
