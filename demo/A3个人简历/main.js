@@ -1,11 +1,11 @@
 // 加载动画
-window.onload = function(){
+window.onload = function () {
     welcome.classList.add("active")
 }
 // 监听页面的滑动
-window.onscroll = function(x){
+window.onscroll = function (x) {
     var scrollHeight = window.scrollY
-    if(scrollHeight === 0){
+    if (scrollHeight === 0) {
         navCt1.classList.remove("active")
         rsAndCard.classList.remove("active")
     } else {
@@ -14,37 +14,14 @@ window.onscroll = function(x){
     }
 }
 
-// var litags = document.getElementsByClassName("menuTigger")
-// for(var i = 0;i < litags.length;i++){
-//     litags[i].onmouseenter = function(x){ 
-//         var li = x.currentTarget
-//         var childElement = li.firstChild
-//         while(childElement.tagName !== 'UL'){
-//             childElement = childElement.nextSibling
-//         }
-//         childElement.classList.add("active")
-//     }
-//     litags[i].onmouseleave = function(x){ 
-//         var li = x.currentTarget
-//         var childElement = li.firstChild
-//         while(childElement.tagName !== 'UL'){
-//             childElement = childElement.nextSibling
-//         }
-//         childElement.classList.remove("active")
-//     }
-
-// }
-
 var litags = document.getElementsByClassName("menuTigger")
 for(var i = 0;i < litags.length;i++){
     litags[i].onmouseenter = function(x){ 
         var li = x.currentTarget
-        var brother = li.getElementsByTagName("ul")[0]
-        brother.classList.add("active")
+        li.classList.add("active")
     }
     litags[i].onmouseleave = function(x){ 
         var li = x.currentTarget
-        var brother = li.getElementsByTagName("ul")[0]
-        brother.classList.remove("active")
+        li.classList.remove("active")
     }
 }

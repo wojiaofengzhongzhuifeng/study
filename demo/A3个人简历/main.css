@@ -10,7 +10,7 @@ span.card { font-size: 21px; color: #9a9da2; }
 
 
 div.nav a { font-size: 12px; font-weight: bold; color: inherit;  margin: 0 18px; padding-bottom: 5px; border-bottom: 3px solid transparent; margin-top: 8px;position: relative}
-div.nav a:hover::after { content:''; display:block; position: absolute; /* bottom:0;  */ top:100%; left:0; width:100%; height:3px; background:#e6686a; animation: xxx 0.3s;}
+div.nav li.active a::after { content:''; display:block; position: absolute; /* bottom:0;  */ top:100%; left:0; width:100%; height:3px; background:#e6686a; animation: xxx 0.3s;}
 /* 添加文字下边框从左到右的动画 */
 @keyframes xxx{
     0%{
@@ -22,25 +22,11 @@ div.nav a:hover::after { content:''; display:block; position: absolute; /* botto
 }
 div.nav { padding: 6px 0; float: right;padding-top: 14px;}
 div.nav > ul > li{ float: right; position: relative;}
-div.nav > ul li .slideWords{
-    display: none;
-    text-align: left;
-    position: absolute;
-    /* left:0;
-    top: 100%; */
-    background: white;
-    white-space: nowrap;
-    padding: 10px;
-    top: 37px;
-}
-div.nav > ul li .slideWords.active{
-    display: block;
-}
 
 
 
-
-
+div.nav > ul li .slideWords{ display: none; text-align: left; position: absolute; right:0; /* top: 100%;  */ background: white; white-space: nowrap; padding: 5px 10px; top: 26px}
+div.nav > ul li.active .slideWords{ display: block; }
 
 
 
