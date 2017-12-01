@@ -11,23 +11,17 @@ span.card { font-size: 21px; color: #9a9da2; }
 
 div.nav a { font-size: 12px; font-weight: bold; color: inherit;  margin: 0 18px; padding-bottom: 5px; border-bottom: 3px solid transparent; margin-top: 8px;position: relative}
 div.nav li.active a::after { content:''; display:block; position: absolute; /* bottom:0;  */ top:100%; left:0; width:100%; height:3px; background:#e6686a; animation: xxx 0.3s;}
-/* 添加文字下边框从左到右的动画 */
-@keyframes xxx{
-    0%{
-        width:0;
-    }
-    100%{  
-        width:100%;
-    }
-}
+
 div.nav { padding: 6px 0; float: right;padding-top: 14px;}
 div.nav > ul > li{ float: right; position: relative;}
 
 
 
-div.nav > ul li .slideWords{ display: none; text-align: left; position: absolute; right:0; /* top: 100%;  */ background: white; white-space: nowrap; padding: 5px 10px; top: 26px}
-div.nav > ul li.active .slideWords{ display: block; }
+div.nav > ul li .slideWords{ display: none; text-align: left; position: absolute; right:18px; /* top: 100%;  */ background: white; white-space: nowrap; padding: 5px 10px; top: 25px;box-shadow: 0 0 5px rgba(0,0,0,0.5)}
+div.nav > ul li.active .slideWords{ display: block; animation: yyy 0.3s;}
 
+
+div.nav > ul li .slideWords li {padding:5px 10px;}
 
 
 div.nav-ct>a{ float: left;}
@@ -94,3 +88,23 @@ div.welcome.active{display: none}
 
 /* 添加sticky navbar动画 */
 div.nav-ct.active{ /*  */ background:white; box-shadow: 0 0 5px rgba(0,0,0,0.4); padding: 10px 20px 10px 20px; color: black; }
+
+
+/* 添加文字下边框从左到右的动画 */
+@keyframes xxx{
+    0%{
+        width:0;
+    }
+    100%{  
+        width:100%;
+    }
+}
+
+@keyframes yyy{
+    0%{
+        margin-right:100%;
+    }
+    100%{  
+        margin-right:0%;
+    }
+}
