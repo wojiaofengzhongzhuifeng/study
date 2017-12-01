@@ -198,7 +198,7 @@
 
 43. 为什么position为absolute的还可以设置margin?
 
-44. 新增DOM操作`xxx.querySelectorAll("yyy")`在xxx元素里面找yyy,yyy符合css的选择器规则
+44. 新增DOM操作`xxx.querySelectorAll("yyy")`返回所有符合yyy的元素,在xxx元素里面找yyy,yyy符合css的选择器规则
 
 45. 新增api,阻止默认事件`xxx.preventDefault()`
 
@@ -206,10 +206,10 @@
 
 47. debug
 
-48. 获得element在页面(??)的位置 `xxx.offsetTop`
+48. 获得element在页面(??)的位置 `xxx.offsetTop`s
 
 49. 获得element在浏览器视口(??)的位置 `xxx.getBoundingClientRect()`获得一组数据,里面包含xxx在浏览器视口的位置
 
 50. 新增的DOM操作`xxx.querySelector("yyy")`在xxx元素中找yyy,其中yyy符合css选择器规则,xxx可以是document
 
-51. ​
+51. `window.scrollY`浏览器视口与页面的滚动距离
