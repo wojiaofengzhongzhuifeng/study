@@ -15,15 +15,22 @@ window.onscroll = function(x){
 }
 
 var atags = document.getElementsByClassName("menuTigger")
-console.log(atags)
 for(var i = 0;i < atags.length;i++){
     atags[i].onmouseenter = function(x){ 
         var a = x.currentTarget
-        var ul = a.nextSibling()
-        console.log(ul)
-         
+        console.log(a)
+        var ul = a.nextSibling
+        while(ul.tagName !== 'UL'){
+            ul = ul.nextSibling
+        }
+        ul.classList.add("active")
     }
-    atags[i].onmouseleave = function(){
-        console.log(11221)
+    atags[i].onmouseleave = function(x){
+        var a = x.currentTarget
+        var ul = a.nextSibling
+        while(ul.tagName !== 'UL'){
+            ul = ul.nextSibling
+        }
+        ul.classList.remove("active")
     }
 }

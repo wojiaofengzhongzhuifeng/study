@@ -23,7 +23,7 @@ div.nav a:hover::after { content:''; display:block; position: absolute; /* botto
 div.nav { padding: 6px 0; float: right;padding-top: 14px;}
 div.nav > ul > li{ float: right; position: relative;}
 div.nav > ul li .slideWords{
-    /* display: none; */
+    display: none;
     text-align: left;
     position: absolute;
     /* left:0;
