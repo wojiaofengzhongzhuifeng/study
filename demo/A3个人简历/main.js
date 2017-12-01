@@ -25,3 +25,16 @@ for(var i = 0;i < litags.length;i++){
         li.classList.remove("active")
     }
 }
+
+
+var aTags = document.querySelectorAll("div.nav ul li a")
+for(var i = 0;i < aTags.length;i++){
+    aTags[i].onclick = function(x){ 
+        x.preventDefault()
+        var a = x.currentTarget
+        var aId = a.getAttribute("href")
+        var element = document.querySelector(aId)
+        var jumpWhatPx = element.offsetTop - 60
+        window.scrollTo(0, jumpWhatPx)
+    }
+}
