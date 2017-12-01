@@ -14,23 +14,37 @@ window.onscroll = function(x){
     }
 }
 
+// var litags = document.getElementsByClassName("menuTigger")
+// for(var i = 0;i < litags.length;i++){
+//     litags[i].onmouseenter = function(x){ 
+//         var li = x.currentTarget
+//         var childElement = li.firstChild
+//         while(childElement.tagName !== 'UL'){
+//             childElement = childElement.nextSibling
+//         }
+//         childElement.classList.add("active")
+//     }
+//     litags[i].onmouseleave = function(x){ 
+//         var li = x.currentTarget
+//         var childElement = li.firstChild
+//         while(childElement.tagName !== 'UL'){
+//             childElement = childElement.nextSibling
+//         }
+//         childElement.classList.remove("active")
+//     }
+
+// }
+
 var litags = document.getElementsByClassName("menuTigger")
 for(var i = 0;i < litags.length;i++){
     litags[i].onmouseenter = function(x){ 
         var li = x.currentTarget
-        var childElement = li.firstChild
-        while(childElement.tagName !== 'UL'){
-            childElement = childElement.nextSibling
-        }
-        childElement.classList.add("active")
+        var brother = li.getElementsByTagName("ul")[0]
+        brother.classList.add("active")
     }
     litags[i].onmouseleave = function(x){ 
         var li = x.currentTarget
-        var childElement = li.firstChild
-        while(childElement.tagName !== 'UL'){
-            childElement = childElement.nextSibling
-        }
-        childElement.classList.remove("active")
+        var brother = li.getElementsByTagName("ul")[0]
+        brother.classList.remove("active")
     }
-
 }
