@@ -43,7 +43,7 @@
 
 7. 在vscode中，将两行合并成一行，快捷方法是什么？
 
-8.   0%{
+8. 0%{
 
        top: 0;
        left: 0;
@@ -57,32 +57,32 @@
 
 10. 如何让一个div充满全屏  0%{
 
-        top: 0;
-        left: 0;
-        transform: transparent(-100%)
-      }
+       top: 0;
+       left: 0;
+       transform: transparent(-100%)
+     }
 
 11. ​
 
-    ```
-    position: fixed;top: 0;left:0;width:100%;height:100%;
-    ```
+   ```
+   position: fixed;top: 0;left:0;width:100%;height:100%;
+   ```
 
 12. 绝对居中（使用绝对定位法，前提：有父div和子div，父div和子div元素的height和width都已知，但子div的position已经确定了）方法二
 
-    对父div
+   对父div
 
-    ```
-    display: flex;justify-content: center;align-items:center;
-    ```
+   ```
+   display: flex;justify-content: center;align-items:center;
+   ```
 
 13. 符合**触发某事件，某元素的css从一个状态变成另一个状态**，就是套路
 
-    方法如下：
+   方法如下：
 
-    1. 写好开始的css：xxxxx
-    2. 开始的css的选择器后面紧接着`.active`，写变化的css
-    3. 用js控制class名
+   1. 写好开始的css：xxxxx
+   2. 开始的css的选择器后面紧接着`.active`，写变化的css
+   3. 用js控制class名
 
 14. js给div**追加**class忘了
 
@@ -104,9 +104,9 @@
 
 23. 套路的操作
 
-    1. 给div添加id
-    2. 给div添加变化的css，注意选择器有`.active`
-    3. 给js添加代码，作用是给div动态添加`class=active`
+   1. 给div添加id
+   2. 给div添加变化的css，注意选择器有`.active`
+   3. 给js添加代码，作用是给div动态添加`class=active`
 
 24. 第三个效果：鼠标进入关于博客技能作品的时候，底部有红线从左到右
 
@@ -120,11 +120,11 @@
 
 29. 有关动画的英文单词都是什么,都是什么意思?
 
-    ```
-    transition: all 0.3s
-    animation: xxx 1s
-    transform: translateX()
-    ```
+   ```
+   transition: all 0.3s
+   animation: xxx 1s
+   transform: translateX()
+   ```
 
 30. 在写html的时候,没有把关于,技能等等放在一个li中,这是错误的
 
@@ -134,39 +134,39 @@
 
 33. 我想把鼠标移到作品和博客时,给作品和博客的slideWords添加一个active
 
-    1. 监听`<a>作品</a>`  `<a>博客</a>`
+   1. 监听`<a>作品</a>`  `<a>博客</a>`
 
-       - 通过新学的DOMapi`document.getElementsByClassName("xxx")`可以获得所有符合class为xxx的元素,用来给js操作,学英语element === 元素
+      - 通过新学的DOMapi`document.getElementsByClassName("xxx")`可以获得所有符合class为xxx的元素,用来给js操作,学英语element === 元素
 
-       - 那我想知道我mouseenter的是作品element还是博客element,应该怎么办?
+      - 那我想知道我mouseenter的是作品element还是博客element,应该怎么办?
 
-         ```
-         用户操作的元素
-         console.log(x.target)
-         监听的元素
-         console.log(x.currentTarget)
+        ```
+        用户操作的元素
+        console.log(x.target)
+        监听的元素
+        console.log(x.currentTarget)
 
-         如
-         <a>
-         	<span>作品</span>
-         </a>
+        如
+        <a>
+        	<span>作品</span>
+        </a>
 
-         我对a监听,然后点击的是span,那么x.target打印出spanelement,x.currentTarget打印出aelement
-         ```
+        我对a监听,然后点击的是span,那么x.target打印出spanelement,x.currentTarget打印出aelement
+        ```
 
-         所以应该使用`x.currentTarget`来获得你操作的element
+        所以应该使用`x.currentTarget`来获得你操作的element
 
-       - 我想找到`<a>作品</a>`element的下一个element(即`<ul></ul>`)
+      - 我想找到`<a>作品</a>`element的下一个element(即`<ul></ul>`)
 
-         ​
+        ​
 
 34. 当我把js文件放在最上面的时候,出现问题了,我获取不到博客,作品的element,问题就出在把js引入放在最前面,那么浏览器当然搜索不到element啦,所以js文件都应该放在`</body>`之前
 
 35. ```
-    mouseenter/mouseleave   指针移到有事件监听的元素内
-    mouseover/mouseout      指针移到有事件监听的元素或者它的子元素内
-    两组区别
-    ```
+   mouseenter/mouseleave   指针移到有事件监听的元素内
+   mouseover/mouseout      指针移到有事件监听的元素或者它的子元素内
+   两组区别
+   ```
 
 36. `a.nextSibling is not a function`说明nextSibling不是函数,在js文件中把()去掉
 
@@ -174,35 +174,35 @@
 
 38. 使用递归,获得ul  
 
-    如果不等于ul,就继续找,直到找到ul为止.  
+   如果不等于ul,就继续找,直到找到ul为止.  
 
 39. `xxx.tagName`获得element的名字,返回的大写
 
 40. `Cannot read property 'tagName' of null`
 
-    不能读null的`属性tagName`
+   不能读null的`属性tagName`
 
-    说明`xxx.tagName`的xxx是null
+   说明`xxx.tagName`的xxx是null
 
 41. ```
-    html
-    <div>
-    	<ul></ul>
-    	<ul></ul>
-    	<ul></ul>
-    	<ul></ul><ul></ul>
-    	<ul></ul>
-    	<ul></ul>
-    	<ol></ol>
-    </div>
+   html
+   <div>
+   	<ul></ul>
+   	<ul></ul>
+   	<ul></ul>
+   	<ul></ul><ul></ul>
+   	<ul></ul>
+   	<ul></ul>
+   	<ol></ol>
+   </div>
 
-    我怎么找ol?
+   我怎么找ol?
 
-    while(ul.tagName !== 'UL'){
-    	ul = ul.nextSibling
-    }
-    这代码的意思
-    ```
+   while(ul.tagName !== 'UL'){
+   	ul = ul.nextSibling
+   }
+   这代码的意思
+   ```
 
 42. 如果监听的是a标签,那么就有bug,我想点击作品1,只要我移出了a标签,那么作品1 就会消失,所以我应该监听的是li标签,注意,虽然li标签的面积只有li这么大,实际上是看html的结构,如果li包含了a和ul那么你在a和在ul移动都是在li里面移动
 
@@ -227,3 +227,11 @@
 52. 新增的DOM操作`xxx.querySelector("yyy")`返回一个元素,在xxx元素中找yyy,其中yyy符合css选择器规则,xxx可以是document
 
 53. `window.scrollY`浏览器视口与页面的滚动距离
+
+54. ===
+
+55. js添加html的属性 `xxx.style.position = "relative"`给xxx元素添加属性为`position: relative`
+
+56. 记单词 `tween.js`渐变移动
+
+57. ​
