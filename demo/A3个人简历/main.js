@@ -111,7 +111,7 @@ function findCloseIndex (height, array){
     }
     return closeIndex
 }
-
+//
 
 
 
