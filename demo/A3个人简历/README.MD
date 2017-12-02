@@ -245,3 +245,29 @@
 60. 我不知道heightlight的时候,我不知道removeoutline的代码应该写在哪里
 
 61. js的变量取名字的时候,如果变量是 html 的元素,取名字的时候最后是Tag
+
+62. js的主要作用: 找html的元素
+
+   1. 通过html 的id,class 属性找
+   2. 已经拥有html元素,通过这个元素的节点关系找(如父节点,子节点,兄弟节点)
+
+63. ```
+       heightTags[closeIndex].id
+       document.querySelector("a[href='#skill']")
+       
+       
+       
+       其中  heightTags[closeIndex].id   想代替 skill 应该怎么做?
+       去掉 - 加引号 - 加加号 - 加变量
+        document.querySelector("a[href='#skill']")
+        1. 去掉skill,变成
+        document.querySelector("a[href='#']")
+        2. 根据字符串的首位和末位使用的是双引号还是单引号来添加单双引号
+        document.querySelector("a[href='#""]")
+        3. 在新加的单双引号加两个加号
+        document.querySelector("a[href='#"++"]")
+        4. 在两个加号中加heightTags[closeIndex].id
+        document.querySelector("a[href='#"+heightTags[closeIndex].id+"]")
+   ```
+
+64. 添加`class=active`的时候,一个动作对应一个class名,如对于技能来说,当我鼠标悬浮上去的时候,红色的进度条从左到右,当我浏览到技能div的时候,也是效果也是红色的进度条从左到右.那么这两个动作添加的名字就不能一致.
