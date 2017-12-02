@@ -234,4 +234,10 @@
 
 56. 记单词 `tween.js`渐变移动
 
-57. ​
+57. 添加效果:  auto highlight navbar当我移到技能上面,导航栏会显示相近的颜色
+
+58. 在html的元素添加自定义属性的作用是类似与id 的作用,让js更简单的知道有用data-x的元素
+
+   寻找的方法`document.querySelectorAll("[data-x]")`即可获得拥有属性为data-x的html 元素
+
+59.  还是上面的,在css如何选 择`<div data-x></div>`,使用`[data-x]{border:1px solid black}`即可

@@ -1,3 +1,10 @@
+var heightTags = document.querySelectorAll("[data-x]");
+var divTops = []
+for(var i = 0;i<heightTags.length;i++){
+    var divTop = heightTags[i].offsetTop
+    divTops.push(divTop)
+} 
+
 // 加载动画
 window.onload = function () {
     welcome.classList.add("active")
@@ -5,6 +12,10 @@ window.onload = function () {
 // 监听页面的滑动
 window.onscroll = function (x) {
     var scrollHeight = window.scrollY
+    var closeIndex = findCloseIndex(scrollHeight, divTops)
+    console.log("closeIndex")
+    console.log(closeIndex)
+    heightTags[closeIndex].classList.add("active")
     if (scrollHeight === 0) {
         navCt1.classList.remove("active")
         rsAndCard.classList.remove("active")
@@ -12,6 +23,8 @@ window.onscroll = function (x) {
         navCt1.classList.add("active")
         rsAndCard.classList.add("active")
     }
+    //添加heightlight效果
+
 }
 
 var litags = document.querySelectorAll("div.nav ul li")
@@ -27,23 +40,13 @@ for(var i = 0;i < litags.length;i++){
 }
 
 
-// var aTags = document.querySelectorAll("div.nav ul li a")
-// for(var i = 0;i < aTags.length;i++){
-//     aTags[i].onclick = function(x){ 
-//         x.preventDefault()
-//         var a = x.currentTarget
-//         var aId = a.getAttribute("href")
-//         var element = document.querySelector(aId)
-//         var jumpWhatPx = element.offsetTop - 60
-//         window.scrollTo(0, jumpWhatPx)
-//     }
-// }
 
 
 
 
 
 
+//使用外部的js库:tween.js完成平滑的效果
 var aTags =  document.querySelectorAll("div.nav > ul > li > a")
 // Setup the animation loop.
 function animate(time) {
@@ -77,4 +80,21 @@ for(let i=0; i<aTags.length;i++){
             .start(); // Start the tween immediately.
     }
 }
+
+//输入 页面滑动的距离 和 divTops数组 ,返回距离与数组每个值的差最小的下标
+function findCloseIndex (height, array){
+    var closeIndex = 0
+    var closeNumber = Math.abs(height - array[0])
+    for(var i = 1;i < array.length;i++){
+        var everyNumber = Math.abs(array[i] - height)
+        if(everyNumber < closeNumber){
+            closeIndex = i
+        }
+    }
+    return closeIndex
+}
+
+
+
+
 

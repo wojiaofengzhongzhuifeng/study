@@ -90,6 +90,21 @@ div.welcome.active{display: none}
 div.nav-ct.active{ /*  */ background:white; box-shadow: 0 0 5px rgba(0,0,0,0.4); padding: 10px 20px 10px 20px; color: black; }
 
 
+
+/* 添加heightlight */
+.card.active{
+    outline:10px solid red;
+}
+.skill-section.active{
+    outline:10px solid red;
+}
+.words-section.active{
+    outline:10px solid red;
+}
+
+
+
+
 /* 添加文字下边框从左到右的动画 */
 @keyframes xxx{
     0%{
