@@ -121,9 +121,9 @@
 29. 有关动画的英文单词都是什么,都是什么意思?
 
    ```
-   transition: all 0.3s
-   animation: xxx 1s
-   transform: translateX()
+   transition(过渡): all 0.3s
+   animation: xxx 1s   使用@keyframes名为 xxx 的动画,并且持续时间为1s
+   transform(改变): translateX(转化)()
    ```
 
 30. 在写html的时候,没有把关于,技能等等放在一个li中,这是错误的
@@ -270,4 +270,40 @@
         document.querySelector("a[href='#"+heightTags[closeIndex].id+"]")
    ```
 
-64. 添加`class=active`的时候,一个动作对应一个class名,如对于技能来说,当我鼠标悬浮上去的时候,红色的进度条从左到右,当我浏览到技能div的时候,也是效果也是红色的进度条从左到右.那么这两个动作添加的名字就不能一致.
+64. 添加`class=active`的时候,一个动作对应一个class名,如对于技能来说,当我鼠标悬浮上去的时候,红色的进度条从左到右,当我浏览到技能div的时候,也是效果也是红色的进度条从左到右.那么这两个动作添加的名字就不能一致.    
+
+   一个动作对应添加一个class名
+
+65. 出现的bug: 当我从页面开始往下滑动到底的时候,三个div红色的进度条一直保留
+
+66. 解决办法: 
+
+   ```
+   <ul>
+   	<li>关于</li>
+   	<li>技能</li>
+   	<li>作品</li>
+   	<li>博客</li>
+   	<li>日历</li>
+   	<li>联系方式</li>
+   	<li>其他</li>
+   </ul>
+   ```
+
+   你已经获得某个lixxx,但是你想获取的是ul 的所有li,怎么办??
+
+   xxx.parentNode.children即可获取
+
+   问题: 使用xxx.parentNode.childNodes会返回text节点,很傻比
+
+67. 添加效果: 当我打开网页的时候,红色的进度条就有了,而不是需要滑动才能激活进度条,套路
+
+68. 添加效果: 关于, 技能,作品三个div从下面往上划出来
+
+69. 因为我想要的效果是div一开始是看不见的,当我滑到某个页面距离的时候,div才显现出来,所以我们一开始给div一个`class=offset`,滑到页面的时候,再把offset删除.
+
+70. translateY(100px)表示
+
+71. ​
+
+   ​
