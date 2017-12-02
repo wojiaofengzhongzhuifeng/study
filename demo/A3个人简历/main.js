@@ -1,8 +1,9 @@
 var heightTags = document.querySelectorAll("[data-x]");
 var divTops = []
 for(var i = 0;i<heightTags.length;i++){
-    var divTop = heightTags[i].offsetTop
+    var divTop = heightTags[i].offsetTop + 200
     divTops.push(divTop)
+    console.log(divTops)
 } 
 
 // 加载动画
@@ -29,8 +30,11 @@ window.onscroll = function (x) {
     var heightLightId = heightTags[closeIndex].id
     var heightLightATag = document.querySelector('a[href="#' + heightLightId + '"]')//   括号里面的字符串为'a[href="#card"]'
     var heightLightLiTag = heightLightATag.parentNode
-    
-    heightLightLiTag.classList.add("heightLight");
+    var allHeightLightLiTag = heightLightLiTag.parentNode.children
+    for(var i = 0; i < allHeightLightLiTag.length;i++){
+        allHeightLightLiTag[i].classList.remove("heightLight")
+    }
+    heightLightLiTag.classList.add("heightLight")
 }
 
 var litags = document.querySelectorAll("div.nav ul li")

@@ -63,7 +63,7 @@ p.abstract { max-width: 940px; margin: 0 auto; text-align: center; line-height: 
 .gap{ background: #e6686a; height: 100%; width:30%; padding-top:1px; }
 .skill-section ul li { float: left; width: 48%; padding: 20px 0; }
 .skill-section ul li:nth-child(even){ float: right; }
-.words-section { max-width: 940px; margin: 46px auto; text-align: center; }
+.words-section { max-width: 940px; margin: 50px auto; text-align: center; }
 .words-section h2 { padding-bottom: 31px; font-size: 32px; color: #404457; }
 .words-section ul li { float: left; padding-right: 40px; cursor: pointer; }
 .words-section ul li:nth-last-child(1) { padding-right: 0; }
@@ -92,15 +92,6 @@ div.nav-ct.active{ /*  */ background:white; box-shadow: 0 0 5px rgba(0,0,0,0.4);
 
 
 /* 添加heightlight */
-.card.active{
-    outline:10px solid red;
-}
-.skill-section.active{
-    outline:10px solid red;
-}
-.words-section.active{
-    outline:10px solid red;
-}
 div.nav li.heightLight a::after { content:''; display:block; position: absolute; /* bottom:0;  */ top:100%; left:0; width:100%; height:3px; background:#e6686a; animation: xxx 0.3s;}
 
 
