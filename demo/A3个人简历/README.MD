@@ -241,3 +241,7 @@
    寻找的方法`document.querySelectorAll("[data-x]")`即可获得拥有属性为data-x的html 元素
 
 59.  还是上面的,在css如何选 择`<div data-x></div>`,使用`[data-x]{border:1px solid black}`即可
+
+60. 我不知道heightlight的时候,我不知道removeoutline的代码应该写在哪里
+
+61. js的变量取名字的时候,如果变量是 html 的元素,取名字的时候最后是Tag

@@ -12,10 +12,6 @@ window.onload = function () {
 // 监听页面的滑动
 window.onscroll = function (x) {
     var scrollHeight = window.scrollY
-    var closeIndex = findCloseIndex(scrollHeight, divTops)
-    console.log("closeIndex")
-    console.log(closeIndex)
-    heightTags[closeIndex].classList.add("active")
     if (scrollHeight === 0) {
         navCt1.classList.remove("active")
         rsAndCard.classList.remove("active")
@@ -23,8 +19,17 @@ window.onscroll = function (x) {
         navCt1.classList.add("active")
         rsAndCard.classList.add("active")
     }
-    //添加heightlight效果
 
+    //添加heightlight效果
+    var closeIndex = findCloseIndex(scrollHeight, divTops)
+    for (var i = 0; i < divTops.length; i++){
+        heightTags[i].classList.remove("active")
+    }
+    heightTags[closeIndex].classList.add("active")
+    var heightLightId = heightTags[closeIndex].id
+    var heightLightATag = document.querySelector('a[href="#' + heightLightId + '"]')//   括号里面的字符串为'a[href="#card"]'
+    var heightLightLiTag = heightLightATag.parentNode
+    heightLightLiTag.classList.add("active");
 }
 
 var litags = document.querySelectorAll("div.nav ul li")
