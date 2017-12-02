@@ -1,11 +1,11 @@
 var heightTags = document.querySelectorAll("[data-x]");
 var divTops = []
+var navLi = document.querySelectorAll("div.nav>ul.clearfix>li").length - 1;
+console.log(navLi)
 for(var i = 0;i<heightTags.length;i++){
-    var divTop = heightTags[i].offsetTop + 200
+    var divTop = heightTags[i].offsetTop + 250
     divTops.push(divTop)
-    console.log(divTops)
 } 
-
 // 加载动画
 window.onload = function () {
     welcome.classList.add("active")
@@ -20,21 +20,29 @@ window.onscroll = function (x) {
         navCt1.classList.add("active")
         rsAndCard.classList.add("active")
     }
-
+    addHeightLight()
     //添加heightlight效果
-    var closeIndex = findCloseIndex(scrollHeight, divTops)
-    for (var i = 0; i < divTops.length; i++){
-        heightTags[i].classList.remove("active")
+    function addHeightLight(){
+        var closeIndex = findCloseIndex(scrollHeight, divTops)
+        for (var i = 0; i < divTops.length; i++){
+            heightTags[i].classList.remove("active")
+        }        
+        heightTags[closeIndex].classList.remove("offset")
+        var heightLightId = heightTags[closeIndex].id
+        var heightLightATag = document.querySelector('a[href="#' + heightLightId + '"]')//   括号里面的字符串为'a[href="#card"]'
+        var heightLightLiTag = heightLightATag.parentNode
+        var allHeightLightLiTag = heightLightLiTag.parentNode.children
+        for(var i = 0; i < allHeightLightLiTag.length;i++){
+            allHeightLightLiTag[i].classList.remove("heightLight")
+        } 
+        allHeightLightLiTag[ navLi - closeIndex].classList.add("heightLight")
     }
-    heightTags[closeIndex].classList.add("active")
-    var heightLightId = heightTags[closeIndex].id
-    var heightLightATag = document.querySelector('a[href="#' + heightLightId + '"]')//   括号里面的字符串为'a[href="#card"]'
-    var heightLightLiTag = heightLightATag.parentNode
-    var allHeightLightLiTag = heightLightLiTag.parentNode.children
-    for(var i = 0; i < allHeightLightLiTag.length;i++){
-        allHeightLightLiTag[i].classList.remove("heightLight")
-    }
-    heightLightLiTag.classList.add("heightLight")
+
+
+}
+
+for(var i = 0; i < heightTags.length; i++){
+    heightTags[i].classList.add("offset")
 }
 
 var litags = document.querySelectorAll("div.nav ul li")

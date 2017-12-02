@@ -96,7 +96,14 @@ div.nav li.heightLight a::after { content:''; display:block; position: absolute;
 
 
 
-
+/* 添加从div从下到上的效果 */
+[data-x].offset{
+    transform: translateY(100px)
+}
+[data-x]{
+    transform: translateY(0);
+    transition: all 0.5s;
+}
 /* 添加文字下边框从左到右的动画 */
 @keyframes xxx{
     0%{
