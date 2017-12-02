@@ -29,7 +29,8 @@ window.onscroll = function (x) {
     var heightLightId = heightTags[closeIndex].id
     var heightLightATag = document.querySelector('a[href="#' + heightLightId + '"]')//   括号里面的字符串为'a[href="#card"]'
     var heightLightLiTag = heightLightATag.parentNode
-    heightLightLiTag.classList.add("active");
+    
+    heightLightLiTag.classList.add("heightLight");
 }
 
 var litags = document.querySelectorAll("div.nav ul li")
