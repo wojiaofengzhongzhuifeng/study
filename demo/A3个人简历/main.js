@@ -99,7 +99,7 @@ for(let i=0; i<aTags.length;i++){
     }
 }
 
-//输入 页面滑动的距离 和 divTops数组 ,返回距离与数组每个值的差最小的下标
+//输入 页面滑动的距离 和 divTops 数组 ,返回距离与数组每个值的差最小的下标
 function findCloseIndex (height, array){
     var closeIndex = 0
     var closeNumber = Math.abs(height - array[0])
@@ -112,6 +112,7 @@ function findCloseIndex (height, array){
     return closeIndex
 }
 //
+
 
 
 
