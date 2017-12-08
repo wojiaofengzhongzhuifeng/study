@@ -1,3 +1,72 @@
+## Array是特殊的对象,怎么理解?什么才能称为数组?
+
+我们都知道对象是由一个或者多个`key:value`组合而成的数据类型
+
+**特别**地,当①某个对象的key为0,1,2,3,4,5...n.某个key为length.②并且某个对象的\__proto__等于Array.prototype
+
+我们才能称这个对象为Array.
+
+因此:数组的条件是:
+
+1. key=0,1,2,3,4...n   和  length = n + 1
+2. 某个对象的原形链中的\__proto__指向Array.prototype
+
+## 定义Array的特殊之处
+
+前面知道了Array的本质, 然而我们在定义一个数组的时候,有些特殊,如
+
+```
+var a = Array(3)  //特殊
+var b = Array(3,3)
+var c = new Array(3)
+var d = new Array(3,3)
+```
+
+用`console.dir()`可以知道内存图
+
+总结:
+
+1. 构造函数有`String,Boolean,Number,Object,Array,Function`
+2. 基本类型有`String,Boolean,Number`
+3. `new 构造函数()`一定返回一个对象
+4. ` 构造函数()`如果是构造函数是基本类型,返回这个基本类型;如果是Object,那么返回Object类型(a变量除外)
+
+
+
+
+
+
+
+## 什么是伪数组?常用的伪数组有哪些?
+
+数组条件中,不符合第二个条件的就是伪数组
+
+函数传入的参数`arguments`是伪数组
+
+`var divs = document.querySelectAll('div')`,divs是伪数组
+
+## 常用的Array的API
+
+先做以下规定
+
+```
+//参数是一个函数,规定该传入的函数名为zzz,并且除了sort,其他都返回一个新的对象,也就是不会改变array的值
+array.forEach(zzz(x, y))
+array.sort(zzz(x, y))
+array.map(zzz(x, y))
+array.filter(zzz(x, y))
+array.reduce(zzz(x, y))
+//参数不是函数,并且都是在array上操作的,也就是会改变array的值
+array.reverse()
+array.join()
+array.concat()
+```
+
+1. forEach
+   1. `zzz(x, y)`的 x 只能表示array的 value
+   2. 的`zzz(x, y)`的 y 只能表示array的 key
+2. ​
+
 ## 草稿
 
 1. 函数最重要的两个值: 参数和返回值,如果有返回值,一般要用一个变量去接
@@ -92,7 +161,7 @@
      } 
    }
 
-   ///关键点,接受一个函数并且执行同时传参给一个函数,重点是作为参数的函数可以带自己的参数
+   ///关键点,接受一个函数并且执行同时传参给一个函数,重点是作为参数的函数可以使用数组的值作为参数
    //这个代码的意思是: f2函数接受一个函数B作为参数,并且我让函数B的参数为666
    function f2(y){
      y(666)
