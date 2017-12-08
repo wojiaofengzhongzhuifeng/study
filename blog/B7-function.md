@@ -1,0 +1,17 @@
+## 函数的声明
+
+## 如何调用函数
+
+# 什么是 call stack
+
+# this 和 arguments
+
+# 作用域
+
+# 闭包
+
+
+
+
+
+http://latentflip.com/loupe/?code=ZnVuY3Rpb24gc3VtKG4pewogICAgCiAgICBpZihuID09IDEpewogICAgICAgIHJldHVybiAxCiAgICB9ZWxzZXsKICAgICAgICByZXR1cm4gbiArIHN1bS5jYWxsKHVuZGVmaW5lZCwgbi0xKQogICAgfQp9CgpzdW0uY2FsbCh1bmRlZmluZWQsIDEwMCkgLy8gNSArIHN1bSg1KQovL3N1bSg0KSAvLyA0ICsgc3VtKDMpCi8vc3VtKDMpICAvLyAzICsgc3VtKDIpCi8vc3VtKDIpICAvLyAyICsgc3VtKDEpCi8vc3VtKDEp!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D
