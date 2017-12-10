@@ -42,3 +42,48 @@
 7. 事件监听onerror onclick  onkeypress
 8. xxx.nextSibling
 9. 事件监听的所有信息
+
+
+
+
+
+
+
+
+
+## 草稿
+
+1. 我们已经知道, Object有`Function,String,Boolean,Number,Array`
+
+2. Node类型与Object相似,`Document,Element, Text`与`Function,Array`相似
+
+3. 所有的`Function,String,Boolean,Number,Array`产生的实例,都有`Object`的方法`toString()`
+
+4. 所有`Document,Element, Text`类型节点,都有`Node`的属性`nodeType`
+
+5. 节点类型   与   数据类型 相对应
+
+6. 节点类型的数型结构在内存中以对象来实现
+
+7. ```
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+     <meta charset="UTF-8">
+     <title>Document</title>
+   </head>
+   <body>
+       <div class="parent" id="wrapper">
+         <ul>
+           <li>选项1</li>
+           <li>选项2</li>
+           <li>选项3</li>
+         </ul>        
+       </div>
+   </body>
+   </html>
+   ```
+
+8. DOM-创建节点-API
+
+   ​
