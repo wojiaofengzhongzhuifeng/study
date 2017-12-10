@@ -84,6 +84,25 @@
    </html>
    ```
 
+   js引擎将HTML树结构以对象的方式存储在内存中,且在内存中同样是树型结构
+
 8. DOM-创建节点-API
 
+   ```
+   //第一种,创建元素节点(elementNode)
+   var div = document.creatElement("div")
+   //第二种,创建文本节点(textNode)
+   var text = document.createTextNode("一个TextNode")
+   //第三种,复制另一个节点A,true是将A节点及子节点都复制;false将A节点复制
+   var div2 = div.cloneNode(true)
+
+   ```
+
+   需要注意的是:
+
+   1. 创建节点,仅仅是在内存中开辟一段空间,并没有把节点与之前形成的树形结构连接.
+
+9. ​
+
    ​
+
