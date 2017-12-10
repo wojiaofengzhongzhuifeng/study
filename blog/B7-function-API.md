@@ -230,9 +230,15 @@ http://js.jirengu.com/nicawehuso/1/edit?js,output
 
    ​
 
+   ​
 
 
 
+## 总结
+
+1. 函数的调用: `fn.call(undefined, 1, 2)`
+2. 作用域的作用: 告诉浏览器,在哪个作用域取变量
+3. 函数声明
 
 
 
