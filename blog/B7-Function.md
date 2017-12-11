@@ -23,16 +23,29 @@
 function f1(x, y){
   return x + y
 }
+
+
 //2. 匿名法
 var f2 = function(x, y){
   return x + y
 }
+
+
 //3. 匿名赋值法
 var f3 = function xxxxx(x, y){
   return x + y
 }
+//特殊,返回的是'xxxxx'
+f3.name 
+//直接报错	
+console.log(xxxxx)
+
 //4. new法
 var f4 = new Function("x" , "y", "return x + y")
+//特殊,返回的是"anonymous"
+f4.name 
+
+
 //5. 箭头函数法
 var f5 = x => x*x  
 ```
@@ -42,16 +55,6 @@ var f5 = x => x*x
 1. 如果只有一个参数,可以省略括号
 2. 如果只有一句代码,只能同时省略return和{},不能只省略一个
 3. //相当于  var f = (x) => {return x * x}
-
-没什么用的知识
-
-```
-f1.name
-f2.name
-f3.name //特殊,返回的是'xxxxx'
-f4.name //特殊,返回的是"anonymous"
-f5.name
-```
 
 
 
@@ -75,6 +78,51 @@ f.call(undefined, 2, 5)
 ```
 var f = function(x, y){return x + y}
 f.call(undefined, 2, 5)//this是call的第一个参数, arguments是[2,5]
+```
+
+1. 总结: 
+   1. 使用严格模式,call第一个参数是什么,this就是什么,如果没有第一个参数,this就为undefined
+   2. ​
+2. 题目:
+
+```
+function f(){
+  console.log(this)
+}
+f.call(1)
+//打印出多少?   答案是 Number对象1 
+
+function f(){
+    'use strict'
+    console.log(this)
+}
+f.call(1)
+//打印出多少    答案是 1
+
+function f(){
+    console.log(this)
+}
+f.call()
+//打印出多少    答案是 window对象,大写的和小写的有什么区别?
+
+function f(){
+    'use strict'
+    console.log(this)
+}
+f.call()
+//打印出多少   答案是undefined,不是"undefined",为什么不是undefined??
+
+
+
+function f1(){
+    console.log("第一个 this"+this) // 第一个 this
+    function f2(){
+        console.log("第二个 this"+this) // 第二个 this
+    }
+    f2.call()
+}
+var obj = {name: 'obj'}
+f1.call( obj )
 ```
 
 
