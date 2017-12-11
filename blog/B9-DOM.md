@@ -95,14 +95,36 @@
    var text = document.createTextNode("一个TextNode")
    //第三种,复制另一个节点A,true是将A节点及子节点都复制;false将A节点复制
    var div2 = div.cloneNode(true)
-
    ```
 
    需要注意的是:
 
    1. 创建节点,仅仅是在内存中开辟一段空间,并没有把节点与之前形成的树形结构连接.
 
-9. ​
+9. 我在写老师的作业
 
-   ​
+10. `div.parentNode`与`div.parentElement`区别
+
+   前者的意思是父结点,父结点包括element Node和text Node,
+
+   后者的意思是父元素,
+
+11. element与Node区别???
+
+   element中文叫元素
+
+   Node中文叫结点,
+
+   后者包含前者
+
+12. xxx.children表示xxx结点的所有element结点
+
+13. xxx.childNodes表示xxx结点的所有node结点
+
+14. document结点的意思: 表示整个html的根节点
+
+15. xxx可以是element结点,可以是document结点,也可以是text结点,但一定是node结点
+
+16. ​
+
 
