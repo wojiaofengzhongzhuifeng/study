@@ -50,22 +50,23 @@
 
 
 
-
 ## 草稿
 
-1. 我们已经知道, Object有`Function,String,Boolean,Number,Array`
+1. xxx表示的是节点,可以是element(元素节点),可以是text(文本节点), document(整个文档的节点),一般都是用element和document,document实际上就是 DOM 树
 
-2. Node类型与Object相似,`Document,Element, Text`与`Function,Array`相似
+2. 我们已经知道, Object有`Function,String,Boolean,Number,Array`
 
-3. 所有的`Function,String,Boolean,Number,Array`产生的实例,都有`Object`的方法`toString()`
+3. Node类型与Object相似,`Document,Element, Text`与`Function,Array`相似
 
-4. 所有`Document,Element, Text`类型节点,都有`Node`的属性`nodeType`
+4. 所有的`Function,String,Boolean,Number,Array`产生的实例,都有`Object`的方法`toString()`
 
-5. 节点类型   与   数据类型 相对应
+5. 所有`Document,Element, Text`类型节点,都有`Node`的属性`nodeType`
 
-6. 节点类型的数型结构在内存中以对象来实现
+6. 节点类型   与   数据类型 相对应
 
-7. ```
+7. 节点类型的数型结构在内存中以对象来实现
+
+8. ```
    <!DOCTYPE html>
    <html lang="en">
    <head>
@@ -86,7 +87,7 @@
 
    js引擎将HTML树结构以对象的方式存储在内存中,且在内存中同样是树型结构
 
-8. DOM-创建节点-API
+9. DOM-创建节点-API
 
    ```
    //第一种,创建元素节点(elementNode)
@@ -101,9 +102,9 @@
 
    1. 创建节点,仅仅是在内存中开辟一段空间,并没有把节点与之前形成的树形结构连接.
 
-9. 我在写老师的作业
+10. 我在写老师的作业
 
-10. `div.parentNode`与`div.parentElement`区别
+11. `div.parentNode`与`div.parentElement`区别
 
    前者的意思是父结点,父结点包括element Node和text Node,
 
@@ -117,14 +118,65 @@
 
    后者包含前者
 
-12. xxx.children表示xxx结点的所有element结点
+12.   xxx.children表示xxx结点的所有element结点
 
-13. xxx.childNodes表示xxx结点的所有node结点
+13.   xxx.childNodes表示xxx结点的所有node结点
 
-14. document结点的意思: 表示整个html的根节点
+14.   document结点的意思: 表示整个html的根节点
 
-15. xxx可以是element结点,可以是document结点,也可以是text结点,但一定是node结点
+15.   xxx可以是element结点,可以是document结点,也可以是text结点,但一定是node结点
 
-16. ​
+16.   HTML文档可以看成由各种 DOM 节点组成的文档树，**例如：整篇文档是一个文档节点**
+
+17.   节点类型通过xxx.nodeType确定
+
+     | Element Type | Node Type |
+     | ------------ | --------- |
+     | Element      | 1         |
+     | Attribute    | 2         |
+     | Text         | 3         |
+     | Comment      | 8         |
+     | Document     | 9         |
+
+18.   xxx.nodeName,返回的是节点的名称
+
+     1. 元素节点的名称是标签名，
+     2. 文本节点的名称是#text，
+     3. 文档节点的名称是#document。
+
+19.   寻找 DOM 元素,经过寻找返回的节点一般是html的某个标签`<div></div>`,当然最大的节点是document
+
+20.   现在所使用的 DOM 的属性和方法
+
+     ```
+     //获得节点的自身属性
+     xxx.nodeType 
+     xxx.nodeName
+     xxx.nodeValue
+
+     //长途搜索,获得 HTML 文档的节点
+     document.getElementById()
+     xxx/document.getElementsByTagName()
+     xxxdocument.getElementsByName()
+     xxx/document.getElementsByClassName()
 
 
+     //短途搜索,其实就是按照一个已知节点通过关系获得其他节点,动态获取最后一个节点不会
+     xxx.parentNode
+     xxx.lastChild
+     xxx.nextSibling
+     xxx.previousSibling
+     xxx.childNodes[]   //返回包含文本节点
+     xxx.children[]
+
+     //修改 DOM 树
+     xxx.appendChild(xxx2)
+     xxx.insertBefore(xxx1, xxx2)
+
+
+     //创建节点
+     document.createElement("p");
+     document.createTextNode("This is a created element");
+     ```
+
+     ​
