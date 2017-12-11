@@ -5,6 +5,7 @@
 3. 函数声明方法
 4. this是什么?argument是什么?
 5. 闭包的概念
+6. 在本文搜索`代码1`,有个特殊情况:①在本作用域有`a = 3333333`并且在本作用域没有`var a`,该怎么办?
 
 
 
@@ -230,7 +231,7 @@ f1.call()
    }
    //变量提升结束
 
-   //执行代码区域
+   //执行代码区域AAAAA
    a = 1
    f1.call()
    console.log("test3:"+a)
@@ -238,37 +239,89 @@ f1.call()
 
    过程:
 
-   1. js直接执行代码区域的代码
-   2. 执行f1.call()
-   3. 在f1中发现要执行f2.call()
-   4. 执行f2.call()
-   5. 从f2的代码知道要使用a变量,首先在f2的作用域找有没有a变量,发现有a,并且a = 3,因此第一个输出`test2:3`
-   6. 执行完f2.call(),接着执行`console.log("test1:"+a)`
-   7. 上一步要使用a变量,首先在f1的作用域找有没有a变量,发现有a,并且a = 2,因此第二个输出`test1:2`
-   8. `console.log("test1:"+a)`执行完之后,说明执行代码区域的`f1.call()`也执行完了,接着执行`console.log("test3:"+a)`
-   9. 同样的,发现要使用a变量,在全局作用域找有没有a变量,发现有,并且a是1,因此输出第三个`test3:1`
+   1. js**直接**执行代码区域AAAAA的代码,现在不管变量提升的代码!
+   2. 执行`a = 1`
+   3. 执行`f1.call()`
+   4. 在f1的代码中发现要执行`f2.call()`
+   5. 先执行`f2.call()`,将f1函数先放在stack中
+   6. 从f2的代码知道要使用a变量,首先在f2的作用域找有没有a变量,发现有a,并且a = 3,因此第一个输出`test2:3`
+   7. 执行完f2.call(),接着执行`console.log("test1:"+a)`
+   8. 上一步 的代码`console.log("test1:"+a)`要使用a变量,首先在f1的作用域找有没有a变量,发现有a,并且a = 2,因此第二个输出`test1:2`
+   9. `console.log("test1:"+a)`执行完之后,说明执行代码区域的`f1.call()`也执行完了,接着执行`console.log("test3:"+a)`
+   10. 同样的,发现要使用a变量,在全局作用域找有没有a变量,发现有,并且a是1,因此输出第三个`test3:1`
 
 
 
+5. 题目(获得新知识):
 
+   ```
+   var a = 1
+   function f1(){
+     //新加的, 问题: a = 3333333的a指的是哪个a?  指的是var a = 1那个a
+     a = 3333333
+     f2.call()
+     console.log("test1:" + a)
+     
+     function f2(){
+       var a = 3
+       console.log("test2:" + a)
+     }
+   }
+   f1.call()
+   console.log("test3:" + a)
+   ```
 
+   变量提升
 
+   ```
+   var a
+   function f1(){
+     function f2(){
+       var a
 
+       a = 3
+       console.log("test2:" + a)
+     }
+     
+     a = 3333333    //代码1
+     f2.call()
+     console.log("test1:" + a)
+     
+     
+   }
 
+   a = 1       //代码2
+   f1.call()
+   console.log("test3:" + a)
+   ```
 
+   再次改写代码,注意代码1位置的变化:
 
+   ```
+   var a
+   function f1(){
+     function f2(){
+       var a
 
+       a = 3
+       console.log("test2:" + a)
+     }
+     
+     f2.call()
+     console.log("test1:" + a)
+     
+     
+   }
 
+   a = 1       //代码2
+   a = 3333333    //代码1
+   f1.call()
+   console.log("test3:" + a)
+   ```
 
-
-
-
-
-
-
-
-
-
+   1. 为什么代码1的位置变?怎么变的?
+      1. 第一个问题: 代码1`a=333333`在变量提升的时候,发现本作用域并没有`var a`,所以代码1会找到父作用域,看看有没有`var a`,发现有了,因此就知道代码1要换位置了.
+      2. 第二个问题: 我在执行变量提升的代码1的时候,发现代码1是在f1函数中,所以我把代码1的位置放在**紧贴**f1函数之前.
 
 
 
@@ -361,26 +414,26 @@ function f1(){
   
   function f2(){
     var a = 3
-    console.log(a)
+    console.log("标记2:"+a)
   }
 }
 f1.call()
-console.log(a)
+console.log("标记3"+a)
 
 //问题2: 标记1的a是多少?   
 var a = 1
 function f1(){
-  console.log(a)
+  console.log("标记1:"+a)
   var a = 2
   f4.call()
 }
 
 function f4(){
-  console.log("标记1"+a)
+  console.log("标记3"+a)
 }
 
 f1.call()
-console.log(a)
+console.log("标记2:"+a)
 
 
 //问题3: ?????有一行代码,问: 有没有可能使得遮住的代码令标记1打印出2   可能 a = 2 即可
@@ -422,8 +475,8 @@ http://js.jirengu.com/nicawehuso/1/edit?js,output
 2. 变量提升方法:
 
    1. 对于`var a = 2` 
-      - `var a`放在该作用域的最前面(可以认为是紧接`}`之后)
-      - `a = 2`放在原`var a = 2`的位置
+      - 复制原`var a = 2`的`var a`,放在该作用域的最前面(可以认为是紧接`}`之后)
+      - 将原`var a = 2`删去`var `
    2. 对于`function f(){}`
       - 直接放在该作用域的最前面(可以认为是紧接`}`之后)
    3. 将变量提升与执行代码区域用空格分开
