@@ -340,13 +340,15 @@
 
 1. DOM === 想象的树型结构模型.
 
-2. DOM中的O指的是Object,他是在内存中,按照树型结构,通过构造函数(如Node,Element(翻译为标签比较好),Document三个构造函数),构造出对象,来将 DOM 展现到内存中
+2. DOM提供的API的作用就是修改或者查看 HTML 代码
 
-3. DOM的D指的是Document,可以认为是 HTML 文档
+3. DOM中的O指的是Object,他是在内存中,按照树型结构,通过构造函数(如Node,Element(翻译为标签比较好),Document三个构造函数),构造出对象,来将 DOM 展现到内存中
 
-4. DOM的M指的是Model,因为在 HTML结构 在内存中不好用笔表示,所以用一个模型来表示,这个模型就是树型结构
+4. DOM的D指的是Document,可以认为是 HTML 文档
 
-5. DOM 树型结构
+5. DOM的M指的是Model,因为在 HTML结构 在内存中不好用笔表示,所以用一个模型来表示,这个模型就是树型结构
+
+6. DOM 树型结构
 
    ![未命名文件 (4).png](http://upload-images.jianshu.io/upload_images/5529438-1ac257c9d8bc180d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -464,4 +466,77 @@
 
 1. `document.createElement("div")`生成Element节点
 2. `document.createTextNode("你好,我叫饶家俊")`生成Text节点
-3. ​
+3. `Node.setAttribute("class", "test")`生成Attr节点,并且接到Node节点上
+
+
+
+### document事件相关的方法
+
+??
+
+
+
+
+
+
+
+##  Element节点的一些属性和方法
+
+### 属性
+
+1. 元素特征相关的属性
+
+   现在有一段HTML代码
+
+   ```
+   <div id="wrapper"  data-num="3232323">
+     <ul>
+       <li>选项1</li>
+       <li>选项2</li>
+       <li>选项3</li>
+     </ul>        
+   </div>
+   ```
+
+   下面是JavaScript代码
+
+   ```
+   var divTag = document.querySelector("#wrapper")
+
+   //返回标签节点所有的属性,用伪数组返回
+   divTag.attributes  
+
+   //返回标签节点的id
+   divTag.id
+
+   //返回标签节点的class
+   divTag.className
+
+   //返回标签节点的tagName
+   divTag.tagName
+
+   //返回标签节点内的所有东西,包括文字和标签,但是是以字符串方式返回
+   divTag.innerHTML
+
+   //由于class实在是太重要了,所以有个属性是用来返回标签节点内的所有class,通过伪数组返回
+   divTag.classList
+   /*
+   返回的伪数组有以下方法:
+   1. add()：增加一个class。
+   2. remove()：移除一个class。
+   3. contains()：检查当前元素是否包含某个class。
+   4. toggle()：将某个class移入或移出当前元素。
+   5. item()：返回指定索引位置的class。其实用divTag.classList[1]这样更好
+   6. toString()：将class的列表转为字符串。
+   */
+   ```
+
+2. 盒模型相关属性
+
+   Node节点分为两种情况: 
+
+   1. 整个html节点
+
+      ​
+
+   2. 某个div节点
