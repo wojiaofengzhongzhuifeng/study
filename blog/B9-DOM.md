@@ -415,5 +415,53 @@
 
 ### document属性
 
+1. 用于指向其他节点的属性
+
+   - `document.documentElement`指向 DOM 的 html节点
+   - `document.activeElement`指向获得焦点的那个节点
+
+2. 返回文档特定元素的伪数组集合的属性
+
+   - `document.links`
+   - `document.forms`
+   - `document.images`
+   - `document.embeds`
+   - 等等
+
+3. 返回文档信息的属性
+
+   - `document.location`
+   - `document.readyState`返回的是当前文档的状态,
+   - 等等
+
+   ​
 
 
+
+### document写入方法
+
+
+
+
+
+### document查找节点方法
+
+1. 方法:`document.querySelector(AAAA)`和`document.querySelectorAll(AAAA)`
+
+2. 注意点:
+
+   - 如果获取标签,那么直接AAAA === "div" 即可
+   - 第一个返回的是第一个符合选择器的节点,第二个返回的是伪数组,里面包含了所有符合选择器的节点
+   - 第二个返回的结果不是动态的,不会实时反映元素节点的变化
+   - 这两个方法除了是document,还可以是某个Node节点
+   - 其他查找方法不学,没有必要
+
+   ​
+
+   ​
+
+### document生成节点的方法
+
+1. `document.createElement("div")`生成Element节点
+2. `document.createTextNode("你好,我叫饶家俊")`生成Text节点
+3. ​
