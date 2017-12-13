@@ -328,6 +328,8 @@
     - `Node.isSameNode()`
     - `Node.normalize()`
 
+37. 分清`textContent`  `innerHTML`  `innerText`的关系
+
 
 
 
@@ -338,7 +340,7 @@
 
 1. DOM === 想象的树型结构模型.
 
-2. DOM中的O指的是Object,他是在内存中,按照树型结构,通过构造函数(如Node,Element,Document三个构造函数),构造出对象,来将 DOM 展现到内存中
+2. DOM中的O指的是Object,他是在内存中,按照树型结构,通过构造函数(如Node,Element(翻译为标签比较好),Document三个构造函数),构造出对象,来将 DOM 展现到内存中
 
 3. DOM的D指的是Document,可以认为是 HTML 文档
 
@@ -362,7 +364,56 @@
 
       ​
 
+## Node类型的一些属性和方法
 
+### Node属性
+
+1. **节点本身某些特征**的属性:
+   - `Node.nodeName`:
+     - 看着DOM,如果你不确定某个Node节点是什么类型(不确定某个Node节点是矩形还是椭圆形)
+     - 返回节点类型,重要的返回的值有`大写的HTML元素名	`, `#text	` ,`#document`
+   - `Node.nodeType`:
+     - 根据Node类型返回某些数字
+     - Element类型,返回的数字是1
+     - Text类型,返回的数字是3
+     - Document类型,返回的数字的9
+   - `Node.textContent`
+     - 返回的当前节点及其所有后代的文本内容
+     - 值得注意的是,因为`Node.textContent`是Node属性,所以文本节点也是有textContent的
+     - 相应的,`innerHTML`和`innerText`是Element的属性,所以`TextNode.innerHTML`返回的是undefined,注意,并不是返回null
+2. 节点**结构关系**属性
+   - 兄弟关系
+     - `Node.nextSibling`
+     - `Node.previousSibling`
+   - 儿子关系
+     - `Node.childNodes`
+     - `Node.firstChild`
+     - `Node.lastChild`
+   - 父关系
+     - `Node.parentNode`
+   - 上面的所有关系属性都可以获取到Text节点(除了父关系)
+   - `Node.childNodes`是最特殊的,它返回的是一个伪数组,里面是Node节点,并且位数组内的值是动态变化的
+
+### Node方法
+
+- `Node.appendChild()`
+- `Node.hasChildNodes()`
+- `Node.cloneNode()`
+- `Node.insertBefore()`
+- `Node.removeChild()`
+- `Node.replaceChild()`
+- `Node.contains()`
+- `Node.isEqualNode()`
+- `Node.isSameNode()`
+- `Node.normalize()`
 
 ​	
+
+
+
+## document节点的一些属性和方法
+
+### document属性
+
+
 
