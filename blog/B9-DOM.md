@@ -328,4 +328,41 @@
     - `Node.isSameNode()`
     - `Node.normalize()`
 
-    ​
+
+
+
+
+
+
+## 对 DOM 的一些理解
+
+1. DOM === 想象的树型结构模型.
+
+2. DOM中的O指的是Object,他是在内存中,按照树型结构,通过构造函数(如Node,Element,Document三个构造函数),构造出对象,来将 DOM 展现到内存中
+
+3. DOM的D指的是Document,可以认为是 HTML 文档
+
+4. DOM的M指的是Model,因为在 HTML结构 在内存中不好用笔表示,所以用一个模型来表示,这个模型就是树型结构
+
+5. DOM 树型结构
+
+   ![未命名文件 (4).png](http://upload-images.jianshu.io/upload_images/5529438-1ac257c9d8bc180d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+   1. 上图就是DOM,其中的每个节点(包括矩形节点和椭圆形节点)都是Node类型
+
+   2. document节点是Document构造函数的一个实例对象,document节点代表了整个文档(整个树型结构),我们可以通过直接输入`document`来获取document节点
+
+   3. html节点是Element构造函数的一个实例对象,html节点又叫根节点,我们可以通过输入`document.documentElement`来获得html节点
+
+   4. 椭圆形的文本节点:"你好,我叫饶家俊"  是Text构造函数的一个实例对象
+
+   5. Node,Element,Text的关系
+
+      ![未命名文件 (5).png](http://upload-images.jianshu.io/upload_images/5529438-9adcec2c1bf89f37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+      ​
+
+
+
+​	
+
