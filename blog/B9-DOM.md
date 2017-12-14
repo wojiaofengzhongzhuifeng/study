@@ -1,7 +1,5 @@
 
 
-
-
 ## 总结 + 我认为的重点
 
 1. DOM === 用树型结构表示的 HTML 文档,所以DOM的重点还是表示 HTML 文档
@@ -9,6 +7,10 @@
 2. DOM提供的 API 是用来查询,修改 HTML 文档内容
 
 3. 标准属性和不标准属性的的操作是不同的
+
+4. 伪数组 === Object类型 使用伪数组的意义是为了方便的获取伪数组内的值(???)不确定
+
+5. 只有`Node.querySelectorAll()`返回的数组不是动态的
 
    ​
 
@@ -286,9 +288,24 @@
 
    ​
 
+## 题目
 
+1. HTML 代码
 
+```
+<div id=parent></div>
+```
 
+问: parent的值是多少? 
+
+2. HTMLCollection与NodeList的区别有
+
+   A. HTMLCollection实例对象的成员只能是Element节点，NodeList实例对象的成员可以包含其他节点。
+
+   B. HTMLCollection实例对象都是动态集合，节点的变化会实时反映在集合中。NodeList实例对象都是静态集合。
+
+   C. HTMLCollection实例对象可以用id属性或name属性引用节点元素，NodeList只能使用数字索引引用。
+   ​               
 
 
 
