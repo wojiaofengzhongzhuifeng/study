@@ -2,7 +2,7 @@
 
 ## 总结 + 我认为的重点
 
-1. DOM === 用树型结构表示的 HTML 文档,所以DOM的重点还是表示 HTML 文档
+1. DOM === 用树型结构表示的 HTML 文档,所以DOM的作用 === 表示 HTML 文档
 
 2. DOM提供的 API 是用来查询,修改 HTML 文档内容
 
@@ -20,7 +20,7 @@
 
 2. DOM提供的API的作用就是修改或者查看 HTML 代码
 
-3. DOM中的O指的是Object,他是在内存中,按照树型结构,通过构造函数(如Node,Element(翻译为标签比较好),Document三个构造函数),构造出对象,来将 DOM 展现到内存中
+3. DOM中的O指的是Object,他是在内存中,按照树型结构,通过构造函数(如Node,Element(翻译为标签比较好),Document三个构造函数),构造出对象,将 DOM 展现到内存中
 
 4. DOM的D指的是Document,可以认为是 HTML 文档
 
@@ -32,11 +32,15 @@
 
    1. 上图就是DOM,其中的每个节点(包括矩形节点和椭圆形节点)都是Node类型
 
-   2. document节点是Document构造函数的一个实例对象,document节点代表了整个文档(整个树型结构),我们可以通过直接输入`document`来获取document节点
+   2. document节点是Document构造函数的一个实例对象,document节点代表了整个文档(整个树型结构
 
-   3. html节点是Element构造函数的一个实例对象,html节点又叫根节点,我们可以通过输入`document.documentElement`来获得html节点
+      ,我们可以通过直接输入`document`来获取document节点
 
-   4. 椭圆形的文本节点:"你好,我叫饶家俊"  是Text构造函数的一个实例对象
+   3. html节点是Element构造函数的一个实例对象,html节点又叫根节点
+
+      我们可以通过输入`document.documentElement`来获得html节点
+
+   4. 椭圆形的文本节点:"你好,我叫饶家俊"  是Text构造函数的一个实例对象(文本节点是Text构造函数的一个实例对象)
 
    5. Node,Element,Text的关系
 
@@ -72,7 +76,7 @@
    - 父关系
      - `Node.parentNode`
    - 上面的所有关系属性都可以获取到Text节点(除了父关系)
-   - `Node.childNodes`是最特殊的,它返回的是一个伪数组,里面是Node节点,并且位数组内的值是动态变化的
+   - `Node.childNodes`是最特殊的,它返回的是一个伪数组,里面是Node节点,并且伪数组内的值是动态变化的
 
 ### Node方法
 
@@ -95,7 +99,7 @@
 
 ### document属性
 
-1. 用于指向其他节点的属性
+1. 用于指向其他节点(快捷获取某些特殊节点)的属性
 
    - `document.documentElement`指向 DOM 的 html节点
    - `document.activeElement`指向获得焦点的那个节点
@@ -118,14 +122,14 @@
 
 
 
-### document查找节点方法
+### document获取(查找)节点方法
 
 1. 方法:`document.querySelector(AAAA)`和`document.querySelectorAll(AAAA)`
 
 2. 注意点:
 
    - 如果获取标签,那么直接AAAA === "div" 即可
-   - 第一个返回的是第一个符合选择器的节点,第二个返回的是伪数组,里面包含了所有符合选择器的节点
+   - 第一个返回的是第一个符合CSS选择器AAAA条件的节点,第二个返回的是伪数组,里面包含了所有符合选择器的节点
    - 第二个返回的结果不是动态的,不会实时反映元素节点的变化
    - 这两个方法除了是document,还可以是某个Node节点
    - 其他查找方法不学,没有必要
@@ -138,7 +142,7 @@
 
 1. `document.createElement("div")`生成Element节点
 2. `document.createTextNode("你好,我叫饶家俊")`生成Text节点
-3. `Node.setAttribute("class", "test")`生成Attr节点,并且接到Node节点上
+3. ~~`Node.setAttribute("class", "test")`生成Attr节点,并且接到Node节点上~~
 
 
 
