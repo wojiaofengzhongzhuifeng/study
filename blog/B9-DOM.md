@@ -334,7 +334,11 @@
 
 
 
+## 总结 + 我认为的重点
 
+1. DOM提供的 API 是用来查询,修改 HTML 文档内容
+
+   ​
 
 ## 对 DOM 的一些理解
 
@@ -533,10 +537,53 @@
 
 2. 盒模型相关属性
 
-   Node节点分为两种情况: 
+   1. 获得整个页面高度:`document.documentElement.scrollHeight`
 
-   1. 整个html节点
+   2. 获得整个浏览器视口的高度`document.documentElement.clientHeight // 不包括滚动条`
 
-      ​
+   3. 某个Element距离**浏览器视口**左上角的坐标
 
-   2. 某个div节点
+      - `Element.getBoundingClientRect().left`
+      - `Element.getBoundingClientRect().top`
+
+   4. 某个Element距离**整个网页**左上角的坐标(,注意和上一个区别)
+
+      - `Element.getBoundingClientRect().left + document.documentElement.scrollLeft`
+      - `Element.getBoundingClientRect().top + document.documentElement.scrollTop`
+
+   5. 容器 === 浏览器的可视区域
+
+   6. `Node.clientHeight`,`Node.clientWidth`
+
+      - 某个 Element节点: 经过浏览器视口变化,返回节点所占据整个页面的高度和宽度(只有padding,margin和border不是)
+      - `html`节点: 返回浏览器视口宽度和高度
+
+   7. `Node.clientTop`,`Node.clientLeft`
+
+      - 返回节点的左边框(border)和上边框(border)的**边框宽度**
+
+   8. `Noe.scrollHeight`, `Node.scrollWidth`
+
+      - 某个Element节点: 经过浏览器视口变化,返回节点所占据整个页面的高度和宽度(只有padding,margin和border不是)
+      - `html`节点: 经过浏览器视口变化,返回整个页面的高度和宽度
+
+   9. `Node.scrollLeft`, `Node.scrollTop`
+
+      - 返回向下的滚动条和向右的滚动条滚动的像素
+
+   10. `Node.offsetHeight`, `Node.offsetWidth`
+
+       - 某个 Element节点: 经过浏览器视口变化,返回节点所占据整个页面左上角距离右下角的宽度和高度,并且左上角是包括padding和border
+       - `html`节点: 经过浏览器视口变化,返回整个页面的高度和宽度
+
+   11. `Node.offsetLeft`,`Node.offsetTop`
+
+       - 与父节点之间的宽度和高度???
+
+       ​
+
+   ​
+
+   ​
+
+   ​
