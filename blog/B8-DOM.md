@@ -301,7 +301,7 @@
 
 ​	问: parent的值是多少? 
 
-2. HTMLCollection与NodeList的区别有
+2. HTMLCollection与NodeList的区别有   答案: AC
 
    A. HTMLCollection实例对象的成员只能是Element节点，NodeList实例对象的成员可以包含其他节点。
 
