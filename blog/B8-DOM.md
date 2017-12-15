@@ -46,7 +46,58 @@
 
       ![未命名文件 (5).png](http://upload-images.jianshu.io/upload_images/5529438-9adcec2c1bf89f37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-      ​
+
+
+## DOM的归纳和总结
+
+1. JavaScript将 HTML 文档渲染成 DOM 的树型结构.
+
+2. 有了树形结构, 第一件事情是什么?当然是获取DOM的节点啦!
+
+3. 获得节点的方法: 
+
+   1. 直接在DOM寻找: `document.querySelector(AAAA)`和`document.querySelectorAll(AAAA)`
+   2. 通过节点关系获得节点
+      1. 兄弟关系
+         - `Node.nextSibling`
+         - `Node.previousSibling`
+      2. 儿子关系
+         - `Node.childNodes`
+         - `Node.firstChild`
+         - `Node.lastChild`
+      3. 父关系
+         - `Node.parentNode`
+
+4. 获得节点后,首先你要了解获得的节点是什么吧(比如你要知道节点是什么类型)?
+
+5. 获得节点自身属性方法:
+
+   1. `Node.nodeName`
+   2. `Node.nodeType`
+   3. `Node.textContent`
+
+6. 既然节点可以对应 HTML 文档的标签,那么我可不可以通过DOM来查看/修改标签的属性?
+
+   `Node.想查看的属性/想修改属性`or`Node.想查看的属性/想修改属性 = value`
+
+7. 添加属性
+
+   1. 对于标准属性,直接`Node.想添加属性 = value`
+   2. 对于非标准值,则需要这样`Node.setAttribute("data-class", "xxxxxxxxxxx")`
+
+8. 由于标签的class属性实在是太重要了,所以`Node.classList`返回的伪数组可以控制Node的class名
+
+9. 我可以通过DOM的API修改DOM的结构吗?
+
+   1. 先创建一个标签节点或者文本节点
+
+      `document.createElement("div")`生成Element节点
+
+      `document.createTextNode("你好,我叫饶家俊")`生成Text节点
+
+   2. 通过Node方法将创建的节点拼接到 DOM 中,搜索`Node方法`
+
+ 
 
 ## Node类型的一些属性和方法
 
@@ -55,7 +106,7 @@
 1. **节点本身某些特征**的属性:
    - `Node.nodeName`:
      - 看着DOM,如果你不确定某个Node节点是什么类型(不确定某个Node节点是矩形还是椭圆形)
-     - 返回节点类型,重要的返回的值有`大写的HTML元素名	`, `#text	` ,`#document`
+       - 返回节点类型,重要的返回的值有`大写的HTML元素名`, `#text	` ,`#document`
    - `Node.nodeType`:
      - 根据Node类型返回某些数字
      - Element类型,返回的数字是1
@@ -91,7 +142,7 @@
 - `Node.isSameNode()`
 - `Node.normalize()`
 
-​	
+  ​
 
 
 
@@ -243,18 +294,18 @@
 
    10. `Node.scrollLeft`, `Node.scrollTop`
 
-       - 返回向下的滚动条和向右的滚动条滚动的像素
+      - 返回向下的滚动条和向右的滚动条滚动的像素
 
    11. `Node.offsetHeight`, `Node.offsetWidth`
 
-       - 某个 Element节点: 经过浏览器视口变化,返回节点所占据整个页面左上角距离右下角的宽度和高度,并且左上角是包括padding和border
-       - `html`节点: 经过浏览器视口变化,返回整个页面的高度和宽度
+      - 某个 Element节点: 经过浏览器视口变化,返回节点所占据整个页面左上角距离右下角的宽度和高度,并且左上角是包括padding和border
+      - `html`节点: 经过浏览器视口变化,返回整个页面的高度和宽度
 
    12. `Node.offsetLeft`,`Node.offsetTop`
 
-       - 与父节点之间的宽度和高度???
+      - 与父节点之间的宽度和高度???
 
-       ​
+      ​
 
 
 
@@ -523,17 +574,17 @@
 
    后者包含前者
 
-1. xxx.children表示xxx结点的所有element结点
+2. xxx.children表示xxx结点的所有element结点
 
-2. xxx.childNodes表示xxx结点的所有node结点
+3. xxx.childNodes表示xxx结点的所有node结点
 
-3. document结点的意思: 表示整个html的根节点
+4. document结点的意思: 表示整个html的根节点
 
-4. xxx可以是element结点,可以是document结点,也可以是text结点,但一定是node结点
+5. xxx可以是element结点,可以是document结点,也可以是text结点,但一定是node结点
 
-5. HTML文档可以看成由各种 DOM 节点组成的文档树，**例如：整篇文档是一个文档节点**
+6. HTML文档可以看成由各种 DOM 节点组成的文档树，**例如：整篇文档是一个文档节点**
 
-6. 节点类型通过xxx.nodeType确定
+7. 节点类型通过xxx.nodeType确定
 
    | Element Type | Node Type |
    | ------------ | --------- |
@@ -543,15 +594,15 @@
    | Comment      | 8         |
    | Document     | 9         |
 
-7. xxx.nodeName,返回的是节点的名称
+8. xxx.nodeName,返回的是节点的名称
 
    1. 元素节点的名称是标签名，
    2. 文本节点的名称是#text，
    3. 文档节点的名称是#document。
 
-8. 寻找 DOM 元素,经过寻找返回的节点一般是html的某个标签``,当然最大的节点是document
+9. 寻找 DOM 元素,经过寻找返回的节点一般是html的某个标签``,当然最大的节点是document
 
-9. 现在所使用的 DOM 的属性和方法
+10. 现在所使用的 DOM 的属性和方法
 
    ​
 
@@ -928,41 +979,41 @@
 
 13. 除了根节点以外，其他节点对于周围的节点都存在三种关系。
 
-    父节点关系: xxx.parentNode
+   父节点关系: xxx.parentNode
 
-    子节点关系: xxx.childNodes/xxx.firstChild/xxx.lastChild,注意返回NodeList集合,成员包括xxx节点的所有子节点,也就是说,除了HTML元素节点，该属性返回的还包括Text节点和Comment节点
+   子节点关系: xxx.childNodes/xxx.firstChild/xxx.lastChild,注意返回NodeList集合,成员包括xxx节点的所有子节点,也就是说,除了HTML元素节点，该属性返回的还包括Text节点和Comment节点
 
-    同级节点关系: sibling   如xxx.nextSibling和xxx.previousSibling
+   同级节点关系: sibling   如xxx.nextSibling和xxx.previousSibling
 
 14. 我想知道这个节点的某些属性,通过这些属性来了解这些节点是什么?
 
-    1. `xxx.nodeName`和`xxx.nodeType`,他们返回的东西可以看下面的表
+   1. `xxx.nodeName`和`xxx.nodeType`,他们返回的东西可以看下面的表
 
-    | 类型                                    | nodeName             | nodeType |
-    | ------------------------------------- | -------------------- | -------- |
-    | ELEMENT_NODE**(DOM模型的div节点,h1节点等等)**  | 大写的HTML元素名           | 1        |
-    | ATTRIBUTE_NODE                        | 等同于Attr.name         | 2        |
-    | TEXT_NODE**(如DOM节点中p节点内的文本内容)**       | #text                | 3        |
-    | COMMENT_NODE                          | #comment             | 8        |
-    | DOCUMENT_NODE**(就是DOM模型的document节点)** | #document            | 9        |
-    | DOCUMENT_FRAGMENT_NODE                | #document-fragment   | 11       |
-    | DOCUMENT_TYPE_NODE                    | 等同于DocumentType.name | 10       |
+   | 类型                                    | nodeName             | nodeType |
+   | ------------------------------------- | -------------------- | -------- |
+   | ELEMENT_NODE**(DOM模型的div节点,h1节点等等)**  | 大写的HTML元素名           | 1        |
+   | ATTRIBUTE_NODE                        | 等同于Attr.name         | 2        |
+   | TEXT_NODE**(如DOM节点中p节点内的文本内容)**       | #text                | 3        |
+   | COMMENT_NODE                          | #comment             | 8        |
+   | DOCUMENT_NODE**(就是DOM模型的document节点)** | #document            | 9        |
+   | DOCUMENT_FRAGMENT_NODE                | #document-fragment   | 11       |
+   | DOCUMENT_TYPE_NODE                    | 等同于DocumentType.name | 10       |
 
-    1. `xxx.textContent`和`xxx.innerText`返回的是xxx节点及其子节点的所有文本节点
+   1. `xxx.textContent`和`xxx.innerText`返回的是xxx节点及其子节点的所有文本节点
 
 15. 节点的关系中,返回的都有可能是text节点,所以这不好
 
 16. Node节点对象的常用方法,只需DOM能做什么事情就可以了:
 
-    - `Node.appendChild()`查
-    - `Node.hasChildNodes()`
-    - `Node.cloneNode()`
-    - `Node.insertBefore()`
-    - `Node.removeChild()`
-    - `Node.replaceChild()`
-    - `Node.contains()`
-    - `Node.isEqualNode()`
-    - `Node.isSameNode()`
-    - `Node.normalize()`
+   - `Node.appendChild()`查
+   - `Node.hasChildNodes()`
+   - `Node.cloneNode()`
+   - `Node.insertBefore()`
+   - `Node.removeChild()`
+   - `Node.replaceChild()`
+   - `Node.contains()`
+   - `Node.isEqualNode()`
+   - `Node.isSameNode()`
+   - `Node.normalize()`
 
 17. 分清`textContent`  `innerHTML`  `innerText`的关系
