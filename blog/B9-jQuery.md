@@ -18,7 +18,7 @@
    　　九、特殊效果
    ```
 
-5. 基本设计思想,选择某个元素,然后对其操作
+5. 基本设计思想:**选择某个元素,然后对其操作**
 
 6. 使用jQuery 的第一步: 讲一个选择表达式AAAAA,放进**构造函数jQuery(简写成$)**中,通过jQuery的构造函数构造的对象,就可以使用jQuey提供的API
 
@@ -92,12 +92,45 @@
 
     //调用函数
     Array.prototype.inArrayNum.call(undefined, 2,[5,3,5,3,5,2])
+    //这样调用函数是错的
+    inArrayNum.call(undefined, 2,[4,4,5,3,5,6,4,2,3,5,5])
     ```
 
     这是jQuery的写法
 
     ```
     $.inArray(2,[32,4,56,6,4,32,2,3,5])
+
+    $.inArray.call(undefined, 2,[32,4,56,6,4,32,2,3,5])
+
     ```
+
+    记住一个,如果函数xxxx挂在构造函数的prototype中,那么调用这个函数xxxx必须是构造函数的实例对象或者构造函数.prtotype
+
+23. jQuery的操作元素的方法,是定义(挂)在构造函数的prototype上
+
+24. jQuery的工具方法,是直接挂在构造函数中的
+
+25. 上面两个的区别就在于调用函数的不同
+
+26. ===我在看jQuery的标准参考
+
+27. jQuery最重要的概念是jQuery对象,有了jQuery对象,你就可以使用jQuery给你使用的方法
+
+28. 获得jQuery对象非常简单,只需要`$(AAAA)`,
+
+29. AAAA可以填CSS选择器
+
+30. AAAA可以填DOM对象
+
+31. AAAA可以是字符串,如`$('<li class="greet">test</li>')`
+
+32. jQuery返回的是一个类数组对象,但是`$("li")[0]`这样返回的是DOM对象,而不是jQuery对象的实例
+
+33. 如果想获得jQuery对象的实例,应该这样写`$("li").eq(0)`
+
+34. 注意分清给你的是DOM对象还是jQuery对象,如何区别?通过`对象 instanceOf jQuery`
+
+35. ​
 
     ​
