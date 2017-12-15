@@ -2,15 +2,17 @@
 
 ## 总结 + 我认为的重点
 
-1. DOM === 用树型结构表示的 HTML 文档,所以DOM的作用 === 表示 HTML 文档
+1. 搜索`归纳`,以掌握DOM基本思想
 
-2. DOM提供的 API 是用来查询,修改 HTML 文档内容
+2. DOM的作用 === 表示 HTML 文档
 
-3. 标准属性和不标准属性的的操作是不同的
+3. DOM提供的 API === 查询,修改 HTML 文档内容
 
-4. 伪数组 === Object类型 使用伪数组的意义是为了方便的获取伪数组内的值(???)不确定
+4. 输入`document.documentElement`来获得html节点
 
-5. 只有`Node.querySelectorAll()`返回的数组不是动态的
+5. 伪数组 === Object类型 使用伪数组的意义是为了方便的获取伪数组内的值(???)不确定
+
+6. 只有`Node.querySelectorAll()`返回的数组不是动态的
 
    ​
 
@@ -59,14 +61,8 @@
    1. 直接在DOM寻找: `document.querySelector(AAAA)`和`document.querySelectorAll(AAAA)`
    2. 通过节点关系获得节点
       1. 兄弟关系
-         - `Node.nextSibling`
-         - `Node.previousSibling`
       2. 儿子关系
-         - `Node.childNodes`
-         - `Node.firstChild`
-         - `Node.lastChild`
       3. 父关系
-         - `Node.parentNode`
 
 4. 获得节点后,首先你要了解获得的节点是什么吧(比如你要知道节点是什么类型)?
 
@@ -76,18 +72,9 @@
    2. `Node.nodeType`
    3. `Node.textContent`
 
-6. 既然节点可以对应 HTML 文档的标签,那么我可不可以通过DOM来查看/修改标签的属性?
+6. 既然节点可以对应 HTML 文档的标签,那么我可不可以通过 DOM 来处理标签的属性?搜索`处理标签属性`知道所有属性的处理方法.
 
-   `Node.想查看的属性/想修改属性`or`Node.想查看的属性/想修改属性 = value`
-
-7. 添加属性
-
-   1. 对于标准属性,直接`Node.想添加属性 = value`
-   2. 对于非标准值,则需要这样`Node.setAttribute("data-class", "xxxxxxxxxxx")`
-
-8. 由于标签的class属性实在是太重要了,所以`Node.classList`返回的伪数组可以控制Node的class名
-
-9. 我可以通过DOM的API修改DOM的结构吗?
+7. 我可以通过DOM的API修改DOM的结构吗?
 
    1. 先创建一个标签节点或者文本节点
 
@@ -342,6 +329,41 @@
    ```
 
    ​
+
+   ​
+
+## 处理标签属性
+
+1. 最正常,也最麻烦的写法
+
+   1. 增:`Node.setAttribute("属性名", "属性值")`
+   2. 删: `Node.removeAttribute("属性名")`
+   3. 改: `Node.setAttribute("已经存在属性名", "新属性值")`
+   4. 查:`Node.getAttribute("属性名")`
+
+2. 但是,对于标准属性来说,可以写的简单一点
+
+   1. 增:`Node.style = "border: 10xp solid black"`
+   2. 删: 无法简写
+   3. 改: `Node.style = "border: 10px solid red"`
+   4. 查:`Node.style`
+
+3. 对于标准属性的 class 属性来说,因为它实在是太重要了,所以对于class属性也有一套方法:
+
+   1. 首先获得包含所有属性的伪数组`Node.classList`
+
+   2. ```
+      add()：增加一个class。
+      remove()：移除一个class。
+      contains()：检查当前元素是否包含某个class。
+      toggle()：将某个class移入或移出当前元素。
+      item()：返回指定索引位置的class。其实用divTag.classList[1]这样更好
+      toString()：将class的列表转为字符串。
+      ```
+
+      ​
+
+
 
 ## 题目
 
