@@ -3,7 +3,7 @@
 1. 对函数的理解
 2. 知道函数的调用,只能用一种方法
 3. 作用域的作用: 告诉浏览器,在哪个作用域取变量
-4. 函数声明方法
+4. 声明函数的三种方法及其调用函数,
 5. 变量提升的方法
 6. this是什么?arguments是什么?
 7. call stack是什么?  执行一个函数,则跳到这个函数的内部开始执行`执行区域的函数`
@@ -60,10 +60,39 @@ var f5 = x => x*x
 
 ## 如何调用函数
 
+目前有三种声明函数的方法:
+
+构造函数 === Function,String,Boolean,Object,Number,Array
+
 ```
-var f = function(x, y){return x + y}
-f.call(undefined, 2, 5)
+function newPush(value, array){
+	array.push(value)
+	return array
+}
+Array.prototype.newPush = function(value, array){
+	array.push(value)
+	return array
+}
+Array.newPush = function(value, array){
+	array.push(value)
+	return array
+}
 ```
+
+那个他们的调用方法分别是
+
+```
+newPush.call(undefined, 55555, [1,2,3,4,5])
+Array.prototype.newPush.call(undefined, 55555, [1,2,3,4,5])
+[].newPush.call(undefined, 55555, [1,2,3,4,5])//这是第二种函数声明的第二种调用方法,这是不会的
+Array.newPush.call(undefined, 55555, [1,2,3,4,5])
+```
+
+他们的区别是
+
+1. 第一个是挂在window对象
+2. 第二个是挂在构造函数.prototype对象,
+3. 第三个是挂在构造函数中
 
 
 
