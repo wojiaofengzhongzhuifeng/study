@@ -2,17 +2,19 @@
 
 ## 总结 + 我认为的重点
 
-1. 搜索`归纳`,以掌握DOM基本思想
+1. 搜索`归纳`,以掌握 DOM 基本思想
 
-2. DOM的作用 === 表示 HTML 文档
+2. DOM 的作用 === 表示 HTML 文档
 
 3. DOM提供的 API === 查询,修改 HTML 文档内容
 
-4. 输入`document.documentElement`来获得html节点
+4. 输入`document.documentElement`来获得 html 节点
 
-5. 伪数组 === Object类型 使用伪数组的意义是为了方便的获取伪数组内的值(???)不确定
+5. 只有`Node.querySelectorAll()`返回的数组不是动态的
 
-6. 只有`Node.querySelectorAll()`返回的数组不是动态的
+6. `scrollHeight`返回的是高度
+
+7. `scrollTop`返回的是滚动高度
 
    ​
 
@@ -66,17 +68,17 @@
 
 4. 获得节点后,首先你要了解获得的节点是什么吧(比如你要知道节点是什么类型)?
 
-5. 获得节点自身属性方法:
+   了解节点:
 
    1. `Node.nodeName`
    2. `Node.nodeType`
    3. `Node.textContent`
 
-6. 既然节点可以对应 HTML 文档的标签,那么我可不可以通过 DOM 来处理标签的属性?搜索`处理标签属性`知道所有属性的处理方法.
+5. 既然节点可以对应 HTML 文档的标签,那么我可不可以通过 DOM 来处理标签的属性?搜索`处理标签属性`知道所有属性的处理方法.
 
-7. 我可以通过DOM的API修改DOM的结构吗?
+6. 我可以通过 DOM 的 API 修改 DOM 的结构吗?
 
-   1. 先创建一个标签节点或者文本节点
+   1. 创建节点
 
       `document.createElement("div")`生成Element节点
 
@@ -102,7 +104,7 @@
    - `Node.textContent`
      - 返回的当前节点及其所有后代的文本内容
      - 值得注意的是,因为`Node.textContent`是Node属性,所以文本节点也是有textContent的
-     - 相应的,`innerHTML`和`innerText`是Element的属性,所以`TextNode.innerHTML`返回的是undefined,注意,并不是返回null
+     - `innerHTML`和`innerText`是Element的属性,所以`TextNode.innerHTML`返回的是undefined,注意,并不是返回null
 2. 节点**结构关系**属性
    - 兄弟关系
      - `Node.nextSibling`
@@ -275,7 +277,7 @@
    2. 伪数组有以下方法:
 
       ```
-      add()：增加一个class。
+      add()：追加一个class。
       remove()：移除一个class。
       contains()：检查当前元素是否包含某个class。
       toggle()：将某个class移入或移出当前元素。
