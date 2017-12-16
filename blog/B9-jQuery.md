@@ -311,9 +311,127 @@
     4. 第四版
 
        ```
-       function xxxx(node){
-       	s
+       function jjjQuery(node){
+         var nodes = node
+         console.log(nodes)
+         nodes.addClass = function(obj){
+           for(var key in obj){      //key返回class名   obj[key]返回true or false
+             if(obj[key]){
+             	nodes.classList.add(key)
+             }else {
+            	nodes.classList.remove(key)
+             }
+           }
+         }
+         return nodes
        }
+
+       //调用方法
+       var newdom = jjjQuery(wrapper)
+       newdom.addClass.call(undefined, {"xxxx": true, "qqqqq": true, "yyyyy" :true})
+       ```
+
+    5. 第五版
+
+       ```
+       function jjjQuery(nodeOrSelector){
+         //获得节点node
+         var nodes
+         if(typeof nodeOrSelector === "string"){
+         	//当输入的是字符串
+           nodes = document.querySelector(nodeOrSelector)
+         }else{
+           nodes = nodeOrSelector
+         }
+         //给节点上挂函数
+         nodes.addClass = function(obj){
+           for(var key in obj){      //key返回class名   obj[key]返回true or false
+             if(obj[key]){
+             	nodes.classList.add(key)
+             }else {
+            	nodes.classList.remove(key)
+             }
+           }
+         }
+         
+         return nodes
+       }
+
+       /调用方法
+       var jjdom = jjjQuery(".ddddddddd")
+       jjdom.addClass.call(undefined, {"zxzxz": true, "xzdks": false})
+       ```
+
+    6. 第六版
+
+       ```
+       function jjjQuery(nodesOrSelector){
+       //必须让两种情况的nodes都是一种数据结构
+         var nodes
+         if(typeof nodesOrSelector === "string"){
+           nodes = document.querySelectorAll(nodesOrSelector)
+         }else {
+           nodes = document.querySelectorAll(nodesOrSelector)
+         }
+         
+         nodes.addClass = function(obj){
+           for(var key in obj){      //key返回class名   obj[key]返回true or false
+             if(obj[key]){
+               for(var j = 0;  j < nodes.length; j++){
+                 nodes[j].classList.add(key)
+               }	
+             }else {
+            	 for(var j = 0;  j < nodes.length; j++){
+                 nodes[j].classList.remove(key)
+               }
+             }
+           }
+         }
+         return nodes
+       }
+
+       //调用
+       var dom2 = jjjQuery("ul > li")
+       dom2.addClass({"tesrtds": true, "sxsxs": false})
+       ```
+
+    7. 第七版
+
+       ```
+       function jjjQuery(nodesOrSelector){
+       //必须让两种情况的nodes都是一种数据结构
+         var nodes = {}
+         if(typeof nodesOrSelector === "string"){
+           temp1 = document.querySelectorAll(nodesOrSelector)
+           for(var a = 0; a < temp1.length; a++){
+             nodes[a] = temp1[a]
+           }
+           nodes["length"] = a
+         }else {
+           temp2 = document.querySelectorAll(nodesOrSelector)
+           nodes[0] = temp2[0]
+           nodes['length'] = 1
+         }
+         
+         nodes.addClass = function(obj){
+           for(var key in obj){      //key返回class名   obj[key]返回true or false
+             if(obj[key]){
+               for(var j = 0;  j < nodes.length; j++){
+                 nodes[j].classList.add(key)
+               }	
+             }else {
+            	 for(var j = 0;  j < nodes.length; j++){
+                 nodes[j].classList.remove(key)
+               }
+             }
+           }
+         }
+         return nodes
+       }
+
+       //调用
+       var dom2 = jjjQuery("ul > li")
+       dom2.addClass({"tesrtds": true, "sxsxs": false})
        ```
 
        ​
