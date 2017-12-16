@@ -107,150 +107,217 @@
 
    记住一个,如果函数xxxx挂在构造函数的prototype中,那么调用这个函数xxxx必须是构造函数的实例对象或者构造函数.prtotype
 
-23. jQuery的操作元素的方法,是定义(挂)在构造函数的prototype上
+23.  jQuery的操作元素的方法,是定义(挂)在构造函数的prototype上
 
-24. jQuery的工具方法,是直接挂在构造函数中的
+24.  jQuery的工具方法,是直接挂在构造函数中的
 
-25. 上面两个的区别就在于调用函数的不同
+25.  上面两个的区别就在于调用函数的不同
 
-26. ===我在看jQuery的标准参考
+26.  ===我在看jQuery的标准参考
 
-27. jQuery最重要的概念是jQuery对象,有了jQuery对象,你就可以使用jQuery给你使用的方法
+27.  jQuery最重要的概念是jQuery对象,有了jQuery对象,你就可以使用jQuery给你使用的方法
 
-28. 获得jQuery对象非常简单,只需要`$(AAAA)`,
+28.  获得jQuery对象非常简单,只需要`$(AAAA)`,
 
-29. AAAA可以填CSS选择器
+29.  AAAA可以填CSS选择器
 
-30. AAAA可以填DOM对象
+30.  AAAA可以填DOM对象
 
-31. AAAA可以是字符串,如`$('<li class="greet">test</li>')`
+31.  AAAA可以是字符串,如`$('<li class="greet">test</li>')`
 
-32. jQuery返回的是一个类数组对象,但是`$("li")[0]`这样返回的是DOM对象,而不是jQuery对象的实例
+32.  jQuery返回的是一个类数组对象,但是`$("li")[0]`这样返回的是DOM对象,而不是jQuery对象的实例
 
-33. 如果想获得jQuery对象的实例,应该这样写`$("li").eq(0)`
+33.  如果想获得jQuery对象的实例,应该这样写`$("li").eq(0)`
 
-34. 注意分清给你的是DOM对象还是jQuery对象,如何区别?通过`对象 instanceOf jQuery`
+34.  注意分清给你的是DOM对象还是jQuery对象,如何区别?通过`对象 instanceOf jQuery`
 
-35. ===
+35.  ===
 
-36. 最重要的是把jQuery构造函数,构造出来的jQuery对象搞懂
+36.  最重要的是把jQuery构造函数,构造出来的jQuery对象搞懂
 
-37. 我在自己写一个jQuery
+37.  我在自己写一个jQuery
 
-   1. 输入一个节点和数组,给这个节点添加class,class的值为这个数组的值
+38.  输入一个节点和数组,给这个节点添加class,class的值为这个数组的值
 
-      ```
-      function addClass(node, array){
-        for(var i = 0; i < array.length; i++){
-          node.classList.add(array[i])
-        }
-      }
-      ```
+       ```
+       function addClass(node, array){
+         for(var i = 0; i < array.length; i++){
+           node.classList.add(array[i])
+         }
+       }
+       ```
 
-      `addClass(wrapper, ["we", "rng" ,"edg"])`
+       `addClass(wrapper, ["we", "rng" ,"edg"])`
 
-   2. (命名空间)如果按照上面的方法写函数,有可能会让两个人写的函数冲突,我能不能创建一个库,叫`rjjdom`,库里面有我自己写的一些函数?
+    2. (命名空间)如果按照上面的方法写函数,有可能会让两个人写的函数冲突,我能不能创建一个库,叫`rjjdom`,库里面有我自己写的一些函数?
 
-      ```
-      var rjjdom = {}
-      rjjdom.addClass = function(node, array){
-        for(var i = 0; i < array.length; i++){
-          node.classList.add(array[i])
-        }
-      }
-      ```
+       ```
+       var rjjdom = {}
+       rjjdom.addClass = function(node, array){
+         for(var i = 0; i < array.length; i++){
+           node.classList.add(array[i])
+         }
+       }
+       ```
 
-      `rjjdom.addClass(wrapper, ["wen", "ss","dd"])`
+       `rjjdom.addClass(wrapper, ["wen", "ss","dd"])`
 
-   3. 我觉得上面的调用语义化不是太好,能不能像这样调用
+    3. 我觉得上面的调用语义化不是太好,能不能像这样调用
 
-      `wrapper.addClass(["blue", "bold"])`
+       `wrapper.addClass(["blue", "bold"])`
 
-      因为wrappper是一个Node节点,所以我直接在`Node.prototype`加函数:
+       因为wrappper是一个Node节点,所以我直接在`Node.prototype`加函数:
 
-      疑问: 为什么要把node改成this,this在什么时候用??
+       疑问: 为什么要把node改成this,this在什么时候用??
 
-      我的理解: 
+       我的理解: 
 
-      this是沟通实例和构造函数的东西
+       this是沟通实例和构造函数的东西
 
-      在写prototype函数的时候,发现prototype本身没有某个对象, 而又需要这个对象, 这个对象就是实例,在构造函数中用this代替
+       在写prototype函数的时候,发现prototype本身没有某个对象, 而又需要这个对象, 这个对象就是实例,在构造函数中用this代替
 
-      ```
-      Node.prototype.addClass = function(array){
-        for(var i = 0; i < array.length; i++){
-        	this.classList.add(array[i])
-        }
-      }
-      ```
+       ```
+       Node.prototype.addClass = function(array){
+         for(var i = 0; i < array.length; i++){
+         	this.classList.add(array[i])
+         }
+       }
+       ```
 
-      `wrapper.addClass.call(wrapper, ["blue", "bold"])`
+       `wrapper.addClass.call(wrapper, ["blue", "bold"])`
 
-      方法二:
+       方法二:
 
-      ```
-      window.mydom = function(node){
-        var nodes = node
-        nodes.addClass = function(array){
-          for(var i = 0; i < array.length; i++){
-          	nodes.classList.add(array[i])
-          }
-        }
-        return nodes
-      }
-      ```
+       ```
+       window.mydom = function(node){
+         var nodes = node
+         nodes.addClass = function(array){
+           for(var i = 0; i < array.length; i++){
+           	nodes.classList.add(array[i])
+           }
+         }
+         return nodes
+       }
+       ```
 
-      `var nodes = mydom(wrapper); nodes.addClass(["red", "blue", "sssss"])`
+       `var nodes = mydom(wrapper); nodes.addClass(["red", "blue", "sssss"])`
 
-      改进1: mydom的输入不一定是Node节点,还可以是css选择器,该怎么弄?
+       改进1: mydom的输入不一定是Node节点,还可以是css选择器,该怎么弄?
 
-      ```
-      window.mydom = function(nodeorSelector){
-        var nodes
-        if(typeof nodeorSelector === "string"){
-          nodes = document.querySelector(nodeorSelector)
-        } else{
-          nodes = nodeorSelector
-        }
-        
-        
-        nodes.addClass = function(array){
-          for(var i = 0; i < array.length; i++){
-          	nodes.classList.add(array[i])
-          }
-        }
-        return nodes
-      }
-      ```
+       ```
+       window.mydom = function(nodeorSelector){
+         var nodes
+         if(typeof nodeorSelector === "string"){
+           nodes = document.querySelector(nodeorSelector)
+         } else{
+           nodes = nodeorSelector
+         }
+         
+         
+         nodes.addClass = function(array){
+           for(var i = 0; i < array.length; i++){
+           	nodes.classList.add(array[i])
+           }
+         }
+         return nodes
+       }
+       ```
 
-      改进2: mydom的输出不只有一个,而是有多个,怎么弄?
+       改进2: mydom的输出不只有一个,而是有多个,怎么弄?
 
-      ```
-      window.mydom = function(nodeorSelectors){
-        var nodes = {}
-        if(typeof nodeorSelectors === "string"){
-          var temp = document.querySelectorAll(nodeorSelectors)
-          for(var i = 0; i < temp.length; i++){
-            nodes[i] = temp[i]
-          }
-          nodes["length"] = i
-        }else {
-          nodes = {}
-          nodes[0] = nodeorSelectors
-          nodes["length"] = 1
-        }
-        
-        nodes.addClass = function(array){
-          for(var i = 0; i < array.length; i++){
-            for(var j = 0; j < nodes.length; j++){
-                nodes[j].classList.add(array[i])
-            }
-          }
-        }
-        return nodes
-      }
-      ```
+       ```
+       window.mydom = function(nodeorSelectors){
+         var nodes = {}
+         if(typeof nodeorSelectors === "string"){
+           var temp = document.querySelectorAll(nodeorSelectors)
+           for(var i = 0; i < temp.length; i++){
+             nodes[i] = temp[i]
+           }
+           nodes["length"] = i
+         }else {
+           nodes = {}
+           nodes[0] = nodeorSelectors
+           nodes["length"] = 1
+         }
+         
+         nodes.addClass = function(array){
+           for(var i = 0; i < array.length; i++){
+             for(var j = 0; j < nodes.length; j++){
+                 nodes[j].classList.add(array[i])
+             }
+           }
+         }
+         return nodes
+       }
+       ```
 
-      ​
+       ​
 
-   ​
+39.  自制简单 jQuery 过程
+
+    1. 第一版
+
+       ```
+       function addClass(node, obj){
+         for(var key in obj){      //key返回class名   obj[key]返回true or false
+          	if(obj[key]){
+             node.classList.add(key)
+          	}else {
+             node.classList.remove(key)
+          	}
+         }
+       }
+
+       //调用方法
+       addClass.call(undefined, wrapper, {"test1": true,"sdsds": true ,"sssss": false})
+       ```
+
+    2. 第二版
+
+       ```
+       window.rjjdom = {}
+
+       rjjdom.addClass = function(node, obj){
+           for(var key in obj){      //key返回class名   obj[key]返回true or false
+             if(obj[key]){
+               node.classList.add(key)
+             }else {
+               node.classList.remove(key)
+             }
+         	}
+       }
+
+       //调用方法
+       rjjdom.addClass.call(undefined, wrapper, {"dssdsds": true,"xxxxxsxsxs": true, "nihao": false})
+       ```
+
+    3. 第三版
+
+       ```
+       Node.prototype.addClass = function(obj){
+             for(var key in obj){      //key返回class名   obj[key]返回true or false
+               if(obj[key]){
+                 this.classList.add(key)
+               }else {
+                 this.classList.remove(key)
+               }
+         	  }
+       }
+
+       //调用方法
+       wrapper.addClass.call(wrapper, {"xssdsa": false, "xxxx": true})
+       ```
+
+    4. 第四版
+
+       ```
+       function xxxx(node){
+       	s
+       }
+       ```
+
+       ​
+
+    ​
+
+    ​
