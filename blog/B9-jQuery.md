@@ -176,8 +176,6 @@
 
       在写prototype函数的时候,发现prototype本身没有某个对象, 而又需要这个对象, 这个对象就是实例,在构造函数中用this代替
 
-      ​
-
       ```
       Node.prototype.addClass = function(array){
         for(var i = 0; i < array.length; i++){
@@ -191,14 +189,65 @@
       方法二:
 
       ```
-      window.myNode = function(node){
-        return {
-          addClass: function(array){
-            for(var i = 0; i < array.length; i++){
-              node.classList.add(array[i])
+      window.mydom = function(node){
+        var nodes = node
+        nodes.addClass = function(array){
+          for(var i = 0; i < array.length; i++){
+          	nodes.classList.add(array[i])
+          }
+        }
+        return nodes
+      }
+      ```
+
+      `var nodes = mydom(wrapper); nodes.addClass(["red", "blue", "sssss"])`
+
+      改进1: mydom的输入不一定是Node节点,还可以是css选择器,该怎么弄?
+
+      ```
+      window.mydom = function(nodeorSelector){
+        var nodes
+        if(typeof nodeorSelector === "string"){
+          nodes = document.querySelector(nodeorSelector)
+        } else{
+          nodes = nodeorSelector
+        }
+        
+        
+        nodes.addClass = function(array){
+          for(var i = 0; i < array.length; i++){
+          	nodes.classList.add(array[i])
+          }
+        }
+        return nodes
+      }
+      ```
+
+      改进2: mydom的输出不只有一个,而是有多个,怎么弄?
+
+      ```
+      window.mydom = function(nodeorSelectors){
+        var nodes = {}
+        if(typeof nodeorSelectors === "string"){
+          var temp = document.querySelectorAll(nodeorSelectors)
+          for(var i = 0; i < temp.length; i++){
+            nodes[i] = temp[i]
+          }
+          nodes["length"] = i
+        }else {
+          nodes = {}
+          nodes[0] = nodeorSelectors
+          nodes["length"] = 1
+        }
+        
+        nodes.addClass = function(array){
+          for(var i = 0; i < array.length; i++){
+            for(var j = 0; j < nodes.length; j++){
+                nodes[j].classList.add(array[i])
             }
           }
         }
+        return nodes
       }
       ```
 
