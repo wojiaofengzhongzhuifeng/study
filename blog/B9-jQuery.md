@@ -58,54 +58,54 @@
 21. 想明白了一个事情,这个应该放在function中
 
 22. 假如我要创建一个函数,它的作用是:"返回一个值在数组中的索引位置。如果该值不在数组中，则返回-1",
-    那么我会写如下的代码:
+   那么我会写如下的代码:
 
-    ```
-    function inArrayNum(value,array){
-    	for(var i = 0; i < array.length; i++){
-    		if(array[i] == value){
-    			return i
-    		}
+   ```
+   function inArrayNum(value,array){
+   	for(var i = 0; i < array.length; i++){
+   		if(array[i] == value){
+   			return i
+   		}
 
-    	}
-    	return -1
-    }
-    //但是这有许多漏洞,比如array中有两个值都符合value的值,只会返回第一个,但是我们先不管
+   	}
+   	return -1
+   }
+   //但是这有许多漏洞,比如array中有两个值都符合value的值,只会返回第一个,但是我们先不管
 
-    //调用函数
-    inArrayNum(2, [7,5,4,6,4,6,4,2,1])
-    //结果当然没有错,但是,我们禁止使用上面的调用方法
-    inArrayNum.call(undefined, 2,[4,4,5,3,5,6,4,2,3,5,5])
-    ```
+   //调用函数
+   inArrayNum(2, [7,5,4,6,4,6,4,2,1])
+   //结果当然没有错,但是,我们禁止使用上面的调用方法
+   inArrayNum.call(undefined, 2,[4,4,5,3,5,6,4,2,3,5,5])
+   ```
 
-    所以我这样写
+   所以我这样写
 
-    ```
-    Array.prototype.inArrayNum = function(value, array){
-      	for(var i = 0; i < array.length; i++){
-    		if(array[i] == value){
-    			return i
-    		}
-    	}
-    	return -1
-    }
+   ```
+   Array.prototype.inArrayNum = function(value, array){
+     	for(var i = 0; i < array.length; i++){
+   		if(array[i] == value){
+   			return i
+   		}
+   	}
+   	return -1
+   }
 
-    //调用函数
-    Array.prototype.inArrayNum.call(undefined, 2,[5,3,5,3,5,2])
-    //这样调用函数是错的
-    inArrayNum.call(undefined, 2,[4,4,5,3,5,6,4,2,3,5,5])
-    ```
+   //调用函数
+   Array.prototype.inArrayNum.call(undefined, 2,[5,3,5,3,5,2])
+   //这样调用函数是错的
+   inArrayNum.call(undefined, 2,[4,4,5,3,5,6,4,2,3,5,5])
+   ```
 
-    这是jQuery的写法
+   这是jQuery的写法
 
-    ```
-    $.inArray(2,[32,4,56,6,4,32,2,3,5])
+   ```
+   $.inArray(2,[32,4,56,6,4,32,2,3,5])
 
-    $.inArray.call(undefined, 2,[32,4,56,6,4,32,2,3,5])
+   $.inArray.call(undefined, 2,[32,4,56,6,4,32,2,3,5])
 
-    ```
+   ```
 
-    记住一个,如果函数xxxx挂在构造函数的prototype中,那么调用这个函数xxxx必须是构造函数的实例对象或者构造函数.prtotype
+   记住一个,如果函数xxxx挂在构造函数的prototype中,那么调用这个函数xxxx必须是构造函数的实例对象或者构造函数.prtotype
 
 23. jQuery的操作元素的方法,是定义(挂)在构造函数的prototype上
 
@@ -131,6 +131,77 @@
 
 34. 注意分清给你的是DOM对象还是jQuery对象,如何区别?通过`对象 instanceOf jQuery`
 
-35. ​
+35. ===
 
-    ​
+36. 最重要的是把jQuery构造函数,构造出来的jQuery对象搞懂
+
+37. 我在自己写一个jQuery
+
+   1. 输入一个节点和数组,给这个节点添加class,class的值为这个数组的值
+
+      ```
+      function addClass(node, array){
+        for(var i = 0; i < array.length; i++){
+          node.classList.add(array[i])
+        }
+      }
+      ```
+
+      `addClass(wrapper, ["we", "rng" ,"edg"])`
+
+   2. (命名空间)如果按照上面的方法写函数,有可能会让两个人写的函数冲突,我能不能创建一个库,叫`rjjdom`,库里面有我自己写的一些函数?
+
+      ```
+      var rjjdom = {}
+      rjjdom.addClass = function(node, array){
+        for(var i = 0; i < array.length; i++){
+          node.classList.add(array[i])
+        }
+      }
+      ```
+
+      `rjjdom.addClass(wrapper, ["wen", "ss","dd"])`
+
+   3. 我觉得上面的调用语义化不是太好,能不能像这样调用
+
+      `wrapper.addClass(["blue", "bold"])`
+
+      因为wrappper是一个Node节点,所以我直接在`Node.prototype`加函数:
+
+      疑问: 为什么要把node改成this,this在什么时候用??
+
+      我的理解: 
+
+      this是沟通实例和构造函数的东西
+
+      在写prototype函数的时候,发现prototype本身没有某个对象, 而又需要这个对象, 这个对象就是实例,在构造函数中用this代替
+
+      ​
+
+      ```
+      Node.prototype.addClass = function(array){
+        for(var i = 0; i < array.length; i++){
+        	this.classList.add(array[i])
+        }
+      }
+      ```
+
+      `wrapper.addClass.call(wrapper, ["blue", "bold"])`
+
+      方法二:
+
+      ```
+      window.myNode = function(node){
+        return {
+          addClass: function(array){
+            for(var i = 0; i < array.length; i++){
+              node.classList.add(array[i])
+            }
+          }
+        }
+      }
+      ```
+
+      ​
+
+   ​
