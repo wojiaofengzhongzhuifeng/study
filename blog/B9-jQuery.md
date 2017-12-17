@@ -748,29 +748,18 @@ $div 的 属性和方法有 addClass removeClass toggleClass 等
 
 
 
+2. 题目:
 
+   ```
+   window.jQuery = ???
+   window.$ = jQuery
 
+   var $div = $('div')
+   $div.addClass('red') // 可将所有 div 的 class 添加一个 red
+   $div.setText('hi') // 可将所有 div 的 textContent 变为 hi
+   ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-第一板: 
+第一版: 
 
 ```
 function addClass(node1, className){
