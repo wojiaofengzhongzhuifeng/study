@@ -844,5 +844,39 @@ window.jQuery = function(node1){
 }
 ```
 
+第五版: 通过jQuery返回的是纯净的伪数组
+
+```
+window.jQuery = function(node1){
+  var node = {}
+  
+  if(typeof node1 === "string"){
+    var temp = document.querySelectorAll(node1)
+    for(var j = 0; j < temp.length; j++){
+      node[j] = temp[j]
+    }
+    node["length"] = j
+  }else{
+    node = {}
+    node[0] = node
+    node["length"] = 1
+  }
+  
+  node.addClass = function(className){
+  	for(var i = 0; i < node.length; i++){
+      node[i].classList.add(className)
+  	}
+  }
+  
+  node.setText = function(value){
+    for(var i = 0; i < node.length; i++){
+    	node[i].innerText = value
+    }
+  }
+  
+  return node
+}
+```
+
 
 
