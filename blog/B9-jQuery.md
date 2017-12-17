@@ -682,7 +682,9 @@
 
 2. `for in `用在哪里?
 
-   用于获取对象的key和value
+   `for in `获取对象和array的key和value
+
+   `for(){}`只能获取array的key和value
 
    ```
    var array = [5,6,7,8,9]
@@ -701,4 +703,20 @@
    }
    ```
 
+3. 命名空间 === 第二版代码方式
+
+4. `typeof`和`instanceof`使用区别,在数据类型博客找
+
    ​
+
+   ​
+
+   ​
+
+### 了解jQuery的思想
+
+1. jQuery是一个构造函数,它返回的是一个对象,我们叫他jQuery对象
+
+2. jQuery实例对象, jQuery构造函数,jQueryprototype的内容和区别是什么?
+
+   ![未命名文件 (7).png](http://upload-images.jianshu.io/upload_images/5529438-19112b3aee9514d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
