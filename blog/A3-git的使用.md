@@ -43,12 +43,11 @@ git config --global user.email 你的邮箱
 git config --global push.default matching
 git config --global core.quotepath false
 git config --global core.editor "vim"
-
 ```
 
 ---
 
-### GitHub使用方法一
+### GitHub使用方法一(本地有了文件, 想把本地的文件放到github)
 
 1. 在你想要上传的目录下 `git init`。
 
@@ -67,7 +66,7 @@ git config --global core.editor "vim"
 
 ---
 
-### GitHub使用方法二
+### GitHub使用方法二(先在github上创建一个仓库,然后在本地修改)
 1. 打开GitHub，点击 new repository ，一共修改五处
    [![修改5处](http://upload-images.jianshu.io/upload_images/5529438-9349f470abb068d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)](https://i.loli.net/2017/10/02/59d202f61b150.png)
 
@@ -76,6 +75,8 @@ git config --global core.editor "vim"
 2. 在跳出来的页面点击Clone and download，复制其SSH。
 
 3. 进入你想要的路径，在命令行输入`git clone 把我替换成2步骤获得的SSH`。
+
+   ​
 
 ---
 
@@ -91,6 +92,15 @@ git push
 ```
 
 
+
+
+
+## GitHub使用方法四(修改已经存在的文件并且上传到Github)
+
+1. 点击`Clone and download`,复制SSH地址
+2. 用终端走到桌面目录, `gitclone git@github.com:wojiaofengzhongzhuifeng/study.git`
+3. 修改内容
+4. ​
 
 
 

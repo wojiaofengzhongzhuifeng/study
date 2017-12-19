@@ -102,7 +102,6 @@
    $.inArray(2,[32,4,56,6,4,32,2,3,5])
 
    $.inArray.call(undefined, 2,[32,4,56,6,4,32,2,3,5])
-
    ```
 
    记住一个,如果函数xxxx挂在构造函数的prototype中,那么调用这个函数xxxx必须是构造函数的实例对象或者构造函数.prtotype
@@ -176,303 +175,76 @@
 
           在写prototype函数的时候,发现prototype本身没有某个对象, 而又需要这个对象, 这个对象就是实例,在构造函数中用this代替
 
-          ```
-          Node.prototype.addClass = function(array){
-            for(var i = 0; i < array.length; i++){
-            	this.classList.add(array[i])
-            }
-          }
-          ```
+39.    jQuery的思想: 选择元素, 修改元素
 
-          `wrapper.addClass.call(wrapper, ["blue", "bold"])`
+40.    选择元素分为以下步骤
 
-          方法二:
+      1.    通过选择器选择元素
 
-          ```
-          window.mydom = function(node){
-            var nodes = node
-            nodes.addClass = function(array){
-              for(var i = 0; i < array.length; i++){
-              	nodes.classList.add(array[i])
-              }
-            }
-            return nodes
-          }
-          ```
+      2.    有了元素之后,对元素进行筛选(可选步骤
 
-          `var nodes = mydom(wrapper); nodes.addClass(["red", "blue", "sssss"])`
+            http://api.jquery.com/category/traversing/filtering/
 
-          改进1: mydom的输入不一定是Node节点,还可以是css选择器,该怎么弄?
+      3.    有了元素之后,选择与元素某些关系的新元素(可选步骤)
 
-          ```
-          window.mydom = function(nodeorSelector){
-            var nodes
-            if(typeof nodeorSelector === "string"){
-              nodes = document.querySelector(nodeorSelector)
-            } else{
-              nodes = nodeorSelector
-            }
-            
-            
-            nodes.addClass = function(array){
-              for(var i = 0; i < array.length; i++){
-              	nodes.classList.add(array[i])
-              }
-            }
-            return nodes
-          }
-          ```
+            http://api.jquery.com/category/traversing/tree-traversal/
 
-          改进2: mydom的输出不只有一个,而是有多个,怎么弄?
+41.    修改元素可以分为以下需求:
 
-          ```
-          window.mydom = function(nodeorSelectors){
-            var nodes = {}
-            if(typeof nodeorSelectors === "string"){
-              var temp = document.querySelectorAll(nodeorSelectors)
-              for(var i = 0; i < temp.length; i++){
-                nodes[i] = temp[i]
-              }
-              nodes["length"] = i
-            }else {
-              nodes = {}
-              nodes[0] = nodeorSelectors
-              nodes["length"] = 1
-            }
-            
-            nodes.addClass = function(array){
-              for(var i = 0; i < array.length; i++){
-                for(var j = 0; j < nodes.length; j++){
-                    nodes[j].classList.add(array[i])
-                }
-              }
-            }
-            return nodes
-          }
-          ```
+      1. 取值/赋值
+
+         ```
+         .html() 取出或设置html内容
+         .text() 取出或设置text内容
+         .attr() 取出或设置某个属性的值
+         .width() 取出或设置某个元素的宽度
+         .height() 取出或设置某个元素的高度
+         .val() 取出某个表单元素的值
+         ```
+
+         注意: 赋值是对所有元素集,取值只对第一个元素集
+
+         ​	`.text()`也除外,取所有的text内容
+
+      2. 改变dom结构
+
+         1. 移动元素
+
+         ```
+         .insertAfter()和.after()
+         .insertBefore()和.before()
+         .appendTo()和.append()
+         .prependTo()和.prepend()
+         ```
+
+         注意: 
+
+         - 前面的是符合语意的,如需求是把div元素移动到p元素后面:
+
+           `$("div").insertAfter($("p"))`,同时这个代码返回的是div元素
+
+         2. 复制,删除和创建元素
+
+            ```
+            .clone()
+            .remove()
+            .detach()
+            .empty()
+            创建??
+            ```
+
+      3. 把事件绑定在网页元素上
+
+         ```
+         ???
+         ```
+
+         ​
+
+         ​
 
 
-     ## 自制简单 jQuery 过程
-
-     1. HTML代码
-
-        ```
-        <h1>你好</h1>
-        <div id="wrapper" dataNum="3232323" class="nihao">
-          <ul>
-            <li>选项1</li>
-            <li>选项2</li>
-            <li>选项3</li>
-          </ul>        
-        </div>
-        <div class="ddddddddd">
-          <div id='parent'>parent</div>
-        </div>
-        <div id="test" data-test1="test1" class="test2" data-test2="test3">id为test</div>
-        ```
-    
-        ​
-    
-     2. 第一版
-    
-        ```
-        function addClass(node, obj){
-          for(var key in obj){      //key返回class名   obj[key]返回true or false
-           	if(obj[key]){
-              node.classList.add(key)
-           	}else {
-              node.classList.remove(key)
-           	}
-          }
-        }
-    
-        //调用方法
-        addClass.call(undefined, wrapper, {"test1": true,"sdsds": true ,"sssss": false})
-        ```
-    
-     3. 第二版
-    
-        ```
-        window.rjjdom = {}
-    
-        rjjdom.addClass = function(node, obj){
-            for(var key in obj){      //key返回class名   obj[key]返回true or false
-              if(obj[key]){
-                node.classList.add(key)
-              }else {
-                node.classList.remove(key)
-              }
-          	}
-        }
-    
-        //调用方法
-        rjjdom.addClass.call(undefined, wrapper, {"dssdsds": true,"xxxxxsxsxs": true, "nihao": false})
-        ```
-    
-     4. 第三版
-    
-        ```
-        Node.prototype.addClass = function(obj){
-              for(var key in obj){      //key返回class名   obj[key]返回true or false
-                if(obj[key]){
-                  this.classList.add(key)
-                }else {
-                  this.classList.remove(key)
-                }
-          	  }
-        }
-    
-        //调用方法
-        wrapper.addClass.call(wrapper, {"xssdsa": false, "xxxx": true})
-        ```
-    
-     5. 第四版
-    
-        ```
-        function jjjQuery(node){
-          var nodes = node
-          console.log(nodes)
-          nodes.addClass = function(obj){
-            for(var key in obj){      //key返回class名   obj[key]返回true or false
-              if(obj[key]){
-              	nodes.classList.add(key)
-              }else {
-             	nodes.classList.remove(key)
-              }
-            }
-          }
-          return nodes
-        }
-    
-        //调用方法
-        var newdom = jjjQuery(wrapper)
-        newdom.addClass.call(undefined, {"xxxx": true, "qqqqq": true, "yyyyy" :true})
-        ```
-    
-     6. 第五版
-    
-        ```
-        function jjjQuery(nodeOrSelector){
-          //获得节点node
-          var nodes
-          if(typeof nodeOrSelector === "string"){
-          	//当输入的是字符串
-            nodes = document.querySelector(nodeOrSelector)
-          }else{
-            nodes = nodeOrSelector
-          }
-          //给节点上挂函数
-          nodes.addClass = function(obj){
-            for(var key in obj){      //key返回class名   obj[key]返回true or false
-              if(obj[key]){
-              	nodes.classList.add(key)
-              }else {
-             	nodes.classList.remove(key)
-              }
-            }
-          }
-          
-          return nodes
-        }
-    
-        /调用方法
-        var jjdom = jjjQuery(".ddddddddd")
-        jjdom.addClass.call(undefined, {"zxzxz": true, "xzdks": false})
-        ```
-    
-     7. 第六版
-    
-        ```
-        function jjjQuery(nodesOrSelector){
-        //必须让两种情况的nodes都是一种数据结构
-          var nodes
-          if(typeof nodesOrSelector === "string"){
-            nodes = document.querySelectorAll(nodesOrSelector)
-          }else {
-            nodes = document.querySelectorAll(nodesOrSelector)
-          }
-          
-          nodes.addClass = function(obj){
-            for(var key in obj){      //key返回class名   obj[key]返回true or false
-              if(obj[key]){
-                for(var j = 0;  j < nodes.length; j++){
-                  nodes[j].classList.add(key)
-                }	
-              }else {
-             	 for(var j = 0;  j < nodes.length; j++){
-                  nodes[j].classList.remove(key)
-                }
-              }
-            }
-          }
-          return nodes
-        }
-    
-        //调用
-        var dom2 = jjjQuery("ul > li")
-        dom2.addClass({"tesrtds": true, "sxsxs": false})
-        ```
-    
-     8. 第七版
-    
-        ```
-        function jjjQuery(nodesOrSelector){
-        //必须让两种情况的nodes都是一种数据结构
-          var nodes = {}
-          if(typeof nodesOrSelector === "string"){
-            temp1 = document.querySelectorAll(nodesOrSelector)
-            for(var a = 0; a < temp1.length; a++){
-              nodes[a] = temp1[a]
-            }
-            nodes["length"] = a
-          }else {
-            temp2 = document.querySelectorAll(nodesOrSelector)
-            nodes[0] = temp2[0]
-            nodes['length'] = 1
-          }
-          
-          nodes.addClass = function(obj){
-            for(var key in obj){      //key返回class名   obj[key]返回true or false
-              if(obj[key]){
-                for(var j = 0;  j < nodes.length; j++){
-                  nodes[j].classList.add(key)
-                }	
-              }else {
-             	 for(var j = 0;  j < nodes.length; j++){
-                  nodes[j].classList.remove(key)
-                }
-              }
-            }
-          }
-          return nodes
-        }
-    
-        //调用
-        var dom2 = jjjQuery("ul > li")
-        dom2.addClass({"tesrtds": true, "sxsxs": false})
-        ```
-    
-        ​
-    
-     ​
-    
-     ​
-    
-     ​
-    
-     ​
-    
-     ​
-    
-     ​
-    
-     ​
-    
-     ​
-    
-     ​
-
-## 自制JQuery
+## 自制jQuery
 
 1. HTML代码
 
