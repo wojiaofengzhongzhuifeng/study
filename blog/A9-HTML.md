@@ -159,9 +159,7 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
 
 2. 属性：
 
-   `<meta name="这里填键" content="这里填值">`or
-
-   `<meta http-equiv="这里填键" content="这里填值">`
+   `<meta name="这里填键" content="这里填值">`or`<meta http-equiv="这里填键" content="这里填值">`
 
    ​
 
@@ -203,6 +201,7 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
 
 1. 告诉浏览器使用标准模式。
 2. 如果不写，那么浏览器就会模拟老式浏览器的行为给你的代码进行渲染（混杂模式），目的是为了防止站点无法工作。
+3. 告知浏览器的解析器用什么文档标准解析这个文档。
 
 
 
@@ -233,9 +232,10 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
 
 ## 常见的浏览器有哪些？什么内核？
 
-1. IE内核：ie浏览器
-2. Mozilla：firefox
-3. WebKit：Safari、Chrome
+1. 使用Trident内核的浏览器：IE、Maxthon、TT、The World等；
+2. 使用Gecko内核的浏览器：Netcape6及以上版本、FireFox、MozillaSuite/SeaMonkey；
+3. 使用Presto内核的浏览器：Opera7及以上版本；
+4. 使用Webkit内核的浏览器：Safari、Chrome。
 
 
 
@@ -264,6 +264,25 @@ HTML是一门**标记语言**，你写的是标签而不是代码。
 
 
 
+## title 属性和 alt属性分别有什么作用？
 
-## 
+1. alt属性只能用在img,area,input中,他的作用是当图片不展示的时候,就显示alt属性内的值
+2. title属性可以用在几乎所有标签上,当鼠标悬浮于某些元素中,展现的文字就是title属性内的文字
 
+
+
+
+
+## 草稿
+
+1. <!DOCTYPE html>
+   1. 告诉浏览器你的语法,使用html5的规则进行解析html文件
+2. 标签
+   1. ​
+3. 属性
+4. 注释
+5. 空白
+6. 实体:搜索html 实体
+7. 乱码原因
+8. `<input type="checkbox" checked>`
+9. ​
