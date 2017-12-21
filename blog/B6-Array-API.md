@@ -41,7 +41,9 @@ var d = new Array(3,3)
 
 1. 数组条件中,不符合第二个条件的就是伪数组
 
-2. 函数传入的参数`arguments`是伪数组
+2. 常用的伪数组:
+
+   函数传入的参数`arguments`是伪数组
 
    `var divs = document.querySelectAll('div')`,divs是伪数组
 
@@ -159,7 +161,7 @@ array.concat()
 
 17. forEach函数接受函数B的理解过程
 
-   1. 重点:
+18. 重点:
 
       没有返回值
 
@@ -236,137 +238,137 @@ array.concat()
    }
    ```
 
-15.   array.sort()
+19. array.sort()
 
-16.   重点是
+20. 重点是
 
-     1. 返回这个array,这个array经过排序,只有它改变了array
+   1.  返回这个array,这个array经过排序,只有它改变了array
 
-     2. sort的使用方法和forEach的一样,都是传入一个函数B,只不过函数B的第一个参数是0,第二个参数是1,以此类推
+   2.  sort的使用方法和forEach的一样,都是传入一个函数B,只不过函数B的第一个参数是0,第二个参数是1,以此类推
 
-        ```
-        var array = [23,432,432,32,423,3,21,3,2]
-        //升续
-        array.sort(  function(x,y){return x- y}  )
+       ```
+       var array = [23,432,432,32,423,3,21,3,2]
+       //升续
+       array.sort(  function(x,y){return x- y}  )
 
-         
-        //比较马云: 100; 马化腾: 200; 李红: 300的资产
-        var a  = [  "马云","马化腾","李红"]
-        var hash = {
-          "马云": 100,
-          "马化腾": 200,
-          "李红": 300
-        }
+        
+       //比较马云: 100; 马化腾: 200; 李红: 300的资产
+       var a  = [  "马云","马化腾","李红"]
+       var hash = {
+         "马云": 100,
+         "马化腾": 200,
+         "李红": 300
+       }
 
-        a.sort(  function(x, y){return hash[y] - hash[x]} )
-        ```
+       a.sort(  function(x, y){return hash[y] - hash[x]} )
+       ```
 
-17.   array.reverse()    英文: 反转
+21. array.reverse()    英文: 反转
 
-     1.  重点:
+   1.   重点:
 
-         返回array处理后的数组
+        返回array处理后的数组
 
-18.   array.join()     英文 : 连接
+22. array.join()     英文 : 连接
 
-     1.  重点: 
-         1. 返回一个新的字符串,
+   1.   重点: 
+        1. 返回一个新的字符串,
 
-         2. 传参,则返回一个用参数连接的字符串,
+        2. 传参,则返回一个用参数连接的字符串,
 
-           ```
-           var array = [32,4,321]
-           var array2 = array.join("xxxxxxx")
-           array2  //"32xxxxxxx4xxxxxxx321"
-           ```
+          ```
+          var array = [32,4,321]
+          var array2 = array.join("xxxxxxx")
+          array2  //"32xxxxxxx4xxxxxxx321"
+          ```
 
-         ​3. 不传参,默认用逗号连接
+        ​3. 不传参,默认用逗号连接
 
-19.   array.concat()    英文: 合并
+23. array.concat()    英文: 合并
 
-     1. 重点: 
-        1. 返回新数组
+   1.  重点: 
+       1. 返回新数组
 
-        ```
-        var a = [1,2,3]
-        var b = [4,5,6]
-        var c = a.concat(b)
-        c  // [1,2,3,4,5,6]
-        ```
-        ​2. 复制一个数组
+       ```
+       var a = [1,2,3]
+       var b = [4,5,6]
+       var c = a.concat(b)
+       c  // [1,2,3,4,5,6]
+       ```
+       ​2. 复制一个数组
 
-           ```
-           var a = [12,5,6]
-           var aCopy = a.concat([])
-           a === aCopy//false
-           ```
+          ```
+          var a = [12,5,6]
+          var aCopy = a.concat([])
+          a === aCopy//false
+          ```
 
-20.   array.map()    英文 : 映射
+24. array.map()    英文 : 映射
 
-     1. 重点: 
+   1.  重点: 
 
-        与forEach几乎相同,只不过map返回一个经过函数B处理后的新数组,forEach没有返回任何值
+       与forEach几乎相同,只不过map返回一个经过函数B处理后的新数组,forEach没有返回任何值
 
-        ```
-        var array = [2,3,4]
-        var arrayB = array.map(  function(value, key){
-          var newValue;
-          newValue = value * value;
-          return newValue
-        })
-        arrayB//[2,4,6]
-        ```
+       ```
+       var array = [2,3,4]
+       var arrayB = array.map(  function(value, key){
+         var newValue;
+         newValue = value * value;
+         return newValue
+       })
+       arrayB//[2,4,6]
+       ```
 
-21.   array.filter()   英文: 过滤器
+25. array.filter()   英文: 过滤器
 
-     1. 重点: 
+   1.  重点: 
 
-        与forEach几乎相同, 只不过filter返回一个经过函数B判断后为true的新数组
+       与forEach几乎相同, 只不过filter返回一个经过函数B判断后为true的新数组
 
-        ```
-        var array = [2,3,4,5,6,7,8]
-        var arrayB = array.filter(  function(value, key){
-          //if(value % 2 == 0){
-         //   return true
-         // }
-         return value % 2 == 0
-        } )
-        arrayB//[2,4,6,8]
-        ```
+       ```
+       var array = [2,3,4,5,6,7,8]
+       var arrayB = array.filter(  function(value, key){
+         //if(value % 2 == 0){
+        //   return true
+        // }
+        return value % 2 == 0
+       } )
+       arrayB//[2,4,6,8]
+       ```
 
-22.   array.reduce()  英文: 减少, 
+26. array.reduce()  英文: 减少, 
 
-     1. 重点:  
+   1.  重点:  
 
-        与forEach几乎相同,只不过reduce有两个参数,第一个是函数B,但是函数B的第一个参数是sum表示的是之前函数处理的结果,第二个参数是n表示下一个array的值.reuduce的第二个参数是第一次的sum,返回的数据类型要根据reduce的第二个参数决定
+       与forEach几乎相同,只不过reduce有两个参数,第一个是函数B,但是函数B的第一个参数是sum表示的是之前函数处理的结果,第二个参数是n表示下一个array的值.reuduce的第二个参数是第一次的sum,返回的数据类型要根据reduce的第二个参数决定
 
-        ```
-        //map可以用reduce代替
-        var a = [3,4,5]
-        a.reduce( function(arr, n){
-          arr.push(n * 2)
-          return arr
-        }, [])
-        // filte可以用reduce代替
-        //不太明白return arr 是什么意思?
-        var a = [2,3,5,6,7,6,6,5,5,5]
-        var b = a.reduce( function(arr, n){
-          if(n % 2 === 0){
-            arr.push(n)
-          }
-          return arr
-        } ,[])
-        //练习题
-        //使用reduce计算所有奇数之和
-        var a = [1,2,3,4,5,6,7,8,9]
-        a.reduce(function(sum, y){
-        if(y % 2==1){
-        	sum = sum + y
-        }
-        return sum
-        }, 0)
-        ```
+       ```
+       //map可以用reduce代替
+       var a = [3,4,5]
+       a.reduce( function(arr, n){
+         arr.push(n * 2)
+         return arr
+       }, [])
+       // filte可以用reduce代替
+       //不太明白return arr 是什么意思?
+       var a = [2,3,5,6,7,6,6,5,5,5]
+       var b = a.reduce( function(arr, n){
+         if(n % 2 === 0){
+           arr.push(n)
+         }
+         return arr
+       } ,[])
+       //练习题
+       //使用reduce计算所有奇数之和
+       var a = [1,2,3,4,5,6,7,8,9]
+       a.reduce(function(sum, y){
+       if(y % 2==1){
+       	sum = sum + y
+       }
+       return sum
+       }, 0)
+       ```
 
-        ​
+       ​
 
-     ​
+    ​
