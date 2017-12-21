@@ -7,15 +7,15 @@
 3. 这是目录
 
 4. ```
-   　　一、选择网页元素
-   　　二、改变结果集
-   　　三、链式操作
-   　　四、元素的操作：取值和赋值
-   　　五、元素的操作：移动
-   　　六、元素的操作：复制、删除和创建
-   　　七、工具方法
-   　　八、事件操作
-   　　九、特殊效果
+   一、选择网页元素
+   二、改变结果集
+   三、链式操作
+   四、元素的操作：取值和赋值
+   五、元素的操作：移动
+   六、元素的操作：复制、删除和创建
+   七、工具方法
+   八、事件操作
+   九、特殊效果
    ```
 
 5. 基本设计思想:**选择某个元素,然后对其操作**
@@ -138,110 +138,110 @@
 
 38.    输入一个节点和数组,给这个节点添加class,class的值为这个数组的值
 
-          ​```
-          function addClass(node, array){
-            for(var i = 0; i < array.length; i++){
-              node.classList.add(array[i])
-            }
-          }
-          ​```
-          
-          `addClass(wrapper, ["we", "rng" ,"edg"])`
+             ​```
+             function addClass(node, array){
+               for(var i = 0; i < array.length; i++){
+                 node.classList.add(array[i])
+               }
+             }
+             ​```
+             
+             `addClass(wrapper, ["we", "rng" ,"edg"])`
 
-      2.  (命名空间)如果按照上面的方法写函数,有可能会让两个人写的函数冲突,我能不能创建一个库,叫`rjjdom`,库里面有我自己写的一些函数?
+       2.    (命名空间)如果按照上面的方法写函数,有可能会让两个人写的函数冲突,我能不能创建一个库,叫`rjjdom`,库里面有我自己写的一些函数?
 
-          ```
-          var rjjdom = {}
-          rjjdom.addClass = function(node, array){
-            for(var i = 0; i < array.length; i++){
-              node.classList.add(array[i])
-            }
-          }
-          ```
+             ```
+             var rjjdom = {}
+             rjjdom.addClass = function(node, array){
+               for(var i = 0; i < array.length; i++){
+                 node.classList.add(array[i])
+               }
+             }
+             ```
 
-          `rjjdom.addClass(wrapper, ["wen", "ss","dd"])`
+             `rjjdom.addClass(wrapper, ["wen", "ss","dd"])`
 
-      3.  我觉得上面的调用语义化不是太好,能不能像这样调用
+       3.    我觉得上面的调用语义化不是太好,能不能像这样调用
 
-          `wrapper.addClass(["blue", "bold"])`
+                `wrapper.addClass(["blue", "bold"])`
 
-          因为wrappper是一个Node节点,所以我直接在`Node.prototype`加函数:
+                因为wrappper是一个Node节点,所以我直接在`Node.prototype`加函数:
 
-          疑问: 为什么要把node改成this,this在什么时候用??
+                疑问: 为什么要把node改成this,this在什么时候用??
 
-          我的理解: 
+                我的理解: 
 
-          this是沟通实例和构造函数的东西
+                this是沟通实例和构造函数的东西
 
-          在写prototype函数的时候,发现prototype本身没有某个对象, 而又需要这个对象, 这个对象就是实例,在构造函数中用this代替
+                在写prototype函数的时候,发现prototype本身没有某个对象, 而又需要这个对象, 这个对象就是实例,在构造函数中用this代替
 
 39.    jQuery的思想: 选择元素, 修改元素
 
 40.    选择元素分为以下步骤
 
-      1.    通过选择器选择元素
+       1.    通过选择器选择元素
 
-      2.    有了元素之后,对元素进行筛选(可选步骤
+       2.    有了元素之后,对元素进行筛选(可选步骤
 
-            http://api.jquery.com/category/traversing/filtering/
+                  http://api.jquery.com/category/traversing/filtering/
 
-      3.    有了元素之后,选择与元素某些关系的新元素(可选步骤)
+       3.    有了元素之后,选择与元素某些关系的新元素(可选步骤)
 
-            http://api.jquery.com/category/traversing/tree-traversal/
+                  http://api.jquery.com/category/traversing/tree-traversal/
 
 41.    修改元素可以分为以下需求:
 
-      1. 取值/赋值
-
-         ```
-         .html() 取出或设置html内容
-         .text() 取出或设置text内容
-         .attr() 取出或设置某个属性的值
-         .width() 取出或设置某个元素的宽度
-         .height() 取出或设置某个元素的高度
-         .val() 取出某个表单元素的值
-         ```
-
-         注意: 赋值是对所有元素集,取值只对第一个元素集
-
-         ​	`.text()`也除外,取所有的text内容
-
-      2. 改变dom结构
-
-         1. 移动元素
-
-         ```
-         .insertAfter()和.after()
-         .insertBefore()和.before()
-         .appendTo()和.append()
-         .prependTo()和.prepend()
-         ```
-
-         注意: 
-
-         - 前面的是符合语意的,如需求是把div元素移动到p元素后面:
-
-           `$("div").insertAfter($("p"))`,同时这个代码返回的是div元素
-
-         2. 复制,删除和创建元素
+       1.   取值/赋值
 
             ```
-            .clone()
-            .remove()
-            .detach()
-            .empty()
-            创建??
+            .html() 取出或设置html内容
+            .text() 取出或设置text内容
+            .attr() 取出或设置某个属性的值
+            .width() 取出或设置某个元素的宽度
+            .height() 取出或设置某个元素的高度
+            .val() 取出某个表单元素的值
             ```
 
-      3. 把事件绑定在网页元素上
+            注意: 赋值是对所有元素集,取值只对第一个元素集
 
-         ```
-         ???
-         ```
+            ​	`.text()`也除外,取所有的text内容
 
-         ​
+       2.   改变dom结构
 
-         ​
+            1. 移动元素
+
+            ```
+            .insertAfter()和.after()
+            .insertBefore()和.before()
+            .appendTo()和.append()
+            .prependTo()和.prepend()
+            ```
+
+            注意: 
+
+            - 前面的是符合语意的,如需求是把div元素移动到p元素后面:
+
+              `$("div").insertAfter($("p"))`,同时这个代码返回的是div元素
+
+            2. 复制,删除和创建元素
+
+               ```
+               .clone()
+               .remove()
+               .detach()
+               .empty()
+               创建??
+               ```
+
+       3.   把事件绑定在网页元素上
+
+              ```
+              ???
+              ```
+
+              ​
+
+              ​
 
 
 ## 自制jQuery
@@ -652,3 +652,40 @@ window.jQuery = function(node1){
 
 
 
+
+
+
+
+## 用jQuery做一个轮播吧!
+
+1. http://js.jirengu.com/qewufizure/1/edit?output
+2. 开始加js:http://js.jirengu.com/memevoveze/1/edit?output
+3. 使用遍历的方法修改js,能达到如果想添加轮播图片数量,不修改js代码:http://js.jirengu.com/qewulageyi/1/edit?output
+4. 自动播放: http://js.jirengu.com/fahacitole/1/edit?output
+5. 添加功能: 当鼠标在图片上时, 停止自动播放yi:http://js.jirengu.com/jasakitazo/1/edit?output
+
+
+
+
+
+
+
+### 注意
+
+1. 关于性能优化: 给图片标签提前给宽度和高度有利于性能优化
+
+2. 代码如下:http://js.jirengu.com/fuqimoqako/1/edit?output
+
+   我的问题是为什么会报这个错误:
+
+   ```
+   fuqimoqako.js:6 Uncaught TypeError: $sons[i].on is not a function at fuqimoqako.js:6
+   ```
+
+   答案: 
+
+   - 写jQuery的时候, 一定要分清`$sons[i]`和`sons.eq[i]`的区别
+   - 前者是DOM对象,它只有原生的js方法
+   - 后者是jQuery对象,它也只有jQuery的方法,注意,jQuery对象并没有原生的js方法
+
+   ​
