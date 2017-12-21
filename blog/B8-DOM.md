@@ -308,5 +308,26 @@
    B. HTMLCollection实例对象都是动态集合，节点的变化会实时反映在集合中。NodeList实例对象都是静态集合。
 
    C. HTMLCollection实例对象可以用id属性或name属性引用节点元素，NodeList只能使用数字索引引用。
+
+3. 代码
+
+   ```
+   var parent1 = document.getElementById('parent1');
+   parent1.childNodes.length // 2
+   parent1.appendChild(document.createElement('div'));
+   parent1.childNodes.length // 请问现在 length 是多少  答案是3
+
+   var allDiv = document.querySelectorAll('div')
+   allDiv.length // 假设是 2
+   document.body.appendChild(  document.createElement('div')  )
+   allDiv.length // 请问现在 length 的值是多少？？？    答案是2
+   ```
+
+   答案的原因不是什么动态集合与静态集合,而是第一次的代码重新进行一次查询,而第二次的代码并没有重新进行查询,如果想让第二次的答案是3,那么把第二次的最后一句代码删去,并加上`allDiv = document.querySelectorAll('div');allDiv.length`就行了
+
+   ​
+
+   ​
+
    ​               
 
