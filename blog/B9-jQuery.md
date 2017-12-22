@@ -663,8 +663,9 @@ window.jQuery = function(node1){
 3. 使用遍历的方法修改js,能达到如果想添加轮播图片数量,不修改js代码:http://js.jirengu.com/qewulageyi/1/edit?output
 4. 自动播放: http://js.jirengu.com/fahacitole/1/edit?output
 5. 添加功能: 当鼠标在图片上时, 停止自动播放yi:http://js.jirengu.com/jasakitazo/1/edit?output
-
-
+6. 修改bug: 当自动播放在第2张的时候,我点击第4张,那么接下来的自动播放应该在第1张,而不是第3张:http://js.jirengu.com/sevevahube/1/edit?output
+7. 优化代码:http://js.jirengu.com/judujarixa/1/edit?output
+8. 
 
 
 
