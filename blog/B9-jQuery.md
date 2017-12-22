@@ -1,6 +1,5 @@
 23.    1.   ​
 
-              
 
 
 
@@ -454,3 +453,5 @@ window.jQuery = function(node1){
    - 后者是jQuery对象,它也只有jQuery的方法,注意,jQuery对象并没有原生的js方法
 
    ​
+
+http://js.jirengu.com/qayibaketi/1/edit?
