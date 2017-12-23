@@ -1,4 +1,7 @@
+## 自认为jQuery的重点
 
+1. 搜索`经典错误`,区分 jQuery 对象和 DOM 对象的区别
+2. 搜索`常用api`,得到经常使用但是意思不好表达的api
 
 
 
@@ -253,6 +256,33 @@
 2. jQuery实例对象, jQuery构造函数,jQueryprototype的内容和区别是什么?
 
    ![未命名文件 (7).png](http://upload-images.jianshu.io/upload_images/5529438-19112b3aee9514d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+
+
+## 经典错误
+
+1. 代码如下:http://js.jirengu.com/kajodikidi/1/edit?output
+2. 记住: 分清 DOM 和 jQuery 对象,他们都只拥有自己对象的方法
+
+
+
+
+
+## 常用api
+
+1. `index()`: 获得子节点在父节点的位置http://js.jirengu.com/rayasifanu/1/edit?
+2. ​
+
+
+
+
+
+
+
+
+
+
 
 
 
