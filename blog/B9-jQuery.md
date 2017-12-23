@@ -1,6 +1,3 @@
-23.    1.   ​
-
-
 
 
 
@@ -432,8 +429,6 @@ window.jQuery = function(node1){
 
 
 
-
-
 ### 注意
 
 1. 关于性能优化: 给图片标签提前给宽度和高度有利于性能优化
@@ -452,6 +447,12 @@ window.jQuery = function(node1){
    - 前者是DOM对象,它只有原生的js方法
    - 后者是jQuery对象,它也只有jQuery的方法,注意,jQuery对象并没有原生的js方法
 
-   ​
+   http://js.jirengu.com/qayibaketi/1/edit?
 
-http://js.jirengu.com/qayibaketi/1/edit?
+
+
+
+
+
+
+## 用jQuery做一个无缝轮播吧
