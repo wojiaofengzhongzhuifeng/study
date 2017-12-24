@@ -212,11 +212,9 @@
 
 
 
-### 自制jQuery过程学到的知识
+### 
 
-1. 使用`===`和`!==`记住两点: ①所有声明的对象都不相等;`var a = {}; var b = {}; a === b//false`②NaN不等于NaN
-
-2. `for in `用在哪里?
+1. `for in `用在哪里?
 
    `for in `获取对象和array的key和value
 
@@ -238,16 +236,12 @@
    	console.log(obj[key])
    }
    ```
-
-3. 命名空间 === 第二版代码方式
-
-4. `typeof`和`instanceof`使用区别,在数据类型博客找
-
    ​
 
    ​
 
    ​
+
 
 ### 了解jQuery的思想
 
@@ -272,7 +266,6 @@
 ## 常用api
 
 1. `index()`: 获得子节点在父节点的位置http://js.jirengu.com/rayasifanu/1/edit?
-2. ​
 
 
 
