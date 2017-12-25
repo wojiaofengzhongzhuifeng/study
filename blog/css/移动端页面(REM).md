@@ -12,5 +12,5 @@
 10. 1 rem === 1page width ,这是实现rem的js代码
 11. 1 rem ===1 / 10 page  width
 12. 如果想在rem中使用px, 需要从设计稿px换算成rem,该怎么办?
+13. 安装sass
     1. ​
-
