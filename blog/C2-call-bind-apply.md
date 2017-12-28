@@ -26,8 +26,49 @@
    1. `Fruits.prototype.say`是找到say这个函数,并没有执行
    2. `call(apple)`指的是执行say这个函数,并且让say内的this变成apple
 
-3. call(0的使用方法: 
+3. call()的使用方法: 
 
-   1. call()之前是一个函数AAA
-   2. call()内传的第一个参数 === 函数AAA中的this,this必须是一个参数
-   3. call()内传的第二个参数及其之后的参数 === 函数AAA的参数
+   1. 使用 某个函数AAA.call() 代替 某个函数AAA() 
+
+   2. 如果没有给call传入第一个参数,则默认函数AAA的this指的是window对象
+
+   3. call()之前是一个函数AAA
+
+   4. call()内传的第一个参数 === 函数AAA中的this,this必须是一个对象
+
+   5. call()内传的第二个参数及其之后的参数 === 函数AAA的参数
+
+   6. call()的作用: 使用已经存在的函数, 并且函数内的this你可以指定
+
+   7. call()的使用场景
+
+      1. 将伪数组变成数组,并且使用数组的方法
+
+         参考:http://www.cnblogs.com/langjt/p/4209771.html
+
+   8. 我们使用的函数,大体可以分为两种: 一种是作为独立的函数(如你写一个冒泡排序函数),还有一种是作为某个对象的方法
+
+      当我们在使用某个对象的方法的时候,如
+
+      ```
+      function Cat(){}
+      Cat.prototype = {
+        food:"fish",
+        say: function(){
+          alert("i love " + this.food)
+        }
+      }
+
+      var blackCat = new Cat()
+      blackCat.say()
+      ```
+
+      ​
+
+      ​
+
+4. apply()的使用方法:
+
+   1. 和call()几乎一样,唯一不同的就是call()内传的第二个参数必须是数组
+
+5. bind
