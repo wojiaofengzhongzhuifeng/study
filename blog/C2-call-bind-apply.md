@@ -44,11 +44,11 @@
 
       1. 将伪数组变成数组,并且使用数组的方法
 
-         参考:http://www.cnblogs.com/langjt/p/4209771.html
+         ` Array.prototype.slice.call(伪数组)`
 
    8. 我们使用的函数,大体可以分为两种: 一种是作为独立的函数(如你写一个冒泡排序函数),还有一种是作为某个对象的方法
 
-      当我们在使用某个对象的方法的时候,如
+      当我们在使用存在于某个对象的方法的时候,如
 
       ```
       function Cat(){}
@@ -58,12 +58,24 @@
           alert("i love " + this.food)
         }
       }
-
       var blackCat = new Cat()
       blackCat.say()
       ```
 
-      ​
+      `blackCat.say()`我们以前正常思维的写法
+
+      但是我们使用这个更好`blackCat.say.call(blackCat)`
+
+      当对象A的方法被另一个对象B引用的时候
+
+      ```
+      function Dog(){}
+      Dog.prototype = {
+        food:"gutou"
+      }
+      var whiteDog = new Dog()
+      Cat.prototype.say.call(whiteDog)
+      ```
 
       ​
 
