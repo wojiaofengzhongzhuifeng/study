@@ -34,6 +34,7 @@ var f2 = function(x, y){
 
 //3. 匿名赋值法
 var f3 = function xxxxx(x, y){
+  //1111
   return x + y
 }
 //特殊,返回的是'xxxxx'
@@ -51,11 +52,13 @@ f4.name
 var f5 = x => x*x  
 ```
 
-注意: 箭头函数省略了3处
-
-1. 如果只有一个参数,可以省略括号
-2. 如果只有一句代码,只能同时省略return和{},不能只省略一个
-3. //相当于  var f = (x) => {return x * x}
+1. 注意: 箭头函数省略了3处
+   1. 如果只有一个参数,可以省略括号
+   2. 如果只有一句代码,只能同时省略return和{},不能只省略一个
+   3. //相当于  var f5 = (x) => {return x * x}
+2. 注意第三个情况: 匿名赋值法
+   1. 可以在全局作用域使用 f3 这个函数
+   2. 只能在1111内的区域使用 xxxxx 这个函数
 
 
 
@@ -171,6 +174,43 @@ f1.call( obj )
    2. 如果在本作用域找不到变量,那么在父作用域找
    3. 什么才能是父作用域?答案: 谁**包含**了本作用域?谁就是父作用域
 
+3. 代码
+
+   ```
+    var global1 = 1
+    function fn1(param1){
+        var local1 = 'local1'
+        var local2 = 'local2'
+        function fn2(param2){
+            var local2 = 'inner local2'
+            console.log(local1)
+            console.log(local2)
+            console.log(test)
+        }
+   	 fn2()
+
+        function fn3(){
+            var local2 = 'fn3 local2'
+            fn2(local2)
+        }
+        fn3()
+    }
+   fn1()
+   ```
+
+   通过上面的代码可以画出下面的词法树
+
+   ![未命名文件 (19).png](http://upload-images.jianshu.io/upload_images/5529438-3ab0263f191aa0ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+   注意点:
+
+   1. 声明的变量, 函数, 函数的输入参数都是一个结点
+   2. 打印的第一个local1的过程:
+      1. 首先先找到fn2函数内部有没有local1这个变量
+      2. 没有,就去fn2的同级找,找到了,是fn1函数内部的local1这个变量,然后就看代码,找到了"local1"
+   3. 怎么样让test取得值? 把`var test = "test"`放在除fn3函数内部都可以
+   4. 怎么样让test取不到值? 把`var test = "test"`放在fn3函数内部
+
 
 
 ## 变量提升方法
@@ -269,6 +309,8 @@ f1.call()
    ```
 
    先执行a = 1,然后执行f1.call(),在执行f1.call()的时候,发现要执行f2.call(),执行f2.call()发现在本作用域没有a,就去全局作用域找a,最终打印a = 1
+
+   ​
 
 
 
@@ -649,3 +691,6 @@ http://latentflip.com/loupe/?code=ZnVuY3Rpb24gc3VtKG4pewogICAgCiAgICBpZihuID09ID
    ```
 
    ​
+
+
+
