@@ -108,16 +108,87 @@ Array.newPush.call(undefined, 55555, [1,2,3,4,5])
 
 # this 和 arguments
 
+1. this 的由来
+
+   想象没有 this 的 js 代码
+
+   ```
+   var person = {
+     name: 'frank',
+       sayHi: function(person){
+       console.log('Hi, I am' + person.name)
+     },
+     sayBye: function(person){
+       console.log('Bye, I am' + person.name)
+     },
+     say: function(person, word){
+       console.log(word + ', I am' + person.name)
+     }
+   }
+   ```
+
+   调用其中的方法为
+
+   ```
+   person.sayHi(person)
+   person.sayBye(person)
+   person.say(person, 'How are you')
+   ```
+
+   这实在是太麻烦了,我能不能像这样调用?
+
+   ```
+   person.sayHi()
+   person.sayBye()
+   person.say('How are you')
+   ```
+
+   可以的,我们可以通过以下方法达到目的
+
+   1. 修改源代码
+      1. 让之前的`person.name`变成了`xxxx.name` 
+      2. 规定: person 内的方法不再传参数
+      3. 规定: 谁("谁"是一个对象,也可以叫做`.之前的对象`)调用了`sayHi`,`sayBye`,`say`,那么xxxx就是"谁"
+      4. 把xxxx换成this
+
+   ```
+   var person = {
+     name: 'frank',
+       sayHi: function(){
+       	console.log('Hi, I am' + this.name)
+     	},
+     	sayBye: function(){
+       	console.log('Bye, I am' + this.name)
+   	},
+     	say: function(word){
+       	console.log(word + ', I am' + this.name)
+   	}
+   }
+   ```
+
+   在使用过程中,发现第三点规定并不好,有的时候this不一定是`.之前的对象`,我们需要自己指定this是谁,所以这样调用函数
+
+   完整的函数调用
+
+   ```
+   person.sayHi.call(person)
+   person.sayBye.call(person)
+   person.say.call(person, 'How are you')
+   ```
+
+   这咋一看回到了一开始调用函数的方法,但是多了一个非常重要的功能: "你只可以写一次`sayHi`,`sayBye`,`say`, 通过this来让不同的对象使用`sayHi`,`sayBye`,`say`函数"
+
 ```
 var f = function(x, y){return x + y}
 f.call(undefined, 2, 5)//this是call的第一个参数, arguments是[2,5]
 ```
 
-1. 总结: 
-   1. 使用严格模式,call第一个参数是什么,this就是什么,如果没有第一个参数,this就为undefined
-   2. 没有使用严格模式  + 没有第一个参数,那么this就为window
-   3. this必须为对象
-2. 题目:
+2. 总结: 
+   1. 使用严格模式,call第一个参数是什么,this就是什么
+   2. 使用严格模式 + call调用没有第一个参数,this就为undefined
+   3. 没有使用严格模式  + call调用没有第一个参数,那么this就为window
+   4. this必须为对象
+3. 题目:
 
 ```
 function f(){
@@ -158,6 +229,8 @@ function f1(){
 var obj = {name: 'obj'}
 f1.call( obj )
 ```
+
+
 
 
 
