@@ -6,10 +6,12 @@
 4. 声明函数的三种方法及其调用函数,
 5. 变量提升的方法
 6. this是什么?arguments是什么?
-7. call stack是什么?  执行一个函数,则跳到这个函数的内部开始执行`执行区域的函数`
-8. 闭包的概念
-9. 在本文搜索`代码1`,有个特殊情况:①在本作用域有`a = 3333333`并且在本作用域没有`var a`,该怎么办?
-10. 搜索`局部变量`，知道 ES6 之前 js 使用局部变量语法实现和 ES6 使用局部变量语法.
+7. call, apply, bind的使用区别
+8. call stack是什么?  执行一个函数,则跳到这个函数的内部开始执行`执行区域的函数`
+9. 闭包的概念
+10. 在本文搜索`代码1`,有个特殊情况:①在本作用域有`a = 3333333`并且在本作用域没有`var a`,该怎么办?
+11. 搜索`局部变量`，知道 ES6 之前 js 使用局部变量语法实现和 ES6 使用局部变量语法.
+12. 搜索`依附`,知道函数可以分为两类
 
 
 
@@ -138,6 +140,7 @@ Array.newPush.call(undefined, 55555, [1,2,3,4,5])
    这实在是太麻烦了,我能不能像这样调用?
 
    ```
+   //这段代码的意思是: 以person为this调用sayHi这个函数
    person.sayHi()
    person.sayBye()
    person.say('How are you')
@@ -171,6 +174,7 @@ Array.newPush.call(undefined, 55555, [1,2,3,4,5])
    完整的函数调用
 
    ```
+   //这段代码的意思是: 以person为this调用sayHi这个函数
    person.sayHi.call(person)
    person.sayBye.call(person)
    person.say.call(person, 'How are you')
@@ -182,7 +186,11 @@ Array.newPush.call(undefined, 55555, [1,2,3,4,5])
 
 ```
 var f = function(x, y){return x + y}
-f.call(undefined, 2, 5)//this是call的第一个参数, arguments是[2,5]
+f.call(undefined, 2, 5)
+//this是call的第一个参数, arguments是[2,5]
+//为什么是undefined? 因为函数可以分为两种, 一种是依附于某些对象的函数,如sayHi,还有一种是不依附于对象的函数, 如果是不依附于对象的函数,那么其中的this就没有任何意义, 写undefined
+
+
 
 function f(){
   console.log(this)
@@ -221,13 +229,105 @@ function f1(){
 }
 var obj = {name: 'obj'}
 f1.call( obj )
+
+var person = {
+  name: 'frank',
+  sayHi: function(){
+  	console.log('Hi, I am' + this.name)
+  }
+}
+var fn = person.sayHi
+fn() //这个输出什么? 输出 "Hi, I am"
+//因为fn() === window.fn()    或者fn()  等价于  fn.call()  然后按照总结的第2点  
+//而window.name又没有指定,所以this.name没有值
 ```
 
 3. 总结:
-   1. 使用严格模式,call第一个参数是什么,this就是什么
-   2. 使用严格模式 + call调用没有第一个参数,this就为undefined
-   3. 没有使用严格模式  + call调用没有第一个参数,那么this就为window
-   4. this必须为对象
+   1. 使用严格模式,call 第一个参数是什么,this就是什么
+   2. 没有使用严格模式  + call调用没有第一个参数,那么 this === window
+   3. 没有使用call调用(如`person.sayHi()`), sayHi 函数内的 this === `.之前的对象`
+   4. 使用严格模式 + call 调用没有第一个参数,this === undefined
+   5. this必须为对象
+
+
+
+## call, apply, bind
+
+1. call 和 apply 都是直接调用函数, 两者作用只有一点不同,下面以 call 为例
+
+2. call 的第一个参数一定为 this . 
+
+3. 当不确定传入的参数或者穿入的参数很多的时候,使用apply.
+
+4. bind是返回一个新函数(并没有调用原来的函数),这个函数会call原来的函数,call的参数由你决定
+
+5. 对于bind的理解和使用场景
+
+6. ```
+   var view = {
+     element: $("#div1"),
+     bindEvents: function(){
+       this.element.onclick = function(){
+         //这里想调用onClick函数,应该怎么写?
+       }
+     }
+     onClick: function(){
+       //实现代码,假设已经实现了
+     }
+   }
+   ```
+
+   如果这样写,是错误的
+
+   ```
+   var view = {
+     element: $("#div1"),
+     bindEvents: function(){
+       this.element.onclick = function(){
+       //这里的this是被点击的元素
+         this.onClick.call(this)
+       }
+     }
+     onClick: function(){
+       //实现代码,假设已经实现了
+     }
+   }
+   ```
+
+   因为要调用onClick这个函数,必须是`view.onClick()`,而现在的代码中,this指向的是被点击的元素(浏览器规定),所以可以这样解决
+
+   ```
+   var view = {
+     element: $("#div1"), 
+     bindEvents: function(){
+     	var _this = this//右边的this表示view, _this将view对象保存,给onclick中的函数使用
+       this.element.onclick = function(){
+         _this.onClick.call(_this)  //1
+       }
+     }
+     onClick: function(){
+       //实现代码,假设已经实现了
+     }
+   }
+   ```
+
+   但是这样好麻烦, 我能不能直接将代码1写成类似具有正常思维的代码?例如: `this.onClick.call(this)`
+
+   ```
+   var view = {
+     element: $("#div1"), 
+     bindEvents: function(){
+       this.element.onclick = this.onClick.bind(this)
+     }	
+     onClick: function(){
+       //实现代码,假设已经实现了
+     }
+   }
+   ```
+
+   我对bind的理解: 重新指定call的this,下面是我的解释:
+
+   对于第一次错误的代码来说,它错的原因: js 规定, 如果是 onclick 事件,那么 onclick 内的函数的 this 只能为被点击的元素. 那么, 我们就使用 bind , 去重新指定 onclick 内的函数 this 为 view 对象.
 
 
 
@@ -718,6 +818,7 @@ http://latentflip.com/loupe/?code=ZnVuY3Rpb24gc3VtKG4pewogICAgCiAgICBpZihuID09ID
    1. function是一个关键字,主要用来定义一个函数
    2. Function是一个构造函数,对象
 3. 函数必有return,如果你没写,那么浏览器会在函数的最后加一句`return undefined`
+4. 函数内有this和arguments
 
 
 
