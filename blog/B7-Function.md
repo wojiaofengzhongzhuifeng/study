@@ -148,25 +148,25 @@ Array.newPush.call(undefined, 55555, [1,2,3,4,5])
    1. 修改源代码
       1. 让之前的`person.name`变成了`xxxx.name` 
       2. 规定: person 内的方法不再传参数
-      3. 规定: 谁("谁"是一个对象,也可以叫做`.之前的对象`)调用了`sayHi`,`sayBye`,`say`,那么xxxx就是"谁"
-      4. 把xxxx换成this
+      3. 规定: 谁(①"谁"是一个对象②"谁" === `.之前的对象`)调用了`sayHi`,`sayBye`,`say`,那么xxxx就是"谁"
+      4. 把 xxxx 换成 this
 
    ```
    var person = {
      name: 'frank',
-       sayHi: function(){
-       	console.log('Hi, I am' + this.name)
-     	},
-     	sayBye: function(){
-       	console.log('Bye, I am' + this.name)
-   	},
-     	say: function(word){
-       	console.log(word + ', I am' + this.name)
-   	}
+     sayHi: function(){
+     	console.log('Hi, I am' + this.name)
+     },
+     sayBye: function(){
+     	console.log('Bye, I am' + this.name)
+     },
+     say: function(word){
+     	console.log(word + ', I am' + this.name)
+     }
    }
    ```
 
-   在使用过程中,发现第三点规定并不好,有的时候this不一定是`.之前的对象`,我们需要自己指定this是谁,所以这样调用函数
+   在使用过程中,发现第三点规定并不好,有的时候 this 不一定是`.之前的对象`,我们需要自己指定 this 是谁
 
    完整的函数调用
 
@@ -178,19 +178,12 @@ Array.newPush.call(undefined, 55555, [1,2,3,4,5])
 
    这咋一看回到了一开始调用函数的方法,但是多了一个非常重要的功能: "你只可以写一次`sayHi`,`sayBye`,`say`, 通过this来让不同的对象使用`sayHi`,`sayBye`,`say`函数"
 
+2. 题目:
+
 ```
 var f = function(x, y){return x + y}
 f.call(undefined, 2, 5)//this是call的第一个参数, arguments是[2,5]
-```
 
-2. 总结: 
-   1. 使用严格模式,call第一个参数是什么,this就是什么
-   2. 使用严格模式 + call调用没有第一个参数,this就为undefined
-   3. 没有使用严格模式  + call调用没有第一个参数,那么this就为window
-   4. this必须为对象
-3. 题目:
-
-```
 function f(){
   console.log(this)
 }
@@ -230,7 +223,11 @@ var obj = {name: 'obj'}
 f1.call( obj )
 ```
 
-
+3. 总结:
+   1. 使用严格模式,call第一个参数是什么,this就是什么
+   2. 使用严格模式 + call调用没有第一个参数,this就为undefined
+   3. 没有使用严格模式  + call调用没有第一个参数,那么this就为window
+   4. this必须为对象
 
 
 
