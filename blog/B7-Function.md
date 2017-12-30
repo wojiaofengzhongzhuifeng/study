@@ -102,9 +102,9 @@ Array.newPush.call(undefined, 55555, [1,2,3,4,5])
 
 # 什么是 call stack
 
-看面试题的第四题,为什么打印出来的分别是test2,test1,test3,知道为什么,就大概了解什么是call stack
-
-
+1. 重点: call stack  === 遇到执行函数`fn()`就跳到函数体内部`function fn(){}`, 执行完函数`function(){}的}`就跳到执行函数`fn()`后一行
+2. 看面试题的第四题,为什么打印出来的分别是test2,test1,test3,知道为什么,就大概了解什么是call stack
+3. 看一个例子http://latentflip.com/loupe/?code=ZnVuY3Rpb24gYSgpewogICAgY29uc29sZS5sb2coJ2ExJykKICAgIGIoKQogICAgY29uc29sZS5sb2coJ2EyJykKICByZXR1cm4gJ2EnICAKfQpmdW5jdGlvbiBiKCl7CiAgICBjb25zb2xlLmxvZygnYjEnKQogICAgYygpCiAgICBjb25zb2xlLmxvZygnYjInKQogICAgcmV0dXJuICdiJwp9CmZ1bmN0aW9uIGMoKXsKICAgIGNvbnNvbGUubG9nKCdjJykKICAgIHJldHVybiAnYycKfQphKCkKY29uc29sZS5sb2coJ2VuZCcp!!!
 
 # this 和 arguments
 
@@ -115,7 +115,8 @@ f.call(undefined, 2, 5)//this是call的第一个参数, arguments是[2,5]
 
 1. 总结: 
    1. 使用严格模式,call第一个参数是什么,this就是什么,如果没有第一个参数,this就为undefined
-   2. ​
+   2. 没有使用严格模式  + 没有第一个参数,那么this就为window
+   3. this必须为对象
 2. 题目:
 
 ```
@@ -143,7 +144,7 @@ function f(){
     console.log(this)
 }
 f.call()
-//打印出多少   答案是undefined,不是"undefined",为什么不是undefined??
+//打印出多少   答案是undefined,不是"undefined",为什么不是undefined??  因为this必须是对象
 
 
 
