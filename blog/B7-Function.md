@@ -399,20 +399,95 @@ fn() //这个输出什么? 输出 "Hi, I am"
 
    ​
 
-# 闭包
-
-```
-var a = 1
-function f4(){
-  console.log(a)
-}
-```
-
-如果一个函数,使用了它范围外的变量,那么 **(这个函数 + 这个变量)** 就叫闭包
 
 
+## 闭包
 
+1. 闭包 = 函数 + 函数内部能访问的变量
 
+2. ```
+   var local = "变量"
+   function foo(){
+     console.log(local)
+   }
+   ```
+
+   这就是最简单的一个闭包
+
+   但是这样不好,不好在我本来明明只想 foo 函数中使用 local  
+
+   但是你却把它放到了全局作用域中, 这样 local 在其他的函数也能修改了.
+
+   所以我在闭包的基础上添加一些代码,使得变量 local 只能在 foo 使用
+
+   ```
+   !function(){
+     var local = "变量"
+     function foo(){
+     	console.log(local)
+     }
+   }()
+   foo()
+   ```
+
+   但是这样写的代码是错误的,因为在全局作用域中没有 foo 这个函数,所以我们现在要通过一些手段把 foo 函数放到全局作用域中,方法有三种
+
+   ```
+   !function(){
+     var local = "变量"
+     window.foo = function (){
+     	console.log(local)
+     }
+   }()
+   foo()
+   ```
+
+   ````
+   var a = function(){
+     var local = "变量"
+     function foo(){
+       console.log(local)
+     }
+     return foo
+   }
+   a()()
+   ````
+
+   ```
+   var a = (function(){
+     var local = "变量"
+     function foo(){
+     	console.log(local)
+     }
+     return foo
+   })()
+   a()
+   ```
+
+   这样,你就可以在全局使用 foo 函数,而 foo 函数可以访问到 local 变量,并且在其他的函数不能访问到 local 这个变量
+
+   现在来回答关于闭包的问题: 
+
+   1. 什么是闭包
+
+      ```
+      var local = "变量"
+      function zzz(){
+        console.log(local)
+      }
+      ```
+
+      函数zzz + 变量local  = 闭包
+
+   2. 闭包的作用是什么?
+
+      **间接**访问一个变量AAAAAA,具体实现过程如下
+
+      ![未命名文件 (17).png](http://upload-images.jianshu.io/upload_images/5529438-bd75d714558bf2e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+      这样,你就可以通过全局的函数BB来访问变量AA,并且变量AA不能被其他作用域的函数所访问.
+
+      ​
 
 
 
