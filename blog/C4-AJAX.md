@@ -162,6 +162,6 @@ CORS 可以告诉浏览器，我俩一家的，别阻止他
 突破同源策略 === 跨域
 
 Cross-Origin Resource Sharing
-C O源 R S
+C         O        资源R        S
 
 ## CORS 跨域
