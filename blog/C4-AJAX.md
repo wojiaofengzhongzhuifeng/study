@@ -24,6 +24,17 @@ HTTP response === 响应内容四部分
 
 
 
+ajax: Asynchronous JavaScript and XML
+
+凡是使用了以下步骤的都叫 AJAX: 
+
+1. 创建 AJAX 对象, 即 XMLHttpRequest 
+2. 使用 XMLHttpRequest 发请求
+3. 服务器返回 XML 格式的字符串
+4. JS 解析 XML，并更新局部页面
+
+
+
 
 
 
@@ -84,7 +95,7 @@ jsonp的响应内容是什么
 
 ## 金句
 
-1. 你才返回对象，你全家都返回对象	
+1. 指的是响应内容的第四部分: 你才返回对象，你全家都返回对象	
 2. JS 是一门语言，JSON 是另一门语言，JSON 这门语言抄袭了 JS这门语言
 3. AJAX 就是用 JS 发请求
 4. 响应的第四部分是字符串，可以用 JSON 语法表示一个对象，也可以用 JSON 语法表示一个数组，还可以用 XML 语法，还可以用 HTML 语法，还可以用 CSS 语法，还可以用 JS 语法，还可以用我自创的语法
@@ -150,11 +161,9 @@ myButton.addEventListener('click', (e)=>{
         console.log(object)
         console.log('object.note')
         console.log(object.note)
-
       }else if(request.status >= 400){
         console.log('说明请求失败') 
       }
-
     }
   }
 })
@@ -169,8 +178,8 @@ myButton.addEventListener('click', (e)=>{
     response.write(`
     {
       "note":{
-        "to": "小谷",
-        "from": "方方",
+        "to": "jack",
+        "from": "rao",
         "heading": "打招呼",
         "content": "hi"
       }
