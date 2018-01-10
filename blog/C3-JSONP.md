@@ -136,4 +136,4 @@ JSONP === `yyy434321.call(undefined, "你要的数据AA")`
 你要的数据AA 则是 jack.com 后端传给 rao.com 前端的 JSON 数据
 
 
-### JSONP注意点
+### 
