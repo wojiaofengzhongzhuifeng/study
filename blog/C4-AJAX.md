@@ -1,3 +1,33 @@
+
+
+## 前置知识
+
+request === 请求
+
+response === 响应
+
+HTTP request === 请求内容四部分
+
+HTTP response === 响应内容四部分
+
+
+
+一次请求和响应的完整过程
+
+1. 这些标签可以发送 HTTP 请求`<a href="/AAA">, <form action="/AAA">, <link href="/AAA">, <script src="/AAA">, <img src="/AAA">`
+
+2. 浏览器通过 AAA 可以构造 HTTP request
+
+3. 根据 HTTP request 的路径 和后端路由条件返回后端构造的 HTTP response
+
+   ​
+
+
+
+
+
+
+
 ajax
 
 前提：一次请求和响应的全部过程
@@ -46,6 +76,12 @@ jsonp的响应内容是什么
 
 
 
+
+
+
+
+
+
 ## 金句
 
 1. 你才返回对象，你全家都返回对象	
@@ -85,9 +121,10 @@ IE 5 率先在 JS 中引入 ActiveX 对象（API），使得 JS 可以直接发�
 
 Jesse James Garrett 讲如下技术取名叫做 AJAX：异步的 JavaScript 和 XML
 
-1. 使用 XMLHttpRequest 发请求
-2. 服务器返回 XML 格式的字符串
-3. JS 解析 XML，并更新局部页面
+1. 创建 AJAX 对象, 即 XMLHttpRequest 
+2. 使用 XMLHttpRequest 发请求
+3. 服务器返回 XML 格式的字符串
+4. JS 解析 XML，并更新局部页面
 
 ## 如何使用 XMLHttpRequest
 
