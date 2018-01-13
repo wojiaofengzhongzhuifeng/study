@@ -137,102 +137,79 @@ Jesse James Garrett 讲如下技术取名叫做 AJAX：异步的 JavaScript 和 
 3. 服务器返回 XML 格式的字符串
 4. JS 解析 XML，并更新局部页面
 
-## 如何使用 XMLHttpRequest
+## AJAX demo
+
+https://github.com/wojiaofengzhongzhuifeng/nodejs-test-cors
+
+
+
+## 理解 AJAX 
+
+学ajax之前，需要知道 HTTP 请求内容和 HTTP 响应内容的四个部分，如下
+
+>  问题： 老师的`key: alue`有许多---的是需要背的吗？
+
+请求内容：
+
+![请求内容](https://i.loli.net/2017/10/11/59de1afbc635c.bmp)
+
+响应内容： 
+
+![响应内容](http://upload-images.jianshu.io/upload_images/5529438-4df42610e8d6ad1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+同时还要知道怎么在 Chrome 上查看 HTTP request 和 HTTP response 
+
+![选区_112.png](http://upload-images.jianshu.io/upload_images/5529438-74e0abf601e3d789.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+那么，ajax 是什么呢？我们可以画出 ”client 和 server“ 的关系图：
+
+![选区_113.png](http://upload-images.jianshu.io/upload_images/5529438-7526879e29d26805.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+**AJAX 就是在 client 上构造（set）HTTP请求和获取（get）HTTP响应的技术**
+
+**AJAX 是用js构造请求和获得响应的技术**
+
+那么 AJAX 的具体实现方法是怎么样的呢？
+
+1. JS 设置（set）任意请求 header
+   第一部分 request.open('get', '/xxx')
+   第二部分 request.setRequestHeader('content-type','x-www-form-urlencoded')
+   第四部分 request.send('a=1&b=2')
+2. JS 获取（get）任意响应 header 
+   第一部分 request.status / request.statusText
+   第二部分 request.getResponseHeader() / request.getAllResponseHeaders()
+   第四部分 request.responseText
+
+## AJAX 实现代码迭代过程
+
+如何确定写的 AJAX 代码是否正确？将你写的代码放到 AJAX demo 的 main.js 代码区中
+
+第一版：使用原生 js 中的 XMLHttpRequest 实现 ajax
 
 ```
-myButton.addEventListener('click', (e)=>{
-  let request = new XMLHttpRequest()
-  request.open('get', '/xxx') // 配置request
-  request.send()
-  request.onreadystatechange = ()=>{
-    if(request.readyState === 4){
-      console.log('请求响应都完毕了')
-      console.log(request.status)
-      if(request.status >= 200 && request.status < 300){
-        console.log('说明请求成功')
-        console.log(typeof request.responseText)
-        console.log(request.responseText)
-        let string = request.responseText
-        // 把符合 JSON 语法的字符串
-        // 转换成 JS 对应的值
-        let object = window.JSON.parse(string) 
-        // JSON.parse 是浏览器提供的
-        console.log(typeof object)
-        console.log(object)
-        console.log('object.note')
-        console.log(object.note)
-      }else if(request.status >= 400){
-        console.log('说明请求失败') 
-      }
-    }
-  }
-})
+	//相当于告诉浏览器我要set Http 请求了
+	var request = new XMLHttpRequest()
+	//对应 http 请求的第一部分
+	request.open("post", "/xxx")
+	//对应 http 请求的第二部分
+	request.setRequestHeader('name','rjj')
+	//对应 http 请求的第三部分，仅仅是为了便于记忆
+	request.onreadystatechange = function(){
+	  if(request.readyState === 4){
+	    if(request.status >= 200 && request.status <= 300){
+	      console.log("响应内容第一部分：" + request.status)
+	      console.log("响应内容第二部分：" + request.getAllResponseHeaders())
+	      console.log("响应内容第四部分：" + request.responseText)
+	    }
+	  }
+	}
+	//对应 http 请求的第四部分
+	request.send("pass=ssss")
 ```
 
-```
-var http = require('http')
-var fs = require('fs')
-var url = require('url')
-var port = process.argv[2]
+第二版：
 
-if(!port){
-  console.log('请指定端口号好不啦？\nnode server.js 8888 这样不会吗？')
-  process.exit(1)
-}
 
-var server = http.createServer(function(request, response){
-  var parsedUrl = url.parse(request.url, true)
-  var pathWithQuery = request.url 
-  var queryString = ''
-  if(pathWithQuery.indexOf('?') >= 0){ queryString = pathWithQuery.substring(pathWithQuery.indexOf('?')) }
-  var path = parsedUrl.pathname
-  var query = parsedUrl.query
-  var method = request.method
-
-  /******** 从这里开始看，上面不要看 ************/
-
-  console.log('方方说：含查询字符串的路径\n' + pathWithQuery)
-
-  if(path === '/'){
-    let string = fs.readFileSync('./index.html', 'utf8')
-    response.statusCode = 200
-    response.setHeader('Content-Type', 'text/html;charset=utf-8')
-    response.write(string)
-    response.end()
-  }else if(path==='/main.js'){
-    let string = fs.readFileSync('./main.js', 'utf8')
-    response.statusCode = 200
-    response.setHeader('Content-Type', 'text/javascript;charset=utf-8')
-    response.write(string)
-    response.end()
-  }else if(path==='/xxx'){
-    response.statusCode = 200
-    response.setHeader('Content-Type', 'text/json;charset=utf-8')
-    response.setHeader('Access-Control-Allow-Origin', 'http://frank.com:8001')
-    response.write(`
-    {
-      "note":{
-        "to": "小谷",
-        "from": "方方",
-        "heading": "打招呼",
-        "content": "hi"
-      }
-    }
-    `)
-    response.end()
-  }else{
-    response.statusCode = 404
-    response.setHeader('Content-Type', 'text/html;charset=utf-8')
-    response.write('呜呜呜')
-    response.end()
-  }
-
-  /******** 代码结束，下面不要看 ************/
-})
-
-server.listen(port)
-console.log('监听 ' + port + ' 成功\n请用在空中转体720度然后用电饭煲打开 http://localhost:' + port)
-```
 
 ## JSON —— 一门新语言
 
@@ -257,3 +234,34 @@ Cross-Origin Resource Sharing
 C         O        资源R        S
 
 ## CORS 跨域
+
+
+
+
+
+
+
+
+
+
+
+将老师的server.js和index.html抄下来，供后面学习用
+
+学ajax之前，需要背下http请求和响应的4部分
+能手写一个http请求和响应
+能在chrome上找到请求和响应
+
+画出client和server的图
+ajax就是在client上构造（set）HTTP请求和获取（get）HTTP响应的技术
+所以ajax是用js构造请求和获得响应的技术
+
+目标：get或者set HTTP请求 和 HTTP响应
+具体的ajax实现方法如下
+比如：如何set请求的第二部分
+￼
+
+自己写
+手写一个 ajax 
+将ajax封装，并进行优化
+
+在ajax封装的时候，初步使用promise
