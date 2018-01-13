@@ -187,27 +187,55 @@ https://github.com/wojiaofengzhongzhuifeng/nodejs-test-cors
 第一版：使用原生 js 中的 XMLHttpRequest 实现 ajax
 
 ```
-	//相当于告诉浏览器我要set Http 请求了
-	var request = new XMLHttpRequest()
-	//对应 http 请求的第一部分
-	request.open("post", "/xxx")
-	//对应 http 请求的第二部分
-	request.setRequestHeader('name','rjj')
-	//对应 http 请求的第三部分，仅仅是为了便于记忆
-	request.onreadystatechange = function(){
-	  if(request.readyState === 4){
-	    if(request.status >= 200 && request.status <= 300){
-	      console.log("响应内容第一部分：" + request.status)
-	      console.log("响应内容第二部分：" + request.getAllResponseHeaders())
-	      console.log("响应内容第四部分：" + request.responseText)
-	    }
-	  }
-	}
-	//对应 http 请求的第四部分
-	request.send("pass=ssss")
+//相当于告诉浏览器我要set Http 请求了
+var request = new XMLHttpRequest()
+//对应 http 请求的第一部分
+request.open("post", "/xxx")
+//对应 http 请求的第二部分
+request.setRequestHeader('name','rjj')
+//对应 http 请求的第三部分，仅仅是为了便于记忆
+request.onreadystatechange = function(){
+  if(request.readyState === 4){
+    if(request.status >= 200 && request.status <= 300){
+      console.log("响应内容第一部分：" + request.status)
+      console.log("响应内容第二部分：" + request.getAllResponseHeaders())
+      console.log("响应内容第四部分：" + request.responseText)
+    }
+  }
+}
+//对应 http 请求的第四部分
+request.send("pass=ssss")
 ```
 
-第二版：
+第二版：放到函数内
+
+```
+function ajax(method, path, key1, value1){
+  //相当于告诉浏览器我要set Http 请求了
+  var request = new XMLHttpRequest()
+  //对应 http 请求的第一部分
+  request.open(method, path)
+  //对应 http 请求的第二部分
+  request.setRequestHeader(key1, value1)
+  //对应 http 请求的第三部分，仅仅是为了便于记忆
+  request.onreadystatechange = function(){
+    if(request.readyState === 4){
+      if(request.status >= 200 && request.status <= 300){
+        console.log("响应内容第一部分：" + request.status)
+        console.log("响应内容第二部分：" + request.getAllResponseHeaders())
+        console.log("响应内容第四部分：" + request.responseText)
+      }
+    }
+  }
+  //对应 http 请求的第四部分
+  request.send("pass=ssss")
+}
+	
+//调用函数
+ajax("post", "/xxx", "name", "rjj")
+```
+
+
 
 
 
