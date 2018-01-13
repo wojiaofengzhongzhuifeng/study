@@ -165,7 +165,7 @@ https://github.com/wojiaofengzhongzhuifeng/nodejs-test-cors
 
 ![选区_113.png](http://upload-images.jianshu.io/upload_images/5529438-7526879e29d26805.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-**AJAX 就是在 client 上构造（set）HTTP请求和获取（get）HTTP响应的技术**
+**AJAX 就是在 client  通过XMLHttpRequest对象, 构造（set）HTTP请求和获取（get）HTTP响应的技术**
 
 **AJAX 是用js构造请求和获得响应的技术**
 
@@ -193,13 +193,18 @@ var request = new XMLHttpRequest()
 request.open("post", "/xxx")
 //对应 http 请求的第二部分
 request.setRequestHeader('name','rjj')
+request.setRequestHeader('test','rjj111')
+request.setRequestHeader('test2','rjj2222')
 //对应 http 请求的第三部分，仅仅是为了便于记忆
 request.onreadystatechange = function(){
   if(request.readyState === 4){
     if(request.status >= 200 && request.status <= 300){
+      console.log("成功了")
       console.log("响应内容第一部分：" + request.status)
       console.log("响应内容第二部分：" + request.getAllResponseHeaders())
       console.log("响应内容第四部分：" + request.responseText)
+    } else{
+      console.log("失败了")
     }
   }
 }
@@ -210,29 +215,121 @@ request.send("pass=ssss")
 第二版：放到函数内
 
 ```
-function ajax(method, path, key1, value1){
+myButton.addEventListener('click', (e)=>{
+  ajax("post", "/xxx", "name", "rjj", "test", "rjj111", "test2", "rjj2222","password=xxx", success, fail)
+})
+
+
+
+//调用函数
+function success(){
+  console.log("成功了")
+}
+function fail(){
+  console.log("失败了")
+}
+
+function ajax(method, path, key1, value1, key2, value2, key3, value3, body, successFn, failFn){
   //相当于告诉浏览器我要set Http 请求了
   var request = new XMLHttpRequest()
   //对应 http 请求的第一部分
   request.open(method, path)
   //对应 http 请求的第二部分
   request.setRequestHeader(key1, value1)
+  request.setRequestHeader(key2, value2)
+  request.setRequestHeader(key3, value3)
   //对应 http 请求的第三部分，仅仅是为了便于记忆
   request.onreadystatechange = function(){
     if(request.readyState === 4){
       if(request.status >= 200 && request.status <= 300){
-        console.log("响应内容第一部分：" + request.status)
-        console.log("响应内容第二部分：" + request.getAllResponseHeaders())
-        console.log("响应内容第四部分：" + request.responseText)
+      	//为什么要传入request.responseText呢?因为响应内容最重要的就是第四部分
+      	successFn.call(undefined, request.responseText)
+      }else {
+      	failFn.call(undefined, request)
       }
     }
   }
   //对应 http 请求的第四部分
-  request.send("pass=ssss")
+  request.send(body)
 }
-	
-//调用函数
-ajax("post", "/xxx", "name", "rjj")
+```
+
+第三版：更灵活的函数调用
+
+我能不能像这样调用函数?
+
+```
+ajax({
+  method: "post",
+  path: "/xxx",
+  header:{
+    name:"rjj",
+    test:"rjj111",
+    test2:"rjj2222"
+  }
+  body: "password=xxx",
+  successFn: success,
+  failFn: fail
+})
+```
+
+```
+myButton.addEventListener('click', (e)=>{
+  //下面是 ajax 实现区
+  var obj = {
+    method: "post",
+    path: "/xxx",
+    header:{
+      name:"rjj",
+      test:"rjj111",
+      test2:"rjj2222"
+    },
+    body: "password=xxx",
+    successFn: function(x){
+      console.log(x)
+    },
+    failFn: function(x){
+      console.log(x)
+    }
+  }
+  ajax(obj)
+  //上面是 ajax 实现区
+})
+
+function ajax(options){
+  var request = new XMLHttpRequest()
+  var method = options.method
+  var path = options.path
+  var body = options.body
+  var successFn = options.successFn
+  var failFn = options.failFn
+  var obj = options.header
+  request.open(method, path)
+
+  for(var key in obj){
+    request.setRequestHeader(key, obj[key])    
+  }
+
+  request.onreadystatechange = function(){
+    if(request.readyState === 4){
+      if(request.status >= 200 && request.status <= 300){
+        successFn.call(undefined, request.responseText)
+      }else {
+        failFn.call(undefined, request)
+      }
+    }
+  }
+  request.send(body)
+}
+
+```
+
+这个代码是回调函数, 回调函数 === 其他位置传给这个回调函数参数
+
+```
+successFn: function(x){
+	console.log(x)
+}
 ```
 
 
