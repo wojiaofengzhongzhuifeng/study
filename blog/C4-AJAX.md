@@ -180,56 +180,63 @@ https://github.com/wojiaofengzhongzhuifeng/nodejs-test-cors
    第二部分 request.getResponseHeader() / request.getAllResponseHeaders()
    第四部分 request.responseText
 
-## AJAX 实现代码迭代过程
+## jQuery 的 AJAX 实现代码迭代过程
 
 如何确定写的 AJAX 代码是否正确？将你写的代码放到 AJAX demo 的 main.js 代码区中
 
 第一版：使用原生 js 中的 XMLHttpRequest 实现 ajax
 
 ```
-//相当于告诉浏览器我要set Http 请求了
-var request = new XMLHttpRequest()
-//对应 http 请求的第一部分
-request.open("post", "/xxx")
-//对应 http 请求的第二部分
-request.setRequestHeader('name','rjj')
-request.setRequestHeader('test','rjj111')
-request.setRequestHeader('test2','rjj2222')
-//对应 http 请求的第三部分，仅仅是为了便于记忆
-request.onreadystatechange = function(){
-  if(request.readyState === 4){
-    if(request.status >= 200 && request.status <= 300){
-      console.log("成功了")
-      console.log("响应内容第一部分：" + request.status)
-      console.log("响应内容第二部分：" + request.getAllResponseHeaders())
-      console.log("响应内容第四部分：" + request.responseText)
-    } else{
-      console.log("失败了")
+myButton.addEventListener('click', (e)=>{
+  window.jQuery.ajax()
+})
+
+window.jQuery = function(nodeOrSelecotr){
+  var nodes = {}
+  return nodes
+}
+
+window.jQuery.ajax = function(){
+  //相当于告诉浏览器我要set Http 请求了
+  var request = new XMLHttpRequest()
+  //对应 http 请求的第一部分
+  request.open("post", "/xxx")
+  //对应 http 请求的第二部分
+  request.setRequestHeader('name','rjj')
+  request.setRequestHeader('test','rjj111')
+  request.setRequestHeader('test2','rjj2222')
+  //对应 http 请求的第三部分，仅仅是为了便于记忆
+  request.onreadystatechange = function(){
+    if(request.readyState === 4){
+      if(request.status >= 200 && request.status <= 300){
+        console.log("成功了")
+        console.log("响应内容第一部分：" + request.status)
+        console.log("响应内容第二部分：" + request.getAllResponseHeaders())
+        console.log("响应内容第四部分：" + request.responseText)
+      } else{
+        console.log("失败了")
+      }
     }
   }
+  //对应 http 请求的第四部分
+  request.send("pass=ssss")
 }
-//对应 http 请求的第四部分
-request.send("pass=ssss")
+
 ```
 
 第二版：放到函数内
 
 ```
 myButton.addEventListener('click', (e)=>{
-  ajax("post", "/xxx", "name", "rjj", "test", "rjj111", "test2", "rjj2222","password=xxx", success, fail)
+  window.jQuery.ajax("post", "/xxx", "name", "rjj", "test", "rjj111", "test2", "rjj2222","password=xxx", success, fail)
 })
 
-
-
-//调用函数
-function success(){
-  console.log("成功了")
-}
-function fail(){
-  console.log("失败了")
+window.jQuery = function(nodeOrSelecotr){
+  var nodes = {}
+  return nodes
 }
 
-function ajax(method, path, key1, value1, key2, value2, key3, value3, body, successFn, failFn){
+window.jQuery.ajax = function(method, path, key1, value1, key2, value2, key3, value3, body, successFn, failFn){  
   //相当于告诉浏览器我要set Http 请求了
   var request = new XMLHttpRequest()
   //对应 http 请求的第一部分
@@ -242,16 +249,25 @@ function ajax(method, path, key1, value1, key2, value2, key3, value3, body, succ
   request.onreadystatechange = function(){
     if(request.readyState === 4){
       if(request.status >= 200 && request.status <= 300){
-      	//为什么要传入request.responseText呢?因为响应内容最重要的就是第四部分
-      	successFn.call(undefined, request.responseText)
+        //为什么要传入request.responseText呢?因为响应内容最重要的就是第四部分
+        successFn.call(undefined, request.responseText)
       }else {
-      	failFn.call(undefined, request)
+        failFn.call(undefined, request)
       }
     }
   }
   //对应 http 请求的第四部分
   request.send(body)
 }
+
+//调用函数
+function success(){
+  console.log("成功了")
+}
+function fail(){
+  console.log("失败了")
+}
+
 ```
 
 第三版：更灵活的函数调用
