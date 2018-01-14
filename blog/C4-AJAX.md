@@ -346,6 +346,7 @@ function ajax(options){
 successFn: function(x){
 	console.log(x)
 }
+
 ```
 
 
