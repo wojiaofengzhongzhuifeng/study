@@ -391,6 +391,8 @@ C         O        资源R        S
 
 
 
+
+
 将老师的server.js和index.html抄下来，供后面学习用
 
 学ajax之前，需要背下http请求和响应的4部分
