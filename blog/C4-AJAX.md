@@ -226,6 +226,34 @@ window.jQuery.ajax = function(){
 
 
 //自己写的第一版
+myButton.addEventListener('click', function(){
+  ajax()
+})
+
+function ajax(){
+  var request = new XMLHttpRequest()
+
+  request.open("post", "/xxx")
+
+  request.setRequestHeader("name", "rjj")
+
+  request.setRequestHeader("name", "zzz")
+
+  request.onreadystatechange = function(){
+    if(request.readyState === 4){
+      if(request.status >= 200 && request.status < 300){
+        console.log("成功")
+        console.log("request.responseText")
+        console.log(request.responseText)
+      }else{
+        console.log("失败")
+        console.log(request)
+      }
+    }
+  }
+
+  request.send("xxxxxxxxx")
+}
 ```
 
 第二版：放到函数内
@@ -271,6 +299,45 @@ function success(){
 function fail(){
   console.log("失败了")
 }
+
+
+
+
+//自己写的第二版
+myButton.addEventListener('click', function(){
+  ajax("post", "/xxx", {name:'rjj', sss:'zxxx'}, fffff, yyyyyy)
+})
+
+function ajax(method, path, header, successFn, failFn, body){
+  var request = new XMLHttpRequest()
+
+  request.open(method, path)
+
+  for(var key in header){
+    request.setRequestHeader(key, header[key])
+  }
+
+  request.onreadystatechange = function(){
+    if(request.readyState === 4){
+      if(request.status >= 200 && request.status < 300){
+      	//调用 ajax 函数的成功函数,并且往这个函数添加 request.responseText 变量作为第一个参数
+        successFn.call(undefined, request.responseText)
+      }else{
+        failFn.call(undefined, request)
+      }
+    }
+  }
+
+  request.send(body)
+}
+
+function fffff(x){
+  console.log(x)
+}
+
+function yyyyyy(x){
+  console.log(x)
+}
 ```
 
 第三版：更灵活的函数调用
@@ -293,65 +360,55 @@ ajax({
 ```
 
 ```
-myButton.addEventListener('click', (e)=>{
-  //下面是 ajax 实现区
-  var obj = {
+myButton.addEventListener('click', function(){
+  ajax({
     method: "post",
     path: "/xxx",
     header:{
-      name:"rjj",
-      test:"rjj111",
-      test2:"rjj2222"
+      name: "xxx",
+      zzz:'xxx',
     },
-    body: "password=xxx",
     successFn: function(x){
       console.log(x)
     },
     failFn: function(x){
       console.log(x)
-    }
-  }
-  ajax(obj)
-  //上面是 ajax 实现区
+    } 
+  })
 })
 
 function ajax(options){
-  var request = new XMLHttpRequest()
+
   var method = options.method
   var path = options.path
-  var body = options.body
+  var header = options.header
   var successFn = options.successFn
   var failFn = options.failFn
-  var obj = options.header
+  var body = options.body
+
+  var request = new XMLHttpRequest()
+
   request.open(method, path)
 
-  for(var key in obj){
-    request.setRequestHeader(key, obj[key])    
+  for(var key in header){
+    request.setRequestHeader(key, header[key])
   }
 
   request.onreadystatechange = function(){
     if(request.readyState === 4){
-      if(request.status >= 200 && request.status <= 300){
+      if(request.status >= 200 && request.status < 300){
         successFn.call(undefined, request.responseText)
-      }else {
+      }else{
         failFn.call(undefined, request)
       }
     }
   }
+
   request.send(body)
 }
 ```
 
-这个代码是回调函数, 回调函数 === 其他位置传给这个回调函数参数
-
-```
-successFn: function(x){
-	console.log(x)
-}
-
-```
-
-
+注意: 传给 ajax 函数的 successFn 参数是一个函数AA, 但是这个函数AA没有执行, 他是在 ajax 函数内部执行, 并且往函数AA添加了一个参数(request.responseText), 函数AA叫做 callback 函数
 
 
 
