@@ -30,6 +30,10 @@
 
 10. 内存图
 
-   ​
+11. 后台运行ss:`sslocal -c /etc/shadowsocks/config.json >! log 2>&1 &`
+
+
+
+   
 
 

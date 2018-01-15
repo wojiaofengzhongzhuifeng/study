@@ -222,6 +222,10 @@ window.jQuery.ajax = function(){
   request.send("pass=ssss")
 }
 
+
+
+
+//自己写的第一版
 ```
 
 第二版：放到函数内
@@ -267,7 +271,6 @@ function success(){
 function fail(){
   console.log("失败了")
 }
-
 ```
 
 第三版：更灵活的函数调用
@@ -337,7 +340,6 @@ function ajax(options){
   }
   request.send(body)
 }
-
 ```
 
 这个代码是回调函数, 回调函数 === 其他位置传给这个回调函数参数
