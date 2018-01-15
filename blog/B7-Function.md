@@ -940,5 +940,19 @@ http://latentflip.com/loupe/?code=ZnVuY3Rpb24gc3VtKG4pewogICAgCiAgICBpZihuID09ID
 
    ​
 
+   ​
+
+   ​
+
+   ​
+
+   ​
+
+   ​
+
+   ​
 
 
+## callback特点
+
+callback === 没有调用的函数 + 从别处传给这个函数参数并执行
