@@ -470,7 +470,32 @@ window.$ = window.jQuery
 
 ```
 
+第五版: 使用 ES6 将代码优化(析构赋值)
 
+1. 原代码: 
+
+   ```
+   var method = options.method
+   var path = options.path
+   var header = options.header
+   var successFn = options.successFn
+   var failFn = options.failFn
+   var body = options.body
+   ```
+
+
+2. 使用 ES6 代码优化:
+
+   ```
+   let {method, path, header, successFn, failFn, body} = options
+   ```
+
+
+3. 再次优化:
+
+   将上一步的代码删除, 复制`{method, path, header, successFn, failFn, body}`,放到`window.jQuery.ajax = function(AAA){}`的AAA处
+
+   ​
 
 ## JSON —— 一门新语言
 
