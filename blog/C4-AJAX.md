@@ -497,7 +497,30 @@ window.$ = window.jQuery
 
    放到`window.jQuery.ajax = function(AAA){}`的AAA处
 
-   ​
+第六版:
+
+```
+//现在有这几个库
+jQuery.ajax({
+  success: ()=>{},
+  error: ()=>{},
+  method: "get",
+  test: "ssss"
+})
+rjj.ajax({
+  成功: ()=>{},
+  失败: ()=>{},
+  method: "post",
+  test1: "zzzz"
+})
+
+//如果我想使用 jQuery 的库,我需要找到jQuery的文档,确定成功函数的名字为"success"
+//如果我想使用 rjj 的库, 我需要找到 rjj 的文档,确定成功函数的名字为"成功"
+//所以我这样写
+jQuery.ajax({})
+```
+
+
 
 ## JSON —— 一门新语言
 
