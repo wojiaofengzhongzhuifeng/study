@@ -32,8 +32,12 @@
 
 11. 后台运行ss:`sslocal -c /etc/shadowsocks/config.json >! log 2>&1 &`
 
+12. 如果状态码是404, 还能有响应第四部分吗?
+
+   有, 响应第四部分只和响应第二部分有关
 
 
-   
+
+
 
 
