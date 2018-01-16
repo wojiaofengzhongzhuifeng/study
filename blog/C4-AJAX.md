@@ -412,6 +412,64 @@ function ajax(options){
 
 第四版: 把他放到自制的 jQuery 上
 
+```
+
+myButton.addEventListener("click", function(){
+$.ajax(
+  {
+    method: "post",
+    path: "/xxx",
+    header:{
+      name: "xxx",
+      zzz:'xxx',
+    },
+    successFn: function(x){
+      console.log(x)
+    },
+    failFn: function(x){
+      console.log(x)
+  } 
+})
+})
+
+window.jQuery = function(nodeOrSelector){
+var nodes = {}
+return nodes
+}
+
+window.jQuery.ajax = function(options){
+
+var method = options.method
+var path = options.path
+var header = options.header
+var successFn = options.successFn
+var failFn = options.failFn
+var body = options.body
+
+var request = new XMLHttpRequest()
+
+request.open(method, path)
+
+for(var key in header){
+  request.setRequestHeader(key, header[key])
+}
+
+request.onreadystatechange = function(){
+  if(request.readyState === 4){
+    if(request.status >= 200 && request.status < 300){
+      successFn.call(undefined, request.responseText)
+    }else{
+      failFn.call(undefined, request)
+    }
+  }
+}
+
+request.send(body)
+}
+
+window.$ = window.jQuery
+```
+
 
 
 ## JSON —— 一门新语言
