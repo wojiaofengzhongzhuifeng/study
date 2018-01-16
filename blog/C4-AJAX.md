@@ -408,7 +408,9 @@ function ajax(options){
 }
 ```
 
-注意: 传给 ajax 函数的 successFn 参数是一个函数AA, 但是这个函数AA没有执行, 他是在 ajax 函数内部执行, 并且往函数AA添加了一个参数(request.responseText), 函数AA叫做 callback 函数
+>  注意: 传给 ajax 函数的 successFn 参数是一个函数AA, 但是这个函数AA没有执行, 他是在 ajax 函数内部执行, 并且往函数AA添加了一个参数(request.responseText), 函数AA叫做 callback 函数
+
+第四版: 把他放到自制的 jQuery 上
 
 
 
