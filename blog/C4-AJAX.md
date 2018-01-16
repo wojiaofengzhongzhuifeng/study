@@ -493,7 +493,9 @@ window.$ = window.jQuery
 
 3. 再次优化:
 
-   将上一步的代码删除, 复制`{method, path, header, successFn, failFn, body}`,放到`window.jQuery.ajax = function(AAA){}`的AAA处
+   将上一步的代码删除, 复制`{method, path, header, successFn, failFn, body}`
+
+   放到`window.jQuery.ajax = function(AAA){}`的AAA处
 
    ​
 
