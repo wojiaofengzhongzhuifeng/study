@@ -254,10 +254,10 @@ $.ajax(
       name: "xxx",
       zzz:'xxx',
     },
-    successFn: function(x){
+    successFnAA: function(x){
       console.log(x)
     },
-    failFn: function(x){
+    failFnAA: function(x){
       console.log(x)
   } 
 })
@@ -275,8 +275,8 @@ window.jQuery.ajax = function(options){
   var method = options.method
   var path = options.path
   var header = options.header
-  var successFn = options.successFn
-  var failFn = options.failFn
+  var successFn = options.successFnAA
+  var failFn = options.failFnAA
   var body = options.body
 
   var request = new XMLHttpRequest()
@@ -339,14 +339,15 @@ window.$ = window.jQuery
 
 添加 promise 步骤
 
-1. 在window.jQuery.ajax函数内部, 剪切所有代码
-2. 在window.jQuery.ajax函数内部,添加`return new Promise(function(resolve, reject){AAA})`
+1. 在 window.jQuery.ajax 函数内部, 剪切所有代码
+2. 在 window.jQuery.ajax 函数内部,添加`return new Promise(function(resolve, reject){AAA})`
 3. 在AAA区域复制代码
 4. 将 successFn 变成 resolve, 将 failFn 变成 reject
 
 使用 promise 
 
-1. 在`jQuery.ajax()`之后添加`.then`,其中第一个参数表示成功函数, 第二个参数表是失败函数
+1. 将调用 jQuery.ajax 中的 successFnAA 和 failFn 及其参数内容删除
+2. 在`jQuery.ajax()`之后添加`.then`,其中第一个参数表示成功函数, 第二个参数表是失败函数
 
 ```
 myButton.addEventListener("click", function() {
@@ -407,10 +408,6 @@ window.jQuery.ajax = function(options){
 
 
 
-
-
-
-
 ## JSON —— 一门新语言
 
 [http://json.org](http://json.org/)
@@ -435,7 +432,17 @@ C         O        资源R        S
 
 ## CORS 跨域
 
+> A网站的前端程序员打电话告诉B网站的后端程序员
+>
+> A前: 我想和你的网站进行交互, 你同意吗?
+>
+> B后: 我同意
 
+然后B后端程序员就在后台代码(响应内容)写上这一句代码:
+
+`response.setHeader("Access-Control-Allow-Origin", "http://A.com:8001")`, 网站是A网站的前端程序员告诉给B后端
+
+这就是 CORS 跨域
 
 
 
