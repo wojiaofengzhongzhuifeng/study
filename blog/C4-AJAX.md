@@ -31,12 +31,14 @@ IE 5 率先在 JS 中引入 ActiveX 对象（API），使得 JS 可以直接发�
 
 Jesse James Garrett 讲如下技术取名叫做 AJAX：异步的 JavaScript 和 XML
 
+AJAX 技术包括以下四步:
+
 1. 创建 AJAX 对象, 即 XMLHttpRequest 
 2. 使用 XMLHttpRequest 发请求
 3. 服务器返回 XML 格式的字符串
 4. JS 解析 XML，并更新局部页面
 
-## AJAX demo
+## AJAX demo 
 
 https://github.com/wojiaofengzhongzhuifeng/nodejs-test-cors
 
@@ -44,7 +46,7 @@ https://github.com/wojiaofengzhongzhuifeng/nodejs-test-cors
 
 ## 理解 AJAX 
 
-学ajax之前，需要知道 HTTP 请求内容和 HTTP 响应内容的四个部分，如下
+学 AJAX 之前，需要知道 HTTP 请求内容和 HTTP 响应内容的四个部分，如下
 
 >  问题： 老师的`key: alue`有许多---的是需要背的吗？
 
@@ -60,84 +62,44 @@ https://github.com/wojiaofengzhongzhuifeng/nodejs-test-cors
 
 ![选区_112.png](http://upload-images.jianshu.io/upload_images/5529438-74e0abf601e3d789.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-那么，ajax 是什么呢？我们可以画出 ”client 和 server“ 的关系图：
+那么，AJAX 是什么呢？我们可以画出 ” client 和 server “ 的关系图：
 
 ![选区_113.png](http://upload-images.jianshu.io/upload_images/5529438-7526879e29d26805.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-**AJAX 就是在 client  通过XMLHttpRequest对象, 构造（set）HTTP请求和获取（get）HTTP响应的技术**
-
-**AJAX 是用js构造请求和获得响应的技术**
+**AJAX 就是在 chrome  通过 XMLHttpRequest 对象, 构造（set）HTTP 请求和获取（get）HTTP 响应的技术**
 
 那么 AJAX 的具体实现方法是怎么样的呢？
 
 1. JS 设置（set）任意请求 header
-   第一部分 request.open('get', '/xxx')
-   第二部分 request.setRequestHeader('content-type','x-www-form-urlencoded')
-   第四部分 request.send('a=1&b=2')
+   请求内容第一部分 request.open('get', '/xxx')
+   请求内容第二部分 request.setRequestHeader('content-type','x-www-form-urlencoded')
+   请求内容第四部分 request.send('a=1&b=2')
 2. JS 获取（get）任意响应 header 
-   第一部分 request.status / request.statusText
-   第二部分 request.getResponseHeader() / request.getAllResponseHeaders()
-   第四部分 request.responseText
+   响应内容第一部分 request.status / request.statusText
+   响应内容第二部分 request.getResponseHeader() / request.getAllResponseHeaders()
+   响应内容第四部分 request.responseText
 
 ## jQuery 的 AJAX 实现代码迭代过程
 
-如何确定写的 AJAX 代码是否正确？将你写的代码放到 AJAX demo 的 main.js 代码区中
+> 如何确定写的 AJAX 代码是否正确？将你写的代码放到 AJAX demo 的 main.js
 
 第一版：使用原生 js 中的 XMLHttpRequest 实现 ajax
 
 ```
-myButton.addEventListener('click', (e)=>{
-  window.jQuery.ajax()
-})
-
-window.jQuery = function(nodeOrSelecotr){
-  var nodes = {}
-  return nodes
-}
-
-window.jQuery.ajax = function(){
-  //相当于告诉浏览器我要set Http 请求了
-  var request = new XMLHttpRequest()
-  //对应 http 请求的第一部分
-  request.open("post", "/xxx")
-  //对应 http 请求的第二部分
-  request.setRequestHeader('name','rjj')
-  request.setRequestHeader('test','rjj111')
-  request.setRequestHeader('test2','rjj2222')
-  //对应 http 请求的第三部分，仅仅是为了便于记忆
-  request.onreadystatechange = function(){
-    if(request.readyState === 4){
-      if(request.status >= 200 && request.status <= 300){
-        console.log("成功了")
-        console.log("响应内容第一部分：" + request.status)
-        console.log("响应内容第二部分：" + request.getAllResponseHeaders())
-        console.log("响应内容第四部分：" + request.responseText)
-      } else{
-        console.log("失败了")
-      }
-    }
-  }
-  //对应 http 请求的第四部分
-  request.send("pass=ssss")
-}
-
-
-
-
 //自己写的第一版
 myButton.addEventListener('click', function(){
   ajax()
 })
 
 function ajax(){
+//相当于告诉浏览器我要set Http 请求了
   var request = new XMLHttpRequest()
-
+//对应 http 请求的第一部分
   request.open("post", "/xxx")
-
+//对应 http 请求的第二部分
   request.setRequestHeader("name", "rjj")
-
   request.setRequestHeader("name", "zzz")
-
+//对应 http 请求的第三部分，仅仅是为了便于记忆
   request.onreadystatechange = function(){
     if(request.readyState === 4){
       if(request.status >= 200 && request.status < 300){
@@ -150,58 +112,16 @@ function ajax(){
       }
     }
   }
-
+//对应 http 请求的第四部分
   request.send("xxxxxxxxx")
 }
 ```
 
 第二版：放到函数内
 
+把第一版中的`function ajax(){}`内写死的内容提取出来, 用变量获取, 代码如下: 
+
 ```
-myButton.addEventListener('click', (e)=>{
-  window.jQuery.ajax("post", "/xxx", "name", "rjj", "test", "rjj111", "test2", "rjj2222","password=xxx", success, fail)
-})
-
-window.jQuery = function(nodeOrSelecotr){
-  var nodes = {}
-  return nodes
-}
-
-window.jQuery.ajax = function(method, path, key1, value1, key2, value2, key3, value3, body, successFn, failFn){  
-  //相当于告诉浏览器我要set Http 请求了
-  var request = new XMLHttpRequest()
-  //对应 http 请求的第一部分
-  request.open(method, path)
-  //对应 http 请求的第二部分
-  request.setRequestHeader(key1, value1)
-  request.setRequestHeader(key2, value2)
-  request.setRequestHeader(key3, value3)
-  //对应 http 请求的第三部分，仅仅是为了便于记忆
-  request.onreadystatechange = function(){
-    if(request.readyState === 4){
-      if(request.status >= 200 && request.status <= 300){
-        //为什么要传入request.responseText呢?因为响应内容最重要的就是第四部分
-        successFn.call(undefined, request.responseText)
-      }else {
-        failFn.call(undefined, request)
-      }
-    }
-  }
-  //对应 http 请求的第四部分
-  request.send(body)
-}
-
-//调用函数
-function success(){
-  console.log("成功了")
-}
-function fail(){
-  console.log("失败了")
-}
-
-
-
-
 //自己写的第二版
 myButton.addEventListener('click', function(){
   ajax("post", "/xxx", {name:'rjj', sss:'zxxx'}, fffff, yyyyyy)
@@ -232,16 +152,21 @@ function ajax(method, path, header, successFn, failFn, body){
 
 function fffff(x){
   console.log(x)
+  console.log("请求成功了")
 }
 
 function yyyyyy(x){
   console.log(x)
+  console.log("请求失败了了")
+
 }
 ```
 
 第三版：更灵活的函数调用
 
-我能不能像这样调用函数?
+> 第二版的函数调用实在太难用了, 根本不能在实际中使用, 我能不能改进一下?
+
+我能不能像这样调用函数? 注意我可以改变每个 key: value 的位置, 还可以不设置某个 key: value
 
 ```
 ajax({
@@ -262,17 +187,17 @@ ajax({
 myButton.addEventListener('click', function(){
   ajax({
     method: "post",
-    path: "/xxx",
     header:{
       name: "xxx",
       zzz:'xxx',
     },
-    successFn: function(x){
+    successFnAA: function(x){
       console.log(x)
     },
-    failFn: function(x){
+    failFnAA: function(x){
       console.log(x)
-    } 
+    },
+    path: "/xxx",
   })
 })
 
@@ -281,8 +206,8 @@ function ajax(options){
   var method = options.method
   var path = options.path
   var header = options.header
-  var successFn = options.successFn
-  var failFn = options.failFn
+  var successFn = options.successFnAA
+  var failFn = options.failFnAA
   var body = options.body
 
   var request = new XMLHttpRequest()
@@ -307,9 +232,17 @@ function ajax(options){
 }
 ```
 
->  注意: 传给 ajax 函数的 successFn 参数是一个函数AA, 但是这个函数AA没有执行, 他是在 ajax 函数内部执行, 并且往函数AA添加了一个参数(request.responseText), 函数AA叫做 callback 函数
+注意: 
+
+1. successFnAA 是参数, 参数的值是一个函数, 函数的内容是`function(x){console.log(x)}`
+2. 但是这个函数AA没有执行, 他是在 ajax 函数内部执行, 并且往函数AA添加了一个参数(request.responseText)
+3. 函数AA叫做 callback 函数
 
 第四版: 把他放到自制的 jQuery 上
+
+> 我想把原生的 AJAX 实现代码封装到我自己写的库,应该怎么办?
+
+创造一个对象, 把第三版的 AJAX 函数挂到这个对象上即可
 
 ```
 myButton.addEventListener("click", function(){
@@ -330,11 +263,13 @@ $.ajax(
 })
 })
 
+//创造对象
 window.jQuery = function(nodeOrSelector){
   var nodes = {}
   return nodes
 }
 
+//将 AJAX 函数挂到对象上
 window.jQuery.ajax = function(options){
 
   var method = options.method
@@ -365,6 +300,7 @@ window.jQuery.ajax = function(options){
   request.send(body)
 }
 
+//仅仅是简写,并不重要
 window.$ = window.jQuery
 ```
 
@@ -397,9 +333,20 @@ window.$ = window.jQuery
 
 第六版: 使用 promise **统一**成功函数名和失败函数名
 
-> 如果一个项目需要使用两个不同的库，那么你就必须去看这个库的代码才能知道如何调用成功函数和失败函数, 所以我们使用 promise 来统一函数名
+> 如果一个项目需要使用两个不同的库，那么你就必须去看这个库的代码才能知道如何调用成功函数和失败函数, 所以我们使用 promise 来统一函数名,调用这个库的时候就不必考虑成功函数的名字
 
 记住: `return new Promise(function(resolve, reject){})`
+
+添加 promise 步骤
+
+1. 在window.jQuery.ajax函数内部, 剪切所有代码
+2. 在window.jQuery.ajax函数内部,添加`return new Promise(function(resolve, reject){AAA})`
+3. 在AAA区域复制代码
+4. 将 successFn 变成 resolve, 将 failFn 变成 reject
+
+使用 promise 
+
+1. 在`jQuery.ajax()`之后添加`.then`,其中第一个参数表示成功函数, 第二个参数表是失败函数
 
 ```
 myButton.addEventListener("click", function() {
@@ -452,7 +399,6 @@ window.jQuery.ajax = function(options){
                 }
             }
         }
-
         request.send(body)
     })
 }
