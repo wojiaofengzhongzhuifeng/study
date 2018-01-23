@@ -13,6 +13,7 @@
 11. 搜索`局部变量`，知道 ES6 之前 js 使用局部变量语法实现和 ES6 使用局部变量语法.
 12. 搜索`依附`,知道函数可以分为两类
 13. callback === 函数 ,在ajax那篇博客有
+14. 闭包 + 匿名函数 + 立即执行函数的组合作用
 
 
 
@@ -940,19 +941,24 @@ http://latentflip.com/loupe/?code=ZnVuY3Rpb24gc3VtKG4pewogICAgCiAgICBpZihuID09ID
 
    ​
 
-   ​
+   ​​
 
-   ​
-
-   ​
-
-   ​
-
-   ​
-
-   ​
 
 
 ## callback特点
 
 callback === 声明函数 + 从其他地方往这个函数添加参数,并且执行这个callback函数
+
+
+
+
+
+## 闭包 + 匿名函数 + 立即执行函数的作用
+
+1. 推论: 
+   - 立即执行函数使得重要变量 person 无法被外部(立即执行函数之外的区域)访问
+   - 闭包使得匿名函数可以操作 person
+   - window.growUp 保存了匿名函数的地址
+   - 在任何位置都能使用window.growUp 
+   - 推出结论: **在任何地方都可以使用 window.growUp 操作 person,但是不能直接访问变量 person**
+2. ​
