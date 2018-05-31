@@ -158,6 +158,7 @@ function addBackground(){
 //保存进度
 function cPush() {
     cStep++;
+    // 保护回退不出现cstep<0
     if (cStep < cPushArray.length) { cPushArray.length = cStep; }
     cPushArray.push(yyy.toDataURL());
 }
