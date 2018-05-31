@@ -1,5 +1,20 @@
 预览: canvas预览: https://wojiaofengzhongzhuifeng.github.io/study/demo/A5canvas/
 
+
+
+## 常见问题
+
+1. 如何画线？
+
+   - 现有4个点1，2，3，4
+   - 2代替1，3代替2
+   
+   
+2. 撤销功能实现？
+
+   1. 画一笔，用canvas.toDataUrl保存到arr中
+   2. 想回退，根据arr内的URL可以获得相应的图片
+
 ## canvas思路
 
 1. 画圆形
