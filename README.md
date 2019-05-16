@@ -12,14 +12,20 @@
 - [异步编程](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/promise.md)
 - [this](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/this.md)
 - [代码实现需求](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/代码实现常见需求.md)
+- [对象](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/对象.md)
+- [Generators](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/Generators.md)
+
+## CSS
+
+- [这些知识太细了，我放到这里](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/css杂.md)
+
+
 
 ## HTTP
 
 - [跨域](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/跨域.md)
 
 - [Cookie](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/Cookie.md)
-
-  
 
   
 
