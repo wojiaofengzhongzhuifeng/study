@@ -14,6 +14,7 @@
 - [代码实现需求](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/代码实现常见需求.md)
 - [对象](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/对象.md)
 - [Generators](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/Generators.md)
+- [继承](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/继承.md)
 
 ## CSS
 
