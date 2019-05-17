@@ -25,4 +25,6 @@
    3. 字符串空
    4. undefined
    5. null
+   
+6. 使用 `Object.prototype.toString.call()`判断类型
 
