@@ -1,23 +1,50 @@
-## 概括图
-
-[![未命名文件 (2).png](https://i.loli.net/2017/11/21/5a13f5980f978.png)](https://i.loli.net/2017/11/21/5a13f5980f978.png)
+# JavaScript 数据类型
 
 
-2. `typeof`注意:
 
-   1. `typeof`的作用是给一个变量,返回`'string','number','boolean','object','function','undefined',`
-   2. bug： `function(){}`竟然返回`'function'`,**明明`function`不是数据类型。**
-   3. bug：`null`竟然返回`'object'`.
+## 分类
 
-4. `typeof`和`instanceof`使用区别
+- 基本类型
+  1. string
+  2. number
+  3. boolean
+  4. undefined
+  5. null
+  6. symbol(ES6 新增)
+- 引用类型
+  1. object
 
-   `typeof`返回的是七种数据类型
 
-   `instanceof`已经知道是 object 类型,想知道是哪一种 object 类型
 
-   常见的 object 有Array, Object, NodeList
-   
-5. 如何靠谱的确定数据类型
+## 区别数据类型的 api
+
+### 1. typeof
+
+使用范围：只能判断基本类型 `string, number, boolean, undefined`，除了
+
+typeof 的 bug：
+
+1. `typeof function(){}` 竟然返回`'function'`,**明明`function`不是数据类型。**
+2. `typeof null`竟然返回 `object`
+
+### 2. instanceof
+
+使用范围：只能判断引用类型
+
+原理：通过原型链
+
+```
+a instanceof b
+// 那么会这样比较
+// a.__proto__ === b.prototype ? 如果正确，返回 true
+// a.__proto__.__proto__ === b.prototype ? 返回 true
+// 直到 a.__proto__.__proto__ ...  === null 返回 false
+```
+
+
+
+
+
 
 6. falsy值（要背）
    1. 数字0
@@ -25,6 +52,5 @@
    3. 字符串空
    4. undefined
    5. null
-   
-6. 使用 `Object.prototype.toString.call()`判断类型
+2. 使用 `Object.prototype.toString.call()`判断类型
 

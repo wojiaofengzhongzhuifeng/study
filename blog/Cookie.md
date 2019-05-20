@@ -3,7 +3,7 @@
 
 2. sessions: 基于 Cookie 实现，将 SessionID 存在 Cookie 中。
 
-3. Cookie 存在浏览器文件；Session 存在服务器文件。
+3. Cookie 存在浏览器文件；Session 存在服务器文件。(Cookie 是本地存储，Session 是服务器存储)
 
 4. localStorage: 无 HTTP 请求, 记录不重要信息, 永久有效
 

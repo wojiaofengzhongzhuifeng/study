@@ -21,7 +21,7 @@ http://www.example.com:80/path/to/myfile.html?key1=value1&key2=value2#SomewhereI
 - `www.example.com` is the **domain**.
 - `:80` is the **port**.
 - `/path/to/myfile.html` is the **path to the resource** on the Web server.
-- `?key1=value1&key2=value2` are extra **parameters** provided to the Web server.
+- `?key1=value1&key2=value2` are extra **parameters(query)** provided to the Web server.
 - `#SomewhereInTheDocument` is an **anchor**
 
 

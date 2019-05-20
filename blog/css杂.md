@@ -14,3 +14,29 @@
 
 https://jsbin.com/cuxinequra/1/edit
 
+
+
+## 选择器的优先级
+
+- **内联样式(style="…")**
+
+- ID选择器(#example)
+
+- 类选择器(.example)、
+
+  **属性选择器([type="radio"])**
+
+  **伪类(:hover)**
+
+- 类型选择器(h1)
+
+- **伪元素( ::before)**
+
+- 继承的样式
+
+
+
+
+
+## 垂直水平居中
+

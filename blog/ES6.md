@@ -44,6 +44,7 @@
 2. 箭头函数的使用
 
    - 箭头函数内部的 this 就是外部的 this
+   - 没有 arguments，只能借助 ES6 的『剩余参数』，拿到参数数组[例子](https://jsbin.com/xosoyewoqa/1/edit?js,console,output)
 
 3. 解构赋值
 
@@ -216,6 +217,6 @@
 
 10. new Set()数据结构
 
-      
+  ​    
 
     

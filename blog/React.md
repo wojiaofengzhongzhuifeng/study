@@ -27,6 +27,11 @@
     3. 使用`<Provider>`组件包裹整个组件，并且传store给`<Provider>`
     4. 在任意层级子组件中，通过 connect 高阶函数，将『初始化数据』和『根据 action 对数据修改』传给子组件
 [react-redux例子](https://github.com/wojiaofengzhongzhuifeng/react-redux-demo)
+6. react context
+    - F1,f2,f3,f4逐层传递参数
+    - 全局变量慎用
+    - 局部的全局变量 === context
+    - 
 
 
 
@@ -119,6 +124,10 @@
 1. 创建 HOC 函数
 2. 根据需求，在原来组件的基础上，导出使用了 HOC 的组件
 
+例子：
+
+1. 
+
 react-redux 的 connect 就是一个高阶函数
 
 ```javascript
@@ -198,3 +207,54 @@ react 的 diff 算法是根据虚拟 DOM 的 key 进行比较
 
 react 总是根据虚拟 dom 的 key 值进行判断是否要更新 ui，按照上面的，所有的 dom 都需要改变，开销很大
 
+
+
+
+
+
+
+## React 小书笔记
+
+- 如果一个文件导出的是一个类，那么这个文件名就用大写开头。
+
+- 一个组件，想设置默认 props，
+
+  ```jsx
+  class CommentList extends React.Component{
+    static defaultProps = {
+      comments: []
+    }
+  }
+  ```
+
+- 想规定组件的 props 值
+
+  ```
+  import PropTypes from 'prop-types'
+  
+  ...
+  class Comment extends Component {
+    static propTypes = {
+      comment: PropTypes.object
+    }
+  }
+  ...
+  ```
+
+- 函数命名规范
+
+  ```jsx
+  <CommentInput onSubmit={this.handleSubmitComment.bind(this)} />
+  ```
+
+  含义：监听 CommentInput 组件的 submit 事件，一旦执行该事件，执行 handleSubmitComment 函数
+
+  on：监听
+
+  handle：执行
+
+- class 内的事件如下
+
+  ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190520165430.png)
+
+- 

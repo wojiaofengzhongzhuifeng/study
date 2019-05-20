@@ -15,6 +15,7 @@
 - [对象](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/对象.md)
 - [Generators](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/Generators.md)
 - [继承](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/继承.md)
+- [函数](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/函数.md)
 
 ## CSS
 
@@ -36,11 +37,22 @@
 
 - [React](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/React.md)
 - [响应式原理](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/响应式.md)
+- [React 的异步操作](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/ReactAsync.md)
 
 
+
+
+
+## 项目
 
 ## Node.js
 
-- [第一个 nodejs 应用](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/第一个 nodejs 应用.md)
+- [第一个 nodejs 应用](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/第一个nodejs 应用.md)
 - [webpack核心](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/webpack核心.md)
+
+## 设计模式、架构、编程思想
+
+
+
+## 数据结构、算法相关
 
