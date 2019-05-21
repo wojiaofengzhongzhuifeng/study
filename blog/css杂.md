@@ -38,5 +38,6 @@ https://jsbin.com/cuxinequra/1/edit
 
 
 
-## 垂直水平居中
+## 居中
 
+https://css-tricks.com/centering-css-complete-guide/

@@ -19,6 +19,7 @@
     4. 从上往下传递store
     5. store有获取数据(`getState()`)和修改数据接口(`dispatch(action)`)，使用即可
 [redux数数例子](https://codesandbox.io/s/zkklzkroll)
+    6. [手写 redux 过程](https://github.com/wojiaofengzhongzhuifeng/redux)
 4. redux 有什么缺点？
     1. store 必须逐层传递
 4. react-redux
