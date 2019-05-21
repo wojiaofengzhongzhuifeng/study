@@ -3,7 +3,7 @@
 ## JavaScript 基础
 
 - [数据类型](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/js数据类型.md)
-- [DOM](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/DOM.md)
+- [DOM](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/B8-DOM.md)
 - [闭包](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/闭包.md)
 - [事件循环](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/事件循环.md)
 - [原型链](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/原型链.md)
