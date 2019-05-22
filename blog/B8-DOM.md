@@ -15,57 +15,43 @@
 
 对于一个经典的事件监听函数,明确一些概念
 
-```
-btn.addEventListener("click", function(){
-  //这个函数就是事件处理函数
-  console.log(1)
-})
+```javascript
+funtion clickHandler(){
+	console.log(1)
+}
+
+btn.addEventListener("click", clickHandler)
 ```
 
-- 事件 === 用户的动作 ===在上面的代码就是 "click"
+- 事件(event) === 用户的动作 ===在上面的代码就是 "click"
 
 - 事件监听 === 上面的整个代码 === 事件 + 事件处理函数
 
-- 事件处理函数 === 在上面的代码就是`console.log(1)`
+- 事件处理函数(eventHandler) === clickHandler 函数
 
 - 事件流 === 事件在 DOM 节点树传播的顺序,可以是冒泡或者捕获
 
   
 
-## 冒泡阶段和捕获阶段
+## 冒泡阶段和捕获阶段执行函数顺序
 
-1. 冒泡和捕获阶段测试 demo : http://js.jirengu.com/tofisalewa/1/edit?
+- [demo](https://jsbin.com/wilowiciru/1/edit?html,css,js,console,output)
 
-2. DOM 
+  点击 3 ，说明为什么会这样打印
 
-   ![未命名文件 (9).png](http://upload-images.jianshu.io/upload_images/5529438-3ca1cd80186bc2c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+  重点：
 
-3. 问题: 点击4区域,解释打印结果
+  - `冒泡3`为什么在`捕获3`的前面
+  - `冒泡3`为什么在`冒泡33333`的前面
 
-   注意点: 
+  总结：
 
-   1. div3 有两个函数,注意执行顺序
-   2. div3 之后有个×, 他的实现的代码是什么?
-
-4. 问题: 如果我点击3区域,打印什么?
-
-   打印`冒泡2222, 3 ,33333`
-
-5. 事件处理程序顺序测试demo: http://js.jirengu.com/qoyobenoxu/1/edit?
-
-   点击 3 区域,解释打印内容
-
-6. 总结: 一个 DOM 结点事件处理程序的顺序: 
-
-   1. 先捕获后冒泡
-   2. 哪个代码在前面, 哪个代码就先执行
-   3. 一般情况下, 是先看1,如果1相同,再看2
-   4. 但是当 DOM 结点(如 demo 的 div4 )之后没有 DOM 结点, 那个按照第2条规则处理
+  - **DOM 是终点，谁先监听，先执行谁**：如果这个 DOM 节点是事件传播的终点（如上述的 div3 就是事件传播的终点），并且该 DOM 挂载了捕获和冒泡回调函数，那么谁先监听，谁先执行
+  - **DOM 不是终点，先执行捕获，再执行冒泡**：如果这个 DOM 节点**不**是事件传播的终点（如上述的 div2 就不是事件传播的终点），并且该 DOM 挂载了捕获和冒泡回调函数，那么一定**先执行捕获回调，再执行冒泡回调**
+  - DOM 同一个挂载两个回调，谁先监听，先执行谁
 
 
-
-
-## 事件处理函数内添加事件监听  
+## 事件处理函数套事件监听
 
 1. 点击3区域, 解释打印内容
 

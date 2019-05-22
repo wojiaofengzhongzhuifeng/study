@@ -1,4 +1,46 @@
-## ES6 语法知道哪些，分别怎么用？
+# ES6
+
+- 作用域
+
+- 箭头函数
+
+- 展开运算符`...`
+
+  1. [剩余参数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Rest_parameters)：string 变成 array
+  2. [函数参数]()：array 变成 string
+  3. 对象/数组复制：将对象/数组变成 `key:value`
+
+- 对象属性加强
+
+  1. 支持相同 key，value 简写
+  2. key 是变量 `let obj = {["baz" + "ffffff" ]: 42}`
+
+- 解构赋值
+
+  1. 数组匹配 `[ b, a ] = [ a, b ]`
+
+  2. 对象匹配 `let { a, b, c } = objABC`
+
+  3. 参数匹配 `function g ({ name: n, val: v }) {}`
+
+- 模块
+
+- Class
+
+- 新增的数据类型
+
+  1. Symbol：基本数据类型，表示永远不同的 string
+
+- 新增的对象
+
+  1. Set：存储任何类型的**唯一**值，无论是[原始值](https://developer.mozilla.org/en-US/docs/Glossary/Primitive)或者是对象引用
+  2. Map：key 值可以是引用类型
+
+
+
+
+
+## 详细
 
 1. 使用 let / const 代替 var
 
@@ -217,6 +259,8 @@
 
 10. new Set()数据结构
 
-  ​    
+  
 
+  ​    
+  
     

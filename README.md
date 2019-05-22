@@ -47,7 +47,6 @@
 
 ## Node.js
 
-- [第一个 nodejs 应用](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/第一个nodejs应用.md)
 - [webpack核心](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/webpack核心.md)
 
 ## 设计模式、架构、编程思想
