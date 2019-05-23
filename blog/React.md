@@ -18,8 +18,8 @@
     3. 监听数据，一旦数据变化，重新render
     4. 从上往下传递store
     5. store有获取数据(`getState()`)和修改数据接口(`dispatch(action)`)，使用即可
-[redux数数例子](https://codesandbox.io/s/zkklzkroll)
-    6. [手写 redux 过程](https://github.com/wojiaofengzhongzhuifeng/redux)
+6. [redux数数例子](https://codesandbox.io/s/zkklzkroll)
+    7. [手写 redux 过程](https://github.com/wojiaofengzhongzhuifeng/redux)
 4. redux 有什么缺点？
     1. store 必须逐层传递
 4. react-redux
@@ -27,7 +27,7 @@
     2. 生成store
     3. 使用`<Provider>`组件包裹整个组件，并且传store给`<Provider>`
     4. 在任意层级子组件中，通过 connect 高阶函数，将『初始化数据』和『根据 action 对数据修改』传给子组件
-[react-redux例子](https://github.com/wojiaofengzhongzhuifeng/react-redux-demo)
+5. [react-redux例子](https://github.com/wojiaofengzhongzhuifeng/react-redux-demo)
 6. react context
     - F1,f2,f3,f4逐层传递参数
     - 全局变量慎用
@@ -206,7 +206,7 @@ react 的 diff 算法是根据虚拟 DOM 的 key 进行比较
 <li key=3>hi</li>
 ```
 
-react 总是根据虚拟 dom 的 key 值进行判断是否要更新 ui，按照上面的，所有的 dom 都需要改变，开销很大
+react 总是根据虚拟 dom 的 key 值进行判断是否要更新 ui，如果不加 key，所有的 dom 都需要改变，开销很大
 
 
 
@@ -226,20 +226,6 @@ react 总是根据虚拟 dom 的 key 值进行判断是否要更新 ui，按照�
       comments: []
     }
   }
-  ```
-
-- 想规定组件的 props 值
-
-  ```
-  import PropTypes from 'prop-types'
-  
-  ...
-  class Comment extends Component {
-    static propTypes = {
-      comment: PropTypes.object
-    }
-  }
-  ...
   ```
 
 - 函数命名规范

@@ -7,13 +7,15 @@
 
 4. localStorage: 无 HTTP 请求, 记录不重要信息, 永久有效
 
-5. SessionStorage: 与 localStorage 一致, 但是关闭页面失效
+5. SessionStorage: 与 localStorage 一致, 但是**关闭窗口**（不是退出chrome）失效
 
 6. cache-control: 没有 HTTP 请求
 
    (问题: 响应端是如何发现你的缓存没有过期, 还不是要通过 HTTP 请求得知吗?那么怎么会没有 HTTP 请求呢?答案: HTTP发送之前,会查看cache-control,如果不需要请求,就不再发送请求)
 
 7. Cache-Control直接不请求, Etag直接不下载(要请求)
+
+8. Cookie有效期：退出浏览器，Cookie 消失
 
 
 
