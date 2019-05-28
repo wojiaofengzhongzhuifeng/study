@@ -59,4 +59,5 @@
 ## 工具使用
 
 - [webstorm，shell](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/webstorm.md)
+- [git](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/git.md)
 

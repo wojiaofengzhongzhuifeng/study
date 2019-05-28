@@ -16,4 +16,19 @@
 
 - 第二个阶段：表单验证
 
-  ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190527230745.png)  
+  ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190527230745.png)
+
+- 如何设置数据字符串类型？
+
+  ```typescript
+  type test = Array<String>
+  ```
+
+- Input组件如何继承原生input的所有方法
+
+- 使用 line-height 代替 height 
+
+## form 功能
+
+- 使用「单向数据流」 + 「受控组件」的思想，外部获取最新数据
+- 表单验证
