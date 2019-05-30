@@ -28,6 +28,24 @@
 
 - 使用 line-height 代替 height 
 
+- 制作 input 的时候，为什么要把classes单独抽出来
+
+- 为什么要有 classes 这个辅助函数？？
+
+  - 组件注册位置有写 className = "test"
+  - 给 .test添加样式
+  - 组件使用位置写className="test1"
+  - .test样式被覆盖
+  - 最好的结果是这样的，最终的className="test test1"
+  - classNames的作用：  
+    1. classNames("a", "b") => "a b"    classNames("a") => "a"
+
+- 报错信息位置如何处理？添加占位span
+
+- 一个input的报错信息可能是多个，由用户决定展示一个还是多个
+
+  - 如何设置组件的props默认值 
+
 ## form 功能
 
 - 使用「单向数据流」 + 「受控组件」的思想，外部获取最新数据

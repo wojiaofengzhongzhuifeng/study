@@ -46,6 +46,8 @@
 
 ## 项目
 
+- [Vue 有赞](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/vue有赞.md)
+
 ## Node.js
 
 - [webpack核心](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/webpack核心.md)
@@ -60,4 +62,5 @@
 
 - [webstorm，shell](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/webstorm.md)
 - [git](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/git.md)
+- [vim](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/vim.md)
 
