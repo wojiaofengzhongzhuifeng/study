@@ -40,6 +40,7 @@
 - [React 的异步操作](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/ReactAsync.md)
 - [React轮子-FORM](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/reactForm.md)
 - [Vue轮子-POPOVER](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/vuePopover.md)
+- [Vue组件通信](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/vue通信.md)
 
 
 
