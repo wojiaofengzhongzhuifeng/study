@@ -4,20 +4,6 @@
 
 
 
-
-
-## 理解 AJAX 
-
-那么，AJAX 是什么呢？我们可以画出 ” client 和 server “ 的关系图：
-
-![选区_113.png](http://upload-images.jianshu.io/upload_images/5529438-7526879e29d26805.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-**AJAX 就是在 chrome  通过 XMLHttpRequest 对象, 构造（set）HTTP 请求和获取（get）HTTP 响应内容的技术**
-
-
-
-
-
 ## AJAX 发送请求过程
 
 Jesse James Garrett 讲如下技术取名叫做 AJAX：异步的 JavaScript 和 XML
@@ -36,7 +22,9 @@ AJAX 技术包括以下四步:
 
 ## AJAX原生代码
 
-使用原生 js 中的 XMLHttpRequest 实现 ajax
+readystate === 4 表示连接成功
+
+status >= 200 && status <= 300 表示服务器能正确返回数据
 
 ```javascript
 //自己写的第一版

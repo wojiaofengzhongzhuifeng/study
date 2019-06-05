@@ -47,4 +47,8 @@
   - 如何设置组件的props默认值
   
 - 第三阶段：如何进行异步校验？
+
+  https://jsbin.com/joboquroca/1/edit?js,console,output 简单的实现
+
+  https://jsbin.com/yifumujeku/1/edit 核心实现
  
