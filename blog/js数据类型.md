@@ -37,21 +37,6 @@
 - Object.prototype.toString.call([]) => 返回 "[object String]"
 
 
-
-
-
-6. falsy值（要背）
-   1. 数字0
-   2. 数字NaN
-   3. 字符串空
-   4. undefined
-   5. null
-2. 使用 `Object.prototype.toString.call()`判断类型
-
-
-
-
-
 ## 按值传递与按引用传递的区别，进阶版
 
 ```javascript
@@ -71,4 +56,14 @@ console.log(a)
 3. a变量保存新对象地址
 
    ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190523182558.png)
+   
+   
+   
+## falsy 值
+
+   1. 数字0
+   2. 数字NaN
+   3. 字符串空
+   4. undefined
+   5. null
 
