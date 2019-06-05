@@ -41,3 +41,29 @@ https://jsbin.com/cuxinequra/1/edit
 ## 居中
 
 https://css-tricks.com/centering-css-complete-guide/
+
+  - 负 margin ：垂直居中，知道 width ：https://jsbin.com/doriyexida/1/edit?html,css,output
+  
+  - 负 transform ：垂直居中，不知道 width：https://jsbin.com/pilicozula/1/edit?html,css,output
+  
+  
+  
+## flex 布局知识脉络
+
+  - flex 有主轴，交叉轴，容器，元素。
+  
+  - 元素沿着主轴排列成一行，不换行。
+  
+  - flex-direction：切换主轴的方向。
+  
+  - flex-wrap: 主轴元素一行放不下，是否需要换行
+    
+  - flex-grow,flex-shrink：指定元素的伸缩
+  
+  - flex-basic：？
+  
+  - 主轴对齐方式：justify-content
+  
+  - 单行交叉轴对齐方式：align-items
+  
+  - 多行交叉轴对齐方式：align-content

@@ -30,28 +30,42 @@
 
 3. 箭头函数
 
-   箭头函数的 this 是外部作用域指向的 this
-
-   ```javascript
-   let obj = {
-     a: "123"
-   }
-   let _this = "我是 window";
-   // 页面加载时，会执行 var this = window;
-   let test = ()=>{
-     console.log(this)
-   }
-   function test3(){
-     console.log(_this)
-   }
-   function test1(){
-     console.log(this)
-   }
+   箭头函数的 this 是外部作用域（注意不是外部{}）指向的 this，使用call指向无效
    
-   test.call(obj)
-   test1.call(obj)
-   test3()
-   ```
+   - 「使用call指向this无效」的例子：
+   
+       ```javascript
+       let obj = {
+         a: "123"
+       }
+       let _this = "我是 window";
+       // 页面加载时，会执行 var this = window;
+       let test = ()=>{
+         console.log(this)
+       }
+       function test3(){
+         console.log(_this)
+       }
+       function test1(){
+         console.log(this)
+       }
+       
+       test.call(obj) // 重点：指向什么？
+       test1.call(obj)
+       test3()
+       ```
+       
+   - 「this 是外部作用域（注意不是外部{}）指向的 this」的例子
+   
+       ```javascript
+        let obj = {
+          b: ()=>{
+            console.log(this)
+          },
+        };
+        obj.b() // 打印什么？？
+       ```
+
 
    
 

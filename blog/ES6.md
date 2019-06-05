@@ -6,8 +6,8 @@
 
 - 展开运算符`...`
 
-  1. [剩余参数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Rest_parameters)：string 变成 array
-  2. [函数参数]()：array 变成 string
+  1. [剩余参数](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Rest_parameters)：多个参数 item 变成参数 array，在函数定义的地方用
+  2. [函数参数]()：array 变成多个参数 item，在函数使用的地方用
   3. 对象/数组复制：将对象/数组变成 `key:value`
 
 - 对象属性加强
@@ -33,7 +33,7 @@
 
 - 新增的对象
 
-  1. Set：存储任何类型的**唯一**值，无论是[原始值](https://developer.mozilla.org/en-US/docs/Glossary/Primitive)或者是对象引用
+  1. Set：存储任何类型的**唯一**值，如`const array =  Array.from(new Set([1,1,1,2,3]))`
   2. Map：key 值可以是引用类型
 
 
@@ -46,9 +46,9 @@
 
    - var 变量提升
 
-     1. 什么是变量提升：
+     1. 什么是声明提升：
 
-        **使用 var 声明的变量**，JavaScript 会在预编译的时候将变量提升到最上面
+        **使用 var 声明的变量或者声明一个函数**，JavaScript 会在预编译的时候将声明提升到最上面
 
         ```javascript
         console.log(a) // 打印 undefined
@@ -80,6 +80,12 @@
         ```
 
         https://segmentfault.com/a/1190000003114255
+        
+     2. 为什么要进行变量提升？
+     
+        - 提高性能
+        
+        - 容错性更好
 
    - let 可变 / const 不可变
 

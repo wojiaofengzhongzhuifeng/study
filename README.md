@@ -21,6 +21,9 @@
 
 - [这些知识太细了，我放到这里](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/css杂.md)
 
+## HTML
+
+- [HTML5 新增的标签](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/html5标签.md)
 
 
 ## HTTP
