@@ -18,29 +18,23 @@
 
 ## 区别数据类型的 api
 
-### 1. typeof
+- typeof: 不能判断`null`和`函数`
 
-使用范围：只能判断基本类型 `string, number, boolean, undefined`，除了
+- instanceof
 
-typeof 的 bug：
+    1. 使用范围：只能判断引用类型
 
-1. `typeof function(){}` 竟然返回`'function'`,**明明`function`不是数据类型。**
-2. `typeof null`竟然返回 `object`
+    2. 原理：通过原型链
 
-### 2. instanceof
-
-使用范围：只能判断引用类型
-
-原理：通过原型链
-
-```
-a instanceof b
-// 那么会这样比较
-// a.__proto__ === b.prototype ? 如果正确，返回 true
-// a.__proto__.__proto__ === b.prototype ? 返回 true
-// 直到 a.__proto__.__proto__ ...  === null 返回 false
-```
-
+        ```javascript
+        a instanceof b
+        // 那么会这样比较
+        // a.__proto__ === b.prototype ? 如果正确，返回 true
+        // a.__proto__.__proto__ === b.prototype ? 返回 true
+        // 直到 a.__proto__.__proto__ ...  === null 返回 false
+        ```
+        
+- Object.prototype.toString.call([]) => 返回 "[object String]"
 
 
 
