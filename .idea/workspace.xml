@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcd33afa-6683-427f-8857-317288ba52c1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/事件循环.md" beforeDir="false" afterPath="$PROJECT_DIR$/blog/事件循环.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -32,8 +31,8 @@
         <entry file="file://$PROJECT_DIR$/blog/事件循环.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="200">
-                <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+              <first_editor relative-caret-position="340">
+                <caret line="133" column="8" lean-forward="true" selection-start-line="133" selection-start-column="8" selection-end-line="133" selection-end-column="8" />
               </first_editor>
               <second_editor />
             </state>
@@ -128,7 +127,7 @@
       <workItem from="1559051247114" duration="602000" />
       <workItem from="1559224625070" duration="7474000" />
       <workItem from="1559549749425" duration="13699000" />
-      <workItem from="1559733994451" duration="6302000" />
+      <workItem from="1559733994451" duration="6571000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1559051621617</created>
@@ -207,14 +206,22 @@
       <option name="project" value="LOCAL" />
       <updated>1559742899046</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="2019.6.5">
+      <created>1559750291963</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1559750291964</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30100000" />
+    <option name="totallyTimeSpent" value="30369000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12825933" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -493,8 +500,8 @@
     <entry file="file://$PROJECT_DIR$/blog/事件循环.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="200">
-            <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+          <first_editor relative-caret-position="340">
+            <caret line="133" column="8" lean-forward="true" selection-start-line="133" selection-start-column="8" selection-end-line="133" selection-end-column="8" />
           </first_editor>
           <second_editor />
         </state>
