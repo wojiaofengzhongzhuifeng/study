@@ -49,11 +49,11 @@ console.log(a)
 
 重点是`a.x = a = {n: 2}`如何处理？
 
-1. 在 a 变量指代的对象，添加x这个key。
+1. 从左向右执行
 
-2. x的value**指向a变量，注意，没有指向确定地址，只是单纯指向a变量，即a变量是什么，a.x就是什么！！！**。
+2. 执行 a.x = a，就是让变量 a 指代的对象添加一个 x key, 并且让 x value 指向变量 a
 
-3. a变量保存新对象地址
+3. 执行 a = {n: 2}
 
    ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190523182558.png)
    
