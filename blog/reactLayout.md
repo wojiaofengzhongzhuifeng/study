@@ -29,6 +29,8 @@
 
 - 使用 reducer 代替 let？
 
+    https://jsbin.com/vofaqalaro/1/edit?js,console,output `[1,2,3].reduce((total, number)=>{return number + total}, 0)`
+
 - 作用域问题 && || 
   
     ```javascript
@@ -112,6 +114,8 @@ https://jsbin.com/nuwemeceta/1/edit
     2.  rao-layout-hasAside 的样式是 flex-direction: row;
     
     3. layout（className="rao-layout-hasAside"）内部有 layout 组件，内部的 layout 组件的flex-direction： column
+      
+- 组件模块化，为什么要这样处理？
 
 
 
