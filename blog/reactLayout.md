@@ -25,11 +25,6 @@
   
       她的意思是：Props 接口，继承了 React 封装的 html 属性接口，并且指定（覆盖） props 接口的 children 属性只能为 ReactElement | Array<ReactElement>
       
-      
-- reduce 的使用
-
-  https://jsbin.com/vofaqalaro/1/edit?js,console,output
-  
 - 使用 && 和 || 代替 if 语句
 
   https://jsbin.com/bohacohasu/1/edit?js,console,output
@@ -57,6 +52,8 @@
     2. filter： https://jsbin.com/migobicowe/1/edit?js,console,output
         
     3. Object.entries(对象 => 数组): 将对象的 key：value 变成数组的item 如 Object.entries({a: 1, b: 2}) 返回的是 [["a", 1], ["b", 2]]
+    
+    4. reduce： https://jsbin.com/vofaqalaro/1/edit?js,console,output
     
 - 第四个例子如何实现？？
 
