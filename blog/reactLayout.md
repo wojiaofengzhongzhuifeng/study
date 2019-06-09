@@ -11,10 +11,6 @@
 
 - layout 组件接受两个 prop 分别是 style， className
 
-- 构建 style 的interface 时， 不知道如何写style的interface，应该如何处理？
-
-  1. 在原生的div中添加 style 属性， 查看该属性即可
-
 - layout 接口需要继承 html 的所有属性
 
   1. 为什么 layout 接口要继承 html 所有属性？？ 
@@ -23,27 +19,17 @@
      
   2. 最终的答案
   
-  ```typescript
-  interface Props extends React.HTMLAttributes<HTMLElement>{
-    children: ReactElement | Array<ReactElement>
-  }
-  ```
+    ```typescript
+    interface Props extends React.HTMLAttributes<HTMLElement>{
+      children: ReactElement | Array<ReactElement>
+    }
+    ```
   
-  她的意思是：Props 接口，继承了 React 封装的 html 属性接口，并且指定 props 接口的 children 属性为 ReactElement | Array<ReactElement>
+    她的意思是：Props 接口，继承了 React 封装的 html 属性接口，并且指定（覆盖） props 接口的 children 属性为 ReactElement | Array<ReactElement>
 
-- 如果 laoyout 内部有 layout ，第二个layout 应该设置为 flex-grow ： 1，flex-direction:row, 
+- 使用 reducer 代替 let？
 
-- 如果layout 组件内部有aside ，往layout 组件添加一个 class， 这个class 设置 layout是左右结构，也就是 flex-direction:row
-
-- 如何限制红框的元素？？
-
-- 断言： props.children as Array<ReactElement> 
-
-  翻译： props.children 一定是ReactElement数组类型 
-
-- 使用 reducer 代替 let 
-
-- 作用域问题
+- 作用域问题 && || 
   
     ```javascript
     const flag = true;
@@ -66,6 +52,7 @@
     ```
     
     &&: 寻找第一个 falsy 值`var a = 1 && 2 && null && 3;`
+    
     如果都是 true，那么a是最后一个 truely值`var a = 1 && 2 && 3 && 4`
     
     
@@ -82,31 +69,15 @@
 
 ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190608150446.png)
 
-- 重构代码步骤
-
-  1. 什么代码可以测试？输入一定的值，返回一定的值，可以进行测试
-  
-  2. 编写测试用例。
-  
-  3. 跑一遍测试用例，查看是否通过。
-  
-- 函数式处理数据， 使用 map, entiers, filter, concat, join
-
 ## 在实际过程遇到的问题
 
-- layout 组件的children可以是 layout， 如何定义 layout的接口？
-
-![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190608165705.png)
-
-- className 函数升级过程
+- 使用 函数式思想，流式操作数据
 
 https://jsbin.com/nuwemeceta/1/edit
 
-
-  
 - 常用的函数式操作
   
-    1. filter： https://jsbin.com/safefazudo/1/edit?js,console,output
+    1. filter： https://jsbin.com/migobicowe/1/edit?js,console,output
     
     2. Object.entries(对象 => 数组): 将对象的 key：value 变成数组的item 如 Object.entries({a: 1, b: 2}) 返回的是 [["a", 1], ["b", 2]]
     
