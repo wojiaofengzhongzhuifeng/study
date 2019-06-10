@@ -1,3 +1,42 @@
+# Cookie
+
+## 笔记
+
+- 早期 Cookie 的作用： 解决用户网上购物的购物车历史记录
+
+- Cookie 的来历
+
+    > 当我们浏览之前访问过的网站，网页中可能会显示：你好，王三少，这就会让我们感觉很亲切，像吃了一块很甜的饼干一样。
+
+- Cookie的原理
+
+    1. http 是无状态的协议，无状态指的是服务器无法知道客户端的身份。
+    
+    2. 新需求：服务端想知道客户端的身份。
+    
+    3. 当客户端第一次请求的时候，服务端在客户端写入一段信息，下次访问，必须带上身份证，这样服务器就会知道是谁来访问了，针对不同用户，做出不同的响应。
+    
+    4. 图例
+    
+        ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190609181510.png)
+        
+- Cookie 可以分为会话 Cookie 和持久 Cookie
+
+- HTTP 响应内容 header 有关 Cookie 的属性
+
+    在 m.zhuanzhuan.58.com 路径下，设置如下属性
+    
+    `Set-cookie: id="123432";domain="m.zhuanzhuan.58.com";`
+    
+    这句话的意思是：如果访问的是 m.zhuanzhuan.58.com，那么下次请求 m.zhuanzhuan.58.com 时，服务器会收到 id="123432" 这段 Cookie 
+    
+    在 m.zhuanzhuan.58.com/user/ 路径下，设置如下属性
+        
+    `Set-cookie: user="wang";domain="m.zhuanzhuan.58.com"; path=/user/`
+    
+    这句话的意思是：如果访问的是 m.zhuanzhuan.58.com/user/，那么下次请求 m.zhuanzhuan.58.com/user/ 时，服务器会收到 id="123432" 和 user="wang" 这段 Cookie 
+        
+
 ## 重点
 1. cookie: 有 HTTP 请求
 
