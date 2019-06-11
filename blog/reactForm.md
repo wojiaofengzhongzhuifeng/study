@@ -28,18 +28,6 @@
 
 - 使用 line-height 代替 height 
 
-- 制作 input 的时候，为什么要把classes单独抽出来
-
-- 为什么要有 classes 这个辅助函数？？
-
-  - 组件注册位置有写 className = "test"
-  - 给 .test添加样式
-  - 组件使用位置写className="test1"
-  - .test样式被覆盖
-  - 最好的结果是这样的，最终的className="test test1"
-  - classNames的作用：  
-    1. classNames("a", "b") => "a b"    classNames("a") => "a"
-
 - 报错信息位置如何处理？添加占位span
 
 - 一个input的报错信息可能是多个，由用户决定展示一个还是多个
@@ -48,7 +36,12 @@
   
 - 第三阶段：如何进行异步校验？
 
-  https://jsbin.com/joboquroca/1/edit?js,console,output 简单的实现
+  https://jsbin.com/qemeviciqo/1/edit?js,output 实现过程
 
-  https://jsbin.com/yifumujeku/1/edit 核心实现
+- 如果只是想使用 promise 的结果值，在相应的回调函数中执行代码即可。但是如果想收集 promise 的结果，必须通过？？？
+
+- 定义接口：如何定义一个数组，数组只有两项，第一项是string， 第二项是string | promise<void>?
  
+ ## 功能
+
+ ## 知识点

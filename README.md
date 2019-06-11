@@ -36,6 +36,8 @@
 
 - [缓存](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/缓存.md)  
 
+- [身份验证](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/身份验证.md)
+
 ## 框架
 
 - [React](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/React.md)
@@ -52,7 +54,7 @@
 
 ## 项目
 
-- [Vue 有赞](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/vue有赞.md)
+- [番茄土豆](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/番茄土豆.md)
 
 ## Node.js
 
