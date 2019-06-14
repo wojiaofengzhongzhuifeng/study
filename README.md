@@ -54,8 +54,6 @@
 
 ## 项目
 
-- [番茄土豆](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/番茄土豆.md)
-
 ## Node.js
 
 - [webpack核心](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/webpack核心.md)
