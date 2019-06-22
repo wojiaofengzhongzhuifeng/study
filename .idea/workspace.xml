@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcd33afa-6683-427f-8857-317288ba52c1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blog/记账.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/记账.md" beforeDir="false" afterPath="$PROJECT_DIR$/blog/记账.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -57,8 +56,8 @@
         <entry file="file://$PROJECT_DIR$/blog/记账.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="457">
-                <caret line="91" column="10" selection-start-line="91" selection-start-column="10" selection-end-line="91" selection-end-column="10" />
+              <first_editor relative-caret-position="389">
+                <caret line="99" column="16" lean-forward="true" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
               </first_editor>
               <second_editor />
             </state>
@@ -129,6 +128,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="x" value="1" />
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="501" />
@@ -192,7 +192,7 @@
       <workItem from="1559549749425" duration="13699000" />
       <workItem from="1559733994451" duration="31065000" />
       <workItem from="1560319148429" duration="7540000" />
-      <workItem from="1560608059516" duration="14501000" />
+      <workItem from="1560608059516" duration="16602000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1559051621617</created>
@@ -341,11 +341,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560485996249</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="2019.6.20">
+      <created>1561115565461</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1561115565461</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76904000" />
+    <option name="totallyTimeSpent" value="79005000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -424,7 +431,8 @@
     <MESSAGE value="2019.6.9" />
     <MESSAGE value="2019.6.9 修改" />
     <MESSAGE value="2019.6.13 修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="2019.6.13 修改" />
+    <MESSAGE value="2019.6.20" />
+    <option name="LAST_COMMIT_MESSAGE" value="2019.6.20" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/blog/React.md">
@@ -680,8 +688,8 @@
     <entry file="file://$PROJECT_DIR$/blog/记账.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="457">
-            <caret line="91" column="10" selection-start-line="91" selection-start-column="10" selection-end-line="91" selection-end-column="10" />
+          <first_editor relative-caret-position="389">
+            <caret line="99" column="16" lean-forward="true" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
           </first_editor>
           <second_editor />
         </state>
