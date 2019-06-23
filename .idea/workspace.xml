@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcd33afa-6683-427f-8857-317288ba52c1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/blog/有赞.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/记账.md" beforeDir="false" afterPath="$PROJECT_DIR$/blog/记账.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,20 +33,8 @@
         <entry file="file://$PROJECT_DIR$/blog/跨域.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="1800">
-                <caret line="90" selection-start-line="90" selection-end-line="90" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="1120">
-                <caret line="56" column="75" selection-start-line="56" selection-start-column="75" selection-end-line="56" selection-end-column="75" />
+              <first_editor relative-caret-position="144">
+                <caret line="79" column="11" lean-forward="true" selection-start-line="79" selection-start-column="11" selection-end-line="79" selection-end-column="11" />
               </first_editor>
               <second_editor />
             </state>
@@ -53,11 +42,23 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="135">
+                <caret line="56" column="9" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog/记账.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="389">
-                <caret line="99" column="16" lean-forward="true" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
+              <first_editor relative-caret-position="260">
+                <caret line="13" column="23" lean-forward="true" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
               </first_editor>
               <second_editor />
             </state>
@@ -122,16 +123,15 @@
         <option value="$PROJECT_DIR$/blog/Cookie.md" />
         <option value="$PROJECT_DIR$/blog/跨域.md" />
         <option value="$PROJECT_DIR$/blog/番茄土豆.md" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/blog/记账.md" />
+        <option value="$PROJECT_DIR$/blog/有赞.md" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="1" />
-    <option name="y" value="23" />
-    <option name="width" value="1440" />
-    <option name="height" value="501" />
+    <option name="width" value="718" />
+    <option name="height" value="900" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -192,7 +192,7 @@
       <workItem from="1559549749425" duration="13699000" />
       <workItem from="1559733994451" duration="31065000" />
       <workItem from="1560319148429" duration="7540000" />
-      <workItem from="1560608059516" duration="16602000" />
+      <workItem from="1560608059516" duration="20680000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1559051621617</created>
@@ -348,17 +348,30 @@
       <option name="project" value="LOCAL" />
       <updated>1561115565461</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="2019.6.21">
+      <created>1561183241054</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1561183241054</updated>
+    </task>
+    <task id="LOCAL-00024" summary="2019.6.21">
+      <created>1561187709826</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1561187709826</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79005000" />
+    <option name="totallyTimeSpent" value="83083000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15081044" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18181819" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -370,7 +383,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.5133418" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.16899619" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.16899619" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -432,7 +445,8 @@
     <MESSAGE value="2019.6.9 修改" />
     <MESSAGE value="2019.6.13 修改" />
     <MESSAGE value="2019.6.20" />
-    <option name="LAST_COMMIT_MESSAGE" value="2019.6.20" />
+    <MESSAGE value="2019.6.21" />
+    <option name="LAST_COMMIT_MESSAGE" value="2019.6.21" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/blog/React.md">
@@ -645,26 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/跨域.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="1800">
-            <caret line="90" selection-start-line="90" selection-end-line="90" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="1120">
-            <caret line="56" column="75" selection-start-line="56" selection-start-column="75" selection-end-line="56" selection-end-column="75" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blog/身份验证.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -688,8 +682,38 @@
     <entry file="file://$PROJECT_DIR$/blog/记账.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="389">
-            <caret line="99" column="16" lean-forward="true" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
+          <first_editor relative-caret-position="260">
+            <caret line="13" column="23" lean-forward="true" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/跨域.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="144">
+            <caret line="79" column="11" lean-forward="true" selection-start-line="79" selection-start-column="11" selection-end-line="79" selection-end-column="11" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/有赞.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor>
+            <caret column="1" lean-forward="true" selection-start-column="1" selection-end-line="9" selection-end-column="2" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="135">
+            <caret line="56" column="9" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
           </first_editor>
           <second_editor />
         </state>
