@@ -66,6 +66,8 @@
 
 ## 设计模式、架构、编程思想
 
+- [middleWare](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/middleWare.md)
+
 
 
 ## 数据结构、算法相关
@@ -75,4 +77,8 @@
 - [webstorm，shell](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/webstorm.md)
 - [git](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/git.md)
 - [vim](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/vim.md)
+
+## 每日学习
+
+- [每日学习](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/daily.md)
 
