@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fcd33afa-6683-427f-8857-317288ba52c1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blog/daily.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blog/middleWare.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/大众点评.md" beforeDir="false" afterPath="$PROJECT_DIR$/blog/大众点评.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/daily.md" beforeDir="false" afterPath="$PROJECT_DIR$/blog/daily.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -38,8 +35,8 @@
         <entry file="file://$PROJECT_DIR$/blog/daily.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="100">
-                <caret line="5" selection-start-line="5" selection-end-line="5" />
+              <first_editor relative-caret-position="98">
+                <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
               </first_editor>
               <second_editor />
             </state>
@@ -92,7 +89,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="y" value="23" />
+    <option name="x" value="1" />
+    <option name="y" value="203" />
     <option name="width" value="1440" />
     <option name="height" value="877" />
   </component>
@@ -156,7 +154,7 @@
       <workItem from="1559733994451" duration="31065000" />
       <workItem from="1560319148429" duration="7540000" />
       <workItem from="1560608059516" duration="52522000" />
-      <workItem from="1561987941389" duration="1056000" />
+      <workItem from="1561987941389" duration="10476000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1559051621617</created>
@@ -368,11 +366,25 @@
       <option name="project" value="LOCAL" />
       <updated>1561350104136</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="2019.7.2">
+      <created>1562063639373</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1562063639373</updated>
+    </task>
+    <task id="LOCAL-00032" summary="2019.7.2">
+      <created>1562123592653</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1562123592653</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115981000" />
+    <option name="totallyTimeSpent" value="125401000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -455,7 +467,8 @@
     <MESSAGE value="2019.6.21" />
     <MESSAGE value="2019.6.23" />
     <MESSAGE value="2019.6.24" />
-    <option name="LAST_COMMIT_MESSAGE" value="2019.6.24" />
+    <MESSAGE value="2019.7.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="2019.7.2" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/blog/React.md">
@@ -759,8 +772,8 @@
     <entry file="file://$PROJECT_DIR$/blog/daily.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="100">
-            <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <first_editor relative-caret-position="98">
+            <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
           </first_editor>
           <second_editor />
         </state>
