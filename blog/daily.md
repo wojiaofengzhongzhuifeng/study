@@ -1,5 +1,9 @@
 
-## 第一周新知识
+# 2019.7.6
+
+- [three.js学习笔记-1](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/threejs学习笔记.md)
+
+# 第一周新知识
 
 - 所有功能由数据结构开始想
 

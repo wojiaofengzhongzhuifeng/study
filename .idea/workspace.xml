@@ -31,13 +31,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog/daily.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="220">
-                <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+              <first_editor relative-caret-position="60">
+                <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
               </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/blog/three.js 学习笔记.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
               <second_editor />
             </state>
           </provider>
@@ -153,7 +163,7 @@
       <workItem from="1559733994451" duration="31065000" />
       <workItem from="1560319148429" duration="7540000" />
       <workItem from="1560608059516" duration="52522000" />
-      <workItem from="1561987941389" duration="20914000" />
+      <workItem from="1561987941389" duration="21779000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1559051621617</created>
@@ -400,17 +410,23 @@
       <option name="project" value="LOCAL" />
       <updated>1562320542251</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="2019.7.6">
+      <created>1562422702567</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1562422702568</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="135839000" />
+    <option name="totallyTimeSpent" value="136704000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09936575" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.09936575" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -422,7 +438,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.5133418" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.17153749" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.17153749" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -491,7 +507,8 @@
     <MESSAGE value="2019.7.3" />
     <MESSAGE value="2019.7.4" />
     <MESSAGE value="2019.7.5" />
-    <option name="LAST_COMMIT_MESSAGE" value="2019.7.5" />
+    <MESSAGE value="2019.7.6" />
+    <option name="LAST_COMMIT_MESSAGE" value="2019.7.6" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/blog/React.md">
@@ -795,8 +812,8 @@
     <entry file="file://$PROJECT_DIR$/blog/daily.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="220">
-            <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <first_editor relative-caret-position="60">
+            <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
           </first_editor>
           <second_editor />
         </state>
