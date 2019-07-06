@@ -5,7 +5,14 @@
 
 - 在 postman 中创建全局变量
 
-- 
+- none, form-data, x-www-form-urlencoded, raw, binary 是什么？区别是什么？
+
+    一般只用 form-data 或者 raw
+    
+    form-data 指的是上传文件或者传输表单内容。
+    
+    raw 指的是传输的是 JSON 
+
 
 # 2019.7.5
 
