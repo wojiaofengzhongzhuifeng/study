@@ -16,6 +16,7 @@
 - [Generators](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/Generators.md)
 - [继承](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/继承.md)
 - [函数](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/函数.md)
+- [你不知道的javascript-1](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/youdontknowjavascript1.md)
 
 ## CSS
 
