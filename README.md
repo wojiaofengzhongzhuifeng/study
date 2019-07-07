@@ -47,7 +47,6 @@
 - [React轮子-Layout](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/reactLayout.md)
 - [Vue轮子-POPOVER](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/vuePopover.md)
 - [Vue组件通信](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/vue通信.md)
-- [three.js学习笔记-1](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/threejs学习笔记.md)
 
 
 
