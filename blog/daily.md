@@ -1,3 +1,102 @@
+
+
+# 2019.7.8
+
+## 完成一次模块加载
+
+- 上传文件，获取 fileKey
+- 解析文件，输入 fileKey，输出 modelKey
+- 创建场景，输入 modelKey，输出 相同的 modelKey
+- 模型浏览
+
+## 过一遍 BOS3D API 
+
+- 操作视图
+
+- 操作构件(component)
+
+  ```
+  // 显示
+  showComponentsById(将在4.10.0版本移除)
+  showComponentsByKey
+  hideComponentsById(将在4.10.0版本移除)
+  hideComponentsByKey
+  hideAllComponents
+  showAllComponents
+  
+  // 高亮
+  highlightComponentsById(将在4.10.0版本移除)
+  highlightComponentsByKey
+  addHighlightComponentsByKey
+  closeHighlightComponentsById(将在4.10.0版本移除)
+  closeHighlightComponentsByKey
+  getHighlightComponentsKey
+  clearHighlightList
+  getHighlightComponents(移除)
+  
+  // 透明
+  setComponentsOpacityState
+  transparentComponentsById(将在4.10.0版本移除)
+  transparentComponentsByKey
+  transparentOtherComponentsByKey
+  transparentAllComponents
+  closeTransparentComponentsById(将在4.10.0版本移除)
+  closeTransparentComponentsByKey
+  clearTransparentList
+  
+  // 改变颜色
+  colorfulComponentsById(将在4.10.0版本移除)
+  colorfulComponentsByKey
+  closeColorfulComponentsById(将在4.10.0版本移除)
+  closeColorfulComponentsByKey
+  clearColorfulList
+  
+  // 3d -> 线框
+  wireFrameComponentsById(将在4.10.0版本移除)
+  wireFrameComponentsByKey
+  closeWireFrameComponentsById(将在4.10.0版本移除)
+  closeWireFrameComponentsByKey
+  
+  // 隔离
+  isolateComponentsById(将在4.10.0版本移除)
+  isolateComponentsByKey
+  closeIsolateComponentsById(将在4.10.0版本移除)
+  closeIsolateComponentsByKey
+  clearIsolation
+  
+  // 构件是否能被选中
+  disableComponentsSelectionByKey
+  enableComponentsSelectionByKey
+  clearDisableSelectionList
+  sortComponentsById
+  sortComponentsByKey
+  getComponentsAttributeById
+  getComponentsAttributeByKey
+  setComponentPositionByKey
+  componentsExplosion
+  closeComponentsExplosion
+  ```
+
+
+
+## react router 如何完成组件外跳转
+
+在该组件定义处，使用 withRouter 高阶组件进行包裹，那么在该组件的this.props可拿到history等属性
+
+## 新的跳转的方式
+
+```javascript
+this.props.history.push({
+	pathname: "/test",
+})
+```
+
+
+
+
+
+
+
 # 第一周知识点汇总
 
 - 所有功能由数据结构开始想
