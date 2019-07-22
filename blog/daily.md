@@ -1,3 +1,126 @@
+# 2019.7.22
+
+- react 中，如何进行数据命名，以及对数据操作的函数命名？
+
+  - 数据：number；
+  - 对数据的修改：editNumber；
+  - 对数据的初始化：initNumber；
+
+- react中，子组件想修改父组件的数据，最简单的实现方式是什么？
+
+  - 不需要在子组件传递父组件的state 的数据
+  - 父组件setState函数可以传入一个函数
+
+  https://codesandbox.io/s/serverless-frost-0r2ji
+
+- react 哲学
+
+- 不要设置相同的变量名称
+
+  ![组件的函数的参数不与state，antd提供的属性名称一致](/Users/raojj/Library/Application Support/typora-user-images/image-20190722185812537.png)
+
+  ![①组件的state名称不与antd提供的属性名称一致](/Users/raojj/Library/Application Support/typora-user-images/image-20190722192144954.png)
+
+  
+
+# 2019.7.19
+
+- 有数据，才使用数据进行计算。如
+
+  const test = noEmptObj(obj) && createTest(obj)
+
+  当obj不为空，才获取test的数据。
+
+- state的变量名称不能重复
+
+- 组件的state 初始化由prop提供，是应该这样写还是
+
+  ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190719182542.png)
+
+  在 componentDidMounted写？
+
+
+
+# 2019.7.18
+
+- 是否 constructor 无法 setState
+- 现有一个函数 test(a, b)，输出a + b，其中a, b都是异步获取数据，那么如何保证test正常输出值？
+
+# 2019.7.17
+
+## table-tree 思路
+
+- 写一个组件，接受两个props，分别是buttonBottom，model = [{domain: "baidi", dataBaseKey: "xxx", modelKey: "yyy"}]
+
+- 进入这个组件所在页面，使用 5.3.11 发送请求，获取到如下数据，将数据A保存起来，数据A选择 200 个数据B
+
+  ```
+  // 数据A
+  allModelData = {
+  	m1: {
+  		m1Key1: xxx,
+  		m1Key2: yyy,
+  		... * 10000
+  	},
+  	m2: {
+  		m2Key1: xxx,
+  		m2Key2: yyy,
+  		... * 20000
+  	}
+  }
+  
+  // 数据B
+  someModelData = {
+  	m1: [...* 200],
+  	m2: [...* 200],
+  }
+  ```
+
+- 点击按钮，右侧抽屉打开，抽屉是两个 table ，并且分别有两个按钮，查询和自定义列名
+
+- 多条件查询功能，通过 5.3.7 获得构件 key
+
+- 点击查询，再出来一个抽屉，用于收集多条件数据，点击确定，抽屉消失，table显示多条件数据，table显示数据通过数据A + 5.3.7 接口获取
+
+  Table的 dataSource 
+
+  ```
+  [{name: "xxx", key: "yyy", type: "zzz"}...]
+  ```
+
+  Table 的columns
+
+  ```
+  [
+  {title: "name", key: "name", dataIndex: "name"},
+  {title: "key", key: "key", dataIndex: "key"}
+  ]
+  ```
+
+  
+
+- 点击 自定义列名，出来一个抽屉，该抽屉展示一个树组件，树组件数据通过数据B得到。
+
+- 选择完成树组件之后，table会多相应的列
+
+# 2019.7.16
+
+- 分页思路
+  - 进入页面，请求第0页，100条component数据A
+  - 使用数据A+createTreeComponentData函数，生成树组件
+  - 用户通过点击树组件，获得用户想要展示的数据B
+  - 使用数据B + createTableColumnData 函数，生成table 所需的表头数据
+  - 使用数据B + createTableDataSource 函数，生成 table 所需的表体数据
+  - 点击第二页，???
+
+- 函数命名
+  - Createxxxx：生成某个数据
+  - getxxx：获取某个数据
+  - editxxx：修改某个数据
+  - Fetch：远程加载数据
+  - Computedxxxx: 通过计算获得数据,将此数据返回
+- 
+
 # 2019.7.15
 
 ## 知道为什么没有收获了
@@ -8,6 +131,13 @@
 ## typescirpt 全局安装与项目安装区别
 
 如果全局安装，可以在电脑任意路径使用相应命令
+
+
+
+## 什么情况需要定义类型？
+
+- 函数的输入参数与输出结果
+- 对象
 
 # 2019.7.12
 
