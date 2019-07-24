@@ -1,3 +1,26 @@
+# 2019.7.24
+
+- react 父组件调用子组件的方法：核心：父组件获取子组件的this
+
+  https://codesandbox.io/s/eloquent-cannon-k0icb
+
+- form 表单有初始值的处理
+
+  - 表单不要有 state
+  - 如果点击确定才修改，那么总数据新增一个字段，用于临时保存用户选择的数据和修改数据
+
+- 数据stack heap 的bug
+
+  https://www.yuque.com/docs/share/8a6e0241-b290-4756-818c-9a6bedd9e89e
+
+# 2019.7.23
+
+- render 函数中
+
+  ![image-20190723140541068](/Users/raojj/Library/Application Support/typora-user-images/image-20190723140541068.png)
+
+
+
 # 2019.7.22
 
 - react 中，如何进行数据命名，以及对数据操作的函数命名？
@@ -5,6 +28,9 @@
   - 数据：number；
   - 对数据的修改：editNumber；
   - 对数据的初始化：initNumber；
+  - 使用数据A产生数据B：createNumber(数据A)
+  - 数据过滤结果： matchNumber
+  - 数组： friends
 
 - react中，子组件想修改父组件的数据，最简单的实现方式是什么？
 
