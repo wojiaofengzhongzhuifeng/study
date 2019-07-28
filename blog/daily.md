@@ -1,3 +1,56 @@
+# 2019.7.26
+
+- Dva 使用
+  - 
+
+
+
+# 2019.7.25
+
+- react 高级应用： refs
+
+  核心：通过 refs 获取dom，将dom从子节点传输到父节点
+
+  https://codesandbox.io/s/hardcore-currying-u6wm4
+
+## three 书笔记
+
+- 三个核心对象
+
+  - 场景(scene)：容器，包含想要渲染的物体 + 使用的光源
+  - 照相机(camera)：
+  - 渲染器(render)：根据场景和照相机，决定浏览器是如何渲染的
+
+- 英文单词
+
+  geometry：几何大小
+
+  Plane: 平面
+
+- camera 和 spotLight 不是一个东西 
+
+  Camera 指示render 从哪一个位置渲染
+
+  spotLight 与阴影有关
+
+- Plane 只是一个普通的几何物体而已，与 cube sphere没有区别
+
+- 一个几何物体，需要考虑 大小 材质。通过 材质(material) + spotLight 可以产生阴影
+
+- Axes:
+
+  - 红：x
+  - 蓝：z
+  - 绿：y
+
+
+
+## 第二个项目
+
+- 登录logIn注册signUp
+  - 当用户没有登录 重定向到登录页面
+  - 
+
 # 2019.7.24
 
 - react 父组件调用子组件的方法：核心：父组件获取子组件的this
@@ -7,7 +60,10 @@
 - form 表单有初始值的处理
 
   - 表单不要有 state
-  - 如果点击确定才修改，那么总数据新增一个字段，用于临时保存用户选择的数据和修改数据
+
+  - 如果需求是点击确定才修改，那么总数据新增一个字段，用于临时保存用户选择的数据和修改数据
+
+    https://codesandbox.io/s/brave-hamilton-gm58d
 
 - 数据stack heap 的bug
 

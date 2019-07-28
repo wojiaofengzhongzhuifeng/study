@@ -16,7 +16,6 @@
 - [Generators](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/Generators.md)
 - [继承](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/继承.md)
 - [函数](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/函数.md)
-- [你不知道的javascript-1](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/youdontknowjavascript1.md)
 
 ## CSS
 
@@ -42,13 +41,8 @@
 ## 框架
 
 - [React](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/React.md)
-- [响应式原理](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/响应式.md)
-- [React 的异步操作](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/ReactAsync.md)
 - [React轮子-FORM](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/reactForm.md)
 - [React轮子-Layout](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/reactLayout.md)
-- [Vue轮子-POPOVER](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/vuePopover.md)
-- [Vue组件通信](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/vue通信.md)
-- [React组件组织](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/react组件组织.md)
 
 
 
@@ -58,19 +52,11 @@
 
 - [React-记账](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/记账.md)
 
-- [React-Todo](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/todo.md)
-
 - [React-大众点评](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/大众点评.md)
 
 ## Node.js
 
-- [webpack核心](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/webpack核心.md)
-
 ## 设计模式、架构、编程思想
-
-- [middleWare](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/middleWare.md)
-
-
 
 ## 数据结构、算法相关
 
