@@ -43,6 +43,7 @@
 - [React](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/React.md)
 - [React轮子-FORM](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/reactForm.md)
 - [React轮子-Layout](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/reactLayout.md)
+- [在 todo 中使用 react-redux](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/todoWithReactRedux.md)
 
 
 
