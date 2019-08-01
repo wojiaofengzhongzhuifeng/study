@@ -1,5 +1,56 @@
 
 
+# 2019.8.1
+
+- react hooks 如何定义 props类型？
+
+  ```react
+  interface Props {
+    markdown: string;
+  }
+  const EditDemoPlace: React.FC<Props> = ({markdown})=>{
+  	return (
+  		<div>{markdown}</div>
+  	)
+  };
+  ```
+
+- 一般来说，在变量名称定义之后，立即进行类型定义
+
+- 定义 css 对象
+
+  ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190801152925.png)
+
+- 如何在 ts 中定义 input 的e? 
+
+  https://codesandbox.io/s/blissful-bas-3r20r
+
+  点击 onChange
+
+# 2019.7.31
+
+## bos二次开发
+
+-  
+
+# 2019.7.30
+
+- React hooks 使用 https://codesandbox.io/s/exciting-dirac-6h64c
+
+  ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190730101034.png)
+
+  如果 state 是一个对象类型，那么如何修改这个state？
+
+  在todos修改，然后setTodos
+
+- 副作用分为无需清除和需要清除
+
+- 副作用(side effect)分为Data fetching, setting up a subscription, and manually changing the DOM
+
+- useEffect === do something after render dom
+
+- js操作url的params 不刷新方法
+
 # 2019.7.29
 
 - 页面 === routes
