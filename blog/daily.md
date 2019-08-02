@@ -1,5 +1,56 @@
 
 
+# 2019.8.3
+
+- 赚钱能力 ！== 赚钱
+- 明确目前工作的重要性
+- 努力是阶层流动最重要的因素
+- 第一桶金是怎么来的？
+  - 选择一件最想做的事情去做
+  - 变成一件事情的专家
+  - 寻找机会 
+  - 要有想象力，想象成功的画面 
+
+# 2019.8.2
+
+## 粘贴图片完成上传功能
+
+- 监听粘贴事件，将图片通过上传接口上传到服务器中
+
+- 上传完毕会拼接以下的字段：
+
+  `![](这里是上传图片的服务器地址)`
+
+- 遇到的问题：
+
+## 使用一个例子，总结函数式组件常用的ts api
+
+https://codesandbox.io/s/brave-jennings-figt1
+
+## 想上传文件，如何配置 ajax ？
+
+![使用 postman 发送请求](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190802163057.png)
+
+![使用axios发送请求](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190802162950.png)
+
+**重点在于formData 的代码**
+
+## ts 报错
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190802151436.png)
+
+converter.makeHtml(content)是 string 类型
+
+dangerouslySetInnerHTML 需要 `{__html: string}`类型
+
+前者是你提供的，后者是api需要的数据类型
+
+## react 初始化数据
+
+未完成demo书写
+
+https://codesandbox.io/s/kind-jang-4mr44
+
 # 2019.8.1
 
 - react hooks 如何定义 props类型？
