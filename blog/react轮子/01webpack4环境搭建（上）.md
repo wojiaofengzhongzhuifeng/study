@@ -36,9 +36,7 @@
 
   库，通过`yarn add webpack-dev-server --dev`安装
   
-  通过命令行`npx webpack-dev-server`开启一个服务
-  
-  可以通过http服务获取经过编译后的js代码
+  通过命令行`npx webpack-dev-server`开启一个服务，就是`yarn start`的原理
   
 ## html-webpack-plugin
 
@@ -50,4 +48,7 @@
 
   - 执行一个命令，这个命令类似`yarn start`，当你修改代码的时候，能自动更新。
   
+  ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190803210430.png)
+  
+  执行`npx webpack-dev-server`
   
