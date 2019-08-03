@@ -2,6 +2,8 @@
 
 # 2019.8.3
 
+## ztalk
+
 - 赚钱能力 ！== 赚钱
 - 明确目前工作的重要性
 - 努力是阶层流动最重要的因素
@@ -10,6 +12,18 @@
   - 变成一件事情的专家
   - 寻找机会 
   - 要有想象力，想象成功的画面 
+
+
+
+## react 轮子项目笔记
+
+[webpack上](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/react轮子/01webpack4环境搭建（上）.md)
+
+## 看视频，应该怎么做笔记？
+
+1. 每个视频，都要记上做了什么？以及你的疑问
+
+
 
 # 2019.8.2
 
