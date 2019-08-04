@@ -48,6 +48,8 @@
 
   - 执行一个命令，这个命令类似`yarn start`，当你修改代码的时候，能自动更新。
   
+  通过 webpack-dev-server + html-webpack-plugin 实现
+  
   ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190803210430.png)
   
   执行`npx webpack-dev-server`
