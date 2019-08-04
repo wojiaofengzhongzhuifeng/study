@@ -2,19 +2,39 @@
 
 ## React.FunctionComponent 与 IconProps
 
-### 在入口文件中引入icon组件
+### ✅函数组件如何定义prop类型
 
-### 红框代码是什么意思
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190804153655.png) 
 
-  ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190803231709.png)
+### ❎定义组件函数时，为什么不能按照函数的输入输出定义方式进行定义？
 
-### 函数组件如何定义prop类型 
+函数的输入输出定义
+```typescript
+const sum: (k1:number, k2: number)=>number = (sum1, sum2)=>{
+  return sum1+ sum2
+}
+```
+
+函数是xxx函数类型定义
+```typescript jsx
+const Icon: React.FunctionComponent<Props> = ({iconName}) => {
+  return (
+    <div>
+      {iconName}
+    </div>
+  );
+};
+```
 
 ## 消除IDE的所有警告
 
-### 什么时候需要加相应的 loader ？
+### ✅什么时候需要加相应的 loader ？
 
-### 将 *.svg 文件放到项目中，在 icon 组件打印 *.svg 文件内容 
+后缀不是 js html css 都需要加相应 loader，如图片，svg
+
+### ✅将 *.svg 文件放到项目中，在 icon 组件打印 *.svg 文件内容
+
+
 
 ## 使用svg-sprite-loader并翻车
 
