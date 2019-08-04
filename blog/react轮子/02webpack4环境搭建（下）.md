@@ -97,6 +97,8 @@ https://github.com/wojiaofengzhongzhuifeng/react-ui/commit/e501ee7b834a82f621a50
 
 ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190804133011.png)
 
+验证错误：模块 `ts-jest` 在 transform 的配置中没有找到（需要安装ts-jest模块）
+
 ## 神奇的 import
 
 ### ✅为什么必须`import * as React from "react ""` 才能正常导入？
