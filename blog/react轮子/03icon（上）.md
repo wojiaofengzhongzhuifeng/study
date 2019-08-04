@@ -8,14 +8,14 @@
 
 ### ❎定义组件函数时，为什么不能按照函数的输入输出定义方式进行定义？
 
-函数的输入输出定义
+函数的输入输出定义，定义组件函数可以通过这种方法吗？
 ```typescript
 const sum: (k1:number, k2: number)=>number = (sum1, sum2)=>{
   return sum1+ sum2
 }
 ```
 
-函数是xxx函数类型定义
+函数是xxx函数类型定义，代码的意思是：Icon 函数是 React.FunctionComponent 函数类型，也就是帮你定义好了 Icon 的输入，输出值
 ```typescript jsx
 const Icon: React.FunctionComponent<Props> = ({iconName}) => {
   return (
@@ -25,6 +25,13 @@ const Icon: React.FunctionComponent<Props> = ({iconName}) => {
   );
 };
 ```
+
+### ✅函数的输入输出类型定义有几种方法？
+
+https://codesandbox.io/s/festive-lehmann-uipce
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190804183318.png)
+
 
 ## 消除IDE的所有警告
 
