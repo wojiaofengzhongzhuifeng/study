@@ -6,7 +6,7 @@
 
 ### ✅在 lib/index.tsx 文件中引入 react
 
-      需要引入类型声明文件
+需要引入类型声明文件
 
 ## webpack 的 resolve 配置的作用是什么？
 
