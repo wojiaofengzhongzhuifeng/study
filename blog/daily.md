@@ -88,6 +88,32 @@ shift + f2
 
 ### 📒ts + react 中 点击一个 button 事件中， 涉及的概念？以及如何定义 e 的类型
 
+- event(e): 事件
+
+- handler: 函数
+
+- element: 元素，可以认为是 dom 元素
+
+### ✅如何定义 e（event）类型
+
+https://github.com/wojiaofengzhongzhuifeng/react-ui/commit/99e05636bf0cbc32121bdb212efefd7a0837d1e9
+
+如何让 webstorm 提醒你类型？
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190805201225.png)
+
+在定义 e 的时候，故意写错即可
+
+### ✅如何定义 onClick 处理函数
+
+https://github.com/wojiaofengzhongzhuifeng/react-ui/commit/7ec892853c106e30483aac036f49405d0e21f3e7
+
+### 如何继承原生 icon 的所有属性
+
+https://github.com/wojiaofengzhongzhuifeng/react-ui/commit/f4dbb03b2d0136422249260e9c483dfd151eeed2
+
+
+
 
 
 

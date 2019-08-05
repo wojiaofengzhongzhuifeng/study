@@ -5,11 +5,11 @@
 
 ### ✅监听 icon 组件的 onClick 事件，一旦点击，打印 1
 
-### 监听 icon 组件的 onClick 事件，一旦点击，打印 event
+### 监听 icon 组件的 onClick 事件，一旦点击，打印 event, 并且能指定 event 的类型
+
+### 完成 Icon 的 props，props = iconName + svg 所有的原生属性
 
 ## 让Icon响应所有事件 
-
-### 完成 Icon 的 props，这个 props 包含 Icon 独有的iconName 属性 + svg 所有的属性
 
 ## 自己写 classes 函数
 
