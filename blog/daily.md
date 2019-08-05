@@ -1,7 +1,7 @@
 
 # 2019.8.5
 
-### 如何进行断点调试
+### 📒如何进行断点调试
 
 ### React hooks 如何模拟 componentDidMounted
 
@@ -9,52 +9,27 @@
 
 在文件设立一个变量（不是组件的state）
 
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190805191240.png)
+
 ### ✅如何打印reject的内容
 
-console.dir
+`console.dir`
 
 ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190805100216.png)
 
-### 对象内，一个 value1 使用另一个 value 的值，如何处理？
+### ✅对象内，一个 value1 使用另一个 value 的值，如何处理？
 
 value1 设为函数
 
-### 增删改查页面中，数据是怎么改变的（React）
-
-- 页面的state
-```
-myProjects = [{
-  projectName: "project1",
-  projectData: "## test1",
-  id: 1
-}, {
-  projectName: "project2",
-  projectData: "## test2",
-  id: 2
-}, {
-  projectName: "project3",
-  projectData: "## test3",
-  id: 3
-}]
-tempProject:{
-  projectName: "xxx",
-  projectData: "yyy",
-  id: 3
-}
-
-```
-
-### 如何定义 react state 为 number 的初始值？
+### ❓如何定义 react state 为 number 的初始值？
 
 null
 
-### state 是一个 []，如何根据 id 修改[]的内容？
+### ✅「修改」用英文怎么说？
 
-英文 react update array of objects in state
+update
 
-update === 修改
-
-### state 是一个 数组对象，如何进行增删改查？
+### ✅state 是一个 数组对象，如何进行增删改查？
 
 前提：this.state.list = [
   {
@@ -111,7 +86,7 @@ this.setState((preState)=>(
 
 shift + f2
 
-### ts + react 中 点击一个 button 事件中， 涉及的概念？以及如何定义 e 的类型
+### 📒ts + react 中 点击一个 button 事件中， 涉及的概念？以及如何定义 e 的类型
 
 
 
