@@ -7,7 +7,7 @@
 
 在 useEffect 中监听了事件，这样很有可能监听多次事件，如何处理？
 
-我现在的方法是设立一个变量
+在文件设立一个变量（不是组件的state）
 
 ### ✅如何打印reject的内容
 
@@ -19,7 +19,107 @@ console.dir
 
 value1 设为函数
 
-### 
+### 增删改查页面中，数据是怎么改变的（React）
+
+- 页面的state
+```
+myProjects = [{
+  projectName: "project1",
+  projectData: "## test1",
+  id: 1
+}, {
+  projectName: "project2",
+  projectData: "## test2",
+  id: 2
+}, {
+  projectName: "project3",
+  projectData: "## test3",
+  id: 3
+}]
+tempProject:{
+  projectName: "xxx",
+  projectData: "yyy",
+  id: 3
+}
+
+```
+
+### 如何定义 react state 为 number 的初始值？
+
+null
+
+### state 是一个 []，如何根据 id 修改[]的内容？
+
+英文 react update array of objects in state
+
+update === 修改
+
+### state 是一个 数组对象，如何进行增删改查？
+
+前提：this.state.list = [
+  {
+    name: "test1",
+    id: 1
+  },
+  {
+    name: "test2",
+    id: 2
+  },
+  {
+    name: "test3",
+    id: 3
+  },
+]
+
+增：
+```
+this.state.list.push({name: "xxxx", id: "yyyy})
+this.setState({
+  list: this.state.list
+})
+```
+
+删：
+```
+已知 wantToDeleteId = 123321
+
+const afterDeleteList = this.state.list.filter((item)=>(
+  item.id !== wantToDeleteId
+));
+this.setState({
+  list: afterDeleteList
+})
+```
+
+改：
+```
+已知 tempProject = {
+  id: 123321,
+  name: "testtesttest"
+}
+
+this.setState((preState)=>(
+  {
+    list: preState.list.map((item)=>(
+      item.id === tempProject.id ? Object.assign(item, { name: tempProject.name }) : item
+    ))
+  }
+))
+```
+
+### ✅webstorm 如何进入下一个错误
+
+shift + f2
+
+### ts + react 中 点击一个 button 事件中， 涉及的概念？以及如何定义 e 的类型
+
+
+
+
+
+
+
+
 
 
 
