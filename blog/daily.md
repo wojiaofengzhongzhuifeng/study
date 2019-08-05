@@ -1,6 +1,39 @@
 
+# 2019.8.5
+
+### 如何进行断点调试
+
+### React hooks 如何模拟 componentDidMounted
+
+在 useEffect 中监听了事件，这样很有可能监听多次事件，如何处理？
+
+我现在的方法是设立一个变量
+
+### ✅如何打印reject的内容
+
+console.dir
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190805100216.png)
+
+### 对象内，一个 value1 使用另一个 value 的值，如何处理？
+
+value1 设为函数
+
+### 
+
+
+
 
 # 2019.8.3
+
+
+
+
+
+
+
+
+
 
 ## ztalk
 

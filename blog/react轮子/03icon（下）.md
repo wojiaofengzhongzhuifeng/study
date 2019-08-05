@@ -1,11 +1,11 @@
 ## 配置 SCSS loader
 
-### 配置 scss loader 
+### ✅配置 scss loader 
 ## React.MouseEventHandler的使用
 
-### 点击 icon ，能执行打印 1 
+### ✅监听 icon 组件的 onClick 事件，一旦点击，打印 1
 
-### 点击 icon，能打印事件（event）
+### 监听 icon 组件的 onClick 事件，一旦点击，打印 event
 
 ## 让Icon响应所有事件 
 
