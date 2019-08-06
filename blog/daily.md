@@ -108,7 +108,7 @@ https://github.com/wojiaofengzhongzhuifeng/react-ui/commit/99e05636bf0cbc32121bd
 
 https://github.com/wojiaofengzhongzhuifeng/react-ui/commit/7ec892853c106e30483aac036f49405d0e21f3e7
 
-### 如何继承原生 icon 的所有属性
+### ✅如何继承原生 icon 的所有属性
 
 https://github.com/wojiaofengzhongzhuifeng/react-ui/commit/f4dbb03b2d0136422249260e9c483dfd151eeed2
 
