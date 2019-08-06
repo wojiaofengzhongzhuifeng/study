@@ -27,5 +27,15 @@ https://github.com/wojiaofengzhongzhuifeng/react-ui/commit/f4dbb03b2d01364222492
 
 该函数的需求：
 
+1. classes 可以输入多个参数
+
+2. 如果参数是 falsey 值，不使用；如果参数不是 falsey 值，使用；
+
+### 如何定义函数的参数，该参数数量是不定的
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190806190806.png)
+
+### ❓icon 需要改变颜色
+
 ## 使用解构赋值
 
