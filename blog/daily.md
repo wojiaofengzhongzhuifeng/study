@@ -1,4 +1,75 @@
 
+# 2019.8.6
+
+### ✅demo展示页面中，将 markdown 中的超链接[]()转化为 iframe
+
+核心：
+
+1. 正则匹配，获取 a 标签字符串 `match`
+
+2. 字符串转成 dom， 通过 `getAttribute` 获取href `new DOMParser().parseFromString(linkString, "text/xml")`
+
+3. 正则匹配，将 a 标签字符串替换为 iframe  `replace`
+
+实现： https://jsbin.com/qafiroguho/2/edit?js,output
+
+### ✅正则匹配有哪些方法，有什么作用？
+
+> 正则表达式是用于匹配字符串中字符组合的模式。在 JavaScript中，正则表达式也是对象。这些模式被用于 RegExp 的 exec 和 test 方法, 以及 String 的 match、replace、search 和 split 方法。本章介绍 JavaScript 正则表达式。
+
+### demo 展示页面中，中文的demo分享功能似乎有问题
+
+### ✅demoList 页面中，treeData 应该放到 state 还是 props 还是放到 redux 还是放到 demoList/index 文件中 还是demoList/DemoTree?
+
+demoList/index 组件内的state
+
+### demo 展示项目中的前后端合作方法
+
+### url 转码
+
+四个 api
+
+传入的是整个 URL: encodeURI decodeURI
+
+传入的是部分 URL: encodeURIComponent decodeURIComponent
+
+### 需求：用户将 xxx 保存至「我的收藏」
+
+### 需求：demo管理页面，需要添加按钮，用于用户上传他的项目到实例项目中
+
+### 需求：创建一个页面，页面功能是管理用户的请求
+
+### 解决用户存在的问题： url 拼接
+
+一个 url 由这几部分组成：{API域名}/{service}/{appKey}/{具体请求路径} + 身份验证
+
+API域名：
+
+  1. http://bosgw.bimwinner.com/
+  
+  2. 
+  
+service：
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190806152818.png)
+
+appKey:
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190806153128.png)
+
+身份验证： 
+
+  1. 在 http header 中： Authorization:xxxxxxxx
+  
+  2. 在 URL 中：access_token=xxxxxxxx
+
+
+
+
+
+  
+
+
 # 2019.8.5
 
 ### 📒如何进行断点调试
