@@ -25,7 +25,7 @@ demoList/index 组件内的state
 
 ### demo 展示项目中的前后端合作方法
 
-### url 转码
+### ✅url 转码
 
 四个 api
 
@@ -39,29 +39,7 @@ demoList/index 组件内的state
 
 ### 需求：创建一个页面，页面功能是管理用户的请求
 
-### 解决用户存在的问题： url 拼接
 
-一个 url 由这几部分组成：{API域名}/{service}/{appKey}/{具体请求路径} + 身份验证
-
-API域名：
-
-  1. http://bosgw.bimwinner.com/
-  
-  2. 
-  
-service：
-
-![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190806152818.png)
-
-appKey:
-
-![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190806153128.png)
-
-身份验证： 
-
-  1. 在 http header 中： Authorization:xxxxxxxx
-  
-  2. 在 URL 中：access_token=xxxxxxxx
 
 
 
