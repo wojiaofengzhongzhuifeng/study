@@ -1,4 +1,41 @@
 
+# 2109.8.7
+
+### postman 如何在登录之后，自动记录 token 的值，在其他地方使用这个 token 的值？
+
+### ✅403 是什么原因？
+
+其中一个原因：url 带 appKey，拼接 url 过程中，appKey 错误
+
+### ✅如何全局寻找文件
+`open file_name`
+
+### ✅我基于 antd 的 table 组件封装代码，如何继承 antd 的 table 的所有属性？
+
+![](http://snpy.in/Qmu7eE)
+
+### 📒组件所需的数据与后端返回的数据常常不一致 如何处理？编写业务组件代码的步骤是什么？
+
+目前我这样处理：
+
+1. 区分 ui 组件和容器组件
+
+2. 在容器组件中，创建静态数据，传入 ui 组件中，生成静态页面
+
+3. 测试接口
+
+4. 在容器组件中，通过接口获取数据，在容器组件中进行数据转化，转化成静态页面页面所需数据
+
+### ✅如何使用 react hooks 模拟 didMount ？
+
+https://codesandbox.io/s/dreamy-microservice-b52hf
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190807184754.png)
+
+### 📒如何 mock 数据？
+
+
+
 # 2019.8.6
 
 ### ✅demo展示页面中，将 markdown 中的超链接[]()转化为 iframe
@@ -34,6 +71,7 @@ demoList/index 组件内的state
 传入的是部分 URL: encodeURIComponent decodeURIComponent
 
 ### 需求：用户将 xxx 保存至「我的收藏」
+testZ
 
 ### 需求：demo管理页面，需要添加按钮，用于用户上传他的项目到实例项目中
 
@@ -48,11 +86,13 @@ demoList/index 组件内的state
   
 
 
+
+
 # 2019.8.5
 
 ### 📒如何进行断点调试
 
-### React hooks 如何模拟 componentDidMounted
+### React hooks 如何模拟 componentDidMounted 其中种方法
 
 在 useEffect 中监听了事件，这样很有可能监听多次事件，如何处理？
 
@@ -165,6 +205,7 @@ https://github.com/wojiaofengzhongzhuifeng/react-ui/commit/f4dbb03b2d01364222492
 
 
 
+---周分隔符---
 
 
 
