@@ -17,7 +17,7 @@
     
     - Rvt 需要在 window 下的 revit 软件进行「导出模型」操作，导出的结果是一个 zip 包
 
-- http://bos.bimwinner.com，选择某一个应用，选择「应用预览」
+- [链接](http://bos.bimwinner.com)，选择某一个应用，选择「应用预览」
 
 ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190808094824.png)
 
