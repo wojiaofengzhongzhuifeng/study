@@ -1,4 +1,41 @@
 
+# 2019.8.8
+
+### 编写 React 业务组件流程是什么？
+
+### 模型加载步骤
+
+- 获取用户需要的文件，文件类型是以下类型：
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190808094650.png)
+
+- 文件夹的处理
+
+    - ifc 不需处理
+    
+    - OBJ，iModel，FBX 需要转化为 zip 包
+    
+    - Rvt 需要在 window 下的 revit 软件进行「导出模型」操作，导出的结果是一个 zip 包
+
+- http://bos.bimwinner.com，选择某一个应用，选择「应用预览」
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190808094824.png)
+
+- 将 zip 或者 IFC 文件进行上传
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/E34872AF-9B15-400B-8654-789CB7F1CAF9.png)
+
+- 点击红框，弹出模型加载页面
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190808103939.png)
+
+- 替换 url 
+
+http://demo.bimwinner.com:7787/showAllComponentsInfo?host=🚧host🚧&3dAppKey=🚧appKey🚧&modelKeys=["🚧modelKey🚧"]
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190808104425.png)
+
+
 # 2109.8.7
 
 ### postman 如何在登录之后，自动记录 token 的值，在其他地方使用这个 token 的值？
