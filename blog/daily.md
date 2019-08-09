@@ -1,7 +1,21 @@
 
+# 2019.8.9
+
+### 📒如何对 axios 进行二次封装
+
+### bug1: 没有子节点的不应该显示下标
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/C4C0466C-6F42-4906-8903-7B9240BFF5B0.png)
+
+### 右键选择文件夹，
+
 # 2019.8.8
 
 ### 编写 React 业务组件流程是什么？
+
+### bosf 发送请求，需要如何拼接 url
+
+需要确定： 域名，appKey（也叫 projectKey），表名（entity），表的item(key)
 
 ### 模型加载步骤
 
@@ -29,7 +43,7 @@
 
 ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190808103939.png)
 
-- 替换 url 
+- 替换 url
 
 http://demo.bimwinner.com:7787/showAllComponentsInfo?host=🚧host🚧&3dAppKey=🚧appKey🚧&modelKeys=["🚧modelKey🚧"]
 
