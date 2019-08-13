@@ -1,10 +1,23 @@
+# 2019.8.13
+
+### redux 在 app 的应用
+
+- app 的状态（数据）
+
+  1. entity 领域状态，从后端发送过来的数据一般是[{}, {}, {}], 经过前端 normalizeData 处理，entity 一般是一个对象，对象的 key 是 id，value 是 id 对应的 obj
+  
+  2. ui 状态，如 home 页面中，需要维持一个 ids 数据，用于保证页面的 item 顺序
+    
+  3. 全局通用状态，如当获取数据失败时，提示用户
+
+  4. home.js 与 products.js 有什么区别？？
+  
+    home.js 是 ui 状态 / products.js 是领域状态
+
+
 # 2019.8.12
 
-### 目的：发送请求的时候，统一进行错误处理和加载显示 loading
-
-### 错误有两种，一种写在控制台中，一种给用户进行提示
-
-### 对于 promise，我无法控制promise 执行函数
+### ✨对于 promise，我无法控制promise 执行函数
 
 ```javascript
 promise.then(f1, f2).catch(f3);
@@ -12,43 +25,25 @@ promise.then(f1, f2).catch(f3);
 
 如何控制promise执行哪个函数？无法控制执行 f2 与 f3
 
-### 前后端如何处理错误请求
+### ✨前后端如何处理错误请求
 
-1. 声明前后端的数据结构
+我认为比较好的通信方式：
 
-返回正常信息
-```
-{ 
-    "code": 0, 
-    "message": "success", 
-    "data": [ 
-        { 
-            "name": "商品1", 
-            "price": 50.00, 
-        }, 
-        { 
-            "name": "商品2", 
-            "price": 99.99, 
-        } 
-    ] 
-} 
-
-```
-
-返回错误信息
+只要前后端通信成功，前端获取的信息就只有以下一种
 ```javascript
-{ 
-    "code": -1, 
-    "message": "XXX 参数有问题, 请重新填写", 
-    "data": null 
-} 
+// 正常获取数据
+{
+  code: 200,
+  message: success
+  data: [...]
+}
+// 获取数据失败
+{
+  code: xxx,
+  message: fail,
+  data: null
+}
 ```
-
-### 编写 react 组件的流程
-
-- 使用静态数据（dataSource），完成静态页面编写
-
-- 
 
 ---
 
