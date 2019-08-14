@@ -5,7 +5,7 @@
 - 进入根目录
 
   ```shell
-  $ cd
+  $ cd .
   ```
 
 - 打开`.bash_profile`文件
@@ -19,7 +19,7 @@
   ```
   aa() {
       git add .
-      git commit -m "$1"
+      git commit -m $1
       git push
   }
   ```
@@ -52,4 +52,3 @@
   $ source .bash_profile
   ```
 
-  

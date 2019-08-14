@@ -1,3 +1,21 @@
+# 2019.8.14
+
+### 对请求进行封装
+
+https://codesandbox.io/s/patient-sunset-4q45v
+
+### mac 下全局寻找文件
+
+`sudo mdfind -name "文件名，支持模糊搜索"`
+
+`j 文件名，支持搜索`
+
+### 如何为搜狗添加 alia
+
+### 如何取消 qq 的
+
+### 
+
 # 2019.8.13
 
 ### redux 在 app 的应用
