@@ -1,3 +1,67 @@
+# 2019.8.15
+
+### 同步与异步的 action 有什么区别？
+
+```javascript
+const actions = {
+  // 同步 action
+  test: (data)=>{
+    return {type: "TOGGLE_TODO",data: data}
+  },
+  
+  // 异步 action
+  loadLikes: ()=>{
+    return (dispatch, getState)=>{
+      dispatch({type: 'FETCH_DATA'});
+      return axios({...}).then((response)=>{
+        dispatch({type: 'FETCH_DATA_SUCCESS', data: response});
+      },(reject)=>{
+        dispatch({type: 'FETCH_DATA_FAIL', data: reject});
+      })
+    }
+  }
+}
+```
+
+最大的区别：
+
+action.test 函数返回的一个对象
+action.loadLikes 返回的是一个函数，并且函数的第一个参数是 dispatch，为什么能这样，因为我使用了 redux-thunk 中间件
+
+### 跨域问题
+
+1. 问题
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190815161216.png)
+
+翻译：请求 header 的 content-type 字段在后端返回的 access-control-header 是不被允许的
+
+
+2. 如何判断请求是否是简单请求？必须符合以下两个条件
+```
+（1) 请求方法是以下三种方法之一：
+
+HEAD
+GET
+POST
+（2）HTTP的头信息不超出以下几种字段：
+
+Accept
+Accept-Language
+Content-Language
+Last-Event-ID
+Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain
+```
+
+3. 实际代码中，content-type 是 application/json ，所以在发送 post 请求之前，需要发送一个 options 请求
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190815173949.png)
+
+4. 解释
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190815174450.png)
+
+
 # 2019.8.14
 
 ### 对请求进行封装
@@ -12,7 +76,14 @@ https://codesandbox.io/s/patient-sunset-4q45v
 
 ### 如何为搜狗添加 alia
 
-### 如何取消 qq 的
+### 如何取消 qq 的截图
+
+### utils/request.js 的作用是什么？
+
+对 axios 的二次封装，统一处理错误 + 统一对数据进行格式化
+
+### 7-8 的目的
+
 
 ### 
 
@@ -114,6 +185,12 @@ promise.then(f1, f2).catch(f3);
 - 替换 url
 
 http://demo.bimwinner.com:7787/showAllComponentsInfo?host=🚧host🚧&3dAppKey=🚧appKey🚧&modelKeys=["🚧modelKey🚧"]
+
+http://bos3d.bimwinner.com
+
+ed87a9bedb9443f4a20b02d5affa1706
+
+M1565231850397
 
 ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190808104425.png)
 
