@@ -1,3 +1,37 @@
+
+# 2019.8.19
+
+### ✅在一个嵌套 array<object> 中，拿匹配id 的 obj
+
+- 完成第一层的判断
+
+- 通过判断完成递归
+
+- 必须使用 for 循环
+
+[](https://jsbin.com/xitehufegu/1/edit?js,console,output)
+
+### ✅一个函数，必须指定 return !
+
+即使是 return undefined 也要写出来
+
+### 打断点，应该打在哪里？
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190819095802.png)
+
+### 判断是否是 undefined 类型
+
+要用 typeof 
+
+```javascript
+// 不能这样
+if(!data){
+  // 如果 data 是 undefined 的情况
+}
+```
+
+
+
 # 2019.8.16
 
 ### hooks 模拟 componentdidUpdate
