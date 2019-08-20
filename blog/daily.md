@@ -1,4 +1,15 @@
 
+# 2019.8.20
+
+### markdown 测试
+
+<details>
+<summary>点我展开详细内容</summary>
+Hi~ o(*￣▽￣*)ブ
+</details> 
+
+
+
 # 2019.8.19
 
 ### ✅在一个嵌套 array<object> 中，拿匹配id 的 obj
@@ -15,20 +26,9 @@
 
 即使是 return undefined 也要写出来
 
-### 打断点，应该打在哪里？
+### ✅打断点，应该打在哪里？
 
 ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190819095802.png)
-
-### 判断是否是 undefined 类型
-
-要用 typeof 
-
-```javascript
-// 不能这样
-if(!data){
-  // 如果 data 是 undefined 的情况
-}
-```
 
 
 
