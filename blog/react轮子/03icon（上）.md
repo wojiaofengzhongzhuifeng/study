@@ -2,15 +2,6 @@
 
 ## React.FunctionComponent 与 IconProps
 
-
-### ✅函数的输入输出类型定义有几种方法？推荐哪一个？
-
-https://codesandbox.io/s/festive-lehmann-uipce
-
-推荐这种
-
-![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190805122508.png)
-
 ## 消除IDE的所有警告
 
 ### ✅什么时候需要加相应的 loader ？
