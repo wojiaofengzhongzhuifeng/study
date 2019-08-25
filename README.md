@@ -42,6 +42,9 @@
 - [icon下](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/react轮子/04icon（下）.md)
 - [单元测试](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/react轮子/05单元测试.md)
 
+- [Dialog](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/react轮子/08Modal.md)
+
+
 
 
 - [React轮子-FORM](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/reactForm.md)
