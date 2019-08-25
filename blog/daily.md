@@ -1,4 +1,53 @@
 
+# 2.19.8.23
+
+### 如何根据 postman 编写 axios 代码？
+
+如果不能在前端正常发送，一般是跨域问题。
+
+### 后端数据展示到前端的流程（添加 ts ）
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190823145737.png)
+
+细节：
+
+  1. `service.ts`需要执行的事情：
+  
+    - 使用 ts 定义后端返回的数据结构
+    
+    - 如果后端返回的数据不是成功的，需要全局提示
+    
+    - 通过 promise 返回后端数据
+    
+    - 将请求封装成函数，导出 
+  
+  2. `demoList.tsx`需要执行的事情：
+  
+    - 使用 ts 定义组件需要的数据结构
+    
+    - 使用函数获取后端数据
+    
+    - 创建函数，输入后端数据，输出前端组件需要数据。
+    
+### 如何定义一个接口，接口内部接受泛型？泛型接口
+
+```typescript
+interface Test<T>{
+  code: string    
+  message: string
+  data: T
+}
+const test123321: Test<{count: number, data: Array<string>}> = {
+  code: 'test',
+  message: "test",
+  data: {
+    count: 1,
+    data: ["test","test","test"]
+  }
+}
+```
+### 如何定义 resolve 和 reject 返回值 
+
 # 2019.8.22
 
 ### hooks 如何模拟 this.setState 的第二个回调函数？
