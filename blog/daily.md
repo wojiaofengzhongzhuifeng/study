@@ -1,5 +1,5 @@
 
-# 2.19.8.23
+# 2019.8.23
 
 ### 如何根据 postman 编写 axios 代码？
 
@@ -13,21 +13,19 @@
 
   1. `service.ts`需要执行的事情：
   
-    - 使用 ts 定义后端返回的数据结构
-    
-    - 如果后端返回的数据不是成功的，需要全局提示
-    
-    - 通过 promise 返回后端数据
-    
-    - 将请求封装成函数，导出 
+      - 使用 ts 定义后端返回的数据结构
+      
+      - 如果后端返回的数据不是成功的，需要全局提示
+      
+      - 将全球封装成函数，通过 promise 返回后端接口。
   
   2. `demoList.tsx`需要执行的事情：
   
-    - 使用 ts 定义组件需要的数据结构
-    
-    - 使用函数获取后端数据
-    
-    - 创建函数，输入后端数据，输出前端组件需要数据。
+      - 使用 ts 定义组件需要的数据结构
+      
+      - 使用函数获取后端数据
+      
+      - 创建「转化数据结构」函数，输入后端数据，输出前端组件需要数据。
     
 ### 如何定义一个接口，接口内部接受泛型？泛型接口
 
@@ -46,51 +44,14 @@ const test123321: Test<{count: number, data: Array<string>}> = {
   }
 }
 ```
-### 如何定义 resolve 和 reject 返回值 
 
 # 2019.8.22
 
-### hooks 如何模拟 this.setState 的第二个回调函数？
+### hooks 如何模拟 this.setState 
 
-### 改进
+红框代码翻译：监听 obj 变量，如果 obj 变量的值变化了，执行 useEffect 的代码。
 
-- 审批保存副本
-
-- demo 管理需要 tree 组件，管理 文件夹/文件 路径
-
-- 使用者：公司内部 + 销售
-
-- 流程审批简化
-
-- 文件夹分类需要修改，按场景进行分类，不要出现小红砖
-
-- 需要搜索「标题， keyword 」功能
-
-- 分享功能需要增强，只能看到我分享给别人的内容
-
-- 导出 demo 数据给另一个用户，实现方式是移交整个文件夹，「文件夹关联关系变更」
-
-- 是否提供源码下载？
-
-  只有管理员才能全部下载
-
-  应用开发可以下载自己的，不能下载别人的，只能留下联系方式
-  
-  其他人只显示显示本司的联系方式
-
-- 补充 demo 作者是谁，补充 demo 编写者的登录账号与密码？
-
-- 不允许销售录入 demo 信息？不允许
-
-- demo 信息录入只能是本司开发
-
-- 角色
-
-销售：只能看
-应用开发：只能看 + 编辑自己的
-管理：编辑公共的
-
-
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190825095929.png)
 
 # 2019.8.21
 
@@ -101,8 +62,6 @@ const test123321: Test<{count: number, data: Array<string>}> = {
 
 `ifconfig | grep "inet " | grep -v 127.0.0.1`
 
-### css 如何条件判断？
-
 ### markdown 测试
 
 <details>
@@ -111,25 +70,6 @@ Hi~ o(*￣▽￣*)ブ
 </details> 
 
 # 2019.8.19
-
-### ✅在一个嵌套 array<object> 中，拿匹配id 的 obj
-
-- 完成第一层的判断
-
-- 通过判断完成递归
-
-- 必须使用 for 循环
-
-[](https://jsbin.com/xitehufegu/1/edit?js,console,output)
-
-### ✅一个函数，必须指定 return !
-
-即使是 return undefined 也要写出来
-
-### ✅打断点，应该打在哪里？
-
-![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190819095802.png)
-
 
 
 # 2019.8.16
