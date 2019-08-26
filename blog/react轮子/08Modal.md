@@ -30,7 +30,13 @@ https://github.com/wojiaofengzhongzhuifeng/react-ui/commit/0179cf59c018aca841028
 
 当点击右上角和 mask（可以配置 props：closeOnClickMask） 时生效会触发该函数（注意，这个函数不能控制组件的「显示隐藏」,只能触发用户在这个函数编写的代码）
 
-### 如何设置组件props 的默认值
+https://github.com/wojiaofengzhongzhuifeng/react-ui/commit/733d8ff75545622a56a960e847280d3b03714efd
+
+### 为什么要使用传送门？如何使用？
+
+### 使用函数执行的方式动态创建 dialog 组件，分为①创建 div，将 dialog 挂载到div②删除 dialog ③删除 div
+
+为什么一定要删除 div，不删会怎么样？
 
 
 

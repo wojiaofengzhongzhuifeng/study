@@ -1,4 +1,37 @@
 
+# 2019.8.26
+
+### postman 如何自动保存 token ？
+
+1. 选择一个 environment 
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190826083800.png)
+
+2. 登录注册接口中，执行以下：
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190826084026.png)
+
+3. 在其他地方使用第二步定义的变量即可
+
+注意：如何在raw 使用 token 变量
+
+将 row 改成x-www-form-urlencoded
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190826091757.png)
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190826092535.png)
+
+
+
+### extract 是什么意思？
+
+获取
+
+### represents 是什么意思？
+
+The key represents the name of the variable. 代表
+
+
 # 2019.8.23
 
 ### 如何根据 postman 编写 axios 代码？
