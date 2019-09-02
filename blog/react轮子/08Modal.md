@@ -1,11 +1,5 @@
 # React Dialog
 
-## 视频要点
-
-### dialog 分类
-
-dialog 分为 modal，confirm，alert
-
 ### 如何搭建 example 架子
 
 https://github.com/wojiaofengzhongzhuifeng/react-ui/commit/1745406e438eb34579a51891e40b170ebeedbbd5
@@ -34,9 +28,20 @@ https://github.com/wojiaofengzhongzhuifeng/react-ui/commit/733d8ff75545622a56a96
 
 ### 为什么要使用传送门？如何使用？
 
-### 使用函数执行的方式动态创建 dialog 组件，分为①创建 div，将 dialog 挂载到div②删除 dialog ③删除 div
+因为 modal-div 不能出现在任何元素的内部(层叠上下文)，也就是说，modal-div 必须出现在 document.body
 
-为什么一定要删除 div，不删会怎么样？
+### 如何动态创建一个组件
+
+### 动态创建的组件，一旦点击了button, 组件帮你关闭。
+
+https://github.com/wojiaofengzhongzhuifeng/react-ui/commit/75ca1e2d36e2fc2743c726cd419e4b6dba4b5c19
+
+### 我封装了一个组件，如何把组件内部的函数给外部使用
+
+闭包的应用
+
+https://github.com/wojiaofengzhongzhuifeng/react-ui/commit/23d31b7005e4638bb4bf836eef7decc9c0690815
+
 
 
 
