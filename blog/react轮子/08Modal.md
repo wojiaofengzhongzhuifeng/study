@@ -12,9 +12,11 @@ https://github.com/wojiaofengzhongzhuifeng/react-ui/commit/1745406e438eb34579a51
 
 ### 经验：遮罩层与组件不是父子组件关系
 
-### 构建高阶函数 scopeClass
+### scopeClass 与 classes 的区别
 
-输入 prefix，输出一个函数。用于封装 prefix。注意与函数 classes 的区别
+scopeClass返回： `rao-gui-a`, `rao-gui-b`, `rao-gui-c`
+
+classes返回：`a b c`
 
 ### props 添加 buttons
 
@@ -31,6 +33,13 @@ https://github.com/wojiaofengzhongzhuifeng/react-ui/commit/733d8ff75545622a56a96
 因为 modal-div 不能出现在任何元素的内部(层叠上下文)，也就是说，modal-div 必须出现在 document.body
 
 ### 如何动态创建一个组件
+
+①创建div
+
+②将 div 放到页面
+
+③jsx 创建 ReactComponent，通过 `ReactDOM.render(ReactComponent, div);`放到 div 中
+
 
 ### 动态创建的组件，一旦点击了button, 组件帮你关闭。
 
