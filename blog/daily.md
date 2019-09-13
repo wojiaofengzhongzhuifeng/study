@@ -1,3 +1,84 @@
+# 2019.9.13
+
+### button
+
+# 2019.9.12
+
+### 
+
+# 2019.9.11
+
+### ts 中。partial 有什么用
+
+[链接](https://typescript-play.js.org/#code/JYOwLgpgTgZghgYwgAgEJwM4VQVzGAexAAUoCAHDAbwChl7kAjTCALmQzClAHMaBfGjVCRYiFADk4YYADdseQiTKVkEAB6QQAEwxoWufEVIVqdBiGly2HLrwFCR0eEmQBBEAgAWBKIaUmqmqaEDp66Fj+xipmDMhwnj5Q7JzcIHyCjuDO4miK0abBWrruib5RyqYANMhSMvIVgWaZYACe5CiNMQCMyAC8yMRwUDJwADYAPB7e5fmVqgBktVYNc00AfEI0CEScyJCc7F2FA7SZOyB7B2DdR2s9-ci0DluvW0A)
+
+
+### bos3d bosf
+
+1. bosfoudation 环境
+
+生产环境官网（浏览器访问）：http://bos.bimwinner.com
+
+生产 api（结合文档，用于拼接请求 url）： http://bosgw.bimwinner.com
+                
+研发环境官网（浏览器访问）： http://bos-demo.rickricks.com 
+
+研发 api（结合文档，用于拼接请求 url）： http://bosapi-demo.rickricks.com
+                
+2. bos3d 环境
+
+生产环境官网（浏览器访问）：http://bos3d.bimwinner.com/bos3d
+
+生产 api（结合文档，用于拼接请求 url）： http://bos3d.bimwinner.com/api
+                
+研发环境官网（浏览器访问）： 不需要
+
+研发 api（结合文档，用于拼接请求 url）： http://bos3d-alpha.bimwinner.com      
+                
+                
+3. **用户通过 bosf 的 3.7.11 登录之后，在登录的响应内容中，找到 modelDB，这就是 bos3d 文档的 dataBaseKey**
+
+4. bos3d 不需要带上 token
+
+
+# 2019.9.10
+
+### 500 错误是什么意思？？
+
+比如有一个后端提供一个post 接口，他需要前端在 body 写如下的数据结构
+```js
+{
+  type: "add",
+  matrix: [1,2,3,4,5,6,7,8,9,10],
+}
+```
+
+但是实际前端发了这样的数据
+```js
+{
+  type: 'add',
+  matrix: {
+    element: {
+      matrix: [1,2,3,4,5,6,7,8,9,10],
+    }
+  }
+}
+```
+
+就会返回 500 错误
+
+# 2019.9.9
+
+### 
+
+# 2019.9.7
+
+### react 如何实现「当 state 某个数据变化时，执行某代码」
+
+`componentDidUpdate`
+
+`useEffect(()=>{}, [data])`
+
 # 2019.9.6
 
 ### 这个报错的原因是什么
