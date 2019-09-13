@@ -4,6 +4,7 @@
 
 <details>
 <summary>答案</summary>
+
 ```
 // 1. 创建 tuple 辅助函数
 const tuple = <T extends string[]>(...args: T) => args;
