@@ -23,17 +23,33 @@ interface BaseButtonProps {
 
 </details> 
 
-### 如何制定props 的默认值
-
 ### 如何定义「react 的鼠标事件处理函数」？
 
+<details>
+<summary>答案</summary>
+
+```
 `React.MouseEventHandler<HTMLElement>`
+```
 
 ### 如何根据已存在的 interface1，返回一个新的 interface2，其中 interface2 删除了某个属性？
 
 <details>
 <summary>答案</summary>
-Hi~ o(*￣▽￣*)ブ
+
+```typescript
+interface interface1 {
+    aa: string
+    bb: string
+}
+
+type interface2 = Omit<interface1, 'aa'>
+
+const test: interface2 = {
+    bb: "123"
+}
+```
+
 </details> 
 
-### 
+
