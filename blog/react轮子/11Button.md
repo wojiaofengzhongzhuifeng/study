@@ -29,10 +29,10 @@ interface BaseButtonProps {
 <summary>答案</summary>
 
 ```
-`React.MouseEventHandler<HTMLElement>`
+React.MouseEventHandler<HTMLElement>
 ```
 
-<details>
+</details>
 
 ### 如何根据已存在的 interface1，返回一个新的 interface2，其中 interface2 删除了某个属性1？
 
