@@ -32,9 +32,12 @@ interface BaseButtonProps {
 `React.MouseEventHandler<HTMLElement>`
 ```
 
+<details>
+
 ### 如何根据已存在的 interface1，返回一个新的 interface2，其中 interface2 删除了某个属性？
 
-<details>
+</details>
+
 <summary>答案</summary>
 
 ```typescript
