@@ -48,6 +48,8 @@
 
 
 - [Button](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/react轮子/11Button.md)
+- [Input](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/react轮子/12Input.md)
+
 
 - [React轮子-FORM](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/reactForm.md)
 
