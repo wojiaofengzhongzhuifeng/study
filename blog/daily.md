@@ -1,3 +1,14 @@
+# 2019.9.16
+
+### 使用 node.js, 创建一个新的组件
+
+- 假设要创建 Inpu 组件，`node addCom Tab`
+
+- `example.tsx` 14 15行插入 `import TabDemo from './lib/Tab/Tab.demo'`;
+
+- 
+
+
 # 2019.9.13
 
 ### button
