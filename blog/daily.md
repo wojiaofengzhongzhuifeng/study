@@ -1,18 +1,20 @@
 
-# 2019.9.18
+# 2019.9.20
 
-### input doing
+### script 引入问题
+
+现有项目有 3d 库，通过 `<script src="库的地址" type="text/javascript"></script>` 引入，发现报错
+ 
+`Uncaught SyntaxError: Unexpected token <`
+
+应该怎么办？
+
+
+# 2019.9.18
 
 # 2019.9.16
 
 ### 使用 node.js, 创建一个新的组件
-
-- 假设要创建 Inpu 组件，`node addCom Tab`
-
-- `example.tsx` 14 15行插入 `import TabDemo from './lib/Tab/Tab.demo'`;
-
-- 
-
 
 # 2019.9.13
 
