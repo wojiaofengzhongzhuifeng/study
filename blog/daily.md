@@ -1,10 +1,127 @@
+# 2019.9.29
+
+
+# 2019.9.27
+
+### 状态管理
+
+1. 状态 === 数据 === 与后端有关的数据（ui） + 与后端有关的数据（用户状态）
+
+2. 最简单的状态管理很简单，parent 组件与 son 组件
+
+    - parent 组件保存 number,handleClick 
+    
+    - son 组件通过 props，拿到两个属性：number + onClickButton
+    
+     
+
+# 2019.9.26
+
+### antd pro 在哪里控制 header main  footer 的渲染？
+
+layout 目录下
+
+### 最简单的 git 操作
+
+目标：需要往远程 master 修改 bug / 添加代码 
+
+1. git checkout master 切换到本地的 master 分支
+
+2. git pull origin master 拉取远程仓库的 master 分支代码，如果不执行，可能会导致代码冲突
+
+3. git checkout -b "fixbug" 以最新远程仓库的 master 分支为基础，开一个分支，分支名称为 fixbug
+
+4. git add .  添加到暂存区
+
+5. git commit -m "改完分支了" 添加到本地 git 中
+
+5.5 git branch  查看当前分支，确保在 fixbug 分支
+
+5.6 git pull origin master 当别人和你修改了同一个文件时，会产生冲突，这时候需要本人解决冲突，保证远程没有冲突
+
+5.7 你手动查看冲突，解决冲突
+
+6. git push origin fixbug:fixbug1 将本地的 fixbug 分支推送到远程 fixbug1 分支
+
+### antd 核心
+
+1. 添加一个路由 + 页面
+
+2. 没有登录，跳到 /user/login 
+
+3. mock 数据
+
+4. 权限验证
+
+5. 如何接入 bos3d 库？库有可能是线上地址，有可能是本地文件，这两种情况分别怎么处理？
+
+6. css 作用域的问题（全局作用域，局部作用域）
+
+```css
+.first {
+  color: red
+}
+
+:global(.title) {
+  color: green;
+}
+```
+
+第一种，必须这样使用：`import style from './style.less' className={style.first}`
+
+第二种，只要 css 文件被加载了，并且 element 指定了 title，就能正常使用
+
+7. 如何使用 dva？
+
+ui => model => 将 ui 与 model 通过 connect 串联起来
+
+8. 前端数据管理
+
+    - 前端项目的数据结构就是一个 {}
+
+    - 
+ 
+
+### 如何提问
+
+问「需求是什么」，不要问「需求的实现方法如何实现」
+
+
+# 2019.9.24
+
+# 2019.9.23
+
+### 面试需要
+
+1. 表现出「学习主动性」
+2. 项目，这些是亮点
+3. 工作内容，这些是亮点
+4. xx 的原理，按照这几步走
+   1. 遇到了什么问题
+   2. 在 xx 之前，用的是什么
+   3. xx 是如何解决的
+5. site:juejin.im 阿里 前端  面试
+
+### Webpack 引入 css 的两种方法，有何不同
+
+`import './style.css'`
+
+`import test from './style.css'`
+
+### webstorm 键盘打开文件`command + o`
+
+### webstorm 如何使用键盘代替 `command + 鼠标左键`?
+
+`Command + b`
+
+
 
 # 2019.9.20
 
 ### script 引入问题
 
 现有项目有 3d 库，通过 `<script src="库的地址" type="text/javascript"></script>` 引入，发现报错
- 
+
 `Uncaught SyntaxError: Unexpected token <`
 
 应该怎么办？
@@ -209,7 +326,7 @@ The key represents the name of the variable. 代表
       - 使用函数获取后端数据
       
       - 创建「转化数据结构」函数，输入后端数据，输出前端组件需要数据。
-    
+
 ### 如何定义一个接口，接口内部接受泛型？泛型接口
 
 ```typescript
@@ -433,7 +550,7 @@ promise.then(f1, f2).catch(f3);
 
     - ifc 不需处理
     
-    - OBJ，iModel，FBX 需要转化为 zip 包
+    - OBJ，iModel，FBX 需要转化为 zip 包（直接通过压缩软件即可，不需要其他软件）
     
     - Rvt 需要在 window 下的 revit 软件进行「导出模型」操作，导出的结果是一个 zip 包
 
