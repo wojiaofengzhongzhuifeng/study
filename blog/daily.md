@@ -1,3 +1,110 @@
+
+
+
+
+
+
+
+
+# 2019.10.7
+
+### 子程序（routine）的分类
+
+1. 函数：有返回值
+2. 过程（procedure）：没有返回值
+3. 方法（method）：放到类或者对象中
+
+在 js 中只有函数和方法
+
+### 编程的「函数」与数学的函数是不同的
+
+1. 编程的函数 === 子程序
+2. 数学的函数 === x 与 y 的对应关系，它的特点是：无论什么条件下输入 x，输出的 y 都是不变的
+3. js的函数式的函数指的是数学的函数
+
+
+
+`return x + a`，a 变量属于「定义函数的环境（environment）」情况，所以 a 为 1
+
+
+
+### 定义函数代码块中，变量如何确定值？
+
+1. 变量  === 桶，用于存放值
+2. 如果代码块内的变量是函数参数，那么这个变量看函数调用时传入的参数（如下面的变量x，优先使用这条规则）
+3. 如果代码块内的变量不是函数参数，那么这个变量看函数定义时，所确定的值(如下面的变量a)
+
+```javascript
+let x = "x";
+let a = "1";
+function f1(x){
+	return x + a
+}
+a = "3";
+{
+	let a = "2"
+	console.log(f1("y")) // 打印什么？
+}
+a = "4";
+```
+
+
+
+
+
+### 闭包的作用
+
+1. 让函数维持变量，不能维持变量的值
+
+
+
+### 实现「维持变量」的需求，有什么方法？
+
+1. 对象
+2. 闭包
+
+
+
+---
+
+
+
+
+
+# 2019.10.4
+
+### MVC的 C 作用
+
+>  A controller's purpose is to receive specific requests for the application
+
+### rails 如何添加一个 controller？（添加一个条件判断的分支）
+
+```
+$ rails generate controller Welcome index
+```
+
+### rails 如何get所有的路由？（获取所有的条件判断的条件）
+
+ `config/routes.rg`
+
+### resource 是什么？
+
+> A resource is the term used for a collection of similar objects, such as articles, people, or animals，就是 obj？？
+
+### 如何使用 resource？
+
+
+
+# 2019.9.30
+
+### 联调与 mock 数据
+
+1. 后端给接口文档，前端在 _mock.ts 返回内容
+
+2. 使用 mock 的数据进行开发
+
+3. 将 mock 地址 proxy
+
 # 2019.9.29
 
 
@@ -80,7 +187,7 @@ ui => model => 将 ui 与 model 通过 connect 串联起来
     - 前端项目的数据结构就是一个 {}
 
     - 
- 
+
 
 ### 如何提问
 
