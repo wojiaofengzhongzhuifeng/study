@@ -2,9 +2,19 @@
 
 
 
+# 2019.9.8
 
+### BOS几个key 的获取
 
+1. {appKey}: 用户创建时生成的 key
+2. {modelKey}:在预览应用中，点击某个构件，在控制台会显示`M1570503801966`
+3. {componentKey}: 在预览应用中，点击某个构件，在控制台会显示`M1570503801966_1j0rmjKBzDgf5LrV6wtpk0`
+4. {projectKey}:  ???
+5. {dataBaseKey}: 
+   1. 用户通过 bosf 的 3.7.11 接口登录，在响应内容，找到 「modelDB」，这个就是 dataBaseKey
+   2. 用户进入「用户预览」，打开「获取属性tab」，点击某个构件，红色就是 dataBaseKey
 
+### 
 
 # 2019.10.7
 
@@ -30,9 +40,8 @@
 
 ### 定义函数代码块中，变量如何确定值？
 
-1. 变量  === 桶，用于存放值
-2. 如果代码块内的变量是函数参数，那么这个变量看函数调用时传入的参数（如下面的变量x，优先使用这条规则）
-3. 如果代码块内的变量不是函数参数，那么这个变量看函数定义时，所确定的值(如下面的变量a)
+1. 调用时输入参数（params） => 变量（桶）随时会变 => x 变量
+2. 定义时环境（environment） => 变量（桶）不会变，但是桶内的值随时会变 => 变量
 
 ```javascript
 let x = "x";
@@ -62,6 +71,76 @@ a = "4";
 
 1. 对象
 2. 闭包
+
+### 
+
+
+
+### 函数变量的类别（非箭头函数）
+
+1. 变量  === 桶，用于存放值
+2. 隐式变量（this）：只能通过 call调用时确定 this
+3. 显示变量（arguments）：容易指定
+
+
+
+### 普通调用转化为 call 调用
+
+```
+1. fn(1,2)
+	 fn.call(undefined, 1, 2)
+2. obj.method('hi')
+   obj.method.call(obj, 'hi')
+3. array[0]('hi') 
+   array[0].call(array, 'hi')
+```
+
+
+
+### this指向的测试题
+
+1. button指向:https://jsbin.com/vutatuluwa/1/edit
+
+2. 测试题 2
+
+   ```javascript
+   let length = 10;
+   function fn(){
+   	console.log(this.length);
+   }
+   
+   let obj = {
+   	length: 5,
+   	method(fn){
+   		fn();
+   		arguments[0]();
+   	}
+   }
+   
+   obj.method(fn , 1) // 输出什么
+   ```
+
+   1. 调用 method 这个函数，并且method 函数的参数是 fn 函数
+   2. 因为 method 函数通过 `fn()`调用 fn 函数，可以转变成`window.fn.call(window)`，所以 fn 定义函数内的 this 是 window！！！！
+   3. `window.length`根据不同页面，取值会不同（其他知识）
+   4. 因为 method 函数通过 `arguments[0]();`调用 fn 函数，可以转变成`arguments[0].call(arguments)`，所以 fn 定义函数内的 this 是 arguments！！！！
+   5. 因为`obj.method(fn , 1) `，可以简单知道 arguments 有两个参数
+
+###  
+
+
+
+
+
+### 箭头函数不支持 this 的意思是什么？
+
+没有隐式变量（this），this 的值 environment 确定，不由 params 定义
+
+
+
+
+
+
 
 
 
