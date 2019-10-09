@@ -1,8 +1,49 @@
 
 
+# 2019.10.9
+
+### 「改」操作需要「选定表格数据」，再修改
+
+### 如何进行「跨表查询表格数据」？
+
+1. 建立「关系类」的作用
+
+| id      | From                          | to                            |
+| ------- | ----------------------------- | ----------------------------- |
+| Jfdkasl | 对象类1/对象类1的实例对象 key | 对象类2/对象类2的实例对象 key |
+
+2. 使用 「实体多对象关联查询」接口获取多表数据
+
+### 实体多对象关联查询 接口怎么用？？
+
+### git rebase 使用方法修改
+
+https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/git.md
+
+### google 搜索小技巧
+
+ `Math.floor(1.2)  === 1` ，如何搜索可以知道`Math.xxxx(1.2) === 2`?
+
+ `opposite`对立
 
 
-# 2019.9.8
+
+### 什么情况下使用「策略模式」
+
+有很多个 if else，并且还可能再添加多个 if else 
+
+### 阶乘，最简单的例子
+
+```
+j = (n) => n === 1 ? 1 : n * j(n - 1)
+```
+ 
+递归 = 递（往调用栈加东西）+ 归（从调用栈拿东西）
+
+### 
+
+
+# 2019.10.8
 
 ### BOS几个key 的获取
 
@@ -138,6 +179,13 @@ a = "4";
 
 
 
+### 总结
+
+1. 如果「函数内的变量」与「函数定义参数」同名，使用「调用时确定值，params 法」，否则，使用「定义时确定值，environment 法」
+2. environment 法，引出闭包概念
+3. 变量分为隐式变量（this）与 arguments，隐式的意思是「函数定义参数有this，没有显示出来」，也就是说，this的值由params确定
+4. arguments的值很简单指定，fn(1)  / this 的值这样指定fn.call(this, 1)
+
 
 
 
@@ -212,22 +260,20 @@ layout 目录下
 目标：需要往远程 master 修改 bug / 添加代码 
 
 1. git checkout master 切换到本地的 master 分支
-
 2. git pull origin master 拉取远程仓库的 master 分支代码，如果不执行，可能会导致代码冲突
-
 3. git checkout -b "fixbug" 以最新远程仓库的 master 分支为基础，开一个分支，分支名称为 fixbug
+4. 写代码
+5. git add .  添加到暂存区
+6. git commit -m "改完分支了" 添加到本地 git 中
 
-4. git add .  添加到暂存区
+7. git branch  查看当前分支，确保在 fixbug 分支
 
-5. git commit -m "改完分支了" 添加到本地 git 中
+8. git pull origin master 将远程 master 分支拉到 fixbug 分支中，目的是当别人和你修改了同一个文件时，会产生冲突，这时候需要本人解决冲突，保证远程没有冲突
 
-5.5 git branch  查看当前分支，确保在 fixbug 分支
-
-5.6 git pull origin master 当别人和你修改了同一个文件时，会产生冲突，这时候需要本人解决冲突，保证远程没有冲突
-
-5.7 你手动查看冲突，解决冲突
-
-6. git push origin fixbug:fixbug1 将本地的 fixbug 分支推送到远程 fixbug1 分支
+9. 手动查看冲突，解决冲突
+10. git add .  
+11. git commit -m "解决完冲突" 
+12. git push origin fixbug:fixbug1 将本地的 fixbug 分支推送到远程 fixbug1 分支
 
 ### antd 核心
 

@@ -14,17 +14,17 @@
 
 - 过程
 
-  - 获取 init 的 reversion number，假设为`f210`
+  - 获取 init commit 的 reversion number，假设为`f210`
 
   - `git rebase -i f210`，弹出互动界面
 
-    ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190530185530.png)
+    ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191009162008.png)
 
   - 使用 vim 修改(删除单词`de`)，修改后如下：
 
     ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190530185731.png)
 
-  - 退出后，会继续弹出一个界面，在这里可以修改 commit 信息
+  - `:wq`退出后，会继续弹出一个界面，在这里可以修改 commit 信息
 
     ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190530185929.png)
 
