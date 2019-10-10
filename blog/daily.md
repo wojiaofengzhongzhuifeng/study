@@ -1,4 +1,8 @@
+# 2019.10.10
 
+### 函数深入理解
+
+- [function](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/function.md)
 
 # 2019.10.9
 
