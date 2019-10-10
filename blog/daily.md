@@ -42,13 +42,23 @@ j = (n) => n === 1 ? 1 : n * j(n - 1)
 
 ### 斐波那契，第二个递归例子
 
-### 调用栈用来记忆「回到哪」
+### 调用栈作用：记忆「回到哪」
 
-### 如何降低「压栈」、「计算次数」？
+### 如何优化递归效率
 
-- 尾递归优化：在函数的尾巴进行递归
+- 尾递归优化：在函数的尾巴进行递归（迭代），完全不会
 
-- 记忆化函数
+- 记忆化函数：保存之前计算过的值
+
+### react 性能优化
+
+1. React.memo: https://codesandbox.io/s/gallant-poitras-nvv63
+
+2. React.useCallback（-3.38）: https://codesandbox.io/s/distracted-herschel-muxk1
+
+ ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191010220756.png)
+
+
 
 # 2019.10.8
 
