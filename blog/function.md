@@ -71,13 +71,13 @@ console.log('「函数调用」获取值', person1('name'));
 
 ### ✅如何确定 this 的值
 
-因为 this 变量是在函数定义处声明的，所以使用 params 法，即在函数调用时确定 this 的值
+因为 this 变量是在函数定义处声明的（虽然你看不见），所以使用 params 法，即在函数调用时确定 this 的值。
 
-一般函数变量，通过`test(1)`指定函数定义处变量
+一般函数变量，通过`test(1)`指定函数定义处变量。
 
 但是 this 是特殊的函数变量，只能通过 `test.call({name: 123}, 1)` 指定函数定义处变量
 
-## ❌阶乘递归
+### ❌阶乘递归
 
 ## 记忆化
 
@@ -87,18 +87,27 @@ console.log('「函数调用」获取值', person1('name'));
 
 1. React.memo
 
-    需求：点击按钮时，子组件不应该重新渲染，因为子组件没有任何变化
+    - 需求
     
-    代码：https://codesandbox.io/s/weathered-paper-ynlg6
+        点击按钮时，子组件不应该重新渲染，因为子组件没有任何变化
+    
+    - 代码
+    
+        https://codesandbox.io/s/weathered-paper-ynlg6
 
 2. React.useCallback
     
-    需求：点击右侧按钮时，子组件才渲染
+    - 需求
     
-    核心：![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191013120226.png)
+        点击右侧按钮时，子组件才渲染
     
-    代码：https://codesandbox.io/s/funny-vaughan-c30mf
-
+    - 核心
+    
+        ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191013120226.png)
+    
+    - 代码
+    
+        https://codesandbox.io/s/funny-vaughan-c30mf
 
 ## 柯里化
 
@@ -143,13 +152,12 @@ console.log('「函数调用」获取值', person1('name'));
     console.log(add6(1)(2)(3)(4)(5)(6));
     ```
     
-    add6 **分别单独接受 6 个参数**
+    add6 **分别单独**接受 6 个参数
 
 ### ❌柯里化测试题
 
 1. 简单测试题
 
-    现有函数 add 
     ```javascript
     let add = (a, b, c)=>{
       return a + b + c
@@ -213,11 +221,11 @@ test.apply({name: '1'}, [1,2]);
 ```
 使用 apply 调用的时候，既没有把函数作为参数，也没有把函数作为返回值抛出，为什么还说 apply 是高阶函数？？
 
-如果你要判断函数 this 的指向，必须找到函数是如何进行 call 调用的
+如果你要判断函数 this 的指向，必须找到函数是如何进行 call 调用的。
 
-同理，如果要判断一个函数是否是高阶函数，必须找到函数是如何进行 call 调用的
+同理，如果要判断一个函数是否是高阶函数，必须找到函数是如何进行 call 调用的。
 
-总的来说，如果要深入分析代码，必须把函数调用方式改成 call 的方式，而不是简写的方式
+总结：**如果要深入分析代码，必须把函数调用方式改成 call 的方式，而不是简写的方式。**
 
 如`test(1,2,3)`改成`test.call(undefined, 1,2,3)`
 
@@ -232,10 +240,12 @@ function test(a, b){
 // apply 调用
 test.apply({name: '1'}, [1,2]);
 
-// apply 改成 call 调用
+// 上面不看，已经明白
+
+// ① apply 改成 call 调用
 test.apply.call(test, {name: '1'}, [1,2]);
 
-// 因为 test.apply === Function.prototype.apply
+// ② 因为 test.apply === Function.prototype.apply
 let apply = Function.prototype.apply;
 apply.call(test, {name: '1'}, [1,2]);
 ```
