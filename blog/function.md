@@ -1,26 +1,28 @@
 # 函数的深入理解
 
-## 函数内变量取值依据
+### ✅函数内变量取值依据
 
-如果「函数内变量」与「函数定义处变量」名称一致，使用 params（函数调用时确定值） 法，否则使用 environment 法（函数定义时确定值）
+1. 依据
+ 
+    如果「函数内变量」与「函数定义处变量」名称一致，使用 params 法（函数调用时确定值） ，否则使用 environment 法（函数定义时确定值）
 
-![image](https://user-images.githubusercontent.com/25478678/66710269-7af97180-eda7-11e9-83b9-5f2e9ffc1656.png)
+    ![image](https://user-images.githubusercontent.com/25478678/66710269-7af97180-eda7-11e9-83b9-5f2e9ffc1656.png)
 
-测试题
+2. 测试题
 
-```javascript
-let x = "x";
-let a = "1";
-function f1(x){
-  return x + a
-}
-a = "3";
-{
-  let a = "2"
-  console.log(f1("y")) // 打印什么？
-}
-a = "4";
-```
+    ```javascript
+    let x = "x";
+    let a = "1";
+    function f1(x){
+      return x + a
+    }
+    a = "3";
+    {
+      let a = "2"
+      console.log(f1("y")) // 打印什么？
+    }
+    a = "4";
+    ```
 
 ## 闭包
 
