@@ -1,5 +1,23 @@
 # 2019.10.11
 
+## first-scene
+
+`renderer.render(scene, camera);`
+
+- 创建 renderer
+
+- 创建 scene
+
+- 创建 camera
+
+- 往 scene 添加 axe
+
+- 往 scene 添加 plane
+
+- 往 scene 添加 cube
+
+## 
+
 ## 常见疑惑：为什么在代码获取不到数据，在控制台就可以？
 
 基本都是因为异步，需要在相应回调中获取数据

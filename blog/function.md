@@ -1,32 +1,112 @@
 # 函数的深入理解
 
-## 函数内的变量取值依据
+## 函数内变量取值依据
 
-## 闭包是什么
+如果「函数内变量」与「函数定义处变量」名称一致，使用 params（函数调用时确定值） 法，否则使用 environment 法（函数定义时确定值）
 
-### 闭包与对象的关系是什么？？？
+![image](https://user-images.githubusercontent.com/25478678/66710269-7af97180-eda7-11e9-83b9-5f2e9ffc1656.png)
+
+测试题
+
+```javascript
+let x = "x";
+let a = "1";
+function f1(x){
+  return x + a
+}
+a = "3";
+{
+  let a = "2"
+  console.log(f1("y")) // 打印什么？
+}
+a = "4";
+```
+
+## 闭包
+
+### ✅闭包是什么？
+
+如果函数内使用了函数外的变量（environment 法），那么函数 + 变量 === 闭包
+
+### ✅闭包的作用是什么？
+
+维持变量，将相关联的变量放到一起
+
+例子
+```javascript
+// 通过对象保存 age，name
+let person = {
+  age: 12,
+  name: '明'
+}
+
+// 通过闭包保存 age, name
+function Person(age, name){
+  return (key)=>{
+    if(key === 'age'){
+      return age
+    } else if (key === 'name'){
+      return name
+    }
+  }
+}
+
+console.log(' 「点运算符」获取值', person.name);
+
+const person1 = Person(18, '红');
+console.log('「函数调用」获取值', person1('name'));
+```
+
+### ✅闭包与对象的关系是什么？
+
+都用来「维持变量」，看语言支持哪一种方式
 
 ## 特殊的变量： this
 
-## 阶乘递归
+### ✅「特殊」是什么意思？
 
-## 记忆化的核心思想是什么？
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191013112341.png)
 
-## 记忆化的核心思想在 React 的性能优化，React.memo 和 React.useCallback
+### ✅如何确定 this 的值
+
+因为 this 变量是在函数定义处声明的，所以使用 params 法，即在函数调用时确定 this 的值
+
+一般函数变量，通过`test(1)`指定函数定义处变量
+
+但是 this 是特殊的函数变量，只能通过 `test.call({name: 123}, 1)` 指定函数定义处变量
+
+## ❌阶乘递归
+
+## 记忆化
+
+### ❌记忆化的核心思想是什么？
+
+### ✅记忆化在 React 的应用，React 性能优化
+
+1. React.memo
+
+    需求：点击按钮时，子组件不应该重新渲染，因为子组件没有任何变化
+    
+    代码：https://codesandbox.io/s/weathered-paper-ynlg6
+
+2. React.useCallback
+    
+    需求：点击右侧按钮时，子组件才渲染
+    
+    核心：![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191013120226.png)
+    
+    代码：https://codesandbox.io/s/funny-vaughan-c30mf
+
 
 ## 柯里化
 
-### 作用
+### ✅作用
 
-让所有函数只接受一个参数
+经过柯里化处理的多参数函数，变成单参数函数
 
-### 单参数函数如何接受两个参数？
+### ✅单参数函数如何接受两个参数？
 
 1. 这个单参数是一个对象
-
-2. 使用闭包
-
-3. 例子
 
     ```javascript
     let add1 = ({a,b})=>{
@@ -36,26 +116,36 @@
     console.log(add1({a: 1, b:2}))
     ```
 
+2. 使用闭包
+
+    例子
     ```javascript
     let add2 = (a)=>{
       return (b)=>{
         return a + b
       }
     };
-    console.log(add2(1)(3))
+    
+    // add2 简写为
+    let add3 = a => b => a + b;
+ 
+    console.log(add2(1)(3));
+    console.log(add3(1)(3));
     ```
 
-4. 如何阅读柯里化的代码？
+3. 如何理解「返回函数的函数」
 
-    `let add = a => b => a + b`
+    现有函数 add6
+    ```javascript
+    let add6 = a => b => c => d => e => f => a+b+c+d+e+f;
+    console.log(add6(1)(2)(3)(4)(5)(6));
+    ```
+    
+    add6 **分别单独接受 6 个参数**
 
-### 柯里化函数
+### ❌柯里化测试题
 
-1. 含义
-  
-   把多参数函数，变成单参数函数
-   
-2. 测试
+1. 简单测试题
 
     现有函数 add 
     ```javascript
@@ -75,7 +165,7 @@
     let curriedArr = a => b => c => add(a, b, c);
     ```
     
-3. 测试 2
+2. 复杂测试题
 
     现有函数
     ```javascript
@@ -99,83 +189,68 @@
 
 ## 高阶函数
 
-### 什么是高阶函数
+### ✅什么是高阶函数
 
-把函数作为**参数**或者**返回值**的函数
+把函数作为**参数**或者**返回值**的函数，两个条件，满足一个即可
 
-### javascript 内置高阶函数
+### ✅为什么 apply 是一个高阶函数？
 
-1. bind
+假设有函数 test
 
-    `bind.call`如何理解
-    
-    1. `bind.call` 是函数
-    
-    2. `bind.call` 的参数分别是：函数A，this，函数 A 的 arguments
-    
-    3. `bind.call` 返回一个函数，并且这个函数已经指定好了 this，arguments
-    
-    4. 所以 `bind.call` 是一个高阶函数
-    
-    推理过程
-    ```javascript
-    var bind = Function.prototype.bind
-    
-    
-    var f1 = function(){
-      console.log('this')
-      console.log(this)
-      console.log('arguments')
-      console.log(arguments)
-      console.log('-----')
-    }
-    
-    var newF1 = f1.bind({name:'frank'}, 1,2,3)
-    
-    // obj.method(a,b,c,d,e)
-    // obj.method.call(obj,  a,b,c,d,e)
-    
-    // 设 obj = f1
-    // 设 method = bind
-    
-    // 代入
-    // f1.bind(a,b,c,d,e)
-    // f1.bind.call(f1,  a,b,c,d,e)
-    
-    // 代入参数
-    // a = {name:'frank'}
-    // b,c,d = 1,2,3
-    // f1.bind({name:'frank'},1,2,3)
-    // f1.bind.call(f1, {name:'frank'},1,2,3) // 这个式子
-    
-    // f1.bind === Function.prototype.bind
-    // var bind = Function.prototype.bind
-    // 所以 f1.bind 就是 bind
-    // bind.call(f1, {name:'frank'},1,2,3) // 这个式子
-    
-    // 总结
-    // bind.call 接收一个函数 fn，this，其他参数
-    // 返回一个新的函数，会调用 fn，并传入 this 和 其他参数
-                    
-    ```
+```javascript
+function test(a, b){
+  console.log(this);
+  console.log(a, b);
+}
 
-2. apply
+// 普通调用
+test(1,2);
 
-`apply.call`如何理解
+// apply 调用
+test.apply({name: '1'}, [1,2]);
+```
+使用 apply 调用的时候，既没有把函数作为参数，也没有把函数作为返回值抛出，为什么还说 apply 是高阶函数？？
 
-3. call
+如果你要判断函数 this 的指向，必须找到函数是如何进行 call 调用的
 
-`call.call`如何理解
+同理，如果要判断一个函数是否是高阶函数，必须找到函数是如何进行 call 调用的
 
-4. sort
+总的来说，如果要深入分析代码，必须把函数调用方式改成 call 的方式，而不是简写的方式
 
-5. reducer
+如`test(1,2,3)`改成`test.call(undefined, 1,2,3)`
 
-6. map
+### apply.call 的理解
+
+```javascript
+function test(a, b){
+  console.log(this);
+  console.log(a, b);
+}
+
+// apply 调用
+test.apply({name: '1'}, [1,2]);
+
+// apply 改成 call 调用
+test.apply.call(test, {name: '1'}, [1,2]);
+
+// 因为 test.apply === Function.prototype.apply
+let apply = Function.prototype.apply;
+apply.call(test, {name: '1'}, [1,2]);
+```
+
+因为 test 是一个函数，所以 apply 是高阶函数
+
+### ✅与 apply 相似的函数
+
+bind、call
+
+### ✅其他的高阶函数
+
+sort、reducer、map
 
 ## pipe 操作
 
-### 解决的问题
+### ❌解决的问题
 
 解决函数组合时，代码语义不好读懂的问题
 
@@ -183,11 +258,21 @@
 
 ## 在 React 的应用
 
-### 代码
+### ❌将函数作为参数传给子组件
 
-https://codesandbox.io/s/nifty-butterfly-tgs28
+1. 代码
 
-### 在什么情况下使用
+    https://codesandbox.io/s/nifty-butterfly-tgs28
+
+2. 在什么情况下使用
+
+    子组件想传数据或者函数给父组件的另一种方法
+
+
+
+
+
+
 
 
 
