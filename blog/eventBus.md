@@ -30,7 +30,7 @@
     
     * 声明一次，立即使用 === 不需要声明一个变量
     
-- 如何测试「函数没有被调用」？
+- 如何测试函数是否被调用？
 
     * 使用 called
     
@@ -39,5 +39,31 @@
 - emit 传递两个值
 
 - off要传入一个函数
+
+## 重点
+
+- 下列代码，先打印 1 还是 2
+  
+  ```javascript
+  event.on('test',()=>{
+    console.log(1)
+  })
+  event.emit('test');
+  console.log(2)
+  ```
+  1， 2
+  
+- 如何测试函数是否被调用
+
+- class 如何定义「类变量」和 「实例变量」
+
+  ```javascript
+  class Student {
+    test = {};
+    constructor(test1){
+      this.test1 = test1
+    }
+  }
+  ``` 
 
 
