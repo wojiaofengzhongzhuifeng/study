@@ -84,4 +84,5 @@
 ## 每日学习
 
 - [每日学习](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/daily.md)
+- [英文](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/word.md)
 
