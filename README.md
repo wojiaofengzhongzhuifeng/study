@@ -15,6 +15,13 @@
 - [对象](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/对象.md)
 - [继承](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/继承.md)
 
+## JavaScript 深入
+
+- [函数](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/function.md)
+
+- [EventBus](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/function.md)
+
+
 ## CSS
 
 - [这些知识太细了，我放到这里](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/css杂.md)
