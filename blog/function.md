@@ -75,9 +75,49 @@ console.log('「函数调用」获取值', person1('name'));
 
 一般函数变量，通过`test(1)`指定函数定义处变量。
 
-但是 this 是特殊的函数变量，只能通过 `test.call({name: 123}, 1)` 指定函数定义处变量
+但是 this 是特殊的函数变量，只能通过 `test.call({name: 123}, 1)` 指定函数定义处变量。
 
-### ❌阶乘递归
+### 具体方法
+
+1. 常用的转化
+
+    ```javascript
+    fn(1,2)
+    fn.call(undefined, 1, 2)
+    
+    obj.method('hi')
+    obj.method.call(obj, 'hi')
+    
+    array[0]('hi') 
+    array[0].call(array, 'hi')
+    ```
+
+2. 测试
+
+    - button 测试1
+    
+        https://jsbin.com/vutatuluwa/1/edit?html,js,output
+        
+    - 测试 2
+    
+        ```javascript
+        let length = 10;
+        function fn(){
+          console.log(this.length);
+        }
+        
+        let obj = {
+          length: 5,
+          method(fn){
+            fn();
+            arguments[0]();
+          }
+        }
+        
+        obj.method(fn , 1) // 输出什么
+        ```
+
+## ❌递归
 
 ## 记忆化
 
