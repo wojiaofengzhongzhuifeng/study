@@ -19,7 +19,7 @@
 
 - [函数](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/function.md)
 
-- [EventBus](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/function.md)
+- [EventBus](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/eventBus.md)
 
 
 ## CSS

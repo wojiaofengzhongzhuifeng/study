@@ -14,7 +14,7 @@ geometry === 物体形状(如长方体,立方体,球体)
 
 mesh === 网格 === geometry + material 
 
-## 
+## 手工配置 three 的开发环境,总体思路
 
 
 # 2019.10.14
