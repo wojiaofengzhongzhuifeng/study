@@ -1,3 +1,58 @@
+# 2019.10.15
+
+## 输入 modelKey,输出 allComponentKey
+
+`viewer3D.viewerImpl.modelManager.models["M1570783317812"].getComponentlist();`
+
+## 使用 js 修改 style 
+
+`div.style = "color: red";` 通过这个修改, 导致 div 的 style 只有`color: red`,之前的 style 都消失
+
+## geometry , mesh
+
+geometry === 物体形状(如长方体,立方体,球体)
+
+mesh === 网格 === geometry + material 
+
+## 
+
+
+# 2019.10.14
+
+## 对象添加 key：valu 的陷阱
+
+https://jsbin.com/havomewozi/1/edit?js,console,output
+
+## three 渲染核心
+
+scene，camera，renderer
+
+放到 scene 的组件：camera，spotLight，对象（方块，球体）
+
+## mesh 组成
+
+mesh(网格) === geometry（骨架） + material （材质）
+
+## scene
+
+### scene如何生成
+
+`window.scene = new THREE.Scene();`
+
+### 是什么？有什么用
+
+是一个数组，用来保存在这 scene 渲染的 obj
+
+![image](https://user-images.githubusercontent.com/25478678/66735411-db1c1080-ee98-11e9-88eb-118f6aee3e11.png)
+
+### 常用方法
+
+scene.getObjectByProperty 根据 mesh 的 key:value, 获取 mesh obj
+
+scene.children 获取场景的所有子对象
+
+## 
+
 # 2019.10.13
 
 笔记模板
@@ -12,12 +67,12 @@
 
 - 知识点 1.2
 
-  * 知识点 1.2.1
-  
+  - 知识点 1.2.1
+    
     yyy
-  
-  * 实例代码
-  
+      
+    实例代码
+      
     ```javascript
     console.log(1)
     ```

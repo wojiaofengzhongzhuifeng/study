@@ -55,6 +55,8 @@
   
 - 如何测试函数是否被调用
 
+  https://github.com/wojiaofengzhongzhuifeng/eventHub/commit/83effc1b5d2071481b9c86346ff15d20a4e1edbf
+
 - class 如何定义「类变量」和 「实例变量」
 
   ```javascript
@@ -64,6 +66,26 @@
       this.test1 = test1
     }
   }
-  ``` 
+  ```
+- on 函数有个陷阱
+
+  this.events.test1 为什么是 undefined？
+  ```javascript
+  class Person {
+    events = {};
+    on(){
+      let test = this.events.test1;
+      if(!(test)){
+        test = [];
+      }
+      test.push(123321);
+      console.log(test);
+      console.log('this.events[eventName]', this.events.test1);
+    }
+  }
+  
+  let test= new Person();
+  test.on();
+  ```
 
 

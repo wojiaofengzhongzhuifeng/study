@@ -79,6 +79,71 @@ have
 碰巧
 </details>
 
+<details>
+<summary> attribute </summary>
+参数 params arguments
+</details>
+
+<details>
+<summary>  extent  </summary>
+场景
+</details>
+
+<details>
+<summary> fallbacks </summary>
+降级
+</details>
+
+<details>
+<summary> performance intensive</summary>
+性能敏感 === 低性能
+</details>
+
+<details>
+<summary> resolution </summary>
+分辨率
+</details>
+
+<details>
+<summary> not least </summary>
+重要
+</details>
+
+<details>
+<summary> stick to </summary>
+use
+</details>
+
+<details>
+<summary> typical </summary>
+正常情况
+</details>
+
+<details>
+<summary> grab </summary>
+把 ... 拿过来
+</details>
+
+<details>
+<summary> come through  </summary>
+帮助
+</details>
+
+<details>
+<summary> from here on out </summary>
+从现在开始
+</details>
+
+<details>
+<summary> regardless </summary>
+不管
+</details>
+
+<details>
+<summary> take care of </summary>
+处理
+</details>
+
 
 
  
