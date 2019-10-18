@@ -1,3 +1,87 @@
+# 2019.10.17
+
+## 旋转与 x y z 轴的关系
+
+1. 绕 xxx 轴旋转 === 想象蒲扇旋转
+
+2. 当旋转完之后,构件的旋转轴跟着旋转,并不是一直不变的
+
+## 外派注意事项
+
+1. 老板
+
+    是什么
+    
+2. 产品经理
+
+    为什么
+    
+3. 程序员
+
+    怎么做
+    
+4. 我能处理的事情
+
+    bosf + bos3d 
+    
+5. 会议完成之后,要有会议记录
+
+6. 复杂需求
+
+    「这个需求比较复杂,我需要与我司的相关领导讨论,才能给你一个答复」
+    
+7. 
+
+## 期望的 pdf 阅读器效果
+
+统计笔记, 即第 xx 页有笔记
+
+com + shift + t: 记笔记
+
+com + i: 查看笔记
+    
+## 如何获取 scene?
+
+viewer3D.viewerImpl.getScene()
+
+## 获取模型所有构件 key
+
+viewer3D.viewerImpl.modelManager.models["M1552896621854"].getComponentlist();
+
+## 宫的需求
+
+1. 根据数组,生成可拖拽的 div
+
+2. 拖动第一个 div, 通过 addView 添加到scene
+
+3. 拖动第二个 div, 添加到 scene
+
+4. 点击 scene 高亮
+
+5. 可以对传感器进行修改
+
+## 
+
+# 2019.10.16
+
+## 如果一个 cube 位置是(0,0,0),那么这个点是 cube 立方体的中心点吗?
+
+是的
+
+## 如果我想写一个类,用来生成 cube,应该如何写这个类?
+
+## es6 import 
+
+`export {screenMiddleMesh, screenMesh}`
+
+`import {screenMesh, screenMiddleMesh} from './js/screen';`
+
+## 构件的偏移,旋转量与 x,y,z 的关系
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191016172926.png)
+
+## 
+
 # 2019.10.15
 
 ## 输入 modelKey,输出 allComponentKey

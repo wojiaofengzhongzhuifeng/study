@@ -144,7 +144,25 @@ use
 处理
 </details>
 
+<details>
+<summary> association </summary>
+集合
+</details>
 
+<details>
+<summary> in which case </summary>
+在这种情况下
+</details>
+
+<details>
+<summary> Object properties are basically the same as ordinary JavaScript variables, except for the attachment to objects </summary>
+对象属性与普通 js 变量没有区别,除了(except for)属性依附于(attachment to)对象
+</details>
+
+<details>
+<summary> access </summary>
+get 获取
+</details>
 
  
 
