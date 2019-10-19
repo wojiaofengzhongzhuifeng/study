@@ -164,6 +164,19 @@ use
 get 获取
 </details>
 
- 
+<details>
+<summary> square bracket notation </summary>
+
+方括号 标记
+
+</details>
+
+<details>
+<summary> This notation is also very useful when property names are to be dynamically determined (when the property name is not determined until runtime). </summary>
+
+这个方框标记是非常有用的,当属性的name 是动态确定(name 是一个变量),
+
+</details>
+
 
 
