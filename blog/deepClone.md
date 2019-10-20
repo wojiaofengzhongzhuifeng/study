@@ -66,7 +66,7 @@
   
 - 如何修改对象属性的「可枚举属性」?
 
-直接 `Object.defineProperties`;
+  直接 `Object.defineProperties`;
 
 
      
