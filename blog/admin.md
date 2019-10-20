@@ -7,24 +7,6 @@
   `git checkout -b dev2 origin/dev1`
   
   `git pull origin dev2` 不确定是 dev1 还是 dev2
-  
-- 如何引入全局 css 样式 11
-
-- 如何加载一张图片 11
-
-- webstorm 取消使用 eslint jslint 12
-
-- 高阶组件是高阶函数, 接受一个组件(函数), 返回一个经过包装组件(函数)
-
-- form 验证有两种方式
-
-  - 约定式验证: 框架提供给你常用的验证方式,保证基本使用
-  
-  - 自定义验证: 当框架提供验证方式不能满足需求,保证扩展性
-  
-- 18 复习
-
-## 过程笔记 1
 
 - vim 如何跳转到某一行
 
@@ -32,7 +14,31 @@
 
 - webstorm 如何创建模板代码
 
-   
+- 如何跳转到行尾部
+
+  `1$`
+
+- 经过高阶组件包装的 login 组件, ts 报错如何处理
+
+  ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191020222352.png)
+
+## 视频笔记 2 19 开始
+
+- 如何通过 ts 生成接口文档
+
+- form-data 与 x-www-form-urlencoded 区别
+
+  - form-data: 带文件
+
+  - x-www-form-urlencoded: 不带文件
+
+- 所有接口请求函数都是 regLogIn, 都返回一个 promise 
+
+- 
+
+
+
+ 
 
 
 
