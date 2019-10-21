@@ -805,6 +805,8 @@ const test123321: Test<{count: number, data: Array<string>}> = {
 
 `ifconfig | grep "inet " | grep -v 127.0.0.1`
 
+`	inet 192.168.1.37 netmask 0xffffff00 broadcast 192.168.1.255`
+
 ### markdown 测试
 
 <details>

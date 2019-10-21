@@ -34,7 +34,19 @@
 
 - 所有接口请求函数都是 regLogIn, 都返回一个 promise 
 
-- 
+- promise 与 await/async 区别
+
+- 从登录接口跳转到主页面
+
+  用 repalce 代替 push ,为什么?
+
+- 获取后台数据的优化过程
+
+  - 使用 promise 获取
+
+  - 使用 async 
+
+  - 统一处理错误
 
 
 
