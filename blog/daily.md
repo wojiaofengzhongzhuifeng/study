@@ -1,3 +1,413 @@
+
+
+# 2019.12.8
+
+## 新知识
+- 版本更新 
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191208144628.png)
+
+# 2019.12.6
+
+## 工作内容
+- 分析易图边坡的「保存, 修改模型位置」的需求
+  + 通过 /api/set_slope 设置边坡信息
+  + 通过 /api/get_slope_simple_info 获取边坡信息
+  + 在前端页面接入获取信息接口
+  + 在前端页面接入设置边坡信息接口
+
+## 新知识
+- 学框架, 需要注意的问题
+  + 数据如何进行通信
+  + 如何监听数据变化
+  + 
+
+# 2019.12.5
+
+## 工作内容
+- 以后每次完成一个项目, 都要录个视频
+- 分析深圳湾项目需求
+  + 为监控视频添加一个预警区域
+  + 预警视频与预警信息信息同步
+- 完成深圳项目相关需求,发现客户提供的接口有问题, 现在正在协调
+
+
+
+
+# 2019.12.4
+
+## 工作内容
+- 开会, 明确最近的任务
+- 跟进昨天 BOS3D 模型出错的问题
+- 对深圳湾, 边坡项目的系统使用
+  + 从用户需求出发, 列出几个用户需求点
+  + 演示系统是如何满足需求点
+- 录制深汕湾, 深圳湾的演示视频
+- 项目地址:
+  + 深圳湾:http://canyou.rickricks.com:86
+  + 深汕湾: 本地部署, 没有线上地址
+- 沟通易图边坡的需求, 完成组件修改 2h
+- 
+
+## 新知识
+- 添加 alias的方法
+  + 查看当前 alias: `alias`
+  + 设置新 alias: `alias ws='/usr/local/bin/webstorm'`
+  + 激活新的 alias: `source ~/.zshrc`
+
+# 2019.12.3 
+
+## 工作内容
+- 完成易图边坡 tab 组件的数据渲染 3h
+- 协助黎荣德的客户, 完成模型加载 
+- 完成易图边坡
+
+## 新知识
+- 生产环境 === 正式环境
+- 研发环境 === 开发环境
+- 现有 string1 = "test", 如何把 string2 = "123"放到 string1 的左边?
+```
+// initString被插入, newString插入
+function addStringLeft(initString, newString){
+  return initString.padStart(initString.length + newString.length, newString)
+}
+```
+- 出问题找谁
+bosf 后端 李浩
+bos3d 前端 解析 根德
+bos3d 前端 除了解析 公博
+bos3d 后端 李浩
+
+# 2019.12.2
+
+## 工作内容
+- 整理易图边坡新增需求, 输出成文档 1h
+- 风险地图添加信息框展示 + 生成模拟数据 5h
+- 边坡信息 tab 数据展示 5h
+- 协助邓文伟完成客户问题
+
+## 新知识
+- 最简单的 require 语法
+- 实现需求: 如果 localstorage 有某个变量, 则所有的路由都跳转到 /test 路由
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191202221208.png)
+
+require 语法的核心 === 「文件是对象」
+
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191202103004.png)
+![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191202103021.png)
+
+---
+
+
+# 2019.11.30
+
+## 工作内容
+- 在 「答题组件」的基础上, 发布一个新版本包
+- 如何把 item push 到 array 的指定 index 中
+  + new Array()创建数组
+- 
+
+
+# 2019.11.29
+
+## 工作内容
+- 完成页面预警功能
+- 完成渲染模型的页面, 并且部署到服务器上
+
+## 新知识
+- 时间戳与 YYYYMMDD 格式转化
+
+# 2019.11.28
+
+## 工作内容
+- 完成深圳湾监控画面的接入
+- 协助陈春鼎, 解决客户提出问题
+- 完成预警信息展示
+  + 联调接口
+  + 将接口返回的数据渲染到页面中
+- 帮助树强, 完成模型渲染
+- 
+## 新知识
+- 图片资源如何在 webpack 引入
+
+
+# 2019.11.27
+
+## 工作内容
+- 完成易图边坡项目的 modal 组件的 bug 修复
+- 易图边坡项目: 完成接口 「获取所有边坡坐标信息（返回全部坐标点）用于大屏展示和插值计算」
+- 易图边坡项目: 完成接口 「通过测点id获取设备列表信息」
+- 深圳湾项目: 分析需求
+- 深圳湾项目: 根据需求, 修改页面结构
+
+## 新知识
+- 部署到服务器问题
+  + 前端和后端应该放到一个文件夹?
+  + apt 如何安装软件包`sudo apt-get install xxxxx`
+  + 如何用 Nginx 跑一个最简单的前端应用?
+- 解构
+
+# 2019.11.26
+
+## 工作任务
+- 初始化易图边坡的工作环境
+- 修改易图边坡项目的 modal 组件的显示 bug 
+- 
+## 新知识
+- 看源代码
+  - 折叠
+  - 不看赋值, 看逻辑 
+  - 技巧: 防止重复初始化
+  - structure
+-  Scroll 组件继承所有 div 的属性,应该怎么处理?
+  ```
+  interface Sctroll extends HTMLAttriute<HTMLDivElement>{}
+  ```
+-  隐藏滚动条
+-  intention action 根据上下文, ide 自动写代码
+-  scroll 函数的类型如何定义
+  - `ssh root@47.106.20.666   //你的服务器公网 ip，比如 47.106.20.666`
+
+
+# 2019.11.25
+
+## 工作任务
+- 整理深圳湾项目需求
+- 完成阳地钢 demo 项目的 bug 修复
+- 完成边坡「使用 checkbox控制页面显示内容」
+
+## 新知识
+- 获取 element 的 css 值
+- 判断
+check
+- 如何在 scss 和 js 共享 css 变量
+- 滚动条组件
+  - 滚动条的条件
+  - 自制滚动条是下拉更新的基础
+  - 没有 css 如何实现滚动条
+  - structure
+  - 静态方法, 实例方法区别
+    - 静态方法: 通过类名调用 
+    - 实例方法: 通过实例对象调用
+  - 看逻辑, 不看赋值
+  - 常见技巧
+  防止重复初始化
+  ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191125175244.png) 
+
+  ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191125175406.png)
+
+
+
+
+
+# 2019.11.23
+
+## 工作任务
+- 综合展示页面, 点击标记点, 获取边坡信息模拟数据, 同时在标记信息 modal 添加一个button, 用于跳转到 3 维模型
+- 编写 list 组件, 用于展示内容
+- 使用 list 组件, 完成模拟数据的展示
+- 在 display 页面加载边坡组件
+
+## 新知识
+- js object key 出现的顺序可以确定吗?
+```typescript
+let obj = [
+  ['key1', 'value1'],
+  ['key2', 'value2']
+]
+```
+# 2019.11.22
+
+## 工作任务
+- 继续
+
+# 2019.11.21
+
+## 工作任务
+- 完成需求「点击边坡(构件), 展示「边坡信息, 几何信息, 设备信息」, ui 参考 bos3d 获取信息的方式」
+- 修改徐汇项目 ui
+
+# 2019.11.20
+
+## 工作任务
+- 在模型中选择边坡土质层，增加标签或说明信息
+- 整理模型
+  深圳湾: 
+    模型: http://canyou.rickricks.com:85/  
+    模型: http://canyou.rickricks.com:89/
+  深汕湾:
+    后台管理: http://canyou.rickricks.com:82/  
+    模型: http://canyou.rickricks.com:90/
+- 明确需求变更内容
+  - 展示(display目录)
+    - 当滚轮滚到某个数值, 展示 gis 模型, 否则展示 gis 模型所在的位置
+    - 确定模型所在行政区
+    - 差值图  / 边坡空间分布 功能按钮切换
+    - 点击边坡(构件), 展示「边坡信息, 几何信息, 设备信息」, ui 参考 bos3d 获取信息的方式
+  - 落图(changeModel 目录)
+     - 展示模型列表, 按钮「添加模型落图」, 渲染模型
+     - 页面添加监测点位置
+## 自己任务
+- 引入 antd-mobile
+
+## 新知识
+- 如何使用 git 多人协作
+- zsh 如何添加 alias
+  直接`alias ws="/usr/local/bin/webstorm"`;
+- json-server 如何开启多个
+
+# 2019.11.19
+
+## 工作任务
+- 快速搜索相关位置并点击定位到相关位置。
+  - 引入 autoComplete 组件, 对组件进行最简单的使用, 后续接入真实数据 + 使用 flyTo api 完成需求
+- 测试易图提供的 swagger 文档, 检查是否缺失说明文档
+- 对需求, 接口进行整理, 输出文档
+# 2019.11.18
+
+## 工作任务
+- 根据原型图完成静态页面
+  - px 转成 %
+  - 修改原有的 menu 组件
+  - 完成顶部的修改
+## 新知识
+
+# 2019.11.15
+
+## 工作任务
+- 梳理徐汇的需求, 明确任务
+- 根据 sketch 的切图, 完成静态页面的编写
+  - 完成底部, 顶部, 左侧, 右侧, 底部的 div 放置
+  - 完成底部, 顶部, 左侧, 右侧, 底部的 div 内容放置
+  - 完成顶部时间和天气
+  - 完成组件: 图片内添加 text
+
+## 自学任务
+
+## 新知识
+
+# 2019.11.14
+
+## 工作任务
+- 按照需求完成深圳湾项目, 新增构件(摄像头, 消防器械, 灭火器, 安全通道, 配电箱)的信息展示
+  - 点击构件, 不高亮构件
+  - 根据点击的构件, 触发不同的 modal 展示
+  - 
+- 支持天翔睿翼, 关于 token 的获取
+- 支持天翔睿翼, 关于轮廓线移动的问题 1h
+- 移动构件时, 轮廓线也跟随构件移动
+- 将代码上传到服务器
+- 使用 Jenkins 自动更新代码
+## 自学任务
+- 确定 cascader 的使用方式
+- 展示第一层数据
+- 函数 findObjByKey: 输入对象数组, key, value, 输出符合的对象
+- ts 如何定义箭头函数的输入输出
+```typescript
+const sum = (number: number, number1: number): number=>{
+  return number + number1;
+}
+```
+
+## 新知识
+- 防御性编程
+❎ `a.b.c.d.doSome();`
+✅ `a && a.b && a.b.c && a.b.c.d && a.b.c.d.doSome()`
+
+- 如何在 jsx ts-ignore 
+
+
+# 2019.11.13
+
+## 工作任务
+- 与意图明确需求, 按照需求渲染模型
+  - 分情况处理 14 楼与非 14 楼的渲染
+  - 根据时机, 切换渲染方式
+  - 美化模型渲染
+  - 点击构件不高亮
+- 完成剖切 demo 的代码
+- 支持天翔睿翼, 关于构件的云端保存 1h
+
+
+## 自学任务
+
+## 新知识
+- 如何实现「当 props, state, 变化时, 执行某个函数」?
+  componentWillUpdate(nextProps, nextState);
+
+
+# 2019.11.12
+
+## 今天任务
+1. 完成深汕湾的细节修改
+2. 完成深汕湾的项目部署
+3. 完成深圳湾项目的模型导入, 功能实现
+  - 完成新模型的导入
+  - 完成展现信息构件的需求整理
+
+## 轮子任务
+- 确定 cascader api
+
+
+## 选中构件, 取消高亮
+
+## 如何监听构件点击事件?
+
+## 一个函数, 在 2000 之后可能触发(一般情况), 可能不触发(我主动触发)
+
+timeId + setTimeout
+
+
+
+
+# 2019.11.11
+
+## popover 逻辑
+
+1. 判断鼠标是否在 trigger 中(使用 state 保存状态)
+
+2. 
+
+'- 梳理深圳湾的需求
+
+- 完成深圳湾的模型导入
+
+# 2019.11.9
+
+##  后台管理
+
+# 2019.11.4
+
+## 后台管理
+
+1. 后台分页
+
+2. 后台分页 + 搜索
+
+3. 商品详情
+
+4. 上下架
+
+6. fdsa
+
+  ```
+  jfdksaljfdksa
+  ```
+7. 
+ 
+# 2019.11.3
+
+
+
+# 2019.10.23
+
+## http-server 报了跨域错误,应该怎么解决??
+
+http-server -c-1 --cor
+
+# 2019.10.22
+
+## 前端项目, 如何把 port 指定为一个变量
+
 # 2019.10.17
 
 ## 旋转与 x y z 轴的关系
@@ -78,7 +488,7 @@ viewer3D.viewerImpl.modelManager.models["M1552896621854"].getComponentlist();
 
 ## 构件的偏移,旋转量与 x,y,z 的关系
 
-![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191016172926.png)
+![](https://raw.githubusercontent.com/wojiaotengzhongzhuifeng/image-host/master/img/20191016172926.png)
 
 ## 
 
@@ -991,11 +1401,11 @@ promise.then(f1, f2).catch(f3);
 
 ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190808094650.png)
 
-- 文件夹的处理
+- 模型的处理
 
-    - ifc 不需处理
+    - ifc, fbx不需处理
     
-    - OBJ，iModel，FBX 需要转化为 zip 包（直接通过压缩软件即可，不需要其他软件）
+    - OBJ，iModel， 需要转化为 zip 包（直接通过压缩软件即可，不需要其他软件）
     
     - Rvt 需要在 window 下的 revit 软件进行「导出模型」操作，导出的结果是一个 zip 包
 
@@ -1011,17 +1421,17 @@ promise.then(f1, f2).catch(f3);
 
 ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190808103939.png)
 
-- 替换 url
+- 拼接 url, 展示模型
 
+react + 研发环境
 http://demo.bimwinner.com:7787/showAllComponentsInfo?host=🚧host🚧&3dAppKey=🚧appKey🚧&modelKeys=["🚧modelKey🚧"]
 
-http://bos3d.bimwinner.com
-
-ed87a9bedb9443f4a20b02d5affa1706
-
-M1565231850397
+http://demo.bimwinner.com:7787/showAllComponentsInfo?host=http://bos3d.bimwinner.com&3dAppKey=f788d486d3d346e989570004a0b5ab40&modelKeys=[%22M1573457667953%22]
 
 ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190808104425.png)
+
+原生 + 生产环境
+http://bos3d.bimwinner.com/bos3d/src/modelShow.html?dbName=test&modelId=M1570613254837&url=http://bos3d.bimwinner.com
 
 
 # 2109.8.7

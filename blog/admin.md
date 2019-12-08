@@ -1,60 +1,62 @@
 # admin
 
-## 视频笔记1
+## 有用的知识
 
-- git 在本地创建一个 dev2 分支, 分支的内容与远程 dev1 分支一致
+- 视频, 图片资源的方式
+  + `import img from 'img的地址'`
+  + 资源放到 public, 通过`./img地址`引入
+- react class 组件 函数的摆放位置
+  +  state
+  +  自定义函数
+  +  computedData
+  +  生命周期
+  +  render
+- 统一处理错误
+  + api/ajax.ts
+    ```
+    import axios from 'axios';
+    import { message } from 'antd';
 
-  `git checkout -b dev2 origin/dev1`
-  
-  `git pull origin dev2` 不确定是 dev1 还是 dev2
+    const CODE_MAP: {[key: number]: string} = {
+      404: '请求地址错误',
+    };
 
-- vim 如何跳转到某一行
+    export const req: (method: string, url: string, data: any)=>Promise<any> = (method, url, data)=>{
+      return new Promise((resolve)=>{
+        let promise;
+        if(method === 'get'){
+          promise = axios({
+            method: 'get',
+            url: url,
+            params: data,
+          });
+        } else {
+          promise =  axios({
+            method: 'post',
+            url: url,
+            data: data,
+          });
+        }
+        promise.then((response)=>{
+          resolve(response.data);
+        }).catch((error)=>{
+          message.error(`${CODE_MAP[error.response.status]}`)
+        });
+      });
 
-   命令模式下: `:行数`
+    };
+    ```
+  + api/index.ts
+    ```
+    import {req} from './ajax';
+    import jsonp from 'jsonp';
+    import {message} from 'antd';
 
-- webstorm 如何创建模板代码
+    export const reqCategoryList = (parentId: string)=>req('get', '/manage/category/list', {parentId});
 
-- 如何跳转到行尾部
-
-  `1$`
-
-- 经过高阶组件包装的 login 组件, ts 报错如何处理
-
-  ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191020222352.png)
-
-## 视频笔记 2 19 开始
-
-- 如何通过 ts 生成接口文档
-
-- form-data 与 x-www-form-urlencoded 区别
-
-  - form-data: 带文件
-
-  - x-www-form-urlencoded: 不带文件
-
-- 所有接口请求函数都是 regLogIn, 都返回一个 promise 
-
-- promise 与 await/async 区别
-
-- 从登录接口跳转到主页面
-
-  用 repalce 代替 push ,为什么?
-
-- 获取后台数据的优化过程
-
-  - 使用 promise 获取
-
-  - 使用 async 
-
-  - 统一处理错误
-
-
-
- 
-
-
-
-
+    ```
+  + 使用
+    `const result = await reqCategoryList(this.state.selectCategoryKey);`
 
  
  
