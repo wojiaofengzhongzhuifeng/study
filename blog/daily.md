@@ -4,7 +4,9 @@
 
 ## 新知识
 - 版本更新 
+
 ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191208144628.png)
+
 - 为什么组件只能有一个节点
 需要为节点添加事件, 如果有多个节点, 不知道如何添加事件 
 
@@ -72,13 +74,16 @@
 - 生产环境 === 正式环境
 - 研发环境 === 开发环境
 - 现有 string1 = "test", 如何把 string2 = "123"放到 string1 的左边?
-```
-// initString被插入, newString插入
-function addStringLeft(initString, newString){
-  return initString.padStart(initString.length + newString.length, newString)
-}
-```
+
+  ```
+  // initString被插入, newString插入
+  function addStringLeft(initString, newString){
+    return initString.padStart(initString.length + newString.length, newString)
+  }
+  ```
+
 - 出问题找谁
+
 bosf 后端 李浩
 bos3d 前端 解析 根德
 bos3d 前端 除了解析 公博
@@ -95,11 +100,13 @@ bos3d 后端 李浩
 ## 新知识
 - 最简单的 require 语法
 - 实现需求: 如果 localstorage 有某个变量, 则所有的路由都跳转到 /test 路由
+
 ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191202221208.png)
 
 require 语法的核心 === 「文件是对象」
 
 ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191202103004.png)
+
 ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191202103021.png)
 
 ---
