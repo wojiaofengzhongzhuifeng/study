@@ -8,6 +8,7 @@
 ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20191208144628.png)
 
 - 为什么组件只能有一个节点
+
 需要为节点添加事件, 如果有多个节点, 不知道如何添加事件 
 
 
@@ -83,11 +84,10 @@
   ```
 
 - 出问题找谁
-
-bosf 后端 李浩
-bos3d 前端 解析 根德
-bos3d 前端 除了解析 公博
-bos3d 后端 李浩
+  - bosf 后端 李浩
+  - bos3d 前端 解析 根德
+  - bos3d 前端 除了解析 公博
+  - bos3d 后端 李浩
 
 # 2019.12.2
 
