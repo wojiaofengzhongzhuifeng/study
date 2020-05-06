@@ -1,5 +1,163 @@
 
 
+## 2020.03.31
+
+- 在一个函数定义多个函数好不好??
+
+## 2020.03.30
+
+- 多人合作 git 操作流程(未涉及开分支操作, 直接在 dev 分支写代码)
+
+    - webstorm 右键 origin/dev 分支. 新开一个本地 dev 分支, 用于关联 origin/dev 分支
+    
+    ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20200330174217.png)
+    
+    - 正常提交代码
+    
+    - 在提交代码到远程之前, 需要 git pull, 拉取远程最新代码, 并且解决冲突
+    
+    - git push 即可
+    
+- 多人合作 git 操作流程(涉及开分支, 一个功能需要对应一个分支) 不会
+
+## 2020.03.29
+
+- 命令行如何阅读
+
+
+```shell
+$ http-server -p 3001
+```
+
+用户指定配置项-p, 并且指定配置参数是 3001
+    
+- 停止 nginx  
+
+```shell
+$ sudo nginx -s stop
+```
+
+- 开始 nginx
+
+```shell
+$ sudo nginx的安装路径
+```
+    
+- linux 如何查看软件的安装路径
+
+```shell
+$ which nginx
+```
+
+## 2020.03.28
+
+- ubuntu 目录权限问题
+
+    - 参考文章
+
+    http://xahlee.info/linux/linux_file_perm_system.html
+
+    - 查看当前目录权限
+    
+    ```shell
+    $ ls -la
+    ```
+  
+    - 修改文件拥有者
+    
+    ```
+    $ chown userName fileOrDirName 
+    ```
+  
+- 英文
+
+$prompt$: 提示, 弹出一个提示框, 可以用于收集用户输入数据
+    
+- chrome 调试 node 代码
+    
+```shell
+$ node --inspect-brk index.js 
+```
+
+- 英文
+
+    $prompt$: 提示, 弹出一个提示框, 可以用于收集用户输入数据
+    
+- chrome 调试 node 代码
+    
+    ```shell
+    $ node --inspect-brk index.js 
+    ```
+  
+- 如何知道函数的参数的类型?? 直接打印 参数.constructor  
+
+未验证是否可行
+
+## 2020.03.27
+
+- bug: 用户 1 使用 token 可以操作用户 2 的数据
+
+解决方法: 用户带上的 token 进行解码,获取到用户 1 的特有数据(如 userName ), 与用用户实际请求的 userName 进行比较
+
+
+## 2020.03.26
+
+- google network 搜索 404 状态码的请求
+
+如何搜索: google network filter status 404
+
+## 2020.03.24
+
+- 获取本机 ip
+
+ifconfig
+
+- `~`: 当前用户的家目录
+
+- if 与 return 的使用
+
+    ```javascript
+    function test(){
+         if(1){
+           return;
+         }
+        console.log(2)
+    }
+    test()
+    ```
+  
+- 代码优化: 使用「函数对象 + 字符串」代替 switch case
+
+## 2020.03.23
+
+- 后端常用的功能: 获取请求的参数    
+
+- restful 风格接口例子
+
+    - 查全: get /students
+
+    - 查全有条件: get /students?gender=male
+    
+    - 查一: get /students/:id
+    
+    - 增一: post /students
+    
+    - 改一: patch /students/:id  (put 需要指定全部数据字段; patch只需要指定想更新的数据字段)
+    
+    - 删一: delete /students/:id
+
+- 使用工具生成接口文档
+
+使用 api doc, 但是使用不好
+
+- ssh 流程(github 为例)
+
+    - 先用账号密码登录网页
+    
+    - 开发机生成密钥, 把 pub 传给 github
+
+
+
 # AJAX 目录
 
 
