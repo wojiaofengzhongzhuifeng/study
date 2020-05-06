@@ -1,4 +1,486 @@
 
+## 2020.04.31
+
+
+- 近期最重要的事情
+
+    封装请求
+    
+    阅读 antd-pro 的代码
+    
+    断点调试
+
+- 为什么要 reducer?? 尝试解决这个问题
+
+    使用 reduce 可以少写一个变量, 其他没有区别
+    
+    需求: 
+
+    let obj = {
+      number: "zhangsan9888",
+      test: "23321"
+    }
+    
+    写一个函数, 根据 obj 生成 number=zhangsan9888&test=23321 的字符串
+    
+    不使用 reduce
+    
+    ```javascript
+    function createUrl1(obj){
+      let resultString = ''
+      Object.keys(obj).forEach((key)=>{
+        let value = obj[key]
+        resultString += `${key}=${value}&`
+      })
+      return resultString
+    }
+    ```
+  
+    使用 reduce
+    
+    ```javascript
+    function createUrl2(obj){
+        return Object.keys(obj).reduce((preString, key)=>{
+          let value = obj[key]
+          return preString += `${key}=${value}&`
+        }, '')
+    }
+    ```
+
+## 2020.04.26
+
+- 两个 boolean  
+
+## 2020.04.24
+
+- 简单的 SQL 优化流程
+
+    - 需求(搜索单张表数据): 现有学生 3 名, 现需要保存学生的 姓名, 分数, 性别, 并且能通过 SQL 语句读取数据
+    
+    - 新增需求(搜索多张表数据): 学生需要与班级数据产生关联关系, 有两种方式可以表示: 外键关联, 建立关系表关联
+
+        - 外键关联: 在学生表中新增一个 class_id 的字段, 通过 join 语法从学生表和班级表获取想要字段
+        
+        - 关系表关联: 新建一个表, 表中只有两个字段: from, to, 其中 from 是学生的 id, to 是 班级的 id, 通过后端可以从两个表中获取想要的数据
+
+- curl 命令
+
+    curl "网页" -H "请求key: 请求 value"
+
+- 注册
+
+    163
+    邮箱: raojiajun444@163.com
+    密码: sj15702097950
+    
+    小程序
+    邮箱: raojiajun333@163.com
+    密码: sj15702097950
+
+
+- 地址
+
+    研发环境： http://alpha-bos.bimwinner.com/
+    账号密码: raojiajun / sj15702097950
+    demo 环境： http://bos-demo.rickricks.com/
+    1570209705 / sj15702097950  
+    正式环境： http://bos.boswinner.com/
+    1570209705 / sj15702097950  
+
+
+## 2020.04.23
+
+
+- 表的数据分为两种
+
+    - 实体类(entity)数据(students, classes): 用于存储数据的原本的数据
+
+    - 关系类(relationship)数据(students_classes): 用于表示两个表实例数据的关系
+
+## 2020.04.22
+
+- 查全 => 查全条件 => 查一 => 增一
+
+- typescript Partial 是什么
+
+    ```
+    interface Props{
+        test1: number,
+        test2: number
+    }
+    type Props1 = Partial<Props>
+    // 相当于下面的定义
+    interface Props1{
+        test1?: number,
+        test2?: number
+    }
+    ```
+
+
+## 2020.04.21
+
+- 常见的 crud 需求所需接口
+
+    - 查全: get /api/lotteryConfigs
+
+    - 查全条件: get /api/lotteryConfigs?count=5
+    
+    - 查一: get /api/lotteryConfigs/:id
+    
+    - 增一: post /api/lotteryConfigs
+    
+    - 改一: patch /api/lotteryConfigs/:id  (put 需要指定全部数据字段; patch只需要指定想更新的数据字段)
+    
+    - 删一: delete /api/lotteryConfigs/:id
+  
+- 常识: params 是一个**对象**, 作为 url 的查询参数使用(parameters)
+
+    ```
+    request('/api/fake_list', {
+        params: {
+          count: 2,
+          id:4
+        },
+      })
+    ```
+
+    如上的代码等价于 `get /api/fake_list?count=2&id=4`
+
+- 常识: 
+
+    router params = /api/fake_list/1
+
+    query params = /api/fake_list?count=1
+
+## 2020.04.20
+
+- 熟悉一个项目, 从接口开始.
+
+- 熟悉文件, 看他导出什么
+
+- 熟悉一个项目, 从入口文件开始
+
+
+
+## 2020.04.17
+
+
+
+## 2020.04.16
+
+
+## 2020.04.15
+
+- `var answer = 42;` 
+
+    - var(keyword, 关键字)；
+    - answer(identifier， 标识符，用于存放变量)；
+    - ;(semicolon, 分号)
+
+- 使用 立即执行函数 + async 获取异步结果
+
+    ```
+    (async ()=>{
+      const column = await getZhiHuColumn('feweekly');
+      console.log('column async', column.description);
+    })();
+    ```
+
+
+
+
+## 2020.04.14
+
+- redis 管理
+
+    现有 2 个项目， 第一个项目要使用的 key 是： accessToken （企业微信接口所需 token）；h5_gzh_token（调用微信公众号所需 token）；jsApiTicket（调用微信公众号所需 ticket）
+
+    第二个项目所使用的不能与第一个一样
+
+## 2020.04.13
+
+
+
+## 2020.04.12
+
+- 常识： url 带协议，域名不带协议
+
+- 把 rjj -> h5_1
+
+## 2020.04.11
+
+## 2020.04.10
+
+
+- typescript 一个最简单但全面的例子
+
+    ```typescript jsx
+    interface Props {
+    }
+    
+    const StateHooksComponent: React.FC<Props> = ({}) => {
+    
+        const [name, setName] = useState<string>('');
+    
+        const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+            e.preventDefault();
+            console.log(name);
+        };
+    
+        const onNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+            setName(e.target.value);
+        };
+    
+        return (
+            <Form layout="inline" onSubmit={handleSubmit}>
+        )
+    }
+    
+    export default StateHooksComponent;
+    ```
+
+## 2020.04.09
+
+- react hooks 代替 componentDidMount 和 componentWillUnMount
+
+    ```javascript
+    useEffect(() => {
+      window.addEventListener('mousemove', () => {});
+    
+      // returned function will be called on component unmount 
+      return () => {
+        window.removeEventListener('mousemove', () => {})
+      }
+    }, [])
+    ```
+
+- react 讲究的就是「监听」, 
+
+    - 最简单的是「监听按钮点击事件, 如果按钮被点击了, 执行某个函数」
+    
+    - 与之对应的就是「监听某个数据, 如果数据被改变了, 执行某个函数」
+    
+    - 特殊的函数就是「监听 state 内的书, 如果数据被改变了, 重新渲染视图」
+    
+## 2020.04.08
+
+
+- 如何本地测试 npm 包?(npm link)
+
+    - 「发布 npm 包处」执行 npm link , 假设待发布包的名称为 test-123321
+    
+    - 「使用 npm 包处」执行 `npm link test-123321`
+    
+    - 更新: test-123321 直接改代码, 在「使用 npm 包处」执行 `npm link test-123321`
+## 2020.04.07
+
+- git 改变 url 的位置, 场景是: 提交的 git 仓库地址是 baidu.git, 后面改成了 google.git
+
+    git change url 
+
+    可以直接修改 .git/config 文件 或者 `git remote set-url origin new.git.url/here`
+
+- webpack 的作用
+
+    - 用户通过 webpack.config.js **指导** 相应 loader **打包生成**在浏览器不报错的代码
+
+    - 如果一个项目要使用 ts,我很容易知道需要安装相应的 loader 来解释我写的 ts 代码, 但是经常忘记需要安装 webpack , 只有装了这个包, 才会将 ts 生成 js
+
+ 
+
+
+## 2020/040/03
+
+- 接入企业微信 SDK
+
+    - 输入 code, 输出 accessToken
+    
+    - 输入 accessToken, 输出 jsapi_ticket: https://work.weixin.qq.com/api/doc/90000/90136/90506
+    
+    - 输入 noncestr(随机字符串), jsapi_ticket, timestamp, url, 拼接成 string1, 对 string1 进行加密, 输出 signature
+    
+    - 上述操作在服务端进行
+    
+    - 前端调用 post/sdkToken 输入 url , 返回 {timestamp, nonceStr, signature}
+    
+    - 前端调用下面的 js 代码
+    ```javascript
+    wx.agentConfig({
+        corpid: '', // 必填，企业微信的corpid，必须与当前登录的企业一致
+        agentid: '', // 必填，企业微信的应用id （e.g. 1000247）
+        timestamp: , // 必填，生成签名的时间戳
+        nonceStr: '', // 必填，生成签名的随机串
+        signature: '',// 必填，签名，见附录1
+        jsApiList: ['selectExternalContact'], //必填
+        success: function(res) {
+            // 回调
+        },
+        fail: function(res) {
+            if(res.errMsg.indexOf('function not exist') > -1){
+                alert('版本过低请升级')
+            }
+        }
+    });
+    ```
+
+
+## 2020.03.31
+
+- 在一个函数定义多个函数好不好??
+
+## 2020.03.30
+
+- 多人合作 git 操作流程(未涉及开分支操作, 直接在 dev 分支写代码)
+
+    - webstorm 右键 origin/dev 分支. 新开一个本地 dev 分支, 用于关联 origin/dev 分支
+    
+    ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20200330174217.png)
+    
+    - 正常提交代码
+    
+    - 在提交代码到远程之前, 需要 git pull, 拉取远程最新代码, 并且解决冲突
+    
+    - git push 即可
+    
+- 多人合作 git 操作流程(涉及开分支, 一个功能需要对应一个分支) 不会
+
+## 2020.03.29
+
+- 命令行如何阅读
+
+
+```shell
+$ http-server -p 3001
+```
+
+用户指定配置项-p, 并且指定配置参数是 3001
+    
+- 停止 nginx  
+
+```shell
+$ sudo nginx -s stop
+```
+
+- 开始 nginx
+
+```shell
+$ sudo nginx的安装路径
+```
+    
+- linux 如何查看软件的安装路径
+
+```shell
+$ which nginx
+```
+
+## 2020.03.28
+
+- ubuntu 目录权限问题
+
+    - 参考文章
+
+    http://xahlee.info/linux/linux_file_perm_system.html
+
+    - 查看当前目录权限
+    
+    ```shell
+    $ ls -la
+    ```
+  
+    - 修改文件拥有者
+    
+    ```
+    $ chown userName fileOrDirName 
+    ```
+  
+- 英文
+
+$prompt$: 提示, 弹出一个提示框, 可以用于收集用户输入数据
+    
+- chrome 调试 node 代码
+    
+```shell
+$ node --inspect-brk index.js 
+```
+
+- 英文
+
+    $prompt$: 提示, 弹出一个提示框, 可以用于收集用户输入数据
+    
+- chrome 调试 node 代码
+    
+    ```shell
+    $ node --inspect-brk index.js 
+    ```
+  
+- 如何知道函数的参数的类型?? 直接打印 参数.constructor  
+
+未验证是否可行
+
+## 2020.03.27
+
+- bug: 用户 1 使用 token 可以操作用户 2 的数据
+
+解决方法: 用户带上的 token 进行解码,获取到用户 1 的特有数据(如 userName ), 与用用户实际请求的 userName 进行比较
+
+
+## 2020.03.26
+
+- google network 搜索 404 状态码的请求
+
+如何搜索: google network filter status 404
+
+## 2020.03.24
+
+- 获取本机 ip
+
+ifconfig
+
+- `~`: 当前用户的家目录
+
+- if 与 return 的使用
+
+    ```javascript
+    function test(){
+         if(1){
+           return;
+         }
+        console.log(2)
+    }
+    test()
+    ```
+  
+- 代码优化: 使用「函数对象 + 字符串」代替 switch case
+
+## 2020.03.23
+
+- 后端常用的功能: 获取请求的参数    
+
+- restful 风格接口例子
+
+    - 查全: get /students
+
+    - 查全有条件: get /students?gender=male
+    
+    - 查一: get /students/:id
+    
+    - 增一: post /students
+    
+    - 改一: patch /students/:id  (put 需要指定全部数据字段; patch只需要指定想更新的数据字段)
+    
+    - 删一: delete /students/:id
+
+- 使用工具生成接口文档
+
+使用 api doc, 但是使用不好
+
+- ssh 流程(github 为例)
+
+    - 先用账号密码登录网页
+    
+    - 开发机生成密钥, 把 pub 传给 github
+
+
 
 # AJAX 目录
 
