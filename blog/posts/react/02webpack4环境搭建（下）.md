@@ -1,7 +1,7 @@
 ## 将代码上传到多个远程仓库
 
 ## 安装类型依赖
- 
+
 ### ✅在 package.json 中的 script 的添加脚本 
 
 ### ✅在 lib/index.tsx 文件中引入 react
