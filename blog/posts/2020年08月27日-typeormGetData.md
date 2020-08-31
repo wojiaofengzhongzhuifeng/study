@@ -50,4 +50,27 @@
 
   可以拿到数据库数据啦。
 
+- 随便改了代码，又发现报错
+
+  ```
+  AlreadyHasActiveConnectionError: Cannot create a new connection named "default", because connection with such name already exist and it now has an active connection session.
+  ```
+
+  ![image-20200827135325145](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20200827135325145.png)
+
+  看提示，原因应该是不能重复执行 `createConnection` . 这样的话，应该需要知道以下 api :
+
+  - 创建 connection
+  - 判断是否有 connection
+  - 获取 connection 
+
+  （这种问题与 「localStorage 是否保存了某个属性，如果有，获取属性值，如果没有，写入属性值」逻辑很相似）
+
   
+
+  
+
+
+
+
+
