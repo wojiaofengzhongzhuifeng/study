@@ -63,5 +63,18 @@ done
 
 ```
 
+## 常用缩写命令
 
+-  压缩
 
+  ```
+  zz=' rm -rf ~/Documents/build.zip; zip -rq ~/Documents/build.zip $1'
+  ```
+
+- typora + git  +  一行命令 === i终生免费图床
+
+  ```
+  ig='cd ~/Desktop/myWorks/image-host; git add .;git commit -m "image"; git push;cd ~/Desktop/myWorks/study;find "/Users/raojj/Desktop/myWorks/study" \( ! -regex ".git" \) -type f | xargs perl -pi -e "s|https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master|https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master|g";git add .;git commit -m "init";git push'
+  ```
+
+  
