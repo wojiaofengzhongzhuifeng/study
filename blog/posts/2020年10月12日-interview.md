@@ -1,122 +1,286 @@
-# HTML
-
-1. 必考：你是如何理解 HTML 语义化的？
-2. meta viewport 是做什么用的，怎么写？
-3. 你用过哪些 HTML 5 标签？
-4. H5 是什么？
-
-# CSS
-
-1. 必考：两种盒模型分别说一下。
-2. 必考：如何垂直居中？
-3. 必考：flex 怎么用，常用属性有哪些？
-4. 必考：BFC 是什么？
-5. CSS 选择器优先级
-6. 清除浮动说一下
-
-
-
-# 原生 JS
-
-1. 必考：ES 6 语法知道哪些，分别怎么用？
-2. 必考 Promise、Promise.all、Promise.race 分别怎么用？
-3. 必考：手写函数防抖和函数节流
-4. 必考：手写AJAX
-5. 必考：这段代码里的 this 是什么？
-6. 必考：闭包/立即执行函数是什么？
-7. 必考：什么是 JSONP，什么是 CORS，什么是跨域？
-8. 常考：async/await 怎么用，如何捕获异常？
-9. 常考：如何实现深拷贝？
-10. 常考：如何用正则实现 trim()？
-11. 常考：不用 class 如何实现继承？用 class 又如何实现？
-12. 常考：如何实现数组去重？
-13. 放弃：== 相关题目（反着答）
-14. 送命题：手写一个 Promise
-
-# DOM
-
-1. 必考：事件委托
-2. 曾考：用 mouse 事件写一个可拖曳的 div
-
-# HTTP
-
-1. 必考：HTTP 状态码知道哪些？分别什么意思？
-2. 大公司必考：HTTP 缓存有哪几种？
-3. 必考：GET 和 POST 的区别
-4. Cookie V.S. LocalStorage V.S. SessionStorage V.S. Session
-
-# 框架 Vue
-
-1. 必考：watch 和 computed 和 methods 区别是什么？
-2. 必考：Vue 有哪些生命周期钩子函数？分别有什么用？
-3. 必考：Vue 如何实现组件间通信？
-4. 必考：Vue 数据响应式怎么做到的？
-5. 必考：Vue.set 是做什么用的？
-6. Vuex 你怎么用的？
-7. VueRouter 你怎么用的？
-8. 路由守卫是什么？
-
-# 框架 React
-
-1. 必考：受控组件 V.S. 非受控组件
-2. 必考：React 有哪些生命周期函数？分别有什么用？（Ajax 请求放在哪个阶段？）
-3. 必考：React 如何实现组件间通信？
-4. 必考：shouldComponentUpdate 有什么用？
-5. 必考：虚拟 DOM 是什么？
-6. 必考：什么是高阶组件？
-7. React diff 的原理是什么？
-8. 必考 Redux 是什么？
-9. connect 的原理是什么？
-
-# TypeScript
-
-1. never 类型是什么？
-2. TypeScript 比起 JavaScript 有什么优点？
-
-# Webpack
-
-1. 必考：有哪些常见 loader 和 plugin，你用过哪些？
-2. 英语题：loader 和 plugin 的区别是什么？
-3. 必考：如何按需加载代码？
-4. 必考：如何提高构建速度？
-5. 转义出的文件过大怎么办？
-   上面五题请看这个不错的参考：https://zhuanlan.zhihu.com/p/44438844
-
-# 安全
-
-1. 必考：什么是 XSS？如何预防？
-2. 必考：什么是 CSRF？如何预防？
-
-# 开放题目
-
-1. 必考：你遇到最难的问题是怎样的？
-2. 你在团队的突出贡献是什么？
-3. 最近在关注什么新技术
-4. 有没有看什么源码，看了后有什么记忆深刻的地方，有什么收获
-
-# 刁钻题目
-
-1. 代码
-2. 代码
-3. `(a ==1 && a== 2 && a==3)` 可能为 true 吗？
-
-# 超纲题
-
-1. JS 垃圾回收机制
-2. Eventloop 说一下
-
-# 个性化题目
-
-- PWA
-- echarts.js / d3.js
-- three.js
-- flutter
-- SSR
 
 
 
 
+## 2020.10.27
+
+- 如何做事件委托？
+
+  https://codesandbox.io/s/dazzling-pike-oynmo
+
+  注意： 当我点击li  > span ，target 还是 li
+
+- 对象数组转成数组
+  https://jsbin.com/qakuwixaru/edit?js,console,output
+
+## 2020.10.26
+
+- 写业务代码，必须清楚接口调用
+- 必须将流程想清楚再写
+- 重构之前必须提交
+- 接口调用
+- --
+- http://zentao.bimwinner.com/zentao/bug-view-9925.html
+- 显示 模型路径
+- 导出报告
+- 高级查询弹窗不一致
+- 
+
+## 2020.10.25
+
+- webpakc
+
+## 2020.10.24
+
+- action
+
+## 2020.10.23
+
+- bug 修复 
+- 文档数据的排序
+- 显示模型路径
+- ~~空间显示错误，应该根据接口请求获取~~
+- ~~多层级 tagTag 未显示，并且显示数据错误~~
 
 
 
-## 面试经验
+## 2020.10.21
+
+- 如何解决 cos 错误？
+
+  ```html
+  
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="http://bos3d.bimwinner.com/static/latest/BIMWINNER.BOS3D.min.css" rel="stylesheet">
+  <body>
+  <div id="viewer" style="width:100%; height:100vh"></div>
+  <div style="position: absolute; top: 300px;left:50px">
+    效果说明:
+    <button id="addSpriteToModelBtn">添加 sprite 到模型</button>
+    <button id="removeSpriteToModelBtn">删除 sprite 到模型</button>
+    <br>
+  </div>
+  
+  <script src="http://bos3d.bimwinner.com/static/latest/BIMWINNER.BOS3D.min.js" charset="utf-8" type="application/javascript"></script>
+  
+  <script type="text/javascript">
+  
+  	renderModel(() => {
+  		listenerAllButtonClickEvent();
+  	});
+  
+  	// 下面是代码的细节
+  	function renderModel(cb) {
+  		// 变量赋值
+  		const dataBaseKey = 'f788d486d3d346e989570004a0b5ab40';
+  		const modelKey = 'M1571896636338';
+  		const host = 'http://bos3d.bimwinner.com';
+  		const option = {host: host, viewport: 'viewer'};
+  
+  		// 根据变量生成实例对象
+  		window.viewer3D = new BIMWINNER.BOS3D.Viewer(option);
+  		window.tool = new BIMWINNER.BOS3D.UI.ToolBar(viewer3D);
+  
+  		// 配置工具栏
+  		tool.createTool({home: false, snapshot: false});
+  
+  		// 加载模型核心代码
+  		viewer3D.addView(modelKey, dataBaseKey);
+  
+  		viewer3D.registerModelEventListener(BIMWINNER.BOS3D.EVENTS.ON_LOAD_COMPLETE, function (event) {
+  			console.log('模型加载完毕的回调函数');
+  			cb();
+  		});
+  	}
+  
+  	function listenerAllButtonClickEvent(){
+  		addSpriteToModelBtn.addEventListener('click', ()=>{
+  			addSpriteToModel();
+  		});
+  		removeSpriteToModelBtn.addEventListener('click', ()=>{
+  			removeSpriteFromModel();
+  		})
+  	}
+  
+  	function addSpriteToModel() {
+  		window.SpriteMark=new BIMWINNER.BOS3D.SpriteMark(viewer3D.viewerImpl);
+  		let option={
+  			id:"E",
+  			// 把这里改成图片的 url
+  			URL: 'http://canyou.rickricks.com:7784/static/images/end.png',
+  			scale:300,
+  			useImageSize:false,
+  			height:10,
+  			width:10,
+  			alwaysVisible: true,
+  			position: [25897.930094286286, 7706.644724364626, 14590.708089386419]
+  		};
+  		window.SpriteMark.add(option,function(a) {
+  			console.log("添加图标完毕");
+  			addEventListenerToSprite();
+  		});
+  	}
+  
+  
+  	function removeSpriteFromModel(){
+  		// 注意: remove 调用的接口与 add 调用的接口对应的对象必须是同一个
+  		window.SpriteMark.remove(['E']);
+  	}
+  
+  	function addEventListenerToSprite(){
+  		window.SpriteMark.listentoSelectMarks((key) => {
+  			console.log(key);
+  			if(key){
+  				alert(`你点击的是${key}`);
+  			}
+  		});
+  	}
+  </script>
+  </body>
+  </html>
+  
+  ```
+
+  ![image-20201021093823195](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20201021093823195.png)
+
+- 这个报错是什么意思？
+
+  https://stackoverflow.com/questions/37387351/reactjs-warning-setstate-cannot-update-during-an-existing-state-transiti
+
+- Uncaught TypeError: Failed to execute 'createObjectURL' on 'URL': Overload resolution failed.
+
+
+
+## 2020.10.20
+
+- es6 对象的计算属性
+
+  ```javascript
+  const todoList = {
+      list: [{todo: '吃饭'}, {todo: '学习'}],
+      get computedLength(){
+          return this.list.length
+      }
+  }
+  todoList.computedLength // 2
+  todoList.list.push({todo: "上班"})
+  todoList.computedLength // 3
+  ```
+
+- 文档数据显示错误， 目前有三类 document 数据， 一种是 irTagDocument， 一种是 irTagDocument 子类，一种是左对象 tag 右对象 document， postman 如下
+  ![image-20201020171723409](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20201020171723409.png)
+
+  目前需要验证的是分别使用接口去调用，数据正确
+
+- 文档数据排序问题
+
+- 前序，后序，同级 + 数据链排序问题
+
+## 020.10.19
+
+- 函数防抖与节流
+
+  节流 （技能冷却时间）
+
+    - 实现思路：设置一个flag
+    - 使用场景：一段时间，只能执行一次代码
+    - [例子](https://jsbin.com/giralanuki/1/edit?html,js,console,output)
+
+  防抖（等待一段时间，一起做）
+
+   - 实现思路：定时器内总是保存最新的定时器
+   - 使用场景：等你一段时间不再触发，我再执行
+   - [例子](https://jsbin.com/behunokime/edit?html,js,output)
+
+- 为什么 lodash 的函数无法实现防抖与节流
+
+  需求：双击 Hello CodeSandbox ，只打印一个test, 并且可以将 onClick 的事件 event 传给test 函数
+
+  下面的代码只能实现节流，但是无法将参数传过去
+
+  https://codesandbox.io/s/great-star-0v7yn?file=/src/App.js 
+
+## 2020.10.16
+
+
+
+
+
+## 2020.10.15
+
+- antd table 解决 key 问题， 使用 rowKey 这个函数
+- 如果用户选中某个构件，那么切换回变更分析的时候，依然选择的是当前构件
+
+
+
+## 2020.10.14
+
+- 解决 promise 问题
+  原始代码：https://codesandbox.io/s/cocky-snowflake-nc1zl
+
+  解决方案：https://codesandbox.io/s/new-resonance-5jvre
+
+  [总结](../posts/2020年10月14日-promise-demo.md)
+  
+- promise 执行顺序问题
+
+
+
+## 2020.10.13
+
+- ~~不要取消搜索，点击 model 之外的隐藏~~
+- ~~高级搜索默认状态错误~~
+- ~~组件变更换成变更分析~~
+- ~~2d 前序后序添加 tooltip~~
+- ~~setTimeout 问题~~
+- 切换组件导致数据错误问题
+- 折叠框问题
+- ~~最高层级问题~~
+- ~~选择不同的构件，数据链没有发生变化~~
+- 选择 03314649d9b347a383eb4b3fa9b9b587 -> 前序 -> 数据链 -> 第一级 -> 双击第一个构件 会报错 
+- 大屏下 category 位置错误， 小屏下，左边分页器跳行了
+
+
+
+## 2020.10.12
+
+- mobx 获取数据错误问题
+  添加数据依赖即可
+  ![image-20201012223627489](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20201012223627489.png)
+
+  https://codesandbox.io/s/condescending-tdd-zkknj
+
+
+
+## 预约小程序数据库设计
+
+用户表
+
+| id   | userId | userImage | time               | groupId    |
+| :--- | ------ | --------- | ------------------ | ---------- |
+| 1    | u1     | image:1   | ["16:35", "23:00"] | fdksjfkdls |
+| 2    | u2     | image:2   | ["17:35", "23:00"] | fdksjfkdls |
+|      |        |           |                    |            |
+|      |        |           |                    |            |
+
+
+
+
+
+## 预约流程接口调用
+
+- 用户进入小程序后，通过接口调用当前群预约情况
+
+- 通过 wx 接口获取两个数据
+
+  - 用户 id + 用户头像 + 用户名称
+  - 群id
+
+- 将上述的数据通过接口保存到个人的后端服务器数据库
+
+  

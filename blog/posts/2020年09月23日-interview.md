@@ -41,11 +41,52 @@
 
 - 对称与非对称加密
 
-- get、post 区别
+  对称
 
-- head 请求是什么？
+  - 加密 = 秘钥 + 原始信息
+  - 解密 = 秘钥 + 加密信息
+
+  非对称
+
+  - 加密 = 公钥 + 原始信息
+  - 解密 = 私钥 + 加密信息
+
+  需求：李四（我）发加密消息给张三（github）
+
+  步骤：
+
+  - 张三发公钥给李四
+  - 李四使用公钥+原始数据生成加密信息
+  - 张三使用私钥 + 加密消息解密
+
+- head 方法是什么？
+
+  与 get 请求一致，不过缺少响应 body
+
+- patch 与 put 区别
+
+  > put：The `PUT` method replaces **all** current representations of the target resource with the request payload.
+  >
+  > patch：The PATCH method is used to apply partial modifications to a resource.
+  >
+  > representations === 代表，引申为数据？
+
+  假设在后端数据库保存如下数据
+
+  ```
+  {
+  	name: 'rjj',
+  	age: '1',
+  }
+  ```
+
+  如果你只想修改 name ，那么你只需要使用 patch 方法，并且把新 name 的值发送出去即可
+
+  但如果你使用 put，必须把 name和 age 都发送出去
 
 - 401 与 403 区别
+
+  https://blog.csdn.net/q1056843325/article/details/53147180
 
 - linux 如何查看文件大小
 
