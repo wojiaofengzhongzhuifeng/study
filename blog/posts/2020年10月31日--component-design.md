@@ -2,7 +2,7 @@
 
 ## 出现问题
 
-- 后端数据结构一旦改变，前端无法根据后端进行修改（mock 数据与真实数据的联通开发）
+- 后端数据结构一旦改变，前端如何统一修改？
 
   ```
   const person = [
@@ -26,19 +26,9 @@
   解决的就是上面的问题
   ```
 
-  
-
   解决办法：获取的数据，统一经过变换函数处理
 
-  
-
-  
-
 - 请求数据时，通常需要做字段判断，如果是success，表示获取成功，有没有什么办法可以统一处理？(如何做请求的统一处理)？
-
-  
-
-
 
 - 定义了 store 某个数据的修改方法，并且在多处执行了修改方法，有没有办法知道是在哪个地方执行了修改？
 - ===
@@ -72,33 +62,11 @@
 
 - /linked/query 测试：获取同级业务构件数据
 
-
-
-- 接口核心结束
-
-
-
-- 后端返回的数据，前端需要从 a 字段改成 b 字段
-
-  ```
-  假设后端返回
-  const resData = {
-  	code: 123321,
-  	key:1111
-  }
-  
-  前端直接使用 code 作为前端视图数据
-  
-  但是需要使用 key 作为前端视图数据
-  
-  
-  ```
-
-  
+- ===接口核心结束
 
 - 命名变量的时候， 如果是 array， 使用 xxxList；如果是 obj， 使用 xxxinfo, xxxData, xxxObj 好不好？
 
-- 出现这种代码，需要注意，应该如何处理？
+- 处理 a.b.c.d.e 中 某个变量不存在的情况
 
   ```javascript
   class Demo extends React.Component{
@@ -139,21 +107,15 @@
   - 输入数据是什么？输入数据从哪里来？
   - 输出数据是什么？如果输出数据变了，需要做什么事情？
 
-
-
 - 组件划分
 
   ![image-20201102120357230](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20201102120357230.png)
 
   
 
+- 在主站中打开多个用户的应用，发现第一个应用所有 bos3d 接口存在问题
 
-
-
-
-## 变更分析组件其中一个例子
-
-- tagUpList
+- store.tagUpList
 
   - 含义：通过接口获取构件上游构件数据
   - 是否有计算数据？有，因为获取上游构件数据后，需要根据上游数据渲染 echarts 关系图标，这两者数据类型肯定不同，所以需要进行数据转化
@@ -163,10 +125,44 @@
   
 
 - 前端数据应该如何存储？
-  - 有 3 个存储点：store 、 组件 state + 「经过 store 计算而来的数据」
-    只有满足：①多个组件都在使用该数据 ②该数据无法通过其他数据计算而来 才能将数据放入到 store 中
-  - 组件应该有 props 吗？还是在组件内直接使用 store？
-  - 
+  - store 
+  - 组件 state
+  - 组件 this.xxxx
+
+- 父组件与子组件如何调用对方函数？兄弟间如何调用函数？
+
+- 固定思路：组件内的函数分为三个部分：①定义变量②转换变量③使用变量
+
+- 组件内 @observer 到底有什么用？
+
+- class 组件函数位置放置固定思路
+
+  ```
+  class TodoList extends React.Component{
+  	constructor(){}
+  	
+  	// 生命周期组件
+  	componentDidMount(){}
+  	
+  	// 渲染函数
+  	render(){
+  		const {visible} = this.state
+  		const {info} = this.props
+  		return (
+  			<div>{visible}</div>
+  		)
+  	}
+  	
+  	// 普通函数
+  	getUserInfo(){}
+  }
+  ```
+
+- 事件委托
+
+- 大组件分割成小组件
+
+- 
 
 
 
