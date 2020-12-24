@@ -1,4 +1,633 @@
 
+
+
+
+
+
+# 使用 typeorm + typescript 在 next.js 中获取数据库数据
+
+## 背景
+
+使用 next 脚手架创建的项目，引入 typeorm + typescript 库。
+
+
+
+## 目标
+
+在 next 的 posts 页面中使用 typeorm 加载数据库数据。
+
+
+
+## 过程
+
+- 查看 [connection文档](https://typeorm.io/#/connection)
+
+  ![image-20200827113855991](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20200827113855991.png)
+
+  写了如下代码，报了如下错误
+
+  ```
+  EntityMetadataNotFound: No metadata for "Post" was found.
+  ```
+
+  ![image-20200827113954804](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20200827113954804.png)
+
+- 拿着报错去搜索解决方法
+
+  搜索到[这个](https://stackoverflow.com/questions/51562162/no-metadata-for-user-was-found-using-typeorm)，按照他说的，试了之后发现还是不行。
+  ![image-20200827114502194](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20200827114502194.png)
+
+  但是可以确定的信息是：**报错与 typeOrm 配置有关**
+
+  ![image-20200827114802946](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20200827114802946.png)
+
+  上面代码在文档中，默认导入的是 ormConfig.json 的配置，ormConfig.json 的配置如下：
+
+  ![image-20200827114904317](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20200827114904317.png)
+
+  感觉都没有问题呀。
+
+- 使用手动配置 ormConfig 代替文件配置
+  既然能确定配置问题，我直接使用手动配置的方法测一下，代码如下：
+
+  ![image-20200827115254682](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20200827115254682.png)
+
+  可以拿到数据库数据啦。
+
+- 随便改了代码，又发现报错
+
+  ```
+  AlreadyHasActiveConnectionError: Cannot create a new connection named "default", because connection with such name already exist and it now has an active connection session.
+  ```
+
+  ![image-20200827135325145](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20200827135325145.png)
+
+  看提示，原因应该是不能重复执行 `createConnection` . 这样的话，应该需要知道以下 api :
+
+  - 创建 connection
+  - 判断是否有 connection
+  - 获取 connection 
+
+  （这种问题与 「localStorage 是否保存了某个属性，如果有，获取属性值，如果没有，写入属性值」逻辑很相似）
+
+  
+
+  
+
+
+
+
+
+
+
+# blog系统
+
+- typeorm 需要做的事情（按顺序）
+
+  - 连接数据库
+  - 使用 migration 创建表
+  - 使用 entity 对表进行操作
+    - 声明 entity 类型
+    - 创建数据关联   
+
+- 如何使用 typeorm migration 对表进行追加 column 操作
+
+- 数据库统一风格模板表格
+
+  studentRanks
+
+- | id   | rank | studentName | createdAt | updateAT |
+  | ---- | ---- | ----------- | --------- | -------- |
+  |      |      |             |           |          |
+
+
+
+
+
+## 操作记录
+
+- 使用 docker 起一个postgresql 服务
+
+  执行的操作， 
+
+  ```
+  docker run -v "$PWD/blog-data":/var/lib/postgresql/data -p 5432:5432 -e POSTGRES_USER=blog -e POSTGRES_HOST_AUTH_METHOD=trust -d b98d1e0a90de
+  
+  ```
+
+- 常用 PostgreSQL 命令行
+
+  ```
+  # 以 用户名为 blog 密码为 123 的账户进入数据库
+  psql -U blog -W 123
+  
+  # 显示所有数据库
+  \l
+  
+  # 进入某个数据库
+  \c xxxx
+  
+  # 显示数据库表格
+  \dt
+  
+  # 删除数据库表格
+  drop table xxxx
+  
+  # 生成数据库
+  CREATE DATABASE blog_dev_1 ENCODING 'UTF8' LC_COLLATE 'en_US.utf8' LC_CTYPE 'en_US.utf8';
+  ```
+
+- 在 next 中引入 ts，目标yarn dev 正常
+
+  - 添加 tsconfig.json 
+  - yarn dev 发现报错
+  - 安装依赖，将某个文件从 jsx 换成 tsx
+  - 发现 tsx 都是报错，原来是tsconfig.json 没有配置好
+
+  
+
+- 在 next 中导入 pg，目标是能在 next 中打印 connect 
+
+  ```
+  yarn add typeorm reflect-metadata pg
+  
+  yarn add @types/node --dev
+  ```
+
+- 出现的问题
+
+  现有项目 next ，使用 babel 将ts 转成 js；
+
+  typeorm 使用 ts-node 将 ts 转成 js；
+
+  应该统一使用 babel 将 ts 转成 js；
+
+- typeorm 不能做的事情
+
+  无法创建数据库
+
+- 需求：typeorm migration 创建表格 + 定义表格列属性， 目标通过typeorm 提供的api 能为数据库创建表格
+
+  - cli 生成初始化migration 模板代码
+
+    ```sh
+    typeorm migration:create -n CreateTtttt
+    ```
+
+  - 通过 migration 定义 table columns
+
+  - 使用 babel 将 ts 转为 js
+
+    ```
+    babel ./src --out-dir dist --extensions .ts,.tsx
+    ```
+
+  - 运行migration
+    这个代码会根据json 文件的配置运行 js 文件
+
+    ![image-20200822060329110](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20200822060329110.png)
+
+    ​	typeorm migration:run + ormconfig.json 的运行结果是：
+
+    ​	运行 dist/migration/\*\*/*.js 所有文件
+
+    ​	简写为
+
+- package简写操作
+
+  ```sh
+  # 原命令
+  typeorm migration:create -n CreateTtttt
+  
+  # 简化命令
+  yarn m:c -n CreateTtttt
+  ```
+
+- 创建 entity(使用类和对象操作)
+
+  ```
+  typeorm entity:create -n Student
+  ```
+
+- 重新整理一下创建数据流程
+
+  目标： 创建一个 Person 表格，内部 column 是 id，name，age，并且需要往这个表格填入数据
+
+  1. yarn m:c -n Person（但是别人是 createPersons）
+
+  2. 修改 src/migration/Persons.ts 的代码(特别注意，必须是 person ，需要小写，并且是复数，错了好多次了)(但是别人是 persons)
+
+     ![image-20200822090213072](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20200822090213072.png)
+
+  3. yarn m:r
+
+  4. yarn e:c -n Person
+
+  5. 修改 src/entity/Person.ts 的代码
+
+  6. 在 src/index.ts 中使用 Person entity 类
+
+  7. node ./dist/index.js
+
+- seed 数据
+
+- 重新开机，发现数据库连不上，使用 docker ps 发现没有运行的容器，
+
+  ```
+  docker restart containerId
+  ```
+
+- --- 【博客系统】数据库设计与搭建开始 --- 
+
+- 如何为追加 columns？
+
+  目标：需要为 posts 表追加 create_at, update_at columns
+
+- 如何修改 columns 名称？
+
+  目标：需要将 posts 的 create_at 改成 createAt， update_at 改成 updateAt
+
+- 为何要创建数据关联？
+  现有的表格 column
+
+  comments
+
+  | id   | content |
+  | ---- | ------- |
+  |      |         |
+
+  posts
+
+  | id   | title | content |      |
+  | ---- | ----- | ------- | ---- |
+  |      |       |         |      |
+
+  users
+
+  | id   | username | passwordDigest |
+  | ---- | -------- | -------------- |
+  |      |          |                |
+  |      |          |                |
+  |      |          |                |
+
+- post 为什么会这样定义
+  ![image-20200824175806007](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20200824175806007.png)
+
+  ![image-20200824175854465](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20200824175854465.png)
+
+- createAt 的数据类型的最佳实践是什么
+
+- 先定义 migration， 在定义 entity
+
+- --- 【博客系统】数据库设计与搭建结束 --- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+# next 渲染方式
+
+
+
+## 解决的问题
+
+**根据实际情况选择最优的渲染方式**
+
+渲染什么？
+
+渲染用户视图，而用户视图是由 HTML 决定的，所以问题变成：根据实际情况选择最优的 HTML 生成方式
+
+
+
+## 根据实际需求，渲染方式的优化过程
+
+- 用户想看文章内容
+  文章内容的特点是文章内容不会变（假定）
+
+  服务器直接返回如下的 HTML 即可
+
+  ```html
+  <!doctype html>
+  <body>
+    <h2>美好的一天</h2>
+    <p>内容内容内容内容内容</p>
+  </body>
+  </html>
+  ```
+
+  这种方式叫**静态渲染**
+
+- 用户想看每日文章列表
+
+  每日文章列表的特点是「每天的数据都不一致 + 每个用户请求内容都是一致的」，所以服务器返回如下 HTML
+
+  ```html
+  <!DOCTYPE html>
+  <html>
+  <body>
+  <div id="__next">
+    <ul class="container"><a href="/blogs/第一篇文章">第一篇文章</a></ul>
+  </div>
+  <script id="__NEXT_DATA__" type="application/json">{
+    "props": {
+      "pageProps": {
+        "responseData": {
+          "code": 0,
+          "message": "成功",
+          "data": [
+            {
+              "title": "第一篇文章",
+              "id": 0.9721849214661944
+            }
+          ]
+        },
+        "test": 12321123321123320
+      },
+      "__N_SSG": true
+    },
+    "page": "/posts",
+    "query": {},
+    "buildId": "ja1khOUfCR3o27RKMY0tp",
+    "nextExport": false,
+    "isFallback": false,
+    "gsp": true
+  }</script>
+  </body>
+  </html>
+  ```
+
+  这个 HTML 由「普通的标签 + 每日博客列表数据」组成，不同用户请求每日博客时，会直接拿到上面的 HTML 文件，浏览器拿到这个 HTML 渲染即可 
+
+  这种方式叫**动态内容静态化**
+
+- 用户想查看订阅的博客列表
+
+  订阅的博客列表的特点是「根据用户的订阅数据，返回不同的博客列表」，也就说响应数据（简化为 HTML ）是根据请求数据生成，所以服务器返回如下 HTML
+
+  ```html
+  <!DOCTYPE html>
+  <html>
+  <body>
+  <div id="__next">
+    <ul class="container"><a href="/blogs/第一篇文章">饶家俊订阅的第一篇文章</a></ul>
+  </div>
+  <script id="__NEXT_DATA__" type="application/json">{
+    "props": {
+      "pageProps": {
+        "responseData": {
+          "code": 0,
+          "message": "成功",
+          "data": [
+            {
+              "title": "饶家俊订阅的第一篇文章",
+              "id": 0.9721849214661944
+            }
+          ]
+        },
+        "test": 12321123321123320
+      },
+      "__N_SSG": true
+    },
+    "page": "/posts",
+    "query": {},
+    "buildId": "ja1khOUfCR3o27RKMY0tp",
+    "nextExport": false,
+    "isFallback": false,
+    "gsp": true
+  }</script>
+  </body>
+  </html>
+  ```
+
+  这种方式叫**用户相关动态内容静态化**
+
+- 上述所有渲染情况，都可以用客户端进行方式实现，返回的 HTML 如下
+
+  ```html
+  <!doctype html>
+  <body>
+  <div id="app"></div>
+  <script>
+    let h1 = document.createElement('h1')
+    h1.innerText = '文章'
+    app.appendChild(h1)
+  </script>
+  </body>
+  </html>
+  ```
+
+  这种方式叫**客户端渲染**
+
+  这样的方式存在的问题有
+
+  - 无法 SEO
+  - 产生白屏
+
+
+
+## 对上面内容的疑问
+
+- 「每日文章列表」与「订阅的博客列表」返回的 HTML 看起来都一样，他们区别在哪里？
+
+  - 不同用户返回的订阅数据不同的
+
+    用户 1 返回的「每日文章列表」是 1
+
+    用户 1 返回的「订阅的博客列表」 2
+
+    用户 2 返回的「每日文章列表」是 1
+
+    用户 2 返回的「订阅的博客列表」 3
+
+  - 数据构建时机不同
+    ![image-20200804102523608](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20200804102523608.png)
+
+    红框的数据，如果是 build 阶段（从源代码编译成生产环境代码）生成的，不管用户请求多少次，都返回上面的 HTML 文件，那么是动态页面静态化渲染
+
+    如果是在用户请求过程中，用户请求多少次，就在服务器生成多少个 HTML 再返回给用户浏览器渲染，那么就是动态页面静态化渲染
+
+  
+
+## 给上述的渲染过程起一个专业词汇
+
+- 静态渲染 => 无
+- 动态内容静态化 => SSG
+- 用户信息动态内容静态化 => SSR
+- 客户端渲染 => BSR
+
+
+
+其中 SSG 和 SSR 属于服务端渲染
+
+
+
+
+
+## 在 next 如何实现服务端渲染
+
+- SSG = getStaticProps + getStaticPaths
+- SSR = getServerSideProps
+
+
+
+## 如何选择渲染方式（思考模型）
+
+- 动态内容与「客户端」相关的话只能用 BSR 渲染
+- 动态内容与「请求 request or 用户信息」相关的话只能用 SSR 或者 BSR 渲染
+
+
+
+- 优先渲染
+
+  静态渲染  =①> SSG =②> SSR =③> BSR
+
+  ①的情况：有动态数据
+
+  ②的情况：有「请求 request or 用户信息」
+
+  ③的情况：所有情况都可以使用
+
+## 理解服务端渲染的 demo需求
+
+- 需求 1：包含文章列表
+- 需求 2：点击文章列表，展示文章详情
+
+- 不懂的点
+  ![image-20200804212430236](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20200804212430236.png)
+
+
+
+
+
+
+
+## 2020.12.19 根据 next 官网记录的知识点
+
+- Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. **The difference is in when it generates the HTML for a page.**
+
+  - [**Static Generation (Recommended)**](https://nextjs.org/docs/basic-features/pages#static-generation-recommended): The HTML is generated at **build time** and will be reused on each request.This HTML will then be reused on each request
+
+    生成 html 的操作只会在项目构建时运行一次，比如官网首页
+
+  - [**Server-side Rendering**](https://nextjs.org/docs/basic-features/pages#server-side-rendering): The HTML is generated on **each request**
+
+    
+
+- pre-render
+
+  - Static Generation
+    - without data
+    - with data
+      - getStaticProps
+      - getStaticPaths
+  - Server-side Render（SSR or Dynamic Rendering）
+    - getServerSideProps
+
+- `getServerSideProps` is similar to `getStaticProps`, but the difference is that `getServerSideProps` is run on every request instead of on build time.
+
+  其实 getStaticxxx 就已经说明了只会在 build 后运行一次
+
+- 
+
+
+
+
+
+
+
+## stream
+
+- stream, 流, 可以理解为水流
+
+- pipe === 管道, 用于将两个流进行连接
+
+  stream1.pipe(stream2) 
+
+  把 stream1 管道的末端连接到 stream2 管道的开端
+
+  ```javascript
+  server.on('request', (req, res)=>{
+  	const stream1 = fs.createReadStream('./big.txt')
+    // 把读流连接到响应流
+  	stream1.pipe(res)
+  })
+  ```
+
+- 在 chrome 上调试 node 代码
+
+  node --inspect-brk 1.js 
+
+- drain 
+
+  - drain: 大 chunk 写完触发的事件
+
+    遇到比较大的 chunk1, 会导致写流出现拥堵, 导致写流停止写入其他chunk, 如果触发 drain 事件, 说明已经写完了 chunk1, 可以继续写入其他 chunk 了
+
+  - finish: 全部数据写完触发的事件
+
+  ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20200720224049.png)
+
+- stream 的分类
+
+  - writable
+  - readable
+  - duplex
+  - transform
+
+- readable 的状态
+
+  - 有两种状态: 静止态 paused 和流动态 flowing
+  - 默认处于 paused 态
+  - 添加 data 事件监听, 变为 flowing 态
+  - 删除 data 事件监听, 变为 paused 态
+  - pause()可以变为 paused 态
+  - resume() 可以变为 flowing 态
+
+- writable 的事件 drain
+
+  - drain 需要写入的数据(大量)已经处理完毕,可以继续执行写入数据操作
+  - 调用 const flag = stream.write(chunk) 的时候, 当 chunk 数据很大时, 会导致 flag 为 false
+  - false 表示的意思是: 由于需要写入的数据量很大, 导致数据积压
+  - 此时不能再写入数据, 需要监听 drain 事件, 等待 drain 触发, 才能继续执行写数据操作
+
+- writable 的事件 finish
+
+  - ①调用 stream.end()之后 + ②缓冲区数据都已经传给底层系统之后, 触发的事件
+
+
+
+
+
+
+
+## stream 第二次理解
+
+- stream === 流，核心是生成读流或者写流时从哪里来，这个需要指定
+
+  ```
+  const stream = fs.createWriteStream('/var/test1/big_file.txt');
+  ```
+
+  创建一个写流，写入的路径 `/var/test1/bug_file.txt`
+
+- 
+
+
+
+
+
+
+
+
+
 ## 2020.04.31
 
 
@@ -366,7 +995,7 @@ $ sudo nginx -s stop
 ```shell
 $ sudo nginx的安装路径
 ```
-    
+
 - linux 如何查看软件的安装路径
 
 ```shell
@@ -398,7 +1027,7 @@ $ which nginx
 $prompt$: 提示, 弹出一个提示框, 可以用于收集用户输入数据
     
 - chrome 调试 node 代码
-    
+  
 ```shell
 $ node --inspect-brk index.js 
 ```
@@ -408,7 +1037,7 @@ $ node --inspect-brk index.js
     $prompt$: 提示, 弹出一个提示框, 可以用于收集用户输入数据
     
 - chrome 调试 node 代码
-    
+  
     ```shell
     $ node --inspect-brk index.js 
     ```
@@ -524,7 +1153,7 @@ $ sudo nginx -s stop
 ```shell
 $ sudo nginx的安装路径
 ```
-    
+
 - linux 如何查看软件的安装路径
 
 ```shell
@@ -556,7 +1185,7 @@ $ which nginx
 $prompt$: 提示, 弹出一个提示框, 可以用于收集用户输入数据
     
 - chrome 调试 node 代码
-    
+  
 ```shell
 $ node --inspect-brk index.js 
 ```
@@ -566,7 +1195,7 @@ $ node --inspect-brk index.js
     $prompt$: 提示, 弹出一个提示框, 可以用于收集用户输入数据
     
 - chrome 调试 node 代码
-    
+  
     ```shell
     $ node --inspect-brk index.js 
     ```
@@ -699,7 +1328,6 @@ function ajax(){
   request.send("xxxxxxxxx")
 }
 ```
-
 
 ---
 
@@ -886,11 +1514,11 @@ event.currentTarget返回**绑定**事件的元素
 # 深拷贝
 
 ## 过程代码
- 
+
 - 测试代码总结
 
   凡是基本类型,都相等;凡是引用类型,都不相等  
-    
+  
 - 遇到的问题, 四步走
 
   - 需求
@@ -1321,7 +1949,7 @@ event.currentTarget返回**绑定**事件的元素
 ### ✅函数内变量取值依据
 
 1. 依据
- 
+
     如果「函数内变量」与「函数定义处变量」名称一致，使用 params 法（函数调用时确定值） ，否则使用 environment 法（函数定义时确定值）
 
     ![image](https://user-images.githubusercontent.com/25478678/66710269-7af97180-eda7-11e9-83b9-5f2e9ffc1656.png)
@@ -1454,7 +2082,7 @@ console.log('「函数调用」获取值', person1('name'));
         https://codesandbox.io/s/weathered-paper-ynlg6
 
 2. React.useCallback
-    
+  
     - 需求
     
         点击右侧按钮时，子组件才渲染
@@ -1675,7 +2303,7 @@ sort、reducer、map
         // a.__proto__.__proto__ === b.prototype ? 返回 true
         // 直到 a.__proto__.__proto__ ...  === null 返回 false
         ```
-        
+    
 - Object.prototype.toString.call([]) => 返回 "[object String]"
 
 
@@ -1709,14 +2337,13 @@ console.log(a)
    4. undefined
    5. null
 
-
 ---
 
 
 # 异步编程
 
 
-   
+
 ## 异步编程
 
 ### 理解
@@ -1779,7 +2406,6 @@ console.log(a)
   - 如果想取消 rebase 操作
 
     `git rebase --abort`
-
 
 ---
 
@@ -2347,7 +2973,7 @@ filter(Boolean)
 - 强制缓存
 
   1. 过程
-   
+  
       针对 JS 和 CSS 文件，图片，和任何类型的二进制文件的静态资源，在第一次 HTTP 响应 header 中添加
     
       表示在某段时间内，使用客户端的数据即可。**不发送请求**
@@ -2359,11 +2985,11 @@ filter(Boolean)
       Expires: (一年后的今天)
       ```
       
-      
+  
 - 协商缓存
 
   1. 过程
-   
+  
       在请求内容中添加缓存标识
       
       后端根据缓存标识，判断是否需要更新文件
@@ -2378,8 +3004,8 @@ filter(Boolean)
       ETag: (基于内容生成)
       Last-Modified: (过去某个时间)
       ```
-     
---- 
+  
+---
 
 跨域
 
@@ -2484,9 +3110,9 @@ Accept-Language: en-US
 Connection: keep-alive
 User-Agent: Mozilla/5.0...
 ```
- 
+
    该请求的意思是：
-   
+
    1. 我发送一个请求方法为 options 的请求
    
    2. 我的请求 url 是 http://api.bob.com
@@ -2503,7 +3129,7 @@ Access-Control-Allow-Methods: *
 Access-Control-Allow-Headers: *
 Access-Control-Allow-Credentials: *
 Access-Control-Max-Age: 1728000
-```   
+```
 
 [例子](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/daily.md#跨域问题)
 
@@ -2594,7 +3220,6 @@ x()();
   })();
   console.("a", a) // 报错 a 未定义
   ```
-
 
 ---
 
@@ -2935,7 +3560,7 @@ const response = await axiosInstance.get(`/lottery?id=${id}&number=${window.user
        - 如果有,直接返回数据库保存的 token
 
   3. 获取详细信息: https://work.weixin.qq.com/api/doc/90000/90135/91023#10019
-     
+    
      - 获取 userId: https://work.weixin.qq.com/api/doc/90000/90135/91023
 
 - 需求: 如何安装 redis?

@@ -1,3 +1,69 @@
+## 2020.12.23 
+
+- 运行
+
+  ```javascript
+  function a(){
+  	return {
+  		b: 1
+  	}
+  }
+  console.log(typeof a()) // object
+  ```
+
+  ```
+  function a(){
+  	return b;
+  	b = 10;
+  	function b(){}
+  	var b = '11'
+  }
+  console.log(typeof a())
+  ```
+
+  ```
+  var a = 3
+  var b = {
+  	a: 2,
+  	b: {
+  		a: 1,
+  		c: function(){
+  			return this.a
+  		}
+  	}
+  }
+  var test = b.b.c
+  console.log(test())
+  console.log(b.b.c())
+  
+  ```
+
+  ```
+  var a = 'hello' instanceof String
+  console.log(a)
+  ```
+
+  ```
+  var a = 0
+  function b(){
+  	a++
+  	this.a = a
+  	return b
+  }
+  var test = new new b
+  console.log(test.a)
+  ```
+
+  
+
+
+
+
+
+
+
+
+
 ## 2020.09.23 Coding
 
 - meta 标签作用
