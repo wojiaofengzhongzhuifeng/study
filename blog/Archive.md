@@ -10,8 +10,6 @@
 
 使用 next 脚手架创建的项目，引入 typeorm + typescript 库。
 
-
-
 ## 目标
 
 在 next 的 posts 页面中使用 typeorm 加载数据库数据。
