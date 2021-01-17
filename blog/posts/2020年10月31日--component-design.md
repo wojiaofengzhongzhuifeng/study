@@ -162,7 +162,7 @@
 
 - 大组件分割成小组件
 
-- 
+- 使用node 脚本一件部署研发环境
 
 
 
@@ -174,9 +174,38 @@
 
 
 
+## 重新写一次变更分析组件
 
+- 如何为现有项目接入 ts？
 
+  - 安装 typescript
 
+    `yarn add typescript`
 
+  - 生成 tsconfig.json 文件
 
+    `npx tsc --init`
 
+  - 安装 ts-loader，用于处理后缀名为`.ts`或者`.tsx`的文件
+
+    `yarn add -D ts-loader`
+
+  - 需要在 webpack 中加上 ts 的 loader 配置
+
+    ```javascript
+    module.exports = {
+        //省略部分代码...
+        module: {
+            rules: [
+                {
+                    test:/\.tsx?$/,
+                    loader:'ts-loader'
+                }
+                //省略部分代码...
+            ]
+        }
+        //...省略部分代码
+    }
+    ```
+
+    
