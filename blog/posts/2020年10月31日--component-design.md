@@ -28,12 +28,14 @@
 
   解决办法：获取的数据，统一经过变换函数处理
 
-- 请求数据时，通常需要做字段判断，如果是success，表示获取成功，有没有什么办法可以统一处理？(如何做请求的统一处理)？
+- ✅请求数据时，通常需要做字段判断，如果是success，表示获取成功，有没有什么办法可以统一处理？(如何做请求的统一处理)？
 
 - 定义了 store 某个数据的修改方法，并且在多处执行了修改方法，有没有办法知道是在哪个地方执行了修改？
+
 - ===
 
 - 核心接口开始
+
 - 重要接口 /prototype/query/{entity} 多条件查询实体数据
 
 - 重要接口 /linked/query 实体多对象关联查询
@@ -164,6 +166,10 @@
 
 - 使用node 脚本一件部署研发环境
 
+- 数据 mock
+
+- 
+
 
 
 ## 步骤
@@ -176,7 +182,7 @@
 
 ## 重新写一次变更分析组件
 
-### 如何为现有项目接入typescript?
+### 如何为现有项目接入typescript
 
 - 安装 typescript
 
@@ -208,4 +214,194 @@
   }
   ```
 
+- 不需要加入文件后缀配置
+
+  ```diff
+  - import TagList from "./components/TagList/index.tsx"
+  + import TagList from "./components/TagList/index"
+  ```
+
+  在`webpakc.config.js ` 
+
+  ```diff
+  resolve: {
+  -	extensions: ['.js', '.jsx',],
+  +	extensions: ['.js', '.jsx', '.ts', '.tsx'],
+  },
+  ```
+
   
+
+### 实现需求步骤
+
+- 划分组件
+- 
+
+### 划分组件需要思考组件方面
+
+- 渲染组件需要哪些数据
+- 组件触发事件，产生了数据，数据会触发哪些函数执行；如果是本组件的函数，那么这个数据应该是 state，如果非本组件函数，数据应该提升
+
+
+
+
+
+
+
+### 如何数据 mock
+
+
+
+### 如何查看postman真实请求
+
+![image-20210117155127779](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20210117155127779.png)
+
+#### 统一处理请求结果
+
+请求数据时，通常需要做字段判断，如果是success，表示获取成功，有没有什么办法可以统一处理？(如何做请求的统一处理)？
+
+
+
+### useEffect使用async函数
+
+```diff
+useEffect(()=>{
+-	getModelTree();
++    (async function () {
++      await getModelTree();
++    })();
+}, []);
+```
+
+
+
+### 接口获取数据使用流程
+
+```diff
++ // 1: 获取数据
+const modelRes: IResponse<IModelResData> = await linkedQuery(modelPostData);
++ // 2: 处理特殊情况
+if (modelRes.code !== 'SUCCESS') {
+	message.error(modelRes.code);
+	return
+}
++ // 3: 处理后端返回的数据
+let modelTreeList = convertToTreeList(modelRes.data.data);
++ // 4: 使用经过处理后的数据
+setModelTree(modelTreeList)
+```
+
+
+
+### 数据应该如何选择存放位置
+
+存放位置
+
+- state
+- 数据管理工具，如 mobx
+
+
+
+### diff 组件的核心接口
+
+#### 获取模型的构件数据过程
+
+- postman 接口测试
+
+- 观察 postData 数据来源，可以把postData 作为一个计算属性
+
+  ```json
+  {
+      "scope": [   // 这个数据由 ModelSelector 组件产生
+          "all"
+      ],
+      "condition": [ // 这个数据由 AdvanceSearch 组件产生
+          {
+              "bosclass": "tags",
+              "field": "_key",
+              "operator": "notNull",
+              "logic": "Or"
+          }
+      ],
+      "sort": [ // 这个数据由 table 交互产生
+          {
+              "order": "asc",
+              "sortby": "name"
+          }
+      ] 
+      // 还有 page per_page 数据, 也是由 table 交互产生
+  }
+  ```
+
+- 也就是说：上面属性发生变化，就需要执行「获取模型构件数据」接口
+- 接口 => 判断什么时候运行调用接口
+
+
+
+
+
+### 封装组件-高级搜索
+
+该组件的作用：用户通过可视化的页面拼接搜索条件，也就是 condition
+
+该组件所需数据：
+
+1. 空间树结构
+2. 其他选项中的树形组件数据
+
+该组件产出数据：
+
+1. condition
+
+
+
+
+
+### 函数命名
+
+- fetchxxx：通过接口获取数据
+- convertxxxx：let newData = convertxxxx(oldData)
+- handlexxxx：处理用户交互事件`<Button onClick={this.handleClickBtn}>点我<Button/>`
+
+
+
+### mobx避免无限调用
+
+#### 解决方法
+
+- 条件调用 set 
+
+  https://codesandbox.io/s/competent-christian-sn2eq
+
+
+
+### 理清接口postData与前端产生data的关系
+
+#### 问题描述
+
+
+
+
+
+### 数据or函数应该由什么方式传给组件
+
+目前有一个组件 ModelSelector，组件内部使用 `selectModelList`，`setSelectModelList`。那么这两个东西应该
+
+1. 在ModelSelector组件定义处，通过 import 的方式引入
+2. 在ModelSelector组件使用处，通过 props 的方式引入
+
+应该选择哪一种？
+
+应该第二种才对
+
+
+
+
+
+#### 需要解决的事情
+
+- 请求数据有重复代码
+- 组件需要外面的数据，应该从 props 传给组件而不是通过 import store
+
+
+
