@@ -260,6 +260,30 @@
 
 请求数据时，通常需要做字段判断，如果是success，表示获取成功，有没有什么办法可以统一处理？(如何做请求的统一处理)？
 
+```javascript
+function handlePromiseReject(promise){
+	return new Promise((resolve)=>{
+		promise.then((res)=>{
+			if(res.code !== 'SUCCESS'){
+				message.error(res.message);
+				return
+			}
+			resolve(res);
+		}, (res)=>{
+			console.log('res', res);
+		}).catch((e)=>{
+			console.log('e', e);
+		})
+	});
+}
+
+    handlePromiseReject(getSubAttributeNames(postData)).then((res)=>{
+			console.log(res)
+    });
+```
+
+
+
 
 
 ### useEffect使用async函数
@@ -375,12 +399,6 @@ setModelTree(modelTreeList)
 
 
 
-### 理清接口postData与前端产生data的关系
-
-#### 问题描述
-
-
-
 
 
 ### 数据or函数应该由什么方式传给组件
@@ -400,7 +418,7 @@ setModelTree(modelTreeList)
 
 #### 需要解决的事情
 
-- 请求数据有重复代码
+- ✅请求数据有重复代码
 - 组件需要外面的数据，应该从 props 传给组件而不是通过 import store
 
 
