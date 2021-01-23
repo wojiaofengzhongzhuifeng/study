@@ -128,6 +128,14 @@ webapi-dev.bos.xyz => alpha-webapi.zhuanspace.com
 xhz3d-alpha.bos.xyz => alpha-xhz3d.zhuanspace.com // 不确定对不对
 ```
 
+```
+devcode
+研发环境 = e10e59bf0ee97213ca7104977877bd1a
+测试环境 = 90b78ed03cb385d1d6bd006af8978b86
+预生产 = e10e59bf0ee97213ca7104977877bd1a
+生产 = e10e59bf0ee97213ca7104977877bd1a
+```
+
 
 
 
@@ -160,4 +168,16 @@ webapi.conf:    server_name  webapi-pre.zhuanspace.com;
 web.conf:     server_name  platform-pre.zhuanspace.com;
 websocket.conf:    server_name  websocket-pre.zhuanspace.com;
 ```
+
+| 问题 url                                                     | 出现问题现象                 | 是否解决 | 解决方法                                                     |      |      |
+| ------------------------------------------------------------ | ---------------------------- | -------- | ------------------------------------------------------------ | ---- | ---- |
+| https://beta-vis.zhuanspace.com/indoor_navigation/           | 无法正常导航                 |          |                                                              |      |      |
+| https://beta-vis.zhuanspace.com/model_outlines_xhz3d/        | 部分接口出现错误             | ✅        | 1. /outlines 接口header添加 sign、timestamp<br /><br />2. xhz3d 的 baseUrl 变量https://beta-api.zhuanspace.com/platform => https://beta-webapi.zhuanspace.com |      |      |
+| https://beta-vis.zhuanspace.com/model_preview_xhz3d_buy/     | 前往购买按钮出现问题         |          |                                                              |      |      |
+| https://beta-vis.zhuanspace.com/modelcompare_sourcecode/     | api.bos.xyz 有问题           |          |                                                              |      |      |
+| https://beta-vis.zhuanspace.com/repair_manage_platform_xhz3d/ | 接口没有报错，但是看不到模型 |          |                                                              |      |      |
+| https://beta-vis.zhuanspace.com/road_network/                | 无法正常使用功能             |          |                                                              |      |      |
+| https://beta-vis.zhuanspace.com/shortest_path/               | 功能不正常                   |          |                                                              |      |      |
+|                                                              |                              |          |                                                              |      |      |
+|                                                              |                              |          |                                                              |      |      |
 

@@ -362,6 +362,11 @@ setModelTree(modelTreeList)
 
 
 
+#### 获取构件关联的数据
+
+- ✅tag-tag、tag-document、tag-wbs 三个数据可以正常获取（通过接口）
+- ✅mobx 设置  selectComponentObj ，发生变化时，获取这三个数据，
+
 
 
 ### 封装组件-高级搜索
@@ -416,10 +421,113 @@ setModelTree(modelTreeList)
 
 
 
-#### 需要解决的事情
+### 需要解决的事情
 
 - ✅请求数据有重复代码
 - 组件需要外面的数据，应该从 props 传给组件而不是通过 import store
 
 
+
+### 构件关联数据
+
+#### 背景与需求
+
+现有实体表： tags（构件）、documents（文档）、wbs（进度），关联表：tag_tag、tag_document、tag_wbs
+
+需要实现以下的需求：
+
+1. tag 与 tag 进行关联
+2. tag 与 documents 进行关联
+3. tag 与 wbs 进行关联
+
+简单来说，就是通过 tagKey，获取与这个 tagKey 关联的 tag、document、wbs 数据
+
+#### 细节
+
+- 通过数据配置定义的关联表
+  ![image-20210121105800571](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20210121105800571.png)
+
+- tag 与 document 关联的数据可以存放的方式
+
+  - 系统自带关系类（irTagDocument）
+    在关联表中，内置 tag_document 关联表，表中 bosclass 字段为为 irTagDocument
+    ![image-20210121105644288](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20210121105644288.png)
+
+  - 继承自 irTagDocument 关系类的关系类（uirTagDocumentSon）
+
+    同样在 tag_document 关联表中，只不过表内的数据的 bosclass 字段为 uirTagDocumentSon
+
+    ![image-20210121110055022](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20210121110055022.png)
+
+  - 用户自定义的 tag 与 document 的关系类（uirTagDocumentNoSon）
+
+    创建一张 uirTagDocumentNoSon 关联表
+    ![image-20210121110406553](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20210121110406553.png)
+
+  - 总结
+    - 如果用户**自定义**关系类（uirTagDocumentNoSon），数据库会生成一张 uriTest 关系表，并且表内的数据 bosclass 字段是 uirTagDocumentNoSon 
+    - 如果用户定义的关系类（uirTagDocumentSon）**继承**自另一个关系类（uirTagDocument），不会生成一张表，而是在被继承的表内的 bosclass 设置为 uirTagDocumentSon 以作区分
+
+- tag 与 tag 关联的数据可以存放的方式
+
+  关系表存在 from 属性和 to 属性，存在方向性，现做如下规定：
+
+  1. from 是当前选择的构件，to 是关联构件，那么这种情况是后序
+  2. from 是关联构件，to 是当前选择的构件，那么这种情况是前序
+  3. 同级构件：只存在于用户自定义的 tag 与 tag 关系表
+
+  
+
+
+
+
+
+
+
+### React深层state数据如何 setState
+
+```
+this.setState({
+	treeData: [...this.state.treeData]
+})
+```
+
+
+
+###最高层级数据UI逻辑
+
+#### 数据从什么接口获取？
+
+```
+https://bigbos-alpha.bimwinner.com/bosdesignservice/{{appKey}}/tags/{{tagKey}}/getUpAndDown?type=up&level=1
+```
+
+通过这个 url 可以知道，需要两个数据才知道能获取最高层级数据
+
+必须保证 tagKey 和 type 不为空， 才能调用接口获取最高层级数据
+
+1. tagKey
+2. type
+
+#### 数据结果获取逻辑
+
+前序和后序分别会返回一个数据层级，需要设置两者中较大的值作为最大数据层级
+
+
+
+
+
+### 调用接口的时候需要做事情
+
+需要判断 postData 是否为空，不为空才调用接口获取数据
+
+
+
+### 数据放置位置
+
+- UI 数据放到组件 state
+
+- 用户交互中产生数据放到 store
+
+  
 
