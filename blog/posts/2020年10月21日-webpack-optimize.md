@@ -344,10 +344,6 @@ webpack devtool
 
 
 
-## 使用 Webpack 实现以下需求
-
-- 搭建一个 libarary 框架，要求引入 lodash 代码
-- 
 
 
 
@@ -356,6 +352,44 @@ webpack devtool
 
 
 
+## webpack开发优化-环境变量
 
+### 实现不同环境之间，index.html 的 url 替换
 
+预期： 绿色是开发环境预期代码。红色是线上环境预期代码
 
+```diff
+<!DOCTYPE html>
+<html>
+<head>
+   <title>BOS速成营</title>
++   <script type="text/javascript" src="http://model.rickricks.com:7781/urlConfig.js"></script>
+-   <script type="text/javascript" src="/urlConfig.js"></script>
+</head>
+<body>
+<div id="root"></div>
+</body>
+</html>
+```
+
+简单来说
+
+1. set：使用 HtmlWebpackPlugin 插件注入变量 urlConfig
+2. get：在 index.html 中使用`<%= htmlWebpackPlugin.options.urlConfig %>`
+
+实现过程
+
+![image-20210129111746058](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20210129111746058.png)
+
+![image-20210129111758363](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20210129111758363.png)
+
+![image-20210129111807341](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20210129111807341.png)
+
+### 实现 js 文件获取 webpackconfig.js 变量
+
+https://www.zhaixiaowai.com/Article/article-1027.shtml
+
+简单来说
+
+1. set：使用 DefinePlugin 插件注入变量
+2. get：在 js 文件使用注入的变量
