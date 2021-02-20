@@ -45,3 +45,15 @@
 - ssh 免密登录服务器
 
   未实现，目前阶段不是特别重要
+  
+- 获取ip
+
+  ```
+  dig +short myip.opendns.com @resolver1.opendns.com
+  ```
+
+  
+
+  
+
+  
