@@ -354,7 +354,7 @@ webpack devtool
 
 ## webpack开发优化-环境变量
 
-### 实现不同环境之间，index.html 的 url 替换
+### webpack html 的变量注入
 
 预期： 绿色是开发环境预期代码。红色是线上环境预期代码
 
@@ -396,14 +396,15 @@ https://www.zhaixiaowai.com/Article/article-1027.shtml
 
 
 
+### 根据环境变量注入不同配置文件
 
+- create-react-app + dotenv 出现问题
 
+  需要在 `.env` 中添加如下的 preload
 
+  ```diff
+  - TEST=123321
+  + REACT_APP_TEST=333333
+  ```
 
-
-
-
-
-# webpack
-
-### 
+  
