@@ -98,3 +98,4 @@
   console.log(6)
   promise2.then((res)=>{console.log(5)})
   ```
+

@@ -1,3 +1,641 @@
+## 2020.02.28
+
+### react hooks 如何实现 computed 属性？
+
+注意使用 useMemo 封装原数据即可
+
+- 需求
+
+  - 现有 state {firstName: 'rao'} state {secondName: 'jiajun'}，现需要在视图中渲染出 rao-jiajun 的 div 
+  - 并且有一个按钮，可以修改 firstName 的值
+  - name 变化后，需要 setState name info 数据
+
+- 实现
+
+  https://codesandbox.io/s/upbeat-einstein-ozqpe
+
+  
+
+  
+
+### react fiber 架构的作用
+
+
+
+
+
+
+
+
+
+## 2020.02.27
+
+### 在函数中，如果有意外，先把意外使用 return 处理，然后再处理作出逻辑
+
+```javascript
+// 只能打印 Number 类型的数据
+function logNum(needLog){
+	// 1️⃣ 函数边界条件
+	if(typeof needLog === 'number')return
+	
+  // 2️⃣ 这里是函数主逻辑
+	console.log(needLog)
+}
+```
+
+## useUndo
+
+- 需求：
+
+  初始值1，点击 4 次，current 是 5
+
+  点击2 次 undo，current 是 3
+
+  点击 1 次 redo，current 是 4
+
+- [自己写的](https://codesandbox.io/s/agitated-germain-ktstr)
+
+- [使用 useCallback 包裹自定义函数](https://codesandbox.io/s/reverent-tu-1o8id)
+
+- [由于history 与 historyHistory 关系密切，可以将他们合并到一个对象]()
+
+  16：22
+
+## idea 字体颜色含义
+
+![image-20210227110303014](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20210227110303014.png)
+
+## 2020.02.26
+
+### 如何 extends antd 的 Button props？
+
+❌
+
+### hooks 使用注意事项
+
+hooks是一个生成器 用于生成相关函数 而不能作为业务函数直接调用
+
+### useState 懒加载
+
+https://codesandbox.io/s/confident-microservice-zn2ey
+
+
+
+### 如何保存函数组件的函数？
+
+- 通过 useState 保存，然而usestate传入函数有自己的作用 用于state懒初始化，所以这条路有问题
+
+- 通过 useRef 保存
+
+  注意 get ref 容器调用方式，其中一个调用方式是错误的
+
+  官方建议：`onClick={()=>{xxxx()}}` 代替 `onClick={xxxx}`
+
+  https://codesandbox.io/s/exciting-volhard-5ro35
+
+### 点击收藏后，发送了请求，但是前端页面需要重新获取数据
+
+不会
+
+### 处理组件 A 还未挂载 or 已经卸载，依然执行 setState 爆出的错误
+
+- 报错信息
+
+  ![image-20210226134226611](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20210226134226611.png)
+
+- 解决方法
+
+  创建 useMountRef，使用 useRef + useEffect 去判断组件是否已经挂载到 dom 
+
+
+
+### useEffect 依赖项重复渲染的问题
+
+- 场景重现
+  - [依赖项是 fn](https://codesandbox.io/s/festive-sun-mzp7l)
+  - [依赖项是 obj or array](https://codesandbox.io/s/cocky-jepsen-2yk50)
+
+### 坑：useCallBack useState 依赖项的问题
+
+useCallback 的函数中使用了useState，使用函数参数代替 state
+
+```diff
+- useCallback(()=>{
+-	 setState({...state, name: 1})
+- }, [state])
+
+useCallback(()=>{
++	 setState(prevState => ({...preState, name: 1}))
++ }, [])
+```
+
+### 经验：写自定义 hooks 的时候，如果返回的是对象或者函数，都应该使用useCallback 或者 useMemo 进行封装后再返回
+
+- 返回的函数
+
+  ```diff
+  // setState 在 hooks 中，并且通过 hooks 返回
+  
+  - const setState = (newState)=>{
+  - 	setHistory([...history, newState]);
+  - }
+  
+  + const setState = useCallback((newState)=>{
+  +   setHistory([...history, newState]);
+  + }, [])
+  
+  ```
+
+- 返回对象
+
+  https://codesandbox.io/s/upbeat-einstein-ozqpe
+
+### 变量提升(暂时性死区)
+
+- 使用 var 定义变量
+
+  ```javascript
+  console.log('a', a); // 打印 undefined
+  var a = 1 
+  ```
+
+- 使用 const 定义变量
+
+  const 与 let 也有变量提升，但不是设置为 undefined，而是放在「暂时性死区」
+
+  ```javascript
+  console.log('b', b); 
+  // 报错 Uncaught ReferenceError: Cannot access 'b' before initialization 
+  // 注意报错信息是不能获取 b 变量在初始化之前，并不是 b 未定义
+  // 这说明引擎知道你后面声明了 b 变量
+  const b = 1  
+  ```
+
+- 直接打印 c 变量
+
+  ```javascript
+  console.log(c)
+  // 报错 VM608:1 Uncaught ReferenceError: c is not defined
+  ```
+
+### 组件共享状态（函数与变量）
+
+- 假设需求
+
+  现有应用 App，现需要在非常深的子组件可以获取到 App 组件的方法，并且调用
+
+- 状态提升到公共组件，然后一层一层透传方法
+
+  https://codesandbox.io/s/reverent-aryabhata-4dde3
+
+- 假设 App 改变调用方式，那么需要修改所有调用方法
+
+  https://codesandbox.io/s/upbeat-meadow-o5iwt
+
+  ```diff
+  - setModalOpen(true)
+  + setModalOpen({
+  	flag: true
+  })
+  ```
+
+- composition component（组件组合）
+
+  只需要透传一个组件即可，组件挂载需要的函数，如果需要添加挂载的函数，只需要改变调用方（p1,p2,p3）和设置方(App)，其他都不需要管
+
+  https://codesandbox.io/s/mutable-brook-z6r8z?file=/src/App.tsx
+
+
+
+### composition component（组件组合）蕴含的设计模式-控制反转
+
+- 不使用 组件组合 ，那么需要多少个函数或者变量，就需要都手动传入，最大的问题就是每一层都需要改变传入函数或者变量数量
+- 如果使用组件组合，把组件当成容器，将函数或者变量放到组件中，然后传递组件即可。并且改变传入的函数或者变量时，不需要改变每一层的传入
+
+
+
+
+
+### 
+
+
+
+
+
+
+
+## 2020.02.25
+
+### 定义数组内部类型
+
+- 需求
+
+  假设我定义一个 array,内部类型分别为 string,number,string 如何定义？
+
+- 解决方法
+
+  变量后添加 as const
+
+  未添加
+
+  ![image-20210225105313589](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20210225105313589.png)
+
+  添加 as const 
+
+  ![image-20210225105353425](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20210225105353425.png)
+
+### useQueryParam 为什么会出现无限渲染的问题
+
+原因：
+
+1. useEffect 依赖项是普通的引用类型
+2. 在 useEffect 中执行 setState 操作
+
+经验：
+
+1. useEffect 的依赖项必须是经过 useState (数据是 ui 数据)或者 useMemo（普通数据） 返回的数据
+
+```
+export const useDebounce = <V>(value: V, delay?: number) => {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setDebouncedValue(value), delay);
+    return () => clearTimeout(timeout);
+    // 1️⃣ useEffect 依赖项使用了 useDebounce 函数的第一个参数
+  }, [value, delay]);
+
+  return debouncedValue;
+};
+
+export const useQueryParam = (keyList: string[])=>{
+  const [searchParams, setSearchParam] = useSearchParams()
+
+	// 5️⃣ 应该使用 useMemo 对 searchParamObj 进行封装
+  // let searchParamObj = useMemo(()=>(
+  //   keyList.reduce((pre, key)=>{
+  //     return {...pre, [key]: searchParams.get(key) || ''}
+  //   }, {} as {[key in string]: string})
+  // ), [searchParams])
+  // 4️⃣直接返回 searchParamObj，会导致无限调用
+  let searchParamObj =  keyList.reduce((pre, key)=>{
+    return {...pre, [key]: searchParams.get(key) || ''}
+  }, {} as {[key in string]: string})
+
+  return [searchParamObj, setSearchParam] as const
+
+
+}
+
+export const ProjectListScreen = () => {
+  const [param, setParam] = useState({
+    name: "",
+    personId: "",
+  });
+  // 2️⃣ 传入的 param 没有问题，因为 param 是由 useState 产生
+  const debouncedParam = useDebounce(param, 200);
+  return (
+		<div>{param}</div>
+  );
+};
+
+export const ProjectListScreen = () => {
+  let [searchParamObj] = useQueryParam(['name', 'personId'])
+
+  // 3️⃣ 传入的 searchParamObj 有问题，因为 searchParamObj 是普通对象，会造成无限渲染
+  const debouncedParam = useDebounce(searchParamObj, 200);
+  return (
+		<div>{param}</div>
+  );
+};
+
+```
+
+
+
+### id-select.tsx(学习如何创建组件流程)
+
+- 这个组件的作用是什么？
+
+  后端传数据A 给组件，组件可以供用户选择，并且输出值只能是 number | undefined， 如果输出值是 undefined，说明选择的是默认值
+
+- https://codesandbox.io/s/eager-fermat-9uks8
+
+### 编程题
+
+https://leetcode-cn.com/problems/two-sum/
+
+https://cloud.tencent.com/developer/article/1483443
+
+
+
+##2020.02.24
+
+### 环境变量注入不同配置文件
+
+- create-react-app + dotenv 出现问题
+
+  需要在 `.env` 中添加如下的 preload
+
+  ```diff
+  - TEST=123321
+  + REACT_APP_TEST=333333
+  ```
+
+### react hooks 闭包陷阱
+
+- react hooks
+
+  - [例子](https://codesandbox.io/s/interesting-swanson-pks22)
+
+  - 原因
+
+    - 页面加载完毕后，会为 Test 组件生成第一个快照，此时 count = 0
+
+    - 点击 + 号后，会为 Test 组件生成第二个快照，此时 count = 1 
+
+    - 离开 Test 组件后，会执行第一个快照的useEffect 的回调函数，在这个回调函数中获取 count，此时 count = 0
+
+- [原生 js 例子1](https://jsbin.com/sewadozadi/1/edit)
+
+- [原生 js 例子2](https://jsbin.com/tavatumima/1/edit?js,console,output)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 2020.02.22
+
+### 使用二分查找法确定 bug
+
+- 如果发现最终定位的 commit 是 **merge commit**，那么需要分别进入merge commit进行定位
+  ![image-20210222105900148](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20210222105900148.png)
+
+
+
+### webpack 报错
+
+![image-20210222171022116](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20210222171022116.png)
+
+出现这个错误，并不是需要`yarn add webpack-cli/bin/config-yargs D `而是因为命令错误
+
+```diff
+{
+  "name": "webpack-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+-    "dev": "webpack-dev-server"
++    "dev": "webpack server"
+  },
+}
+
+```
+
+
+
+## 2020.02.21
+
+### react 组件复用
+
+- HOC
+
+  要理解 HOC 需要先理解柯里化
+
+  https://segmentfault.com/a/1190000018180159
+
+  https://codesandbox.io/s/runtime-morning-gyoxg
+
+  https://codesandbox.io/s/elastic-grass-eb93o
+
+  https://juejin.cn/post/6844904050236850184#heading-1
+
+- render props
+
+- hooks
+
+## 2020.02.14
+
+
+
+## 2020.02.10
+
+### 准备工作
+
+- 硬盘休眠关闭
+- mac 开机密码
+
+
+
+## 2020.02.07
+
+### 封装 useAsync
+
+## 2020.02.06
+
+### 函数
+
+[链接](../posts/2021年02月06日-function.md)
+
+
+
+## 2020.02.05
+
+### ❌jquery无法深拷贝
+
+？？？
+
+### ✅函数注入泛型
+
+```typescript
+const log = <T>(a: T): T=>{
+  return a
+} 
+function log1<T>(a: T): T{
+  return a
+}
+```
+
+
+
+### ✅useAsync
+
+[链接](../posts/2021年01月23日-jira.md#useAsync作用)
+
+### ✅promise
+
+[测试 1 then 第二个参数与 catch 等效](https://jsbin.com/fizofihibi/1/edit?js,console,output)
+
+[测试 2](https://jsbin.com/zapiziwera/1/edit)
+
+
+
+
+
+
+
+
+
+
+
+
+
+## 2020.02.04
+
+### ✅解决需求要有入口
+
+写 hooks 的时候先假设如何调用这个 hooks
+
+### ✅学东西要分类别，不同类别的知识学习方式都不一样
+
+- 学习一个新框架，新技术（术）
+  - 面临什么问题
+  - 这个新技术怎么解决的
+  - 这个东西是什么
+  - 如何使用
+
+## 2020.02.03
+
+### ✅第三方登录出现了 bug 的原因以及解决方法
+
+- 原因
+
+  ```diff
+  let res = {
+    code: "SUCCESS",
+    message: "成功",
+  -	data: {
+  -		login: {...}
+  -	}
+  +	data: {
+  +		login: {...}
+  +   wxEOpenID: "",
+  +   qqUnionID: "",
+  +	}
+  }
+  ```
+
+  我取数据的时候， 直接这样取的，后端为 res.data 注入其他数据，导致报错
+
+  ```javascript
+  Object.keys(res.data)[0] 
+  ```
+
+  建议与这个[一起](https://github.com/wojiaofengzhongzhuifeng/study/blob/master/blog/posts/2020%E5%B9%B407%E6%9C%8825%E6%97%A5-%E6%B4%BB%E5%8A%A8%E6%80%BB%E7%BB%93.md#%E6%88%91%E8%B8%A9%E4%BA%86%E4%BB%80%E4%B9%88%E5%9D%91)总结
+
+- 总结
+
+  **使用对象 or 数组，要假定内部的内容是变化的**
+
+  **如果数据是一个对象，要假定对象 key 的数量是不定的** [链接](https://jsbin.com/pitikiziho/2/edit?js,console,output)
+
+  **如果数据是一个数组， 要假定内部的顺序是变化的** [链接](https://jsbin.com/karucinado/1/edit)
+
+### ✅useAuth 
+
+[链接](../posts/2021年01月23日-jira.md#useAuth)
+
+
+
+
+
+## 2020.02.02
+
+<p>
+<details>
+<summary>✅ git 折叠 语法</summary>
+
+
+
+<p>
+</p>
+
+
+## 标题1
+
+- 水果
+
+- 吃法
+
+- 学习
+
+**test**
+
+~~tset11~~
+
+
+如果 PDF 未成功生成, 需要在本地使用命令生成 PDF, 然后将本地生成的 PDF 放到服务器编译之后的代码的文件夹
+
+> PDF 文件名称是确定的 test 
+
+```shell
+$ gitbook pdf ./ './_book/业务数据服务 API.pdf'1
+$ gitbook pdf ./ './_book/业务数据服务 API.pdf'2
+```
+
+[链接](https://www.google.com)
+
+![图片](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20200725151755080.png)
+
+</details>
+</p>
+
+
+
+
+
+
+## 2020.02.01
+
+### ✅ 完成功能函数-某个数据初始化为 null，经过 x 秒后才设置值，如何保证使用该数据的时候已经设置好值了？
+
+局限性太大
+
+```javascript
+  function listenDataChange(data, key, fn, delay) {
+    let timeId = null;
+    if (!data[key]) {
+      timeId = setInterval(() => {
+        console.log('xxxxx')
+
+        if (data[key]) {
+          clearInterval(timeId);
+          fn(data)
+        }
+      }, delay)
+    }
+
+  }
+
+
+  let data = {};
+  setTimeout(()=>{
+    data.test1 = 1111
+  }, 5000)
+	// 参数 1：被监听变量只能是对象
+	// 参数 2：需要监听的对象 key
+	// 参数 3：数据改变的回调函数
+	// 参数 4：查看数据变更间隔时间
+  listenDataChange(data, 'test1',(newData)=>{
+    console.log(newData)
+  }, 1000)
+```
+
+
+
 
 
 
