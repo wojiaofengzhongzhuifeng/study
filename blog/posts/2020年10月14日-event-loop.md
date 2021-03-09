@@ -5,16 +5,14 @@
 - **微任务（Microtask）**：`Promise`、`MutationObserver`
 
 - Event Loop 核心流程
-  1. 主线程(调用栈)之外，存在一个 任务队列（task queue）
+  1. 主线程(调用栈)之外，存在一个 **任务队列**(先放的函数，先执行)
   2. 走主线程的时候，如果碰到异步任务，那么就在 任务队列 中放置这个异步任务。注意区分宏微任务。
-  3. 等待主线程运行完毕后，查看宏微任务队列是否存在任务，先运行完所有微任务，**才(核心！！！)**运行宏任务。先放进去的任务先执行。
+  3. 等待主线程运行完毕后，查看宏微任务队列是否存在任务，先运行完所有微任务，**才(核心！！！)**运行宏任务。
 
 - 栈（堆栈）：先进后出
-  ![image-20201016161549942](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20201016161549942.png)
-
+  
 - 队列：先进先出
-  ![image-20201016161620564](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20201016161620564.png)
-
+  
 - 题目 1
 
   ```

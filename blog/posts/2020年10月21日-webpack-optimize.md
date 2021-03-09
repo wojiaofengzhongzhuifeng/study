@@ -106,8 +106,6 @@ https://webpack.js.org/api/module-methods/
 
 
 
-
-
 ## 最简单的 webpack 配置
 
 ```
@@ -408,3 +406,63 @@ https://www.zhaixiaowai.com/Article/article-1027.shtml
   ```
 
   
+
+## Webpack-dev-server 代理请求
+
+- webpackDevServer 实现请求转发 
+
+  需求：
+
+  1. 现有线上地址 `http://www.dell-lee.com/react/api/header.json` ,假设这个api存在跨域问题，不能直接通过 ajax 获取数据
+  2. 现有线上地址 `http://www.dell-lee.com/react/api/header.json` 与 `http://www.dell-lee.com/react/api/demo.json`，假设 header.json 是真实接口地址，demo.json 是 mock header.json 的接口地址。现需要对接口进行重写操作。
+
+  请求过程：
+
+  1. 前端 axios 请求的是 http://localhost:8080/react/api/header.json
+
+  2. webpackDevServer 根据 proxy 配置，
+
+     ```javascript
+       devServer: {
+         contentBase: path.resolve(__dirname, './dist'),
+         hot: true,
+         proxy: {
+           '/react/api': {
+             target: 'http://www.dell-lee.com',
+             pathRewrite: {
+               'header.json': 'demo.json'
+             }
+           }
+         }
+       },
+       
+     axios.get('/react/api/header.json')
+     ```
+
+     
+
+     使用 node 去请求 http://www.dell-lee.com/react/api/demo.json，并且把响应数据放回 http://localhost:8080/react/api/header.json 
+
+  3. 前端通过请求  http://localhost:8080/react/api/header.json 实际请求的是 http://www.dell-lee.com/react/api/demo.json
+
+  总结：
+
+  1. 前端请求: `http://localhost:8080/react/api/header.json`
+  2.  => `http://www.dell-lee.com//react/api/header.json`
+  3.  => `http://www.dell-lee.com//react/api/demo.json`
+
+
+
+## webpack-dev-server 解决单页面路由问题
+
+- 核心
+
+  先命中真实文件 再命中前端路由
+
+- 过程
+
+  用户请求 `localhost:8080/list.html`，但是打包后的目录没有 list.html ，导致 404 错误
+
+- 解决方法
+
+  使用工具进行配置：「如果发现 404，那么返回 index.html 」，在 index.html 中可以处理路由问题
