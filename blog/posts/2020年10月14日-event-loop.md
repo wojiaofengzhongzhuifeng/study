@@ -96,4 +96,45 @@
   console.log(6)
   promise2.then((res)=>{console.log(5)})
   ```
+  
+- 题目 4
+  
+  ```
+  const p1 = function(){
+  return new Promise((resolve)=>{
+  // 这里正常执行，执行 2️⃣ 代码
+  // 如果这里抛出错误，执行 3️⃣ 代码
+  resolve(100)
+  })
+  }
+  p1().then(()=>{
+  // 2️⃣
+  console.log(111)
+  })
+
+  const p2 = function(){
+  return new Promise((resolve)=>{
+  throw new Error('error')
+  resolve(100)
+  })
+  }
+  p2().then(()=>{
+  console.log('4343')
+  }).catch(()=>{
+  // 3️⃣
+  console.log('33')
+  })
+  ```
+  
+- 题目 5
+
+  ```
+  Promise.resolve().then(()=>{
+  	console.log(1)
+  }).catch(()=>{
+  	console.log(2)
+  }).then(()=>{
+  	console.log(3)
+  })
+  ```
 
