@@ -52,8 +52,24 @@
   dig +short myip.opendns.com @resolver1.opendns.com
   ```
 
-  
+### 修改文件夹权限
 
-  
+` sudo chmod 777 upload/` 
 
-  
+
+
+
+
+### create-react-app 生成的 react应用，打包之后如何在 github preview ？
+
+- github 开启github pages
+
+- create-react-app package.json 添加属性，然后再 yarn build
+
+  ```
+  "homepage": "."
+  ```
+
+- 将 build or dist 从 .gitignore 删除
+
+- git push 

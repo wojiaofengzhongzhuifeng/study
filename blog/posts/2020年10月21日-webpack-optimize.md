@@ -1,41 +1,10 @@
-# Bos 组件的体积优化
-
-
-
-## plugin 与 loader 区别：
-
-- plugin 插件， 帮你实现功能
-- loader 加载器：将高级语法转化为低级语法
 
 
 
 
 
-## dependencies 与 devDependencies 区别
 
-If you are going to develop a package, you download it (e.g. via `git clone`), go to its root which contains `package.json`, and run:
 
-如果你想要二次开发一个 npm 包（假设是 addNumber），你需要下载该包的源代码，进入到项目目录，运行
-
-```js
-npm install
-```
-
-Since you have the actual source, it is clear that you want to develop it, so by default, both `dependencies` (since you must, of course, run to develop) and `devDependency` dependencies are also installed.
-
-因为你有了完整的代码，你就能进行二次开发了，dependencies 与 devDependency 都会被安装
-
-If however, you are only an end user who just wants to install a package to use it, you will do from any directory:
-
-如果你只是 api 调用者，只想在你的项目中使用 addNumber npm 包
-
-```js
-npm install "$package"
-```
-
-In that case, you normally don't want the development dependencies, so you just get what is needed to use the package: `dependencies`.
-
-在这种情况下，你一般不想开发有关devDependencies内容，所以只会下载 dependencies 依赖的包，而不会下载 devDependencies 依赖包
 
 
 
@@ -56,16 +25,6 @@ style-loader 是什么？？
 
 
 
-
-## 体积优化的第一步：使用各种工具寻找当前项目存在的问题
-
-常见的工具：
-
-- BundleAnalyzerPlugin
-
-  可视化分析打包后的代码大小
-
-  ![image-20201021105020511](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20201021105020511.png)
 
 
 
@@ -106,83 +65,7 @@ https://webpack.js.org/api/module-methods/
 
 
 
-## 最简单的 webpack 配置
 
-```
-const path = require('path');
-
-module.exports = {
-	entry: './index.js',
-	output: {
-		filename: 'bundle.js',
-		// path: './bundle', 这样写错误，需要绝对路径
-		path: path.resolve(__dirname, 'bundle')
-	}
-}
-```
-
-
-
-
-
-
-
-## 有什么方式可以运行 node 包？
-
-- node 包安装在全局
-
-  `webpack index.js`
-
-- node 包安装在项目
-
-  `npx webpack index.js`
-
-- node 包安装在项目, 并且添加 npm scripts
-
-  package.json 配置
-
-  ````
-  "scripts": {
-  	"build": "webpack index.js"
-  },
-  ````
-
-  这样运行即可
-
-  `yarn build`
-
-
-
-## webpack-cli 作用
-
-可以在命令行使用 webpack 这个命令
-
-
-
-## webpack 如何处理图片？
-
-如果直接在项目中使用图片，会报如下错误
-![image-20201025120235801](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20201025120235801.png)
-
-需要安装相应 loader，配置如下
-
-![image-20201025120914823](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20201025120914823.png)
-
-其中对于png的处理如下：
-
-1. 发现是 png, 将图片复制到打包后的目录，改个名字 fdksaljfkdsa12389ud8fsa.png
-2. 使用 png 的地方，将进行变量赋值
-   ![image-20201025121329214](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20201025121329214.png)
-
-
-
-
-
-
-
-## loader 作用？
-
-处理文件打包，文件包括 图片，样式文件，
 
 
 
@@ -466,3 +349,19 @@ https://www.zhaixiaowai.com/Article/article-1027.shtml
 - 解决方法
 
   使用工具进行配置：「如果发现 404，那么返回 index.html 」，在 index.html 中可以处理路由问题
+
+
+
+## create-react-app 生成的 react应用，打包之后如何在 github preview ？
+
+- github 开启github pages
+
+- create-react-app package.json 添加属性，然后再 yarn build
+
+  ```
+  "homepage": "."
+  ```
+
+- 将 build or dist 从 .gitignore 删除
+
+- git push 
