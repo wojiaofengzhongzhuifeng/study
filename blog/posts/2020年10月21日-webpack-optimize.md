@@ -365,3 +365,183 @@ https://www.zhaixiaowai.com/Article/article-1027.shtml
 - 将 build or dist 从 .gitignore 删除
 
 - git push 
+
+
+
+
+
+
+
+
+
+## webpack 优化方式
+
+### Dll （DllPlugin  + DllReferencePlugin ）
+
+- 解决思路
+
+  将不做修改的依赖文件（React），提前打包，这样我们打包的时候，就不需要对这部分代码进行打包，节省打包时间
+
+- 解决步骤
+
+  - 使用 DllPlugin 打包生成 react_dll.js 与 manifest.json
+
+    ```javascript
+    // 文件目录：configs/webpack.dll.js
+    'use strict';
+    
+    const path = require('path');
+    const webpack = require('webpack');
+    
+    module.exports = {
+        mode: 'production',
+        entry: {
+            react: ['react', 'react-dom'],
+        },
+        // 这个是输出 dll 文件
+        output: {
+            path: path.resolve(__dirname, '../dll'),
+            filename: '_dll_[name].js',
+            library: '_dll_[name]',
+        },
+        // 这个是输出映射表
+        plugins: [
+            new webpack.DllPlugin({ 
+                name: '_dll_[name]', // name === output.library
+                path: path.resolve(__dirname, '../dll/[name].manifest.json'),
+            })
+        ]
+    };
+    ```
+
+  - 使用 DllReferencePlugin 链接 dll 文件，使用 AddAssetHtmlPlugin 将 _dll_react.js 挂载到 HTML
+
+    ```javascript
+    // 文件目录：configs/webpack.common.js
+    
+    const path = require('path');
+    const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin'); // 顾名思义，把资源加到 html 里，那这个插件把 dll 加入到 index.html 里
+    const webpack = require('webpack');
+    module.exports = {
+      // ......
+      plugins: [
+        new webpack.DllReferencePlugin({
+          // 注意: DllReferencePlugin 的 context 必须和 package.json 的同级目录，要不然会链接失败
+          context: path.resolve(__dirname, '../'),
+          manifest: path.resolve(__dirname, '../dll/react.manifest.json'),
+        }),
+        new AddAssetHtmlPlugin({
+          filepath: path.resolve(__dirname, '../dll/_dll_react.js'),
+        }),
+      ]
+    }
+    
+    ```
+
+    
+
+### js 代码分割（splitChunksPlugin）
+
+- 使用 entry 配置手动分离代码
+
+  手动配置多入口实现代码分割，多入口打包抽取公共代码
+
+  webpack 内置 splitChunksPlugin ，使用这个插件解决文件内容重复问题
+
+  现有 main.js 与 other.js ，其中两个文件都是使用了 jquery（实现了多入口 js，但是带来了js 文件内容重复的问题）
+
+  webpack.config.js 添加以下配置
+
+  ```javascript
+  optimization:{
+  	splitChunks: { // 实际就是 splitChunksPlugin 插件的配置
+  		chunks: "all"
+  	}
+  }
+  ```
+
+  | 优化之前打包后生成的文件                                     | 优化之后打包后生成的文件                                     |
+  | ------------------------------------------------------------ | ------------------------------------------------------------ |
+  | 1. other.bundle.js（包含 jquery 源代码）<br />2. main.bundle.js（包含 jquery 源代码） | 1. other.bundle.js<br />2. main.bundle.js<br />3. vendors~main-other.bundle.js(包含 juqery 源代码)<br /> |
+
+  
+
+- 动态导入（懒加载）
+
+  希望在使用 import/exoprt 语法的时候，可以使用条件判断。
+  但是直接写会报错，所以使用动态导入的语法，实现条件判断，进而实现模块的动态导入。
+
+  |        | import/export 导入模块语法           | 动态导入模块语法                                 |
+  | ------ | ------------------------------------ | ------------------------------------------------ |
+  | 示例   | import $ from 'jquery'               | import('jquery').then((default: $)=>{})          |
+  | 注意点 | 只能放到文件最顶级，不允许有条件判断 | 1. 返回一个 promise<br />2. 可以在条件判断中运行 |
+
+  在 react 中，使用 React.lazy + Suspense 实现动态加载
+
+### IgnorePlugin
+
+- 背景
+
+  安装 moment 这个库，如果不做任何优化，打包后的代码会变非常大。
+
+- 解决思路
+
+  打包后代码变的非常大的原因是 moment 支持国际化，会有其他语言的代码，实际上是不需要的，需要在打包过程中删除所有语言，然后手动引入需要的语言
+
+- 解决步骤
+
+  - 通过查看源代码的方式，确定 moment 库依赖的语言包
+
+  - webpack.config.js 使用 IgnorePlugin 插件忽略 moment 依赖的语言包
+
+    ```javascript
+    new Webpack.IgnorePlugin(/\.\/locale/, /moment/)
+    ```
+
+  - 使用 moment 时手动引入语言包
+
+    ```javascript
+    import moment from 'moment'
+    import 'moment/locale/zh-cn'
+    moment.locale('zh-cn')
+    ```
+
+    
+
+  
+
+### noParse（阻止 webpack 分析第三方库的依赖关系）
+
+​	项目在使用第三方库（jquery），并且做了打包操作。那么 webpack 会在打包的过程中，尝试寻找 jquery 的依赖关系。但是这样做是没有意义的，需要阻止这个过程。
+
+​	在 webpack.config.js 中，在 modules 中添加
+
+```javascript
+module:{
+	noParse: /jquery|bootstrap/
+}
+```
+
+- loader 配置添加 include/excludes 属性
+
+  ```diff
+  module:{
+  	noParse: /jquery|bootstrap/,
+  	rules:[
+  	 {
+  	 	test: /\.js$/,
+  	 	use: {
+  	 		loader: 'babel-loader'
+  	 	},
+  +	 	excludes: /node_modules/,
+  +	 	includes: path.resolve(__dirname, './src')
+  	 }
+  	]
+  }
+  ```
+
+### mode: production 做了什么？
+
+- tree shaking
+- scope hoisting
+- 代码压缩
