@@ -15,6 +15,7 @@
   - [`useEffect`](https://reactjs.org/docs/hooks-reference.html#useeffect)
   - [`useContext`](https://reactjs.org/docs/hooks-reference.html#usecontext)
 - [Additional Hooks](https://reactjs.org/docs/hooks-reference.html#additional-hooks)
+  
   - [`useReducer`](https://reactjs.org/docs/hooks-reference.html#usereducer)
   - [`useCallback`](https://reactjs.org/docs/hooks-reference.html#usecallback)
   - [`useMemo`](https://reactjs.org/docs/hooks-reference.html#usememo)
@@ -24,14 +25,8 @@
   - [`useDebugValue`](https://reactjs.org/docs/hooks-reference.html#usedebugvalue)
 - Custom Hooks
   - useDebounce
-    - 对数据进行防抖处理
-  - useAuth
-    - 包含 userInfo， login，register，logout
-  - useHttp
-    - 使用 useAuth 的 userInfo 发送 HTTP 请求的 Hooks
-  - useAsync
-    - 处理请求过程中的 loading、error 状态
-  - useDocumentTitle
+
+    对数据进行防抖处理
 
 
 
@@ -39,9 +34,21 @@
 
 
 
-### useContext
+## useContext
+
+### 代码
 
 https://codesandbox.io/s/thirsty-cherry-n7qjn
+
+[更简单的例子](https://codesandbox.io/s/purple-wood-j3wgu)
+
+
+
+## useReducer
+
+https://codesandbox.io/s/beautiful-ellis-i057u?file=/src/App.js
+
+## useMemo
 
 
 
@@ -73,10 +80,11 @@ https://codesandbox.io/s/thirsty-cherry-n7qjn
   - 原因
 
     - 页面加载完毕后，会为 Test 组件生成第一个快照，此时 count = 0
-
     - 点击 + 号后，会为 Test 组件生成第二个快照，此时 count = 1 
-
     - 离开 Test 组件后，会执行第一个快照的useEffect 的回调函数，在这个回调函数中获取 count，此时 count = 0
+
+- [react hooks 例子 2](https://codesandbox.io/s/festive-mcnulty-k6hu3)
+
 - javascript 例子
   - [原生 js 例子1](https://jsbin.com/sewadozadi/1/edit)
   - [原生 js 例子2](https://jsbin.com/tavatumima/1/edit?js,console,output)
