@@ -50,9 +50,15 @@ https://codesandbox.io/s/beautiful-ellis-i057u?file=/src/App.js
 
 ## useMemo
 
+- 人民、美元换算工具
 
+  https://codesandbox.io/s/clever-bird-bque7
 
+## useRef
 
+- 模拟 class 组件的 componentDidUpdate（使用 useRef 保存贯穿多次渲染的变量）
+
+  https://codesandbox.io/s/charming-moser-dqjtn?file=/src/App.js
 
 
 
@@ -60,10 +66,30 @@ https://codesandbox.io/s/beautiful-ellis-i057u?file=/src/App.js
 
 ### useDebounce
 
+对用户输入值进行节流操作
+
 - [不使用 debounce](https://jsbin.com/suyuyetutu/1/edit?html,js,console,output)
 - [未封装 debounce](https://jsbin.com/zovuvidoze/1/edit?html,js,console,output)
 - [封装 debounce](https://jsbin.com/fotuwoteti/1/edit?html,js,console,output)
 - [cusTomHook useDebounce](https://codesandbox.io/s/trusting-oskar-o2mkf)
+
+
+
+### useAsync 
+
+统一处理异步请求
+
+https://github.com/wojiaofengzhongzhuifeng/test-react-fetch-data
+
+
+
+### useUrlQueryParam
+
+返回页面 url 中，执行 key 的参数值
+
+
+
+
 
 
 
@@ -113,38 +139,6 @@ https://codesandbox.io/s/beautiful-ellis-i057u?file=/src/App.js
 
 
 
-
-## Dan 博客
-
-- 每一次渲染都有它自己的 Props and State，并且它们始终不变的
-
-- 每一次渲染都有它自己的事件处理函数
-  事件处理函数“看到”的是属于它那次特定渲染中的`state.count`状态值
-
-- 每次渲染都有它自己的Effects
-  与事件处理函数一致
-
-  如果 useEffect 不指定依赖项，那么每次渲染后都会运行 useEffect 的函数
-
-- 每一次渲染都有它自己的…所有
-
-- 逆潮而动
-
-- 那Effect中的清理又是怎样的呢？
-
-- 同步， 而非生命周期
-
-- 告诉React去比对你的Effects
-
-- 关于依赖项不要对React撒谎
-
-- 如果设置了错误的依赖会怎么样呢？
-
-- 两种诚实告知依赖的方法
-
-- 函数式更新 和 Google Docs
-
-- 解耦来自Actions的更新
 
 
 
