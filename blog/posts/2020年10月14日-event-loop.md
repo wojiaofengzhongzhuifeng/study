@@ -11,9 +11,15 @@
 
 - 队列：先进先出
 
-- 看到 a().then(fn1) ，同步执行 a 函数，并且将 fn1 放入到微任务队列，先不执行 fn1
+- `a().then(fn1)` 
 
-- 遇到**执行 async 函数**转化为 promis
+  同步执行 a 函数，并且将 fn1 放入到微任务队列，先不执行 fn1
+
+- `async1()` vs `await async1()`
+
+  `async1()`表示后面的代码是**依然**同步执行
+
+  `await async1()`表示先执行 async1 代码，然后再将后面的代码放到微任务中
 
   ```javascript
   async function async1(){
@@ -26,26 +32,24 @@
   }
   async1()
   console.log(4)
-  	
   ```
 
-  ```diff
-  
+  ```js
   async function async1(){
   	console.log(1)
-  +	async2().then(()=>{
-  +		console.log(2)
-  +	})
+  	await async2()
+  	console.log(2)
   }
   async function async2(){
   	console.log(3)
   }
-  + async1().then(()=>{
-  +	 console.log(4)
-  + })
+  await async1()
+  console.log(4)
   ```
 
   
+
+- 
 
 ## 题目
 
@@ -97,24 +101,24 @@
     console.log("setTimeout---0");
   }, 0);
   
-  setTimeout(function() {
+  setTimeout(function callback2() {
     console.log("setTimeout---200");
-    setTimeout(function() {
+    setTimeout(function callback11() {
       console.log("inner-setTimeout---0");
     });
-    Promise.resolve().then(function() {
+    Promise.resolve().then(function callback12() {
       console.log("promise5");
     });
   }, 200);
   
   Promise.resolve()
-    .then(function() {
+    .then(function callback3() {
       console.log("promise1");
     })
-    .then(function() {
+    .then(function callback4() {
       console.log("promise2");
     });
-  Promise.resolve().then(function() {
+  Promise.resolve().then(function callback5() {
     console.log("promise3");
   });
   console.log("script end");
@@ -123,14 +127,18 @@
 - 题目 3
 
   ```
-  setTimeout(()=>{console.log(1)}, 0)
+  setTimeout(function callback1(){
+  	console.log(1)
+  }, 0)
   console.log(2)
   const promise2 = new Promise((resolve)=>{
    console.log(3)
    resolve(4)
   })
   console.log(6)
-  promise2.then((res)=>{console.log(5)})
+  promise2.then(function callback2(){
+  	console.log(5)
+  })
   ```
   
 - 题目 4
@@ -197,10 +205,10 @@
   	console.log(3)
   }
   async1();
-  new Promise((resolve)=>{
+  new Promise(function callback1(resolve){
   	console.log(4)
   	resolve()
-  }).then(()=>{
+  }).then(function callback2(){
   	console.log(5 )
   })
   ```
@@ -217,10 +225,35 @@
   	console.log('async2')
   }
   console.log('script start ')
-  setTimeout(()=>{
+  setTimeout(function callback1(){
   	console.log('setTimeout')
   }, 0)
   async1()
+  new Promise((resolve)=>{
+  	console.log('promise1')
+  	resolve()
+  }).then(function callback2(){
+  	console.log('promise2')
+  })
+  console.log('scrpit end')
+  ```
+
+- 题目 9 （题目 8 变种）
+
+  ```
+  async function async1(){
+  	console.log('start')
+  	await async2()
+  	console.log('end')
+  }
+  async function async2(){
+  	console.log('async2')
+  }
+  console.log('script start ')
+  setTimeout(function callback1(){
+  	console.log('setTimeout')
+  }, 0)
+  await async1() // 添加 await
   new Promise((resolve)=>{
   	console.log('promise1')
   	resolve()
