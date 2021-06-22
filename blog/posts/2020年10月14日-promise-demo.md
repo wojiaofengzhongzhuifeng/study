@@ -2,15 +2,19 @@
 
 ### 需求
 
- 将 [1,2,3,'a', 'b', 'ss'] 转化为 
+ 将 转化为 
 
+```
+现有数据（该数据是异步获取）[1,2,3,'a', 'b', 'ss']，将其转化为以下数据，转化过程是异步：
 {
-
-​	number: [1.232345, 102.323, 3.1235465],
-
-​	string: ['a+string','b+string', 'ss+string+double']
-
+	number: [1.232345, 102.323, 3.1235465],
+	string: ['a+string','b+string', 'ss+string+double']
 }
+```
+
+
+
+
 
 转化逻辑如下：
 
@@ -22,6 +26,23 @@
 并且限定，所有添加行为都是异步
 
 ### 实现思路（从数据结构角度出发）
+
+- 数据转化过程
+
+  ```
+  [1,2,3,'a', 'b', 'ss'] =>
+  
+  // Promise1()指的是 asyncAddRanDomNumber 返回的 promise 对象，
+  // Promise4()指的是 asyncAddString 返回的 promise 对象，其他 promise 对象以此类推
+  let result = {
+  	number: [Promise1(), Promise2(), Promise3()],
+  	string: [Promise4(), Promise5(), Promise6()],
+  } =>
+  
+  [1.2671584084864802, 102.01443069799504, 3.1154056016218865, "*****", "a+string", "b+string", "ss+string+double"]
+  ```
+
+  
 
 ![image-20201014162247607](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20201014162247607.png)
 

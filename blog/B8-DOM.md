@@ -97,10 +97,13 @@ btn.addEventListener("click", clickHandler)
 
 
 
-
 ## event.target 和 event.currentTarget 的区别
 
 event.target返回**触发**事件的元素
 
 event.currentTarget返回**绑定**事件的元素
-[例子](
+[例子](http://jsbin.com/nesuduwoti/edit)
+
+## 写一个事件代理
+
+https://jsbin.com/fizekowufu/1/edit?html,js,console,output
