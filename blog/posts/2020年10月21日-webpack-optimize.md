@@ -235,7 +235,7 @@ webpack devtool
 
 ## webpack开发优化-环境变量
 
-### webpack html 的变量注入
+### webpack.config.js => HTML（htmlWebpackPlugin）
 
 预期： 绿色是开发环境预期代码。红色是线上环境预期代码
 
@@ -266,7 +266,7 @@ webpack devtool
 
 ![image-20210129111807341](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20210129111807341.png)
 
-### 实现 js 文件获取 webpackconfig.js 变量
+###  webpackconfig.js => js 文件(DefinePlugin )
 
 https://www.zhaixiaowai.com/Article/article-1027.shtml
 
@@ -545,3 +545,67 @@ module:{
 - tree shaking
 - scope hoisting
 - 代码压缩
+
+
+
+
+
+## 提高 webpack 打包速度
+
+
+
+### 核心
+
+打包后的代码 === 业务代码 + runtime 代码 + 第三方库代码（vendors）
+
+### 单独打包 runtime
+
+- 如何单独打包 runtime？
+
+  ```
+  // webpack.config.js 配置
+  {
+  	optimization: {
+  		runtimeChunk: 'single'
+  	}
+  }
+  ```
+
+- 为什么单独打包 runtime 能提高效率？
+
+  源代码中的入口 js 为 index.js
+
+  打包的最终代码是 main.js ，main.js 内部包含两部分：主代码、runtime.js（将 main.js 运行在 ie 等低版本浏览器的环境代码）。
+
+  如果不单独打包，那么如果此时修改了 webpack 的配置，就会导致 main.js 发生变化，用户需要重新下载新的 main.js
+
+  如果单独打包了 runtime.js 代码，那么如果此时修改了 webpack 的配置，用户只需要下载最新的 runtime.js 代码即可，不需要下载重复的主代码（因为业务代码根本没有修改）
+
+
+
+### 将 node_modules 依赖单独打包
+
+- 如何实现
+
+  ```js
+  // webpack.config.js 配置
+  // 将外部依赖模块（如node_modules 目录下的react）从主代码中分离出来，生成 vendors.js
+  {
+  	optimization: {
+  		splitChunks: {
+  			cacheGroups: {
+  				vendor:{
+  					minSize: 0, 
+  					test: /[\\/node_modules[\\/]]/,
+  					name: 'vendors',
+  					chunk: 'all'
+  				}
+  			}
+  		}
+  	}
+  }
+  ```
+
+  
+
+  

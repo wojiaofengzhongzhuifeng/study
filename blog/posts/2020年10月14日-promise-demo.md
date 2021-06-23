@@ -32,8 +32,8 @@
   ```
   [1,2,3,'a', 'b', 'ss'] =>
   
-  // Promise1()指的是 asyncAddRanDomNumber 返回的 promise 对象，
-  // Promise4()指的是 asyncAddString 返回的 promise 对象，其他 promise 对象以此类推
+  // Promise1()是一个 promise 对象，模拟的是后端请求数据的过程
+  // 其他 promise 对象以此类推
   let result = {
   	number: [Promise1(), Promise2(), Promise3()],
   	string: [Promise4(), Promise5(), Promise6()],
@@ -108,7 +108,7 @@ https://codesandbox.io/s/awesome-https-nx8fp
 
 ## Promise 手写
 
-### 使用场景
+### 使用方法
 
 ```javascript
 let fn1 = (resolve,reject)=>{
@@ -156,6 +156,16 @@ class Promise2 {
   state = "pending";
   callbacks = [];
 
+  constructor(fn) {
+    if (typeof fn !== "function") {
+      throw new Error("我只接受函数");
+    }
+    // 1️⃣ 这句话什么意思？把 this.resolve 内存地址给 fn 函数的第一个参数
+    // 「fn」 就是 new Promise1 时传入的函数（也就是 fn1）
+    // 「fn 函数的第一个参数」就是 new Promise1 时传入的函数的第一个参数(也就是 fn2)，
+    fn(this.resolve.bind(this), this.reject.bind(this)); 
+  }
+
   resolve(result) {
     if (this.state !== "pending") return;
     this.state = "fulfilled";
@@ -182,16 +192,6 @@ class Promise2 {
         }
       });
     }, 0);
-  }
-
-  constructor(fn) {
-    if (typeof fn !== "function") {
-      throw new Error("我只接受函数");
-    }
-    // 1️⃣ 这句话什么意思？把 this.resolve 内存地址给 fn 函数的第一个参数
-    // 「fn」 就是 new Promise1 时传入的函数（也就是 fn1）
-    // 「fn 函数的第一个参数」就是 new Promise1 时传入的函数的第一个参数(也就是 fn2)，
-    fn(this.resolve.bind(this), this.reject.bind(this)); 
   }
 
   then(succeed, fail) {
