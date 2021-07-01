@@ -1,4 +1,552 @@
+
+
 # jira项目观看过程笔记
+
+
+
+
+
+## 知识点
+
+TypeScript
+
+接⼝interface / 泛型 / 类型守卫
+Utility Types / TS + React结合
+类型 / conditional type / 联合类型
+交叉类型 / 类型推断 / 类型兼容
+
+React
+
+基本知识 / 状态提升
+Context / Ref 转发
+复合组件 / cloneElement
+suspense
+
+React Hook
+
+useState / useEffect
+useCallback / useMemo
+useRef / useContext / useReducer
+闭包原理与常⻅的坑 / hook使⽤规则
+
+⾃定义 Hook
+
+异步处理 / HTTP增删改查
+状态管理 / 路由管理
+⻚⾯标题管理 / auth header 管理
+URL参数管理 / Loading 和 Error 管理
+
+状态管理
+
+Url 参数与状态同步
+Context / Redux Toolkit
+React Query 管理服务端状态
+全局和本地状态管理划分原则
+
+性能优化
+
+代码分割
+useMemo & useCallback
+Profiler监控性能
+Chrome Devtool / 性能上报
+
+⾃动化测试
+
+Hook 测试
+单元测试
+集成测试
+端对端测试
+
+其它内容
+
+React Router 6
+JWT / CSS-in-JS
+husky / prettier
+commitlint
+
+
+
+## 第二章
+
+### 配置 eslint、prettier、commitlint
+
+
+
+
+
+## 第三章
+
+### ❌public 是静态资源文件，内部的%public% 是什么东西？
+
+？？？
+
+### ❌使用 prettier 在提交之前格式化代码
+
+- 使用 prettier 命令手动格式化代码
+- 使用 lint-staged + kusky 在commit 前运行 prettier 命令
+
+### ✅使用json-server 作为 mock 工具
+
+- 将 json-server 通过 `yarn add json-server --dev`安装
+
+- 添加 db.json
+
+- 然后 package.json 添加 script 
+
+  ```diff
+    "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test",
+      "eject": "react-scripts eject",
+  +   "mock": "json-server --watch __mock__data__/db.json -p 3001"
+    },
+  ```
+
+### ✅react组件编写的过程是什么
+
+- 划分组件
+- 组件输入
+- 组件输出（产生）数据
+- 思考组件输出需要触发什么操作，如果触发其他组件操作，需要将该数据提升
+
+### ✅ mock 数据与环境变量的联合使用
+
+- 在 create-react-app 中使用
+
+- setData
+
+  在根目录创建`.env`文件，文件内容如下
+  注意变量必须以 `REACT_APP_xxx`开头
+
+  ```
+  REACT_APP_API_URL = 'http://localhost:3001'
+  REACT_APP_PROD_API_URL = 'http://baidu.com'
+  
+  ```
+
+- getData
+
+  ```
+  const apiUrl = process.env.REACT_APP_API_URL;
+  console.log(apiUrl);
+  ```
+
+### ✅经验：收集 url query 最佳数据结构
+
+#### 需求
+
+需要根据用户的操作生成如下 url
+
+`http://localhost:3000/projects?projectName=1&handlerId=2`;
+
+那么应该使用一个**对象**去保存数据，而不是使用**几个分散的变量**保存
+
+```diff
++ let filterData = {
++	 projectName: 1,
++	 handlerId: 2,
++ }
+
+- let projectName = 1
+- let handlerId = 2
+```
+
+为什么呢？因为如果用了下面的数据结构，那么拼接http 的时候，必须手动写 filterKey，这样要经常修改。如果换成对象，直接遍历对象的 key 与 value 生成 filterKey 和 value 就行了
+
+### ✅常见需求
+
+删除一个对象为 falsey 值的 key&value，（不包含 0）
+
+### ❌react组件渲染优化
+
+父组件更新，子组件一定更新，所以对每一个子组件包裹 React.memo(sonComponent)?
+
+### ✅useDebounce使用
+
+3-3-14:08
+
+useEffiect 的回调函数什么时候执行？
+
+重新执行该函数的时候执行
+
+
+
+## 第四章
+
+### ✅需要定义什么方面的接口
+
+凡是变量都需要定义 interface.包括函数`输入参数`,`输出参数`, `用户自定义变量`
+
+### 常见的typescript使用案例
+
+#### 如何定义react hooks组件props?
+
+```diff
++ interface Props{
++	 todoList: todo[]
++ }
++const Todo = ({todoList}: Props)=>{
+	return (<div></div>)
+}
+```
+
+#### case1
+
+```
+interface Test{
+	params: string[]
+	fn: (test: Test['params'])=>void
+}
+```
+
+#### tuple + interface key 的使用
+
+无法在 create-react-app 中使用ts-transformer-keys将 interface key 换成 []
+
+需求： 做信息收集功能，需要收集用户的 username 与 password。
+
+```
+interface
+
+优化
+const UserInfoType = tuple('username', 'password');
+```
+
+### window 挂载 test 变量，但是 ts 提示报错
+
+```typescript
+declare global {
+    interface Window { API_URL: string; }
+}
+
+window.API_URL = "test123321";
+```
+
+
+
+
+
+### 4-5
+
+封装自定义 hooks 的好处
+
+- 将 ui 与逻辑进行分离
+- 追加新功能更加简单
+
+使用 hooks 实现useArray，该 hooks 输入原始数组，输出`value` `clear` `removeIndex` `add`
+
+```typescript
+interface Person {  name: 1}function useArray<T>(initialArray: T[]): {  value: T[],  setValue: (valueList: T[]) => void,  add: (value: T)=>void,  clear: () => void,  removeIndex: (needRemoveIndex: number)=> void}{  const [value, setValue] = useState(initialArray);  return {    value,    setValue,    add: (item: T) => setValue([...value, item]),    clear: () => setValue([]),    removeIndex: (index: number) => {      const copy = [...value];      copy.splice(index, 1);      setValue(copy);    },  };}// getconst {value, setValue, add, clear, removeIndex} = useArray<Person>([])
+```
+
+
+
+## 第五章
+
+- auth-provider.ts 文件的作用
+
+  与 token 有关，用于处理 token 的 `get` `set` `remove`
+
+- auth-context.tsx 文件的作用
+
+  导出 useAuth。
+
+  useAuth 是一个 custom hooks，抛出了 user，login， resgister， logout 属性或者方法。
+
+  使用 login， resgister， logout 方法可以设置 user 的值。
+
+  并且 useAuth 经过了 context 的处理，使得 useAuth 的值是**全局可获取**并且**数据共用**
+
+- 如何使用 useContext
+
+  - AuthContext：通过 `React.createContext` 生成
+
+  - AuthProvider：通过 `AuthContext.Provider` 生成
+  - useAuth：通过 `React.useContext` 生成
+
+
+
+### 5-4
+
+为什么要把 useAuth 放到 useContext，直接在组件中引入不就 ok 了吗？
+
+这里有一个误区：**如果引用同一个 customhooks，复用逻辑，不共用数据。**
+
+即组件son与组件sonSon都引用了 useCount，在组件 son 设置 count + 1 ，并不会影响 sonSon 的 count 数据
+
+那么如何共用数据呢？使用useContext
+
+[点击+1，复用逻辑，不共用数据](https://codesandbox.io/s/compassionate-glitter-2x0vn)
+
+[通过 useContext，复用数据](https://codesandbox.io/s/friendly-joliot-kq5z8?file=/src/App.tsx:504-518)
+
+### ✅5-5
+
+使用 useAuth 判断是否登录状态，根据这个状态显示「未登录组件」与「登录组件」
+
+### 5-6 5-7
+
+使用 fetch api 封装 http ，完成登录注册功能
+
+期待的 http 封装
+
+```javascript
+http('projects', {    method: 'get',    headers:{      'Content-Type': 'application/json'    }}).then((data)=>{    // 完全没有错误的 data, 所有错误处理都在 http 进行处理 , data    console.log('完全没有错误的 data',data);});
+```
+
+
+
+### 5-8 常见 utility type 的使用
+
+type的使用1
+
+```diff
+- let youFavoriteNumber: string | number = 1- let myFavoriteNumber: string | number = 2+ type favoriteNumber = string | number;+ let youFavoriteNumber: favoriteNumber = 1;+ let myFavoriteNumber: favoriteNumber = 2;
+```
+
+utility type 1：Parameters
+
+
+
+```typescript
+const http = (  test1: number,  test2: string)=>{  console.log(1)}type test = Parameters<typeof http>let t1: test = [1, '3']
+```
+
+utility type 2：partial
+
+使用场景：选择原接口的 0 到 n 个属性
+
+```typescript
+interface UserInfo{  username: string  password: string}let person: Partial<UserInfo> = {username: '1'}
+```
+
+utility type 2：omit
+
+使用场景： 去除原接口的指定属性 
+
+```typescript
+type UserInfo = {  username: string  password: string  age: number}type test = Omit<UserInfo, 'username' | 'age'>let t1: test = {password: '1'} // ✅let t2: test = {age: 1} // ❌
+```
+
+如何限定函数的输入参数个数？
+
+```javascript
+function test(...[number1, number2]){	return number1 + number2}test(1,2,3) // 3test(1,2) // 3
+```
+
+
+
+### 第五章小结
+
+- 登录功能
+- 注册功能
+- 登录/注册后设置 token 到 localstorage
+- 区分未登录页面与登录页面
+- 如果 401，清除 token，返回登录页面
+- 请求接口都要带上 token
+- 登录完成后刷新页面，页面保持登录状态
+- 封装了 useAuth 借助 useContext 
+- 封装了 useHttp 
+
+
+
+### useAuth
+
+- 出现的问题
+
+  react 组件中，需要在任意层级获取变量A，以及修改变量A的函数，那么必须将这个变量以及函数放到根组件，并且通过 props 进行传递，太麻烦
+
+- 解决方法
+
+  使用 context + custom hooks 解决全局状态共用问题
+
+- 是什么
+
+  useAuth 是一个 custom hooks，抛出了 user，login， resgister， logout 属性或者方法。
+
+  使用 login， resgister， logout 方法可以设置 user 的值。
+
+  并且 useAuth 经过了 context 的处理，使得 useAuth 的值是**全局可获取**并且**数据共用**
+
+
+
+
+
+
+
+
+
+### useAsync作用
+
+- 出现问题
+
+  http 封装未处理loading 与 error 状态，需要统一处理 loading 与 error 状态
+
+- 解决方法
+
+  使用 custom hooks，抛出如下对象
+
+  ```
+  {	error: Error | null, // 如果出现错误的错误对象	data: null, // 接口返回的数据	stat: "idle" | "loading" | "error" | "success"; // 当前请求的状态	run: // 将接口请求放入这里，即可获取数据	setData: 	setError: 	isIdle: ,  isLoading: ,  isError: ,  isSuccess:,}
+  ```
+
+  useAsync => useHttp => useAuth + http 
+
+  
+
+
+
+### 使用 hooks 封装 http 请求需求
+
+这样使用
+
+```
+const {data: projectList, run, status, error, } = useAsync<Project[]>();run(axios.get('project'));
+```
+
+- useProjects
+  - useHttp
+    - useAuth
+      - useContext
+  - useAsync
+
+
+
+
+
+
+
+## 第七章
+
+### 最简单的方法处理 loading 与 error
+
+```typescript
+const ProjectList = ()=>{	const [projectList, setProjectList] = useState<Project[]>();	const [fetchProjectListing, setFetchProjectListing] = useState(false);	useEffect(()=>{		setFetchProjectListing(true)		fetch('project').then((response)=>{			if(response.ok){				response.json().then((data)=>{					setProjectList(data)				})			}		}).finally(()=>{      setFetchProjectListing(false)    })	}, [])	return (		<Table dataSource={projectList} loading={fetchProjectListing}/>		)}
+```
+
+### 使用 useAsync hooks 处理 loading 与 error
+
+使用最简单的方法获取接口数据时，需要在相应位置多添加两个 state（error 与 loading）。
+
+```typescript
+const ProjectList = ()=>{	// useAsync 用于统一处理异步请求错误与 loading 状态，由泛型可知改 useAsync 如无意外，返回的是 Project[] 数据	const {loading, data, run} = useAsync<Project[]>()	useEffect(()=>{    // 需要保证 promise1 返回值是 Project[] 		run(promise1)	}, [])	return (		<Table dataSource={data} loading={loading}/>		)}
+```
+
+### 使用 useAsync 与不使用 useAsync 的区别
+
+不使用 useAsync ，只是用代码将需求实现；一般情况下都不需要使用 cushooks
+
+如果多处都有这个需求，那么应该把这个需求逻辑使用hooks 封装
+
+简单来说就是逻辑是否封装的问题；
+
+
+
+## 第八章
+
+###hooks 闭包陷阱，使用useRef 解决
+
+
+
+### useDocumentTitle
+
+- 需求
+
+  创建 3 个路由 /my /project /todo 
+
+  默认是 react
+
+  /my => 个人信息
+
+  /project => 项目
+
+  /todo => react 
+
+  如果离开该组件。应该显示之前的title
+
+- 实现过程
+
+  - [最简单实现](https://github.com/wojiaofengzhongzhuifeng/useDocumentTitle-demo/commits/main)
+  - 
+
+### 为什么登录注册的 error 需要特殊处理(与 projectList error 作比较)
+
+```javascript
+const App = ()=>{	const [number, setNumber] = useState(0)	const handleClick = ()=>{		setNumber(number + 1)		console.log(number) // 打印 0，登录注册 error 的数据	}	return (		<div>			{number}  // 打印 1 ，projectList error 的数据			<button onClick={handleClick}> + 1</button>			</div>	)}
+```
+
+
+
+### 实现 Error Boundaries， 捕获边界错误
+
+下面的图在研发环境中，如果在生产环境中，会显示空白页面。
+
+现在需要在生产环境中依然显示研发环境的错误（或者自定义错误页面）
+
+![image-20210215122431592](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20210215122431592.png)
+
+### 实现需求：用户按照条件过滤项目名称与负责人信息，需要体现在 url 上，反之亦然
+
+自己写的过程代码
+
+```typescript
+  const [searchParams, setSearchParam] = useSearchParams();  useEffect(()=>{    // 当用户选择不同过滤条件时, 修改 url 的数据    setSearchParam(cleanObject(param) as URLSearchParamsInit)  }, [param, setSearchParam]);  useEffect(()=>{    // 当页面加载后, 根据 url 设置 params 的数据    let projectName = searchParams.get('name') || '';    let handlerId = searchParams.get('personId') || '';    setParam({      ...param,      name: projectName,      personId: handlerId,    })  }, [])
+```
+
+自己写的 hooks
+
+```
+// usage  useQuery(param, setParam)// setconst useQuery = (param: {[key: string]: string}, setParam:any)=>{  const [searchParams, setSearchParam] = useSearchParams();  useEffect(()=>{    // 当用户选择不同过滤条件时, 修改 url 的数据    setSearchParam(cleanObject(param) as URLSearchParamsInit)  }, [param, setSearchParam]);  useEffect(()=>{    // 当页面加载后, 根据 url 设置 params 的数据    let paramsKeyList = Object.keys(param);    let test = paramsKeyList.reduce((pre, next)=>{      return {...pre, [next]: searchParams.get(next) || ''}    }, {})    setParam({      ...param,      ...test    })  }, [])}
+```
+
+
+
+
+
+### React hooks 的坑
+
+依赖的数据不能是普通的引用类型数据， 只能是通过 useState 处理后返回的数据
+
+https://codesandbox.io/s/festive-bash-s9wru
+
+
+
+##select 面临的问题和解决方法
+
+- 面临问题
+
+  - 前后端 id 格式不一致
+
+    后端返回的 id 是 number；前端 select 处理后的 id 是 string
+
+  - 默认值应该是什么，怎么取
+
+    可以是 0 或者 undefined 空字符串，建议空字符串
+
+- 解决方法
+
+  封装 ant select 
+
+
+
+
+
+### && || 返回值
+
+&& 返回最后一个 truely 值，没有返回第一个falsey 值
+
+|| 返回第一个 truely 值，没有返回最后一个 falsey 值
+
+
+
+
+
+### 收藏功能前端实现
+
+封装 antd 原本的组件
+
+https://codesandbox.io/s/hardcore-https-3uwh4
 
 
 
@@ -2212,7 +2760,6 @@ $ gitbook pdf ./ './_book/业务数据服务 API.pdf'2
     - 与之对应的就是「监听某个数据, 如果数据被改变了, 执行某个函数」
     
     - 特殊的函数就是「监听 state 内的书, 如果数据被改变了, 重新渲染视图」
-    
 ## 2020.04.08
 
 
@@ -2349,7 +2896,6 @@ $ which nginx
 $prompt$: 提示, 弹出一个提示框, 可以用于收集用户输入数据
     
 - chrome 调试 node 代码
-  
 ```shell
 $ node --inspect-brk index.js 
 ```
@@ -2507,7 +3053,6 @@ $ which nginx
 $prompt$: 提示, 弹出一个提示框, 可以用于收集用户输入数据
     
 - chrome 调试 node 代码
-  
 ```shell
 $ node --inspect-brk index.js 
 ```
@@ -3263,7 +3808,6 @@ event.currentTarget返回**绑定**事件的元素
   let test= new Person();
   test.on();
   ```
-  
 ---
 
 # 函数的深入理解
@@ -3650,7 +4194,6 @@ console.log(a)
    ![](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/image-host/master/img/20190523182558.png)
    
    
-   
 ## falsy 值
 
    1. 数字0
@@ -3784,7 +4327,6 @@ console.log(a)
   ```shell
   $ source .bash_profile
   ```
-  
 ---
 
 # this
@@ -4306,7 +4848,6 @@ filter(Boolean)
       Cache-Control: public, max-age=31536000
       Expires: (一年后的今天)
       ```
-      
   
 - 协商缓存
 
@@ -4326,7 +4867,6 @@ filter(Boolean)
       ETag: (基于内容生成)
       Last-Modified: (过去某个时间)
       ```
-  
 ---
 
 跨域
@@ -4624,7 +5164,6 @@ x()();
         ```
         git clone git-test@203.195.221.250:/data/nginx-new/html/git-hooks/back-h5-git.git
         ```
-    
 ## 请求参数
 
 请求参数, 有几种方式
@@ -4656,7 +5195,6 @@ x()();
 - 前端为了区分每一期, 使用 `/info/1`
 
 - 后端为了区分每一期, 不能使用 `/info/1` 
-  
 
 
 
