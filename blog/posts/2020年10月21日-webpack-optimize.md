@@ -575,7 +575,9 @@ module:{
 
   源代码中的入口 js 为 index.js
 
-  打包的最终代码是 main.js ，main.js 内部包含两部分：主代码、runtime.js（将 main.js 运行在 ie 等低版本浏览器的环境代码）。
+  打包的最终代码是 main.js ，main.js 内部包含两部分：主代码、runtime.js（将
+
+   main.js 运行在 ie 等低版本浏览器的环境代码）。
 
   如果不单独打包，那么如果此时修改了 webpack 的配置，就会导致 main.js 发生变化，用户需要重新下载新的 main.js
 
