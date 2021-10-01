@@ -1,11 +1,9 @@
 ## 数据在计算机中是如何存储的
 
-![image-20211001112537833](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20211001112537833.png)
+- 二进制
 
+  一个字节（byte）有八个位（bit），每个 bit 都是 0 or 1
 
+- int i = 0; 如何存储
 
-![image-20211001112655641](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20211001112655641.png)
-
-![image-20211001114133261](https://raw.githubusercontent.com/wojiaofengzhongzhuifeng/iamge-host-2/master/image-20211001114133261.png)
-
-fjdksfjdks
+   
