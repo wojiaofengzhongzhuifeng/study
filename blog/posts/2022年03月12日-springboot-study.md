@@ -30,8 +30,6 @@
   | name   | String              |
   | status | ENUM ONLINE OFFLINE |
 
-  
-
 - playlist 表
 
   | 字段名 | 类型 |
@@ -41,32 +39,25 @@
   |        |      |
 
 - artist <=> album <=> track 一对多
-- playList 与 track 多对多
+- playList 与 track 多对多查询结果
+- 
 
-## 知识点(从请求到响应链路)
+## 知识点
 
 - 请求参数校验
-
 - 数据库 crud 操作
-
   - 单表 crud
-
   -  一对多 crud
-
   - 多对多 crud
 
-    
-
-    
-
 - model -> vo 
-
-
+- 分页处理
+- 如何调用 class 定义的方法
+  添加 static 
 
 - 错误处理
-- 
 - 多对多查询
-- 
+- 构造函数的职责: 初始化成员变量
 
 ---
 
@@ -78,11 +69,9 @@
 
 ---
 
+### list 接口添加分页配置
+
+---
 
 
-### commit 
 
-- artist =>album 一对多查询
-- album => track 一对多查询
-- artist =>album 查询结果过滤
-- album => track 查询结果过滤
