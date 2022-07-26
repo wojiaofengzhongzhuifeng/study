@@ -26,4 +26,17 @@ EXPOSE 8080
 
 ### 逻辑判断
 
-- 如果 a 为
+如果 inputValue 为 y or Y => if(inputValue === 'y' || inputValue === 'Y''){}
+
+取反的话
+
+是
+
+如果 inputValue 不为 y and Y => if(inputValue !== 'y' && inputValue !== 'Y'){}
+
+不是 
+
+如果 inputValue 不为 y or Y => if(inputValue !== 'y' || inputValue !== 'Y'){}
+
+
+---
