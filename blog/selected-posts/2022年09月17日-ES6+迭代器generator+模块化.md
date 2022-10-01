@@ -156,6 +156,8 @@ es module 是编译阶段加载，因此能分析出哪些变量未被使用，�
 
 command 在运行阶段才加载，不能分析哪些变量未被使用
 
+---
+
 
 
 
@@ -274,6 +276,12 @@ for (let item of obj) {
 
 ---
 
+### 使用 proxy 实现，a === 1 & a=== 2 
+
+---
+
+
+
 ## 笔记
 
 ### map 与 weakMap 的区别？weak 如何理解？
@@ -324,3 +332,20 @@ for (let item of obj) {
   console.log(a2 === a);
   ```
 
+- command.js 的导出语法
+
+  ```javascript
+  const number = 1
+  const obj = {name: 2}
+  module.exports = {
+    number,
+    obj
+  }
+  module.exports.test = 123
+  
+  // 这种是错误的
+  exports.test1 = 3333
+  
+  ```
+
+  

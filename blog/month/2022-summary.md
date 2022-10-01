@@ -103,5 +103,18 @@ const spotifySong2 = response?.data?.data?.spotifySong || ''
 
 ---
 
-### 
+### git 使用
 
+如果正在开发 feature ，突然有线上 bug，那么应该
+
+- git stash save feature 此时代码回退到没有 feature 的代码
+- 正常切分支，然后提交
+- 切到 feature 分支，执行 git stash apply 0
+
+
+
+git stash 的使用
+
+- git stash save commit1
+- git stash list
+- git stash apply ${id}
