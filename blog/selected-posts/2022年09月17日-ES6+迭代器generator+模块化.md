@@ -35,7 +35,7 @@
 
 ### 浏览器如何处理 script
 
-- 遇到 script 需要下载 + 执行，这两个步骤都会阻碍html 解析
+- **遇到 script 需要下载 + 执行，这两个步骤都会阻碍 html 解析**
 - script async 属性含义
 - script defer 属性含义
 - 如果新增了 async ，那么下载不会阻碍 html 解析，但是一旦下载完毕后，执行 script 依然会阻碍解析
@@ -348,4 +348,8 @@ for (let item of obj) {
   
   ```
 
-  
+
+---
+
+### 如何在现代浏览器直接使用 export import 语法？
+
