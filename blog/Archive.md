@@ -2566,26 +2566,6 @@ $ gitbook pdf ./ './_book/业务数据服务 API.pdf'2
 
     curl "网页" -H "请求key: 请求 value"
 
-- 注册
-
-    163
-    邮箱: raojiajun444@163.com
-    密码: sj15702097950
-    
-    小程序
-    邮箱: raojiajun333@163.com
-    密码: sj15702097950
-
-
-- 地址
-
-    研发环境： http://alpha-bos.bimwinner.com/
-    账号密码: raojiajun / sj15702097950
-    demo 环境： http://bos-demo.rickricks.com/
-    1570209705 / sj15702097950  
-    正式环境： http://bos.boswinner.com/
-    1570209705 / sj15702097950  
-
 
 ## 2020.04.23
 
