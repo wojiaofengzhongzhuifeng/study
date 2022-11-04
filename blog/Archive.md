@@ -110,28 +110,6 @@ commitlint
 - 组件输出（产生）数据
 - 思考组件输出需要触发什么操作，如果触发其他组件操作，需要将该数据提升
 
-### ✅ mock 数据与环境变量的联合使用
-
-- 在 create-react-app 中使用
-
-- setData
-
-  在根目录创建`.env`文件，文件内容如下
-  注意变量必须以 `REACT_APP_xxx`开头
-
-  ```
-  REACT_APP_API_URL = 'http://localhost:3001'
-  REACT_APP_PROD_API_URL = 'http://baidu.com'
-  
-  ```
-
-- getData
-
-  ```
-  const apiUrl = process.env.REACT_APP_API_URL;
-  console.log(apiUrl);
-  ```
-
 ### ✅经验：收集 url query 最佳数据结构
 
 #### 需求
