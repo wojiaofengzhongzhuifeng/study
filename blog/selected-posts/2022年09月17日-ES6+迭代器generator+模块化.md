@@ -288,7 +288,7 @@ for (let item of obj) {
 
 ---
 
-###for of 遍历哪些对象？如何让普通对象支持 for of 遍历？
+### for of 遍历哪些对象？如何让普通对象支持 for of 遍历？
 
 ---
 
